@@ -8,7 +8,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { PNG } from 'pngjs';
-import type { RgbaImage } from '../../hash';
+import type { RgbaImage } from '../../image';
 
 export function loadPng(path: string): RgbaImage {
   const png = PNG.sync.read(readFileSync(path));

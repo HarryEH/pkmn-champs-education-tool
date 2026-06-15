@@ -39,8 +39,9 @@ npx vitest run -t "some test name"
 
 Regenerate detection data (only when their inputs change, see "Detection data" below):
 ```bash
-npx vite-node scripts/buildIconHashes.ts          # regulation-independent icon hash table
+npx vite-node scripts/buildBoxEmbeddings.ts       # CLIP box-sprite reference embeddings (legal pool)
 npx vite-node scripts/buildChampionsLegality.ts   # regulation-specific legal/banned table
+npx vite-node scripts/buildJasonCropEmbeddings.ts # accuracy-harness crop-embedding fixture (after a table/preproc change)
 ```
 
 ## Architecture
@@ -92,21 +93,37 @@ module imports `calculate`/`Pokemon`/`Move`/`Field` from `lib/calc/gen`, never f
 
 All three persisted stores hydrate from IPC on app boot (see `App.tsx`'s `useEffect`).
 
-### Detection pipeline — two-layer data architecture (`src/lib/detection/`, `src/data/`)
+### Detection pipeline — CLIP box-embedding nearest-neighbour (`src/lib/detection/`, `src/data/`)
 
-Opponent identification is pure perceptual-hash nearest-neighbor (no ML/OCR):
+Opponent identification is CLIP image-embedding nearest-neighbour (R7; replaced the broken
+blockhash pipeline, which scored 0/6 on real Switch frames — see the `detection-approach` memo):
 
-1. `imageSource.ts` (dropped screenshot) / `frameCapture.ts` (live capture) → `RgbaImage`.
-2. `cropRegions.ts` slices it into 6 icons using normalized `NormalizedRect[]` (calibration).
-3. `iconMatcher.ts` hashes each crop (`hash.ts`, blockhash) and finds top-N nearest entries in
-   `src/data/iconHashes.json` → confidence scores; `AUTO_ACCEPT_THRESHOLD` decides auto-confirm
-   vs. manual override.
-4. `detectionPipeline.ts::detectOpponentTeam` wires 1–3 into an `OpponentTeam`.
+1. `imageSource.ts` (dropped screenshot) / `frameCapture.ts` (live capture) → `RgbaImage`
+   (`image.ts` owns the shared type).
+2. `cropRegions.ts` slices it into 6 crops using normalized `NormalizedRect[]` (calibration).
+3. `segment.ts::segmentToWhite` removes the red opponent-panel background (the **primary**
+   preprocessing — it lifts the real-frame score 4/6→5/6; without it the red bg dominates the
+   embedding).
+4. `embedder.ts::embedCrop` lazily runs CLIP ViT-B/32 (`@huggingface/transformers`,
+   `Xenova/clip-vit-base-patch32`, downloaded on first run + browser-cached for offline reuse)
+   over `compositeOnWhite(crop)` → a raw 512-d vector. `embedPreproc.ts` owns the composite step
+   (build/runtime parity via `PREPROC_VERSION`).
+5. `iconMatcher.ts::matchEmbedding` mean-centers the crop vector with the table's stored pool
+   mean, cosine-ranks it against the **legal-only** entries → top-N + confidence;
+   `AUTO_ACCEPT_THRESHOLD` + `AUTO_ACCEPT_MARGIN` decide auto-confirm vs. manual override.
+6. `detectionPipeline.ts::detectOpponentTeam` (async) wires 2–5 into an `OpponentTeam`.
+
+`boxEmbeddings.ts` is the single source of truth for the table shape + centering/cosine math
+(the role the old `hash.ts` played). The regression gate is `__tests__/detectionAccuracy.test.ts`
+(asserts ≥5/6 top-1 on the real Jason frame, headless via precomputed crop embeddings).
 
 The data files are **deliberately decoupled** because they change on different schedules:
-- `src/data/iconHashes.json` — **regulation-independent**. Every real National Dex species'
-  icon hash (built by `scripts/buildIconHashes.ts` from `@pkmn/dex` + the Showdown icon sheet).
-  Only regenerate if `@pkmn/dex`'s base species data changes.
+- `src/data/boxEmbeddings.json` — **regulation-specific reference embeddings**. One raw 512-d
+  CLIP vector per legal Champions base-forme (pokesprite gen-8 box sprites, with Showdown gen5
+  fallback for gen-9 species that lack a box icon), plus the pool `mean`. Built by
+  `scripts/buildBoxEmbeddings.ts`. Regenerate when the legal pool changes (regulation cutover) or
+  the model/preprocessing changes — and rerun `buildJasonCropEmbeddings.ts` to refresh the harness
+  fixture. Loaded/validated by `boxEmbeddings.ts` (asserts `model`/`preprocVersion` parity).
 - `src/data/championsLegality.json` — **regulation-specific**. Maps each of those species ids to
   legal/banned status for the *current* Champions regulation (built by
   `scripts/buildChampionsLegality.ts`, which parses the live `champions` mod's
@@ -115,7 +132,10 @@ The data files are **deliberately decoupled** because they change on different s
   2026-06-17 Reg M-A → M-B change) and update `CURRENT_FORMAT` in `src/shared/types.ts`.
   Lookup logic lives in `src/lib/detection/championsLegality.ts`.
 
-Both build scripts run via `vite-node` (Node context, not the renderer).
+The build scripts run via `vite-node` (Node context). `buildBoxEmbeddings.ts` and the runtime
+`embedder.ts` use the **same** CLIP model + `compositeOnWhite` preprocessing so build-time and
+run-time embeddings are comparable — a `model`/`preprocVersion` mismatch silently destroys
+accuracy, hence the parity asserts.
 
 ### Persistence
 
@@ -153,11 +173,11 @@ src/
     store/{teams,settings,session,nav}.ts
   lib/
     calc/{gen,damageCalc,speedTiers,typeMatchup}.ts
-    detection/{frameCapture,imageSource,cropRegions,iconMatcher,hash,detectionPipeline,iconHashes,championsLegality}.ts
+    detection/{frameCapture,imageSource,image,cropRegions,segment,embedPreproc,embedder,boxEmbeddings,iconMatcher,detectionPipeline,championsLegality}.ts
     smogon/usageData.ts
   shared/{types,ipc,fixtures}.ts
-  data/{iconHashes.json, championsLegality.json}
-scripts/{buildIconHashes,buildChampionsLegality,championsFormatsParser}.ts
+  data/{boxEmbeddings.json, championsLegality.json}
+scripts/{buildBoxEmbeddings,buildJasonCropEmbeddings,buildChampionsLegality,championsFormatsParser}.ts
 ```
 
 ## Conventions

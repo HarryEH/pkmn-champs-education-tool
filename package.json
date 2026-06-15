@@ -53,7 +53,6 @@
     "@pkmn/sets": "5.2.0",
     "@pkmn/smogon": "0.5.31",
     "@smogon/calc": "0.11.0",
-    "blockhash-core": "0.1.0",
     "electron-squirrel-startup": "1.0.1",
     "react": "19.2.7",
     "react-dom": "19.2.7",

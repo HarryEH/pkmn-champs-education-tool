@@ -8,7 +8,7 @@
  */
 import type { NormalizedRect } from '../../../../shared/types';
 import { cropRegions } from '../../cropRegions';
-import type { RgbaImage } from '../../hash';
+import type { RgbaImage } from '../../image';
 import type { MatchCandidate } from '../../iconMatcher';
 
 /** A matcher ranks a single crop against some reference set, best-first. */

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import type { NormalizedRect } from '../../../shared/types';
 import { cropRegion, cropRegions } from '../cropRegions';
-import type { RgbaImage } from '../hash';
+import type { RgbaImage } from '../image';
 
 /**
  * Build a frame whose every pixel encodes its own coordinates in the R/G channels,

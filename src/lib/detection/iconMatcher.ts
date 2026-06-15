@@ -1,19 +1,12 @@
 /**
- * Icon matcher (WS-D) — renderer/pure.
+ * Icon matcher (R7) — renderer/pure.
  *
- * Hashes a single icon crop and ranks it against the precomputed icon-hash table
- * by Hamming distance, returning the top-3 candidates with a confidence in [0,1].
- * Confidence = 1 - distance / maxBits, so an exact match scores 1.0.
+ * Ranks a raw CLIP crop embedding against the precomputed box-embedding table by
+ * centered-cosine nearest-neighbour, filtered to the legal species pool, returning
+ * the top-N candidates with a confidence in [0,1]. Centering uses the table's
+ * stored full-pool mean (see boxEmbeddings.centerAndNormalize) — never recomputed
+ * over the filtered subset.
  */
-import {
-  HASH_MAX_BITS,
-  NORMALIZE_SIZE,
-  hammingDistance,
-  hashImage,
-  resampleNearest,
-  type RgbaImage,
-} from './hash';
-import type { IconHashEntry } from './iconHashes';
 import {
   centerAndNormalize,
   cosine,
@@ -35,9 +28,32 @@ export interface MatchEmbeddingOptions {
 }
 
 /**
+ * Minimum top-1 confidence to auto-accept a match without user confirmation.
+ *
+ * Unlike the old blockhash matcher (exact matches ~1.0), CLIP centered-cosine
+ * confidences for true matches on real Switch frames cluster around 0.68–0.80,
+ * with distractors close behind — so a high absolute bar would auto-accept nothing.
+ * Tuned against the Jason fixture: this plus {@link AUTO_ACCEPT_MARGIN} auto-confirms
+ * the clear slots (Aerodactyl/Garchomp/Tyranitar) while deferring genuinely
+ * ambiguous ones (e.g. Rotom appliance formes, small renders) to the manual
+ * override dropdown. Revisit as more real frames are collected.
+ */
+export const AUTO_ACCEPT_THRESHOLD = 0.7;
+
+/**
+ * Minimum gap between the top-1 and top-2 confidence to auto-accept. A tiny gap
+ * (e.g. Incineroar barely edging Garganacl) means the top-1 is a coin-flip, so we
+ * prompt instead of silently committing a likely-wrong pick.
+ */
+export const AUTO_ACCEPT_MARGIN = 0.03;
+
+/** How many candidates to surface per slot. */
+export const TOP_N = 3;
+
+/**
  * Map a centered cosine similarity (in [-1, 1]) to a confidence in [0, 1].
- * Monotonic, so ranking is unaffected; only the auto-accept threshold cares about
- * the absolute value (re-tuned against the harness in R7).
+ * Monotonic, so ranking is unaffected; only the auto-accept gate reads the
+ * absolute value.
  */
 export function cosineToConfidence(cos: number): number {
   return (cos + 1) / 2;
@@ -45,9 +61,8 @@ export function cosineToConfidence(cos: number): number {
 
 /**
  * Rank a raw CLIP crop embedding against the box-embedding table by centered
- * cosine NN (R7). Reproduces the spike math: center the crop with the table's
- * stored full-pool `mean`, center each (legal-filtered) entry with the SAME mean,
- * then cosine. Never recompute the mean over the filtered subset.
+ * cosine NN. Centers the crop with the table's stored full-pool `mean`, centers
+ * each (legal-filtered) entry with the SAME mean, then cosine.
  *
  * @param cropEmbedding raw 512-d embedding from the runtime embedder
  * @returns up to `topN` candidates, best (highest confidence) first
@@ -73,53 +88,16 @@ export function matchEmbedding(
 }
 
 /**
- * Minimum top-1 confidence at which the pipeline may auto-accept a match without
- * user confirmation. Tunable. Empirically blockhash on clean 40x30 icons yields
- * near-1.0 for the true match and a clear gap to the runner-up; 0.85 leaves room
- * for capture noise / scaling while staying above typical false positives.
- *
- * NOTE: revisit after collecting real Elgato frames (see R3 memo).
+ * Whether a candidate list clears the auto-accept bar: top-1 confidence at or above
+ * {@link AUTO_ACCEPT_THRESHOLD} AND a {@link AUTO_ACCEPT_MARGIN} lead over the
+ * runner-up. A lone candidate (no runner-up) only needs the threshold.
  */
-export const AUTO_ACCEPT_THRESHOLD = 0.85;
-
-/** How many candidates to surface per slot. */
-export const TOP_N = 3;
-
-/**
- * Rank a crop against the hash table. The crop is normalized to NORMALIZE_SIZE
- * (the same edge the build script uses) before hashing, guaranteeing parity.
- *
- * @returns up to TOP_N candidates, best (highest confidence) first.
- */
-export function matchIcon(crop: RgbaImage, table: IconHashEntry[], topN = TOP_N): MatchCandidate[] {
-  const normalized = resampleNearest(crop, NORMALIZE_SIZE);
-  const cropHash = hashImage(normalized);
-  return matchHash(cropHash, table, topN);
-}
-
-/**
- * Rank a precomputed crop hash against the table. Split out from {@link matchIcon}
- * so callers/tests that already have a hash (and to avoid re-normalizing) can use it.
- */
-export function matchHash(
-  cropHash: string,
-  table: IconHashEntry[],
-  topN = TOP_N,
-): MatchCandidate[] {
-  const scored: MatchCandidate[] = table.map((entry) => ({
-    speciesId: entry.speciesId,
-    confidence: 1 - hammingDistance(cropHash, entry.hash) / HASH_MAX_BITS,
-  }));
-
-  // Highest confidence first; stable-enough tie-break on speciesId for determinism.
-  scored.sort((a, b) => b.confidence - a.confidence || a.speciesId.localeCompare(b.speciesId));
-  return scored.slice(0, topN);
-}
-
-/** Whether a candidate list clears the auto-accept bar (top-1 >= threshold). */
 export function isAutoAcceptable(
   candidates: MatchCandidate[],
   threshold = AUTO_ACCEPT_THRESHOLD,
+  margin = AUTO_ACCEPT_MARGIN,
 ): boolean {
-  return candidates.length > 0 && candidates[0].confidence >= threshold;
+  if (candidates.length === 0 || candidates[0].confidence < threshold) return false;
+  if (candidates.length === 1) return true;
+  return candidates[0].confidence - candidates[1].confidence >= margin;
 }

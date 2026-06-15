@@ -6,7 +6,7 @@
  * `detectionPipeline.detectOpponentTeam` can treat a static screenshot and a
  * live capture frame identically (mirrors frameCapture.ts).
  */
-import type { RgbaImage } from './hash';
+import type { RgbaImage } from './image';
 
 /**
  * Decode an image `File` (e.g. a dropped Switch team-preview screenshot) to

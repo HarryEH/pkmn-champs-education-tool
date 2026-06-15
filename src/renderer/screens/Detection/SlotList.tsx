@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Card, Select } from '../../ui';
 import { pokemonIconStyle } from '../../components/pokemonIcon';
 import type { OpponentTeam } from '../../../shared/types';
-import type { RgbaImage } from '../../../lib/detection/hash';
+import type { RgbaImage } from '../../../lib/detection/image';
 import { gen } from '../../../lib/calc/gen';
 import { isChampionsLegal } from '../../../lib/detection/championsLegality';
 import { LEGALITY_INDEX, SPECIES_OPTIONS } from './constants';

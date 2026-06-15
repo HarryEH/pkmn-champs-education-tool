@@ -8,11 +8,16 @@ import type { NormalizedRect } from '../../../shared/types';
 import { loadImageFromFile } from '../../../lib/detection/imageSource';
 import { cropRegions } from '../../../lib/detection/cropRegions';
 import { detectOpponentTeam } from '../../../lib/detection/detectionPipeline';
-import type { RgbaImage } from '../../../lib/detection/hash';
+import {
+  getEmbedderStatus,
+  preloadEmbedder,
+  type EmbedderStatus,
+} from '../../../lib/detection/embedder';
+import type { RgbaImage } from '../../../lib/detection/image';
 import { CalibrationOverlay } from './CalibrationOverlay';
 import { SlotList } from './SlotList';
 import { OpponentDashboard } from './OpponentDashboard';
-import { DEFAULT_CALIBRATION_RECTS, ICON_HASH_TABLE } from './constants';
+import { BOX_EMBEDDING_TABLE, DEFAULT_CALIBRATION_RECTS, LEGAL_SPECIES_IDS } from './constants';
 
 /**
  * Flow B — Detection + analysis dashboard (E1a + E2).
@@ -44,8 +49,23 @@ export function DetectionScreen() {
   const [rects, setRects] = useState<NormalizedRect[]>(DEFAULT_CALIBRATION_RECTS);
   const [detecting, setDetecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [modelStatus, setModelStatus] = useState<EmbedderStatus>(getEmbedderStatus());
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Kick off the (first-run) CLIP model download as soon as the screen mounts, and
+  // poll its status so the Detect button can reflect "loading model…". The model is
+  // cached after the first download, so later sessions resolve to 'ready' quickly.
+  useEffect(() => {
+    preloadEmbedder();
+    setModelStatus(getEmbedderStatus());
+    const id = setInterval(() => {
+      const status = getEmbedderStatus();
+      setModelStatus(status);
+      if (status === 'ready' || status === 'error') clearInterval(id);
+    }, 400);
+    return () => clearInterval(id);
+  }, []);
 
   // Load persisted calibration once settings hydrate.
   useEffect(() => {
@@ -84,12 +104,14 @@ export function DetectionScreen() {
     e.target.value = '';
   };
 
-  const handleDetect = () => {
+  const handleDetect = async () => {
     if (!frame) return;
     setDetecting(true);
     setError(null);
     try {
-      const result = detectOpponentTeam(frame, rects, ICON_HASH_TABLE);
+      const result = await detectOpponentTeam(frame, rects, BOX_EMBEDDING_TABLE, {
+        legalOnly: LEGAL_SPECIES_IDS,
+      });
       setCrops(cropRegions(frame, rects));
       setOpponent(result);
     } catch (e) {
@@ -174,8 +196,15 @@ export function DetectionScreen() {
                 flexWrap: 'wrap',
               }}
             >
-              <Button onClick={handleDetect} disabled={detecting || !frame}>
-                {detecting ? 'Detecting…' : 'Detect'}
+              <Button
+                onClick={() => void handleDetect()}
+                disabled={detecting || !frame || modelStatus === 'loading'}
+              >
+                {detecting
+                  ? 'Detecting…'
+                  : modelStatus === 'loading'
+                    ? 'Loading model…'
+                    : 'Detect'}
               </Button>
               <Button variant="secondary" size="sm" onClick={() => setCalibrationRegions(rects)}>
                 Save calibration
@@ -188,7 +217,11 @@ export function DetectionScreen() {
                 Reset to defaults
               </Button>
               <span style={{ fontSize: 12, color: 'var(--text-mut)' }}>
-                Drag/resize the 6 boxes over each opponent icon, then Detect.
+                {modelStatus === 'error'
+                  ? 'Image model failed to load — check your connection and retry.'
+                  : modelStatus === 'loading'
+                    ? 'Downloading the image-recognition model (first run only)…'
+                    : 'Drag/resize the 6 boxes over each opponent icon, then Detect.'}
               </span>
             </div>
           </div>

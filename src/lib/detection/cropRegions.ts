@@ -10,7 +10,7 @@
  * This module is pure pixel math — no canvas, no DOM — so it runs in tests too.
  */
 import type { NormalizedRect } from '../../shared/types';
-import type { RgbaImage } from './hash';
+import type { RgbaImage } from './image';
 
 /**
  * Extract one rectangular crop from an RGBA image using a normalized rect.
