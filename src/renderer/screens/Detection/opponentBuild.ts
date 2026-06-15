@@ -75,7 +75,7 @@ export function topMoves(usage: SpeciesUsage | undefined, n = 4): string[] {
 /** Raw Speed stat for a `SpeciesCombatant` built by {@link buildOpponentCombatant}. */
 export function opponentSpeedStat(c: SpeciesCombatant): number {
   const species = gen.species.get(c.speciesId);
-  if (!species) return 0;
+  if (!species?.exists) return 0; // `gen` is ungated: a miss is {exists:false}, not undefined.
   const nature = gen.natures.get(c.nature ?? 'Serious') ?? undefined;
   const iv = c.ivs?.spe ?? 31;
   const ev = c.evs?.spe ?? 0;

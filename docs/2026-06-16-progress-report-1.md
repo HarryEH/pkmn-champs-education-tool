@@ -312,3 +312,27 @@ resolution (`computeStat`, `parsePokepaste`, `checkSetLegality`). `gen` stays th
 default for everything else. A miss on `dexGen` returns `{exists: false}` (not
 `undefined`), so callers test `.exists`. +1 regression test (Mega Stones +
 Floette-Eternal parse with 0 errors) → suite **67 → 68**.
+
+### R6 addendum 2 — `gen` consolidated onto the ungated base
+
+The split above (`gen` gated + `dexGen` ungated) was the wrong long-term shape:
+the gated view is the wrong *data* base for a Mega-reviving format **everywhere**,
+not just Team Setup. Verified directly: under the gated `gen`, building a Mega
+forme in @smogon/calc **crashes** (`calculate(... 'Charizard-Mega-Y' ...)` →
+`Cannot read properties of undefined`), so Detection/In-Battle damage on any
+detected Mega would have failed. Under the ungated view it resolves correctly
+(Charizard-Mega-Y SpA 179 vs base 129), and — critically — **normal-mon calcs are
+byte-identical** between the two, so consolidation is regression-free.
+
+So `gen` itself is now the single ungated generation (`new Generations(Dex,
+() => true).get(9)`); `dexGen` is gone. Gen 9 is still correct for **mechanics**
+(stat/damage formulae, type chart) — only the *data-existence* filter changed.
+Call sites that previously assumed a miss was `undefined` were audited and now
+test `.exists` (`speedTiers`, `typeMatchup`, `opponentBuild`, `OpponentDashboard`,
+`fixtures`, plus the Team-Setup/legality paths). This also fixes Mega damage/speed
+calc on the **Detection** and **In-Battle** screens, not just Team Setup.
+
+One pre-existing limitation noted in passing (NOT introduced here, identical under
+both views): @smogon/calc does not auto-Mega-evolve a base species from its held
+stone — you must pass the Mega forme name explicitly. Mapping base+stone → forme
+for display/calc is a separate follow-up.

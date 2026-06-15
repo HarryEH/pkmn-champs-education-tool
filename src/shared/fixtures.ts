@@ -90,16 +90,17 @@ function toMyPokemon(block: string): MyPokemon {
   // we treat the result as a full set (WS-C validates this at real import time).
   const set = Sets.importSet(block) as PokemonSet;
   const species = gen.species.get(set.species ?? '');
+  const exists = species?.exists ?? false; // `gen` is ungated: a miss is {exists:false}, not undefined.
   const nature = gen.natures.get(set.nature ?? 'Serious');
   const level = set.level ?? 50;
   const baseSpe = species?.baseStats.spe ?? 0;
   const iv = set.ivs?.spe ?? 31;
   const ev = set.evs?.spe ?? 0;
-  const speed = species ? gen.stats.calc('spe', baseSpe, iv, ev, level, nature ?? undefined) : 0;
+  const speed = exists ? gen.stats.calc('spe', baseSpe, iv, ev, level, nature ?? undefined) : 0;
   return {
     set,
     speed,
-    types: species ? [...species.types] : [],
+    types: exists && species ? [...species.types] : [],
   };
 }
 

@@ -68,7 +68,7 @@ const STAGE_MULTIPLIERS: Record<number, number> = {
  */
 export function calcSpeed(set: PokemonSet): number {
   const species = gen.species.get(set.species ?? '');
-  if (!species) return 0;
+  if (!species?.exists) return 0; // `gen` is ungated: a miss is {exists:false}, not undefined.
   const nature = gen.natures.get(set.nature ?? 'Serious') ?? undefined;
   const level = set.level ?? 50;
   const iv = set.ivs?.spe ?? 31;

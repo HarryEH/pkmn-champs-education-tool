@@ -50,7 +50,7 @@ export function allTypes(): string[] {
  */
 export function defensiveProfile(species: string): DefensiveProfile {
   const sp = gen.species.get(species);
-  const defenderTypes = sp ? [...sp.types] : [];
+  const defenderTypes = sp?.exists ? [...sp.types] : [];
   const profile: DefensiveProfile = {};
   for (const attackType of allTypes()) {
     profile[attackType] = getMatchup(attackType, defenderTypes);

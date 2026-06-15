@@ -13,7 +13,7 @@
  * The JSON data files are imported and indexed ONCE at module scope (mirrors
  * Detection/constants.ts), so callers pay the indexing cost a single time.
  */
-import { dexGen } from '../calc/gen';
+import { gen } from '../calc/gen';
 import {
   buildLegalityIndex,
   isChampionsLegal,
@@ -59,7 +59,7 @@ export function checkSetLegality(set: PokemonSet, species: LegalitySpecies): str
   }
 
   if (set.item) {
-    const item = dexGen.items.get(set.item);
+    const item = gen.items.get(set.item);
     if (!item?.exists) {
       violations.push(`${who}: unknown item "${set.item}".`);
     } else if (!isItemLegal(OVERRIDES, item.id, item.isNonstandard)) {
@@ -68,7 +68,7 @@ export function checkSetLegality(set: PokemonSet, species: LegalitySpecies): str
   }
 
   if (set.ability) {
-    const ability = dexGen.abilities.get(set.ability);
+    const ability = gen.abilities.get(set.ability);
     if (!ability?.exists) {
       violations.push(`${who}: unknown ability "${set.ability}".`);
     } else if (!isAbilityLegal(OVERRIDES, ability.id, ability.isNonstandard)) {
@@ -78,7 +78,7 @@ export function checkSetLegality(set: PokemonSet, species: LegalitySpecies): str
 
   for (const moveText of set.moves ?? []) {
     if (!moveText) continue;
-    const move = dexGen.moves.get(moveText);
+    const move = gen.moves.get(moveText);
     if (!move?.exists) {
       violations.push(`${who}: unknown move "${moveText}".`);
       continue;

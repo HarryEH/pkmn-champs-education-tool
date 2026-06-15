@@ -42,14 +42,17 @@ function moveTypesOf(mon: MyPokemon): string[] {
   const types = new Set<string>();
   for (const moveName of mon.set.moves ?? []) {
     const move = gen.moves.get(moveName);
-    if (move && move.category !== 'Status') types.add(move.type);
+    if (move?.exists && move.category !== 'Status') types.add(move.type);
   }
   return [...types];
 }
 
 /** Non-Status moves a "my team" Pokémon carries, in set order. */
 function damagingMovesOf(mon: MyPokemon): string[] {
-  return (mon.set.moves ?? []).filter((m) => gen.moves.get(m)?.category !== 'Status');
+  return (mon.set.moves ?? []).filter((m) => {
+    const move = gen.moves.get(m);
+    return move?.exists && move.category !== 'Status';
+  });
 }
 
 /**
@@ -159,7 +162,7 @@ function OpponentSlotAnalysis({ speciesId, usage, myTeam, myMons, trickRoom }: S
   const opponentLabel = speciesName(speciesId);
   const opponentTypes = useMemo(() => {
     const species = gen.species.get(speciesId);
-    return species ? [...species.types] : [];
+    return species?.exists ? [...species.types] : [];
   }, [speciesId]);
 
   const combatant = useMemo(() => buildOpponentCombatant(speciesId, usage), [speciesId, usage]);
