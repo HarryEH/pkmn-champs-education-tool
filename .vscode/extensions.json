@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "oderwat.indent-rainbow",
+    "wix.vscode-import-cost",
+    "anthropic.claude-code"
+  ]
+}
