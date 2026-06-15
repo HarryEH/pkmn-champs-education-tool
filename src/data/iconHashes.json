@@ -1,0 +1,4269 @@
+{
+  "format": "gen9championsvgc2026regma",
+  "generatedAt": "2026-06-15T15:10:55.313Z",
+  "hashBitsSide": 16,
+  "normalizeSize": 32,
+  "spriteSheetUrl": "https://play.pokemonshowdown.com/sprites/pokemonicons-sheet.png",
+  "entries": [
+    {
+      "speciesId": "bulbasaur",
+      "name": "Bulbasaur",
+      "hash": "ffffffffffffffffffffff1ffe0ff80ff80ff80ff00ff00ff00ff80fff3fffff"
+    },
+    {
+      "speciesId": "ivysaur",
+      "name": "Ivysaur",
+      "hash": "ffffffffffffffffff3ffe3ffc0ff80ff80ff80ff007f007f00ff80ffc3fffff"
+    },
+    {
+      "speciesId": "venusaur",
+      "name": "Venusaur",
+      "hash": "fffffffffe1ffc0ffc0ff18fe007f007f613e803fd83cd07c007e01fff1fffff"
+    },
+    {
+      "speciesId": "charmander",
+      "name": "Charmander",
+      "hash": "fffffffffffffffffffffccff8cff047f047f04ff04ffc0ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "charmeleon",
+      "name": "Charmeleon",
+      "hash": "ffffffffffffff9ffc9ff88ff09ff04ff04ff00ff00ff00ff40ffc1fff1fffff"
+    },
+    {
+      "speciesId": "charizard",
+      "name": "Charizard",
+      "hash": "ffffffe7ffe7ffe3fee3f41be003e103fc83f4c3d183d283c803fe0fffcfffff"
+    },
+    {
+      "speciesId": "squirtle",
+      "name": "Squirtle",
+      "hash": "fffffffffffffffffffffffff8cff007f007f00ff00ff81ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "wartortle",
+      "name": "Wartortle",
+      "hash": "fffffffffffffbfffbbff137f023f003f093f107f017f00ffc1ffc1fff3fffff"
+    },
+    {
+      "speciesId": "blastoise",
+      "name": "Blastoise",
+      "hash": "fffffffffbfff9dff80ff00ff00fe00fe00fe00ff807f30ff80ffe0fff9fffff"
+    },
+    {
+      "speciesId": "ekans",
+      "name": "Ekans",
+      "hash": "fffffffffffffffffc3ffc3ff81ff01ff03ff03ff81ff80ff80ffc0ffc1fffff"
+    },
+    {
+      "speciesId": "arbok",
+      "name": "Arbok",
+      "hash": "fffffffffffffc7ff83ff81ff00ff80ffc1ff01ff00ff00ffc0ffc0ffe1fffff"
+    },
+    {
+      "speciesId": "pikachu",
+      "name": "Pikachu",
+      "hash": "fffffffffffffffffcfffccffc07f80ff00ff00ff00ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "pikachuoriginal",
+      "name": "Pikachu-Original",
+      "hash": "fffffffffffffffff8fff04ff247e20fe00ff01ff01ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "pikachuhoenn",
+      "name": "Pikachu-Hoenn",
+      "hash": "fffffffffffffffff8fff04ff047e00fe00ff01ff01ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "pikachusinnoh",
+      "name": "Pikachu-Sinnoh",
+      "hash": "fffffffffffffffff8fff04ff047e00fe00ff01ff01ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "pikachuunova",
+      "name": "Pikachu-Unova",
+      "hash": "fffffffffffffffff8fff04ff247e20fe00ff01ff01ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "pikachukalos",
+      "name": "Pikachu-Kalos",
+      "hash": "fffffffffffffffff8fff04ff047e00fec0fe00ff00ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "pikachualola",
+      "name": "Pikachu-Alola",
+      "hash": "fffffffffffffffff8fff04ff047f00fe40ff00ff00ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "pikachupartner",
+      "name": "Pikachu-Partner",
+      "hash": "fffffffffffffffff8fff04ff647e20fe00ff01ff01ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "pikachuworld",
+      "name": "Pikachu-World",
+      "hash": "fffffffffffffffff8fff04ff047e00fec0fe00ff00ff01ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "raichu",
+      "name": "Raichu",
+      "hash": "fffffffffdfffdfffd97f937f833f023f223f837f037f81bf803f827fe3fffff"
+    },
+    {
+      "speciesId": "raichualola",
+      "name": "Raichu-Alola",
+      "hash": "fffffcfffcfffc8ffc0ff80ff81ff81ffc1fe00fec0fe007f003fc07fc0fff3f"
+    },
+    {
+      "speciesId": "sandshrew",
+      "name": "Sandshrew",
+      "hash": "fffffffffffffffffffffbfff87ff02ff02ff00ff00ff00ff81ffc1fff3fffff"
+    },
+    {
+      "speciesId": "sandshrewalola",
+      "name": "Sandshrew-Alola",
+      "hash": "fffffffffffffffffffff8fff07ff03ff037f407f00ff00ff85ffc1fff3fffff"
+    },
+    {
+      "speciesId": "sandslash",
+      "name": "Sandslash",
+      "hash": "fffffffffffffefff01ff00ff00ff00ffc0fe80ff207f007f40ffc1fff1fffff"
+    },
+    {
+      "speciesId": "sandslashalola",
+      "name": "Sandslash-Alola",
+      "hash": "ffffffffff7ffc5ff01ff007f007f40ffc0fe90ff007f007e00ffc1ffe1fffff"
+    },
+    {
+      "speciesId": "clefairy",
+      "name": "Clefairy",
+      "hash": "fffffffffffffffffffffc7ffc0ffc0ff80ff80ff80ff80ff80ffc0fff3fffff"
+    },
+    {
+      "speciesId": "clefable",
+      "name": "Clefable",
+      "hash": "fffffffffffffbfff8cff80ff80ff00ff00ff00ff80ff80ff80ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "vulpix",
+      "name": "Vulpix",
+      "hash": "ffffffffffffffffff1ffe0ff80ff00ff00ff01ff80ff00ff81ffc5ffc7fffff"
+    },
+    {
+      "speciesId": "vulpixalola",
+      "name": "Vulpix-Alola",
+      "hash": "fffffffffffffffff89ff24ff137f007f107f007f4c7f09ffc1ffc5ffe7fffff"
+    },
+    {
+      "speciesId": "ninetales",
+      "name": "Ninetales",
+      "hash": "fffffffffffffcfff11ff00ff007f007f407f80ff00ffc07fc07fc0ffc1fffff"
+    },
+    {
+      "speciesId": "ninetalesalola",
+      "name": "Ninetales-Alola",
+      "hash": "ffffffffffbffc33f00bf0c3fcf1f013f631f909f301fe17fc07fc07fc87ffdf"
+    },
+    {
+      "speciesId": "jigglypuff",
+      "name": "Jigglypuff",
+      "hash": "fffffffffffffffffcfffc7ffc0ff80ff81ff00ff00ff81ff81ff83fff3fffff"
+    },
+    {
+      "speciesId": "wigglytuff",
+      "name": "Wigglytuff",
+      "hash": "fffffffff9eff8cff80ffc0ffc1ff81ff81ff81ffb0ff80ff81ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "oddish",
+      "name": "Oddish",
+      "hash": "fffffffffffffffffffffc0ffc1ffc0ffc0ffc0ffc1ff83ff83ffc3ffd3fffff"
+    },
+    {
+      "speciesId": "gloom",
+      "name": "Gloom",
+      "hash": "fffffffffffffffffc3ffc1ff00ff00ff807f007f00ffc0ff81ffc3fff3fffff"
+    },
+    {
+      "speciesId": "vileplume",
+      "name": "Vileplume",
+      "hash": "fffffffffffff81ff00ff007f20ff00ff00ffc1ff81ff01ff80ff83fff3fffff"
+    },
+    {
+      "speciesId": "venonat",
+      "name": "Venonat",
+      "hash": "fffffffffe7ffc9ffc1ffc1ffc1ff81ff80ff80ff80ff80ffc0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "venomoth",
+      "name": "Venomoth",
+      "hash": "fffffffff3fff2fff0fff0e7f803f003f017f00ff00ff00ff80ffe0ffe2fffff"
+    },
+    {
+      "speciesId": "diglett",
+      "name": "Diglett",
+      "hash": "ffffffffffffffffffffffffffffff3ffe3ffe3ffc3ffc1ff80ffc1ffe1fffff"
+    },
+    {
+      "speciesId": "diglettalola",
+      "name": "Diglett-Alola",
+      "hash": "ffffffffffffffffffffff7ffe3fff3ffe3ffe3ffc3ffc1ff80ffc1ffe1fffff"
+    },
+    {
+      "speciesId": "dugtrio",
+      "name": "Dugtrio",
+      "hash": "ffffffffffffff3ffe3ffc3ffc3ffc3ff81ff00ff00ff00ff007fc0ffe9fffff"
+    },
+    {
+      "speciesId": "dugtrioalola",
+      "name": "Dugtrio-Alola",
+      "hash": "ffffffffff3ffe3ffc1ffc1ff80ff80ff047f007f02ff00ff007fc0ffe9fffff"
+    },
+    {
+      "speciesId": "meowth",
+      "name": "Meowth",
+      "hash": "fffffffffffffffffc7ffc3ff03ff00ff00ff807f807f807f80ffc1fff3fffff"
+    },
+    {
+      "speciesId": "meowthalola",
+      "name": "Meowth-Alola",
+      "hash": "fffffffffffffffffc7ffc3ff03ff81ff01ff807f807f807f80ffc1fff3fffff"
+    },
+    {
+      "speciesId": "meowthgalar",
+      "name": "Meowth-Galar",
+      "hash": "fffffffffffffdfff83ff03ff01ff00ff00ff007f00ff80ffc3fff3fffffffff"
+    },
+    {
+      "speciesId": "persian",
+      "name": "Persian",
+      "hash": "ffffffffffffff9fff0fff0ff28ff04ff02ff00ff40ff007f807f84ffc7fffff"
+    },
+    {
+      "speciesId": "persianalola",
+      "name": "Persian-Alola",
+      "hash": "ffffffffffffff9fff0ff30ff20ff04fe52fe00fe80ff307f807f84ffc7fffff"
+    },
+    {
+      "speciesId": "psyduck",
+      "name": "Psyduck",
+      "hash": "ffffffffffffffffff1ffc3ff83ff81ff80ff80ff80ff80ff80ff80ffc3fffff"
+    },
+    {
+      "speciesId": "golduck",
+      "name": "Golduck",
+      "hash": "fffffffffffffffff8fff03ff037f037e807e047e427fb4ffe0ffe0fffcfffff"
+    },
+    {
+      "speciesId": "mankey",
+      "name": "Mankey",
+      "hash": "fffffffffffffffff7ffe13fe007f007f987f807f803fc03f803f99fff9fffff"
+    },
+    {
+      "speciesId": "primeape",
+      "name": "Primeape",
+      "hash": "ffffffffffffe7ffc17fe01ff007f3c3f4c3f803f807f807f00ff80fff9fffff"
+    },
+    {
+      "speciesId": "growlithe",
+      "name": "Growlithe",
+      "hash": "fffffffffffffefffc7ffc7ff03ff00ff807f807f807f80ff80ff83ffcffffff"
+    },
+    {
+      "speciesId": "growlithehisui",
+      "name": "Growlithe-Hisui",
+      "hash": "fffffffffffffffffcfff87ff82ff007f807f007f807f80ff00ff83ffcffffff"
+    },
+    {
+      "speciesId": "arcanine",
+      "name": "Arcanine",
+      "hash": "ffffffe7ffc7f0c3f0b3f273e403f403e107f00ff607f00ff00ff00ff07ffeff"
+    },
+    {
+      "speciesId": "arcaninehisui",
+      "name": "Arcanine-Hisui",
+      "hash": "fffffdf7fde3f8c3f253f343e043f123f107f00ff00ff00fe00ff00ff07ffeff"
+    },
+    {
+      "speciesId": "poliwag",
+      "name": "Poliwag",
+      "hash": "fffffffffffffffffffffffffffffc23fc2bfc0bf807f807f80ff83fff3fffff"
+    },
+    {
+      "speciesId": "poliwhirl",
+      "name": "Poliwhirl",
+      "hash": "fffffffffffffffffffffcfffc1ffc0ffd0ff01ff00ff00ff817f807ff2fffff"
+    },
+    {
+      "speciesId": "poliwrath",
+      "name": "Poliwrath",
+      "hash": "fffffffffffffffffcbff01fe00fc007c387e043f98bf80bf003ff8fff8fffff"
+    },
+    {
+      "speciesId": "bellsprout",
+      "name": "Bellsprout",
+      "hash": "fffffffffffffffffffffffffffffcfff83ff83ff80ff007f00ff8bffe1fffff"
+    },
+    {
+      "speciesId": "weepinbell",
+      "name": "Weepinbell",
+      "hash": "ffffffffffffffffffbfff1ff83ff23ff037f007f007f887f80ff83ffc3fffff"
+    },
+    {
+      "speciesId": "victreebel",
+      "name": "Victreebel",
+      "hash": "fffffffffffffc3ff81ff80ff82ff02ff02fe12fe083e983e00ff41ffc3fffff"
+    },
+    {
+      "speciesId": "tentacool",
+      "name": "Tentacool",
+      "hash": "fffffffffffffffffc3ffc1ffc1ffc1ff81ff80fe80fc00fe01fff0fff8fffcf"
+    },
+    {
+      "speciesId": "tentacruel",
+      "name": "Tentacruel",
+      "hash": "fffffffffffffc3ffc1ff00ff007f007f42ff9c7f007e00fe00ff81ffc1fffff"
+    },
+    {
+      "speciesId": "geodude",
+      "name": "Geodude",
+      "hash": "fffffffffffffffffffffffffffff3cfe3cfe207f007f007f007f80ffe3fffff"
+    },
+    {
+      "speciesId": "geodudealola",
+      "name": "Geodude-Alola",
+      "hash": "fffffffffffffffffffffffffffff3cffa0fe207f007f017f007f80ffe3fffff"
+    },
+    {
+      "speciesId": "graveler",
+      "name": "Graveler",
+      "hash": "fffffffffffff7efe3cfe187f003f807f807f80ff80ff00ff81ff80ffc1fffff"
+    },
+    {
+      "speciesId": "graveleralola",
+      "name": "Graveler-Alola",
+      "hash": "fffffffff7fff1ebe1d3e183f00bf853f003f40ff80ff00ff81ff80ffc1fffff"
+    },
+    {
+      "speciesId": "golem",
+      "name": "Golem",
+      "hash": "fffffffffffffffffe1ff80ff00fe007c007e017f307fa2ff807fc07ffcfffff"
+    },
+    {
+      "speciesId": "golemalola",
+      "name": "Golem-Alola",
+      "hash": "fffffffffffff93ff01ff00ff80ff007f407f847f817f007f807f807fccfffff"
+    },
+    {
+      "speciesId": "slowpoke",
+      "name": "Slowpoke",
+      "hash": "ffffffffffffffffff8fff8fffc7ff07fa0ff80ff80ff00ff00ff01ffd3fffff"
+    },
+    {
+      "speciesId": "slowpokegalar",
+      "name": "Slowpoke-Galar",
+      "hash": "fffffffffffffffffffffffffffffffffe7ff00ff003e007e21fe03ff03ffe7f"
+    },
+    {
+      "speciesId": "slowbro",
+      "name": "Slowbro",
+      "hash": "fffffffffffff93ff83ff807f105f003f093f183f683f603f003f00ffe3fffff"
+    },
+    {
+      "speciesId": "slowbrogalar",
+      "name": "Slowbro-Galar",
+      "hash": "fffffffffbfff03ff03ff07ff07ff03fe14fe18fe047e107f007f80ffe6fffff"
+    },
+    {
+      "speciesId": "magnemite",
+      "name": "Magnemite",
+      "hash": "ffffffffffffffffffffffffff7ff83ff03ff007f107f107f80ffc3fff7fffff"
+    },
+    {
+      "speciesId": "magneton",
+      "name": "Magneton",
+      "hash": "fffffffffffff67ff00ff003f633f223f007f00ff83ff11ff00ffa1ffeffffff"
+    },
+    {
+      "speciesId": "doduo",
+      "name": "Doduo",
+      "hash": "fffffffffffffffffffffdfff8bff81ff80ff00ff00ff00ffc0fff0fffcfffff"
+    },
+    {
+      "speciesId": "dodrio",
+      "name": "Dodrio",
+      "hash": "fffffffff8cff803f84bf08be207e117c407c00fe60ffe0ffc0ffe1fff9fffff"
+    },
+    {
+      "speciesId": "seel",
+      "name": "Seel",
+      "hash": "ffffffffffffff9fff07ffa3ffe7fc2ffc6ff90ff00fe00ff00ff80ffd8fffff"
+    },
+    {
+      "speciesId": "dewgong",
+      "name": "Dewgong",
+      "hash": "ffffffffffffff9ffd0ff90ff207f507fd5be51bf1fbe007e007f42ffc1fffff"
+    },
+    {
+      "speciesId": "grimer",
+      "name": "Grimer",
+      "hash": "ffffffffffffffffffffff7ffe3ff01ff01ff00ff80ff807f807f80ffc1fffff"
+    },
+    {
+      "speciesId": "grimeralola",
+      "name": "Grimer-Alola",
+      "hash": "ffffffffffffffffffffff7ffe3ff01ff01ff00ff80ff807f807f80ffc1fffff"
+    },
+    {
+      "speciesId": "muk",
+      "name": "Muk",
+      "hash": "fffffffffe1ffe0ffe0ff80ff007f007e9bffd07f003e087f007f007f93fffff"
+    },
+    {
+      "speciesId": "mukalola",
+      "name": "Muk-Alola",
+      "hash": "fffffffffe1ffe0ffe0ff80ff007f007e03ffc07f00be017f007f007f93fffff"
+    },
+    {
+      "speciesId": "shellder",
+      "name": "Shellder",
+      "hash": "fffffffffffffffffffffb3ff00ff80ff80ff00ff80ff80ff80ff82ff93fffff"
+    },
+    {
+      "speciesId": "cloyster",
+      "name": "Cloyster",
+      "hash": "fffffffffffff3fff8e7f807f00ff00fe00ff207f087f80ff00ff00fff8fffcf"
+    },
+    {
+      "speciesId": "gastly",
+      "name": "Gastly",
+      "hash": "ffffffffffffffffff3ffc0ff80ff00ff007f00ff087f80ff80ff81ffd5fffff"
+    },
+    {
+      "speciesId": "haunter",
+      "name": "Haunter",
+      "hash": "fffffdfffcfff47ff003f227fb87ea07d9cfd08fc407e407fe07ff0fff8fffff"
+    },
+    {
+      "speciesId": "gengar",
+      "name": "Gengar",
+      "hash": "fffffffff7fff2e7f00ff80ff80ff00fe00fe00ff00ffa0ff807f80fff1fffff"
+    },
+    {
+      "speciesId": "drowzee",
+      "name": "Drowzee",
+      "hash": "fffffffffffffbfff01ff81fe03fc03fe01fe00ffc0ff80ff80ff80fffcfffff"
+    },
+    {
+      "speciesId": "hypno",
+      "name": "Hypno",
+      "hash": "fffffffffefffc1ffc1ffc0ff80ff00ff90ff223e143e183f80ff80ffd0fff9f"
+    },
+    {
+      "speciesId": "voltorb",
+      "name": "Voltorb",
+      "hash": "fffffffffffffffffffffffffffffe7ffc3ffc1ff81ff81ff81ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "voltorbhisui",
+      "name": "Voltorb-Hisui",
+      "hash": "fffffffffffffffffffffffffffffe7ffc3ffc1ff81ff81ff81ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "electrode",
+      "name": "Electrode",
+      "hash": "fffffffffffffffffffffffffe7ffc9fffdffbdff84ffacff81ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "electrodehisui",
+      "name": "Electrode-Hisui",
+      "hash": "fffffffffffffffffffffffffe7ffc1ffc1ff81ff80ff80ff81ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "exeggcute",
+      "name": "Exeggcute",
+      "hash": "ffffffffffffffffffffff3ff83ff80ff117f007fa07e047e00ff30fff1fffff"
+    },
+    {
+      "speciesId": "exeggutor",
+      "name": "Exeggutor",
+      "hash": "ffffffffff7ffc3ff80ff80ffc0ff80ff81ff80ff80ffc1ffc3ffc1fff1fffff"
+    },
+    {
+      "speciesId": "exeggutoralola",
+      "name": "Exeggutor-Alola",
+      "hash": "fabff01ff00ff80ff00ff81ff01ff81ffc3ffe7ffe4ffc07fc07fc07fc3fff3f"
+    },
+    {
+      "speciesId": "hitmonlee",
+      "name": "Hitmonlee",
+      "hash": "fffffffffffffffffffffe3ffc1ffc0ff40fe00fe207f80ff30fff3fff3fffff"
+    },
+    {
+      "speciesId": "hitmonchan",
+      "name": "Hitmonchan",
+      "hash": "ffffffffffffffffff3ffe3ffe1ffc0ff40fe01fe01fe20ffc1fff0fff8fffff"
+    },
+    {
+      "speciesId": "koffing",
+      "name": "Koffing",
+      "hash": "fffffffff3a7f103f307f823e017f81ff817f807f81ff01ff01ff04ffd8fffcf"
+    },
+    {
+      "speciesId": "weezing",
+      "name": "Weezing",
+      "hash": "fffffe3fe227e007f88ff007f047e107f0aff103f00ff00fc01fe63ffc3ffc3f"
+    },
+    {
+      "speciesId": "weezinggalar",
+      "name": "Weezing-Galar",
+      "hash": "fffff81ff00ff847e8c3c84fe0cff087f027f803e343f21be003f00be013fcff"
+    },
+    {
+      "speciesId": "rhyhorn",
+      "name": "Rhyhorn",
+      "hash": "ffffffffffffffffff3ffe3ffe1ff80ff447f40ff107e007e007f02ff93fffff"
+    },
+    {
+      "speciesId": "rhydon",
+      "name": "Rhydon",
+      "hash": "fffffffffffff9fff83ff01ff007f007e233f003f807f327f00ff81fff1fffff"
+    },
+    {
+      "speciesId": "chansey",
+      "name": "Chansey",
+      "hash": "fffffffffffffffffe7ff83ff01ff00ff00ff00ff00ff80ff80ff83fff3fffff"
+    },
+    {
+      "speciesId": "horsea",
+      "name": "Horsea",
+      "hash": "fffffffffffffffffffffffffc7ffc1ffc1ff00ff01ff00ffe1ffe3ffe3fffff"
+    },
+    {
+      "speciesId": "seadra",
+      "name": "Seadra",
+      "hash": "ffffffffffffffffff7ffc3ff80ff803f84bf007f117f007fc07fc3ffe3fffff"
+    },
+    {
+      "speciesId": "scyther",
+      "name": "Scyther",
+      "hash": "fffffffffffffffffffffc7ff80ff80ff80ff80ff00ff00ff01ff80fff8fffff"
+    },
+    {
+      "speciesId": "electabuzz",
+      "name": "Electabuzz",
+      "hash": "fffffffffffffefffa7ff80ff80ff80ff81ff80ff01ff00ff007fc07ff0fffff"
+    },
+    {
+      "speciesId": "magmar",
+      "name": "Magmar",
+      "hash": "fffffffffffffe1ffc1ff81ff837fc07fc87f827f007f00ff80ffc0fff1fffff"
+    },
+    {
+      "speciesId": "tauros",
+      "name": "Tauros",
+      "hash": "ffffffffffffffffffd7fe47f023f003f00ff00ff00ff00ff00ff83ffe3fffff"
+    },
+    {
+      "speciesId": "taurospaldeacombat",
+      "name": "Tauros-Paldea-Combat",
+      "hash": "ffffffffffffffffffd7fe47f423f003f00ff00ff00ff00ff00ff83ffe3fffff"
+    },
+    {
+      "speciesId": "taurospaldeablaze",
+      "name": "Tauros-Paldea-Blaze",
+      "hash": "fffffff3ffe3fc61fc31f803f80fe00fe00ff00ff80ff807f027f03fff3fffff"
+    },
+    {
+      "speciesId": "taurospaldeaaqua",
+      "name": "Tauros-Paldea-Aqua",
+      "hash": "ffffffffffdbff81fe4bfc03f00be84bf8c3f007f80ff007f027f23ffe7fffff"
+    },
+    {
+      "speciesId": "magikarp",
+      "name": "Magikarp",
+      "hash": "fffffffffffffcfffc7ffc5ffc0ffc0ffc1ff807f807f807f01ff01ffb1ffbff"
+    },
+    {
+      "speciesId": "gyarados",
+      "name": "Gyarados",
+      "hash": "ffffff7ffe3ffa9ff893e087e017f037f0c7fc87e00fc00fc00fe27ff2fffe7f"
+    },
+    {
+      "speciesId": "lapras",
+      "name": "Lapras",
+      "hash": "fffffffffffffffff0ffe0fff0fff01ff00ff00ffc0ffc07f007f00fff0fffff"
+    },
+    {
+      "speciesId": "ditto",
+      "name": "Ditto",
+      "hash": "fffffffffffffffffffffffffffffffffefffc3ff81ff81ff80ff80ffe3fffff"
+    },
+    {
+      "speciesId": "eevee",
+      "name": "Eevee",
+      "hash": "fffffffffffffffffffffcfff8aff80ff80ff80ff81ff81ff81ffc5ffc7fffff"
+    },
+    {
+      "speciesId": "vaporeon",
+      "name": "Vaporeon",
+      "hash": "fffffffffffffffffbc7f847f047f00ff00ff00ff01ff00ff80ffc5ffcffffff"
+    },
+    {
+      "speciesId": "jolteon",
+      "name": "Jolteon",
+      "hash": "fffffffffffffffffdfff9fff80ff80ff80ff00ff00ff00ff00ff84ff8ffffff"
+    },
+    {
+      "speciesId": "flareon",
+      "name": "Flareon",
+      "hash": "fffffffffffffffff9fff98ff907f007f437f007f00ff01ff01ff0bff8ffffff"
+    },
+    {
+      "speciesId": "porygon",
+      "name": "Porygon",
+      "hash": "fffffffffffffffffffffefffc6ff80ff80ff00ff00ff81ff80ffc1fff3fffff"
+    },
+    {
+      "speciesId": "snorlax",
+      "name": "Snorlax",
+      "hash": "ffffffffffdfff13fc43f803f807fb07fb07e707c207e00fe00ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "articuno",
+      "name": "Articuno",
+      "hash": "fffffffffffffffffff3e7e3e187e087e00ff03ff01ff80ff007f083ffe3ffff"
+    },
+    {
+      "speciesId": "articunogalar",
+      "name": "Articuno-Galar",
+      "hash": "ffffffffff3ffc1ffc0ff80ff81ff007f787f083f307e00ff03ff93ffdbfffff"
+    },
+    {
+      "speciesId": "zapdos",
+      "name": "Zapdos",
+      "hash": "ffffffffffffffffe1bfe10fc00fe00ff01ff807fa03f203e083efc3ffffffff"
+    },
+    {
+      "speciesId": "zapdosgalar",
+      "name": "Zapdos-Galar",
+      "hash": "fffffffffdeff8c3f6d3f093f007e007cc07ce03fe07ff07fe1ffe1fffbfffff"
+    },
+    {
+      "speciesId": "moltres",
+      "name": "Moltres",
+      "hash": "ffffffffffffffffffffe3c7e047e007f00ff03ff807f807f003f0c3ffffffff"
+    },
+    {
+      "speciesId": "moltresgalar",
+      "name": "Moltres-Galar",
+      "hash": "ffffffffffffefffebcfe08fe08ff007f82ff80ff807f0c3e1c3ffffffffffff"
+    },
+    {
+      "speciesId": "dratini",
+      "name": "Dratini",
+      "hash": "fffffffffffffffffffffdfff9dff89ff87ff81ff41ff80ffc07fc0ffe3fffff"
+    },
+    {
+      "speciesId": "dragonair",
+      "name": "Dragonair",
+      "hash": "fffffffffffffcfffcdff06ff00fe20fe41ff01ff00ff00ffd0ffc0ffe1fffff"
+    },
+    {
+      "speciesId": "dragonite",
+      "name": "Dragonite",
+      "hash": "fffffffffffffeffe4bff00ff047e007e107e01ff007fd07f80ffc1fff9fffff"
+    },
+    {
+      "speciesId": "mewtwo",
+      "name": "Mewtwo",
+      "hash": "fffffffffffffc37fc27f807f80ff82ffc27f827f807f80ff81ffd3fff3fffff"
+    },
+    {
+      "speciesId": "mew",
+      "name": "Mew",
+      "hash": "ffffff3ffc3ff03ff3fff07ff07ff80ff80ff807fc17fe07fe0fff1fffdfffff"
+    },
+    {
+      "speciesId": "chikorita",
+      "name": "Chikorita",
+      "hash": "ffffffffffffffffffffff1ffe0ffc3ffc3ff83ff81ff81ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "bayleef",
+      "name": "Bayleef",
+      "hash": "fffffffffffffc3ff80ff01ff03ff07ff03ff82ffc0ffc0ffc0ffc0fff3fffff"
+    },
+    {
+      "speciesId": "meganium",
+      "name": "Meganium",
+      "hash": "fffff0fff0fff1fff07fe03fe007e007f007f80ff807fc07fc07fc3fff3fffff"
+    },
+    {
+      "speciesId": "cyndaquil",
+      "name": "Cyndaquil",
+      "hash": "ffffffffffffffffffffffcffc0ff80ff80ff00ff00ff00ffc3ffc3fff3fffff"
+    },
+    {
+      "speciesId": "quilava",
+      "name": "Quilava",
+      "hash": "ffffffffffffffffffffff0ff807f007f00ff00ff01ff00ff00ff00ff87fffff"
+    },
+    {
+      "speciesId": "typhlosion",
+      "name": "Typhlosion",
+      "hash": "ffffffffff1ffe1ff00ff00ff00ff00ff00ff00ff00ffc07fc07fe0fffcfffff"
+    },
+    {
+      "speciesId": "typhlosionhisui",
+      "name": "Typhlosion-Hisui",
+      "hash": "fffffebffe1ff807f80ff00ff00ff01ff01ff00ff00ffc03fc03fe03ffcfffff"
+    },
+    {
+      "speciesId": "totodile",
+      "name": "Totodile",
+      "hash": "fffffffffffffffffffffc7ffc3ff81ff81ff80ff80ffc0ffe0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "croconaw",
+      "name": "Croconaw",
+      "hash": "fffffffffe7ffc3ffc3ffc3ff81ff81ff81ff00ff007f807fc0ffc1fff9fffff"
+    },
+    {
+      "speciesId": "feraligatr",
+      "name": "Feraligatr",
+      "hash": "fffffbfff1fff11ff01ff01ff01fe003e703c683c947f907f80ff80fff8fffff"
+    },
+    {
+      "speciesId": "sentret",
+      "name": "Sentret",
+      "hash": "fffffffffefffc9ffe1ffc3ff83ff80ffc0ffc1ffc3ffe3ffe7ffc3ffc3ffc7f"
+    },
+    {
+      "speciesId": "furret",
+      "name": "Furret",
+      "hash": "fffffffffffffffff9fff03ff04ff047f047f00ff80ff80ffc0ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "hoothoot",
+      "name": "Hoothoot",
+      "hash": "fffffffffffffffffdfffcdffc1ffc3ffc1ff01ff81ffc0ffc3ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "noctowl",
+      "name": "Noctowl",
+      "hash": "fffffffffffff1fff03ff03ff03ff03ff83ff83ff83ff81ff80ff80ffe1fffff"
+    },
+    {
+      "speciesId": "spinarak",
+      "name": "Spinarak",
+      "hash": "ffffffffffffffffffffffffffffff3ffd1ff80ff00ff00ff00ffc0ffcbfffff"
+    },
+    {
+      "speciesId": "ariados",
+      "name": "Ariados",
+      "hash": "fffffffffffffefffefffe47fc0ff80ff80ff407f807e047e007f99fff9fffff"
+    },
+    {
+      "speciesId": "chinchou",
+      "name": "Chinchou",
+      "hash": "fffffffffffffffffffff83ff3dfe21fe81fe81ff00ffc0ffc0fff1fff9fffff"
+    },
+    {
+      "speciesId": "lanturn",
+      "name": "Lanturn",
+      "hash": "fffffffffffffffffe3ffc3ff0e7f007e1c7ebc7ea47f047f01ff80ffe1fffff"
+    },
+    {
+      "speciesId": "pichu",
+      "name": "Pichu",
+      "hash": "fffffffffffffffffffff9fff8fff81ffc1ff81ff83ffc1ffc0ffc1ffc7fffff"
+    },
+    {
+      "speciesId": "cleffa",
+      "name": "Cleffa",
+      "hash": "fffffffffffffffffffffffffefff83ff83ff80ff80ff81ff81ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "igglybuff",
+      "name": "Igglybuff",
+      "hash": "ffffffffffffffffffffff7ffc3ffc3ffc3ffc1ff81ff81ff81ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "mareep",
+      "name": "Mareep",
+      "hash": "ffffffffffffffffffcfffcff84ff00fe0cfe00ff00ff00ff00ff81ffcbfffff"
+    },
+    {
+      "speciesId": "flaaffy",
+      "name": "Flaaffy",
+      "hash": "fffffffffffffcfff83ff0bff03ff03ff83ff02ff027f80ff80ff81fff3fffff"
+    },
+    {
+      "speciesId": "ampharos",
+      "name": "Ampharos",
+      "hash": "fffffffff9fff8fff83ff03ff07ff04ff84ff027fb07f907f80ffd1fff3fffff"
+    },
+    {
+      "speciesId": "bellossom",
+      "name": "Bellossom",
+      "hash": "fffffffffffffffffcfff81ff81ffc0ffc1ffc1ffc3ff81ff81ff80ffc1fffff"
+    },
+    {
+      "speciesId": "marill",
+      "name": "Marill",
+      "hash": "fffffffffffffffffffffffff97ff03ff83ff00fe007f407f20ff00ffcbfffff"
+    },
+    {
+      "speciesId": "azumarill",
+      "name": "Azumarill",
+      "hash": "fffffffffb3ff13ff93ff93ffc3ff83ff03ff027e123f107f207f00ffc3fffff"
+    },
+    {
+      "speciesId": "sudowoodo",
+      "name": "Sudowoodo",
+      "hash": "ffffffffffffffffff7fff1ff21ff02ff027f00ff40ffc2ffc3ffc3ffc3fffbf"
+    },
+    {
+      "speciesId": "politoed",
+      "name": "Politoed",
+      "hash": "fffffffffc7ffc3ffc3ffc3ff81ff01ff01ff80ffc0ffc0ff80ffc0fff9fffff"
+    },
+    {
+      "speciesId": "hoppip",
+      "name": "Hoppip",
+      "hash": "fffffffffffffffff3fff1cff187f00ff80ff81ff83ff81ff01ff83ffcbfffff"
+    },
+    {
+      "speciesId": "skiploom",
+      "name": "Skiploom",
+      "hash": "fffffffffffffffffffffffffc3ff81ff01ff01ff01ff00ff00ffc0ffe5fffff"
+    },
+    {
+      "speciesId": "jumpluff",
+      "name": "Jumpluff",
+      "hash": "fffffffffffffe7ffc3ff83ff83ff03ff03ff00ff007f007fc07fc0ffe3fffff"
+    },
+    {
+      "speciesId": "aipom",
+      "name": "Aipom",
+      "hash": "fffffffffffffffffffff1ffe03fe00ff00ff007f007f0cff80ff80ffc9fffff"
+    },
+    {
+      "speciesId": "sunkern",
+      "name": "Sunkern",
+      "hash": "fffffffffffffffffffffcfff83ff81ffc1ffc1ffc3ff83ff83ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "sunflora",
+      "name": "Sunflora",
+      "hash": "fffffffffffffffff87ff81ff01ff01ff81ff01ff01ff01ff80ffc0ffe2fffff"
+    },
+    {
+      "speciesId": "yanma",
+      "name": "Yanma",
+      "hash": "fffffffffffffffffffffffffb8ff287e8c7f003f11ff26ff003f807fe7fffff"
+    },
+    {
+      "speciesId": "wooper",
+      "name": "Wooper",
+      "hash": "fffffffffffffffffffffffff87ff03ff01ff00ff80ffc0ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "wooperpaldea",
+      "name": "Wooper-Paldea",
+      "hash": "fffffffffffffffffffffffff87ff83ff81ff00ff81ffc1ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "quagsire",
+      "name": "Quagsire",
+      "hash": "fffffffffffffffffcfff07ff03ff03ff03ff83ff007f007f80ff81fff3fffff"
+    },
+    {
+      "speciesId": "espeon",
+      "name": "Espeon",
+      "hash": "fffffffffffffffff3fff3c7f103e023e227e407f00ff81ff89ff8dffcffffff"
+    },
+    {
+      "speciesId": "umbreon",
+      "name": "Umbreon",
+      "hash": "fffffffffffffffff9fff82ff00ff04ff00ff01ff01ff81ff81ff8fff8ffffff"
+    },
+    {
+      "speciesId": "murkrow",
+      "name": "Murkrow",
+      "hash": "fffffffffffffffffc7ffc7ff03ff07ff85ff00ff00ff80ff83ff83ffe3fffff"
+    },
+    {
+      "speciesId": "slowking",
+      "name": "Slowking",
+      "hash": "fffffe3ffe3ff83ff01ff01ff81ff83ff83ff81ff80ff80ff80ffc1fff3fffff"
+    },
+    {
+      "speciesId": "slowkinggalar",
+      "name": "Slowking-Galar",
+      "hash": "ffffff3ffe3ffe3ff03ff01ff80ff81ff81ff83ff80ff80ff80ff80ffe3fff3f"
+    },
+    {
+      "speciesId": "misdreavus",
+      "name": "Misdreavus",
+      "hash": "fffffffffffffffffffffc3ff80ff80ff81ff80ff81ffc1ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "girafarig",
+      "name": "Girafarig",
+      "hash": "fffffffffffff9fff2eff047f40ff01ff00ff00ffc0ffc0ffc0ffc0fff3fffff"
+    },
+    {
+      "speciesId": "pineco",
+      "name": "Pineco",
+      "hash": "fffffffffffffffffffffe7ff83ff01ff01ff81ff01ff01ff81ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "forretress",
+      "name": "Forretress",
+      "hash": "fffffffffffffffffffffc3ff81ff80ff28ff2a7f047f00ff807f80ffc1fffff"
+    },
+    {
+      "speciesId": "dunsparce",
+      "name": "Dunsparce",
+      "hash": "ffffffffffffffffffffffcfffcffe0ffe0ff80ff00ff00ff01ff03ff8ffffff"
+    },
+    {
+      "speciesId": "gligar",
+      "name": "Gligar",
+      "hash": "fffffffffffffcbff03fe02ff007f007f007f007f80ff80ffc1ffc3ff87ffcff"
+    },
+    {
+      "speciesId": "snubbull",
+      "name": "Snubbull",
+      "hash": "fffffffffffffffff9fff07ff00ff00ff00ff00ff00ff80ff81ff81ffe3fffff"
+    },
+    {
+      "speciesId": "granbull",
+      "name": "Granbull",
+      "hash": "fffffffffffff1fff07ff00ff007f00ff81ff03ff01ff80ff80ff81fff1fffff"
+    },
+    {
+      "speciesId": "qwilfish",
+      "name": "Qwilfish",
+      "hash": "fffffffffffffffffffffec7f0c7f007f00ff00fe01ff01ff01ff03ffc7fffff"
+    },
+    {
+      "speciesId": "qwilfishhisui",
+      "name": "Qwilfish-Hisui",
+      "hash": "fffffffffffffffffffffec7f0c7f007f007f00fe01ff01ff01ff03ffc7fffff"
+    },
+    {
+      "speciesId": "scizor",
+      "name": "Scizor",
+      "hash": "fffffdfffc7ffc7ff427e037c01ff00ff607fc47fc07f80ff81ffb9fffdfffff"
+    },
+    {
+      "speciesId": "heracross",
+      "name": "Heracross",
+      "hash": "fffffffffefff8fff87ff89ff81ff83ff01ff00fe40ffc07fc03fc13ff9fffff"
+    },
+    {
+      "speciesId": "sneasel",
+      "name": "Sneasel",
+      "hash": "fffffffffffffe7ffc7ffc3ff83ff83ffc3ffc0ff80ff80ff80ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "sneaselhisui",
+      "name": "Sneasel-Hisui",
+      "hash": "fffffffffffffffffc9ffc1ff83ff83ffc3ffc0ff80ff80ff80ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "teddiursa",
+      "name": "Teddiursa",
+      "hash": "fffffffffffffffffcfff8fff80ffc0ffc0ffc0ffc1ffc3ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "ursaring",
+      "name": "Ursaring",
+      "hash": "fffffffffffffc7ff83ff83ff01ff01ff01ff00ff00ff00ff00ff21fff1fffff"
+    },
+    {
+      "speciesId": "slugma",
+      "name": "Slugma",
+      "hash": "fffffffffffffffffcfffc8ffc1ff81ff83ff83ff83ff81ffc0ffc0ffc3fffff"
+    },
+    {
+      "speciesId": "magcargo",
+      "name": "Magcargo",
+      "hash": "ffffffffffffffefffcff80ff00ff00ff00ff00ff00ff81ff00ff00ffc3fffff"
+    },
+    {
+      "speciesId": "swinub",
+      "name": "Swinub",
+      "hash": "fffffffffffffffffffffffffffffffffe7ffc3ff81ff01ff00ff00ff83fffff"
+    },
+    {
+      "speciesId": "piloswine",
+      "name": "Piloswine",
+      "hash": "ffffffffffffffffff1ffe0ffc0ff80ff80ff00ff00ff007f007f00ffc1fffff"
+    },
+    {
+      "speciesId": "delibird",
+      "name": "Delibird",
+      "hash": "fffffffffffff8fffa9ffa0ffc1ffc1ff85ff01ff21ff80ff81ffc0fff0fffff"
+    },
+    {
+      "speciesId": "skarmory",
+      "name": "Skarmory",
+      "hash": "fffffffffffffb1ff01ff417f807e803e027e007fc07fc1ffc1ffc8fff8fffff"
+    },
+    {
+      "speciesId": "houndour",
+      "name": "Houndour",
+      "hash": "fffffffffffffffffdfff87ff87ff00ff00ff00ff00ff80ff80ffc0ffe7fffff"
+    },
+    {
+      "speciesId": "houndoom",
+      "name": "Houndoom",
+      "hash": "fffffffffffff87ff80ff80ff0eff00ff80ff80ff80ffc0ff84ff84ffe7fffff"
+    },
+    {
+      "speciesId": "kingdra",
+      "name": "Kingdra",
+      "hash": "fffffffffefffe5ffe1ffc3ffc1ff81ff03ff00ffc0ffe0ffe0fff1fff1fffff"
+    },
+    {
+      "speciesId": "phanpy",
+      "name": "Phanpy",
+      "hash": "fffffffffffffffffffffffffe7ffc3ffc1ff81ff00ff00ff80ffc0ffe4fffff"
+    },
+    {
+      "speciesId": "donphan",
+      "name": "Donphan",
+      "hash": "ffffffffffffff3ffe0fe00fe007f033f03be04bf013f1a3f003f80ffc9fffff"
+    },
+    {
+      "speciesId": "porygon2",
+      "name": "Porygon2",
+      "hash": "fffffffffffffffffffffffffc4ff00ff40ff00ffc1ffc1ffc0ffc0ffe1fffff"
+    },
+    {
+      "speciesId": "stantler",
+      "name": "Stantler",
+      "hash": "fffffffff3ffe27ff03ff07ff05ff00ff08ff00ffc1ffc0ffc0ffc4ffe7fffff"
+    },
+    {
+      "speciesId": "smeargle",
+      "name": "Smeargle",
+      "hash": "ffffffffffffffffff3ffc3fc41fe01fe00ff00ff01ff00ff00ff21fff9fffff"
+    },
+    {
+      "speciesId": "tyrogue",
+      "name": "Tyrogue",
+      "hash": "fffffffffffffffffe3ffc3ffc3ffc1ffc1ffc1ffc3ffc1ffc1ffc1fff3fffff"
+    },
+    {
+      "speciesId": "hitmontop",
+      "name": "Hitmontop",
+      "hash": "fffffffffffffdfffcc7fcc3fe03e003e41fc01fe00ff80ff80ffc1fff7fffff"
+    },
+    {
+      "speciesId": "elekid",
+      "name": "Elekid",
+      "hash": "fffffffffffffffffefffcbffc1ffc1ffc1ff01ff01ff00ff00ff80fff0fffff"
+    },
+    {
+      "speciesId": "magby",
+      "name": "Magby",
+      "hash": "fffffffffffffffffc7ff83ff83ff83ff83ff83ff80ffc0ffc0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "blissey",
+      "name": "Blissey",
+      "hash": "fffffffffffffefffc0ff807f807f00ff81ff80ff507f0c7f807f80fff3fffff"
+    },
+    {
+      "speciesId": "raikou",
+      "name": "Raikou",
+      "hash": "ffffffffff3ffc3ff29fe40fe083c04fc683c41be50fe06fc88fc1fff1ffffff"
+    },
+    {
+      "speciesId": "entei",
+      "name": "Entei",
+      "hash": "fffffffffcfff01ff0aff017e007f00ff00ff00ff22ff067f26ff03ffc7fffff"
+    },
+    {
+      "speciesId": "suicune",
+      "name": "Suicune",
+      "hash": "fffffffffc4ff80bf803f223f007e07fcd4fc40fe807f027f267f67ffe7fffff"
+    },
+    {
+      "speciesId": "larvitar",
+      "name": "Larvitar",
+      "hash": "fffffffffffffffffefffe7ffc7ffc7ff83ff83ff81ff81ff81ff83fff3fffff"
+    },
+    {
+      "speciesId": "pupitar",
+      "name": "Pupitar",
+      "hash": "fffffffffffffffffffffcfff81ff81ff83ff80ff81ff81ffc1ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "tyranitar",
+      "name": "Tyranitar",
+      "hash": "fffffffffcfff87ff03ff03ff03ff01ff03fe03ff007f007f00ff01fff3fffff"
+    },
+    {
+      "speciesId": "lugia",
+      "name": "Lugia",
+      "hash": "efffc3ffc3f3f7e1d725c31dcb1bd033d027d247c587ec47fc0ffc0ffe4fffcf"
+    },
+    {
+      "speciesId": "hooh",
+      "name": "Ho-Oh",
+      "hash": "f7ffe3ffe3f7c7e3c7f3c707e383f003f00bf007f217f0c7f08ff41ffc8fff8f"
+    },
+    {
+      "speciesId": "treecko",
+      "name": "Treecko",
+      "hash": "fffffffffffffffffc7ffc3ff43ff03ff00ff00ffc0ffc0ffc0ffc0fff3fffff"
+    },
+    {
+      "speciesId": "grovyle",
+      "name": "Grovyle",
+      "hash": "fffffffffffffcfff87ff03ff00fe08ff0ffe00fe01fe413fc03fc0fff9fffff"
+    },
+    {
+      "speciesId": "sceptile",
+      "name": "Sceptile",
+      "hash": "fffffbfff07ff07ff07ff0ffe07fc007e007e003ff47f907f80ff11fff1fffff"
+    },
+    {
+      "speciesId": "torchic",
+      "name": "Torchic",
+      "hash": "fffffffffffffffffffffe3ffe3ffc3ffc3ff81ff81ffc1ffc1ffe3ffe3fffff"
+    },
+    {
+      "speciesId": "combusken",
+      "name": "Combusken",
+      "hash": "fffffffffe3ffc1ffc3ffc3ff83ff03fe03fe00ff807f807f80ff83fff1fffff"
+    },
+    {
+      "speciesId": "blaziken",
+      "name": "Blaziken",
+      "hash": "fffffbfff33ff03ff81ff80ff007e007e007f48ff807f80ffc0ffc87ff8fffff"
+    },
+    {
+      "speciesId": "mudkip",
+      "name": "Mudkip",
+      "hash": "fffffffffffffffffffffefffcfffc7ffc4ff00ff00ff00ff81ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "marshtomp",
+      "name": "Marshtomp",
+      "hash": "fffffffffffffffffc7ffc7ffc3ff83ff03ff03ff80ff00ff80ffc0ffc1fffff"
+    },
+    {
+      "speciesId": "swampert",
+      "name": "Swampert",
+      "hash": "fffffffffbfff13ff11ff00ff027e007e503f703f103e0d7e007f807fd07ffe7"
+    },
+    {
+      "speciesId": "poochyena",
+      "name": "Poochyena",
+      "hash": "fffffffffffffffffffffbfff8cff84ff80ff00ff007f80ffc0ffc0ffe7fffff"
+    },
+    {
+      "speciesId": "mightyena",
+      "name": "Mightyena",
+      "hash": "fffffffffffffffffbc3f0c3f0c7f08ff00ff00ff00ff00ff00ff04ffc7fffff"
+    },
+    {
+      "speciesId": "lotad",
+      "name": "Lotad",
+      "hash": "fffffffffffffffffffffffffffffc3ffc3ff80ff80ff80ff80ff81ffc3fffff"
+    },
+    {
+      "speciesId": "lombre",
+      "name": "Lombre",
+      "hash": "fffffffffffffe3ff83ff00ff00ff00ff81ff83ffc3ff01ff00ffc0fff1fffff"
+    },
+    {
+      "speciesId": "ludicolo",
+      "name": "Ludicolo",
+      "hash": "ffffff3ffe3ff81ff00ff00ff00ff00ff00ff00ff00ff80ff807f80ffc1fffff"
+    },
+    {
+      "speciesId": "seedot",
+      "name": "Seedot",
+      "hash": "fffffffffffffffffffffffffe7ffc3ff81ff81ff81ff81ffc3ff83ffc3fffff"
+    },
+    {
+      "speciesId": "nuzleaf",
+      "name": "Nuzleaf",
+      "hash": "ffffffffffffff1ffe0ffc3ffc3ff81ff81ff81ff80ffc0ffc1ffc1ffc1fffff"
+    },
+    {
+      "speciesId": "shiftry",
+      "name": "Shiftry",
+      "hash": "fffffffffafff83ffa1fe50fc40fc00fc32feb73f003f003f003fb0fff3fffff"
+    },
+    {
+      "speciesId": "wingull",
+      "name": "Wingull",
+      "hash": "ffffffffffffffffffffffffffffffbfe61fe01fe11ff20ffc23f883f9f7ffff"
+    },
+    {
+      "speciesId": "pelipper",
+      "name": "Pelipper",
+      "hash": "fffffffffffffffffc3ffc3ffc3ff04ff06fe00ff00ff00ff00ff807ffcfffff"
+    },
+    {
+      "speciesId": "ralts",
+      "name": "Ralts",
+      "hash": "fffffffffffffffffffffcbffc3ffc1ffc1ff81ffc1ffc3ffe3ffe1ffe3fffff"
+    },
+    {
+      "speciesId": "kirlia",
+      "name": "Kirlia",
+      "hash": "fffffffffffff83ff81ff81ff81ff01ff00ff00ff81ffc3ff89ffe1ffe7fffff"
+    },
+    {
+      "speciesId": "gardevoir",
+      "name": "Gardevoir",
+      "hash": "fffffffffcfff07ff03ff03ff03ff03ff87fe07fe01ff807f283f14ffc3fffff"
+    },
+    {
+      "speciesId": "surskit",
+      "name": "Surskit",
+      "hash": "ffffffffffffffffffffff3fff7ffc3ffc3ff81ff80ff007f617ff9fffdfffff"
+    },
+    {
+      "speciesId": "masquerain",
+      "name": "Masquerain",
+      "hash": "fffffffffffff7fff77fe333e323e243e643e103f307f80ff00ff00fff8fffff"
+    },
+    {
+      "speciesId": "shroomish",
+      "name": "Shroomish",
+      "hash": "fffffffffffffffffffffffffffffe3ffc3ffc1ff81ff00ff00ff81ffc3fffff"
+    },
+    {
+      "speciesId": "breloom",
+      "name": "Breloom",
+      "hash": "fffffffff87ff03ff03ff027f003f063f867fc27f80ff80ff81ff81fff1fffff"
+    },
+    {
+      "speciesId": "slakoth",
+      "name": "Slakoth",
+      "hash": "fffffffffffffffffffffffffffff1ffed1fe20fe00fe30ff007f007f867ffff"
+    },
+    {
+      "speciesId": "vigoroth",
+      "name": "Vigoroth",
+      "hash": "fffffffffffffcfffc7ff83ff83fe0bfc05fc02fcc57f8c3f803f807ff8fffff"
+    },
+    {
+      "speciesId": "slaking",
+      "name": "Slaking",
+      "hash": "fffffffffffffce3fc8bf037f007e007e007c28be357f187f003fc03ff03ffe7"
+    },
+    {
+      "speciesId": "makuhita",
+      "name": "Makuhita",
+      "hash": "fffffffffffffffffffffcbffc3ffc3ffc3ff83ff01ff00ff80ff80fff1fffff"
+    },
+    {
+      "speciesId": "hariyama",
+      "name": "Hariyama",
+      "hash": "fffffffffffffe3ff03ff03fe01fe00ff40ff307f007f00ff00ff80fff9fffff"
+    },
+    {
+      "speciesId": "azurill",
+      "name": "Azurill",
+      "hash": "fffffffffffffffffffffcbffc1ffc1ffc3ffc3ff80ffc1ffc0ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "nosepass",
+      "name": "Nosepass",
+      "hash": "ffffffffffffffffffffff3ffe3ffc1ffc1ff81ff00ff00ffc0ffc1ffc1fffff"
+    },
+    {
+      "speciesId": "sableye",
+      "name": "Sableye",
+      "hash": "fffffffffffffffffdfffccff80ff81ff80fe00fe00ff40ffc1ffc1ffc9fffff"
+    },
+    {
+      "speciesId": "meditite",
+      "name": "Meditite",
+      "hash": "ffffffffffffffffff7ffc7ffc3ff81ff01ff00ff80ff81ff80ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "medicham",
+      "name": "Medicham",
+      "hash": "ffffffffff3fff3ffc3ff83ff81ffc1ffc3ff80ff80ffc0ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "plusle",
+      "name": "Plusle",
+      "hash": "fffffffffffffffffffffcfffcfffc0ff80ff81ff83ff83ff83ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "minun",
+      "name": "Minun",
+      "hash": "fffffffffffffffffffffcfffcfffc0ff80ff81ff83ff83ff83ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "volbeat",
+      "name": "Volbeat",
+      "hash": "fffffffffffffffff1bff83ff81ff81ff80ff80ff80ffc07fc0ffc1fffbfffff"
+    },
+    {
+      "speciesId": "illumise",
+      "name": "Illumise",
+      "hash": "fffffffffffffffff9fff83ff81ff01ff01ff00ff80ffc0ffe1ffe1fffbfffff"
+    },
+    {
+      "speciesId": "gulpin",
+      "name": "Gulpin",
+      "hash": "ffffffffffffffffffffffffff9fff1ffe3ffc1ff81ff80ff80ff81ffc3fffff"
+    },
+    {
+      "speciesId": "swalot",
+      "name": "Swalot",
+      "hash": "fffffffffffffffffffffe7ffc3ffc1ff81ff01ff00ff00ff00ff80ffc1fffff"
+    },
+    {
+      "speciesId": "numel",
+      "name": "Numel",
+      "hash": "fffffffffffffffffffff9fff83ff81ff01ff00ff00ff00ff80ffc1fff3fffff"
+    },
+    {
+      "speciesId": "camerupt",
+      "name": "Camerupt",
+      "hash": "ffffffffffffff8ffc0ffc0ff007f003e033e033e077fe03e003e027f03fffff"
+    },
+    {
+      "speciesId": "torkoal",
+      "name": "Torkoal",
+      "hash": "fffffffffffffffffffffdfff03ff01ff00ff00ff00ff807f807f81fff1fffff"
+    },
+    {
+      "speciesId": "spoink",
+      "name": "Spoink",
+      "hash": "ffffffffffffffffff7ffe3ffe3ffc3ffc1ff81ffc1ffc1ffc3ffe3fff7fffff"
+    },
+    {
+      "speciesId": "grumpig",
+      "name": "Grumpig",
+      "hash": "fffffffffffffffffffff9fffc1ff83ff83ff00fe00fe007fc07fc1fff3fffff"
+    },
+    {
+      "speciesId": "trapinch",
+      "name": "Trapinch",
+      "hash": "fffffffffffffffffffff87ff83ff03ff03ff01ff80ff80ffc0ffc0fff9fffff"
+    },
+    {
+      "speciesId": "vibrava",
+      "name": "Vibrava",
+      "hash": "ffffffffffffffffffdfff83ff03fe03fe07fe07f807f00ff00ff81ffc1fffff"
+    },
+    {
+      "speciesId": "flygon",
+      "name": "Flygon",
+      "hash": "fffffffffffffc27fc03f843f0c7e027f00bf007fc07f80ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "cacnea",
+      "name": "Cacnea",
+      "hash": "fffffffffffffffffffffffffc3ffc3ffc1ff01ff01ff00ffc0ffc07ff07ffff"
+    },
+    {
+      "speciesId": "cacturne",
+      "name": "Cacturne",
+      "hash": "ffffff7ffe3ffe3ff83ff00ffc0ffc3ffc3ffc3ff81ffc0ffc0ffc3fff3fffff"
+    },
+    {
+      "speciesId": "swablu",
+      "name": "Swablu",
+      "hash": "fffffffffffffffffffffffffc3ffc3ffa7ff01ff01ff81ffc0ffe0fffdfffff"
+    },
+    {
+      "speciesId": "altaria",
+      "name": "Altaria",
+      "hash": "fffffffffe5ffc1ffc2ffc0ff81ff01ff02ff44ff46ff28ff00ffc3fff3fffff"
+    },
+    {
+      "speciesId": "zangoose",
+      "name": "Zangoose",
+      "hash": "fffffffffffffefffecffc0ffc0ffc43fc03fc83f847f00ff00ffc1fff1fffff"
+    },
+    {
+      "speciesId": "seviper",
+      "name": "Seviper",
+      "hash": "ffffffffffffffffffdffccff0cff0c7f42ff007e00ff00ff80ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "barboach",
+      "name": "Barboach",
+      "hash": "fffffffffffffffffffffffffffffdfff97ff21ff00ff007f807f807ff9fffff"
+    },
+    {
+      "speciesId": "whiscash",
+      "name": "Whiscash",
+      "hash": "fffffffffffffffffffffbfff19ff007f407f203f487f08ff00ff00ffc0fff7f"
+    },
+    {
+      "speciesId": "corphish",
+      "name": "Corphish",
+      "hash": "fffffffffffffffffffffe7ffc3ff03ff03ff00ff007f807f80ff80fff9fffff"
+    },
+    {
+      "speciesId": "crawdaunt",
+      "name": "Crawdaunt",
+      "hash": "fffffffffffffefffc7ffc7ff03fe00fe087f307f007f40ff00ff00ffe0fffff"
+    },
+    {
+      "speciesId": "feebas",
+      "name": "Feebas",
+      "hash": "fffffffffffffffffe3ffe3ffe3ffc0ffc0ffc0ff80ff80ff80ff80ffc1fffff"
+    },
+    {
+      "speciesId": "milotic",
+      "name": "Milotic",
+      "hash": "fffffffffffff0fff43ff4a3f021f843f663f813f803f103f003f007f80fffff"
+    },
+    {
+      "speciesId": "shuppet",
+      "name": "Shuppet",
+      "hash": "fffffffffffffffffefffefffc3ff81ff81ff81ffc0ff80ff80ffc3fff3fffff"
+    },
+    {
+      "speciesId": "banette",
+      "name": "Banette",
+      "hash": "fffffffffffffffffffff87ff83ff00ff007f807f85ff80ff00ff01ffe3fffff"
+    },
+    {
+      "speciesId": "duskull",
+      "name": "Duskull",
+      "hash": "fffffffffffffffffe7ffe7ffc7ff81ffc0ff80ff80ff80ff81ffc1fff3fffff"
+    },
+    {
+      "speciesId": "dusclops",
+      "name": "Dusclops",
+      "hash": "fffffffffe1ffe1ffe3ffc3ffc3ffc1ff9aff00fe017f003f803f80fff1fffff"
+    },
+    {
+      "speciesId": "tropius",
+      "name": "Tropius",
+      "hash": "fffffefffe63f243e047c14fc14fca1fe207f203fc0ffc1ff807fc2fff3fffff"
+    },
+    {
+      "speciesId": "chimecho",
+      "name": "Chimecho",
+      "hash": "ffffffffffffffffff7ffe3ffc1ffc1ffc1ff81ffc3fff3fff3fff0fff1fffbf"
+    },
+    {
+      "speciesId": "snorunt",
+      "name": "Snorunt",
+      "hash": "ffffffffffffffffffffff3ffe3ffc3ffc3ffc1ff81ff80ffc0ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "glalie",
+      "name": "Glalie",
+      "hash": "fffffffffffffffffbfff9fff82ffa0ffa8ff18ff00ff00ff80ff81ffc3fffff"
+    },
+    {
+      "speciesId": "luvdisc",
+      "name": "Luvdisc",
+      "hash": "ffffffffffffffffffffffffff3ffe1ffe1ffc1ffc1ffc1ffc1ffe1fff3fffff"
+    },
+    {
+      "speciesId": "bagon",
+      "name": "Bagon",
+      "hash": "fffffffffffffffffe7ffc3ff83ffc3ff83ff81ffc1ffe1ffe0ffe0fff9fffff"
+    },
+    {
+      "speciesId": "shelgon",
+      "name": "Shelgon",
+      "hash": "fffffffffffffffffe3ffc0ff88ff32ff547f007f00ff80ff80ff80fff3fffff"
+    },
+    {
+      "speciesId": "salamence",
+      "name": "Salamence",
+      "hash": "ffffffffffffc03fc90fe00fd607fc83c493e00ff8b3f2c3e003f617ff9fffff"
+    },
+    {
+      "speciesId": "beldum",
+      "name": "Beldum",
+      "hash": "fffffffffffffffffffffcfffc7ffc3ff83ff80ff00ff00ff80ffc0fff9fffff"
+    },
+    {
+      "speciesId": "metang",
+      "name": "Metang",
+      "hash": "fffffffffffffffff93ff01fe00fe00fe00fe217e437f983fc03fe03ffc7ffc7"
+    },
+    {
+      "speciesId": "metagross",
+      "name": "Metagross",
+      "hash": "fffffffffffffffffcfff433e403e003e107d2d5d315c5f3fc03fe07ffc7ffcf"
+    },
+    {
+      "speciesId": "regirock",
+      "name": "Regirock",
+      "hash": "fffffffffffff9fff86ff007f007f383f123f287e127c417e407fc07ff0fffff"
+    },
+    {
+      "speciesId": "regice",
+      "name": "Regice",
+      "hash": "fffffffffffffe4ffc0ffc0ff80ff00ff1aff1a7e137e003fc07fc2fff3fffff"
+    },
+    {
+      "speciesId": "registeel",
+      "name": "Registeel",
+      "hash": "fffffffffffffe7ffc1ff80ff007f007f807f80ff007f027f007fc0fff2fffff"
+    },
+    {
+      "speciesId": "latias",
+      "name": "Latias",
+      "hash": "fffffffffffff0fff0ffe0f3e1e3e0c3e08ff00ffd0ff80ff00ff20fff2fffff"
+    },
+    {
+      "speciesId": "latios",
+      "name": "Latios",
+      "hash": "fffffffffffff4fff0fbe0f3e1e3c0c7e0cff00ffc0ff807f007f207ff2fffff"
+    },
+    {
+      "speciesId": "kyogre",
+      "name": "Kyogre",
+      "hash": "fffffffffffffffffefffc4fcc0fc001c401f723f23ff03ff007f887ff87ffcf"
+    },
+    {
+      "speciesId": "groudon",
+      "name": "Groudon",
+      "hash": "fffffffff3fff0ffe07fe0bfe01fe003f023e033e433dd47e807fc0fff0fffff"
+    },
+    {
+      "speciesId": "rayquaza",
+      "name": "Rayquaza",
+      "hash": "ffffffffe73fe63ff4dfe257e043d003d08fc007fe07fc07fc03fc03ff21fffb"
+    },
+    {
+      "speciesId": "jirachi",
+      "name": "Jirachi",
+      "hash": "ffffffffffffffffff7ffe3ffc3ff01ff00ff00ff00ffc0ff807fc07ffcfffff"
+    },
+    {
+      "speciesId": "deoxys",
+      "name": "Deoxys",
+      "hash": "ffffffffffffff7ffe3ff81ff80ffc0ffc1ff81ff00fe007e003f403ffb3ffff"
+    },
+    {
+      "speciesId": "deoxysattack",
+      "name": "Deoxys-Attack",
+      "hash": "ffffffffffbffd3ffc3ffc0ffc0fe01fe03fe04fd407cc33e413fe03ffa3fff3"
+    },
+    {
+      "speciesId": "deoxysdefense",
+      "name": "Deoxys-Defense",
+      "hash": "ffffffffffffff7ffc3ff80ff00ff007f047f00ff23bf03be003fc83ff83fff7"
+    },
+    {
+      "speciesId": "deoxysspeed",
+      "name": "Deoxys-Speed",
+      "hash": "ffffffffffcffc0ff81ff83ff83ff83ff03ff00ff40fe007e027fd33ff33fff7"
+    },
+    {
+      "speciesId": "turtwig",
+      "name": "Turtwig",
+      "hash": "fffffffffffffdfffc3ffc3ffc7ffc7ff83ff01ff00ff80ffc0ffc0fff3fffff"
+    },
+    {
+      "speciesId": "grotle",
+      "name": "Grotle",
+      "hash": "fffffffffffffffff8fff01ff007f007f807f80ff00ff007f007f03ffd3fffff"
+    },
+    {
+      "speciesId": "torterra",
+      "name": "Torterra",
+      "hash": "fffffffffcfff87ff837f013f043f087e687fc07e387e007f007f01fff3fffff"
+    },
+    {
+      "speciesId": "chimchar",
+      "name": "Chimchar",
+      "hash": "fffffffffffffefffe7ffc7ff81ff81ff81ff80ffc0ff00ff20ffe0fff9fffff"
+    },
+    {
+      "speciesId": "monferno",
+      "name": "Monferno",
+      "hash": "ffffffffffffffffff67f84ff007f007f00ff007f827f02ff00ff40fff0fffdf"
+    },
+    {
+      "speciesId": "infernape",
+      "name": "Infernape",
+      "hash": "ffffffffff7ffc23f007f00ff01ff033f023f023f00ff50ffc07fc07ff2fffff"
+    },
+    {
+      "speciesId": "piplup",
+      "name": "Piplup",
+      "hash": "fffffffffffffffffffffc3ffc3ffc1ffc9ffc3ffc1ffc1ffc1ffe1ffe3fffff"
+    },
+    {
+      "speciesId": "prinplup",
+      "name": "Prinplup",
+      "hash": "fffffffffffffcfffc3ffc1ffc1ffc3ff83ff81ff01ffc0ffc0ffc3fff3fffff"
+    },
+    {
+      "speciesId": "empoleon",
+      "name": "Empoleon",
+      "hash": "fffffffffe7ffc7ffc3ff83ff80ff80ffc1ff00ff007fc07f803fc03ff33ffff"
+    },
+    {
+      "speciesId": "starly",
+      "name": "Starly",
+      "hash": "fffffffffffffffffffffefffe7ffc0ff80ff80ff80ff01ff81ff83ffc3fffff"
+    },
+    {
+      "speciesId": "staravia",
+      "name": "Staravia",
+      "hash": "fffffffffffffe7ffe3ffe3ffc37f807f807f807f007f80ff80ffc1ffc3fff7f"
+    },
+    {
+      "speciesId": "staraptor",
+      "name": "Staraptor",
+      "hash": "fffffffffcfff8fff8fff027f047f807f003f207f80ff80ff81ff83ffc7ffeff"
+    },
+    {
+      "speciesId": "kricketot",
+      "name": "Kricketot",
+      "hash": "fffffffffffff9fff13ff81ffc1ff80ff80ff80ff81ff81ffc3ffe3fff3fffff"
+    },
+    {
+      "speciesId": "kricketune",
+      "name": "Kricketune",
+      "hash": "fffffffffdfff83ff81ff00ff00ff82ff82ff01ff00ff00ff40ffc0fff5fffff"
+    },
+    {
+      "speciesId": "shinx",
+      "name": "Shinx",
+      "hash": "ffffffffffffffffffc7f1c7f023f00ff00ff00ff01ff81ff81ff81ffe7fffff"
+    },
+    {
+      "speciesId": "luxio",
+      "name": "Luxio",
+      "hash": "fffffffffffffffff3fff033f021f001f259f109f603f85ff80ff84ffe7fffff"
+    },
+    {
+      "speciesId": "luxray",
+      "name": "Luxray",
+      "hash": "fffffffffcfff0fbf0f3f035e03be08bf18ff00bf403f85ff00ff04ffc7fffff"
+    },
+    {
+      "speciesId": "cranidos",
+      "name": "Cranidos",
+      "hash": "fffffffffffffffffffffb3ff83ff02ff00ff00ff00ff00ff80ffc0fff0fffff"
+    },
+    {
+      "speciesId": "rampardos",
+      "name": "Rampardos",
+      "hash": "ffffffffffffe7ffe03ff03fe09fe00ff80ff00ff807fc07fc0ffc8fff8fffff"
+    },
+    {
+      "speciesId": "shieldon",
+      "name": "Shieldon",
+      "hash": "fffffffffffffffffe7ffc3ff83ff83ff83ff00ff00ff00ff80ffc0ffc3fffff"
+    },
+    {
+      "speciesId": "bastiodon",
+      "name": "Bastiodon",
+      "hash": "fffffffffffff8fff01ff01ff01ff00fe00fe80ff133e847f007f007fe1fffff"
+    },
+    {
+      "speciesId": "combee",
+      "name": "Combee",
+      "hash": "fffffffffffffffffffffcbff53ff03ff013f00bf807fc1ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "vespiquen",
+      "name": "Vespiquen",
+      "hash": "fffffffffffffbfff09ff007f807f807f817f80fe00fe407fc07ff0fff3fffff"
+    },
+    {
+      "speciesId": "pachirisu",
+      "name": "Pachirisu",
+      "hash": "ffffffffffffffe7ffc3fcc3fc03f80bfd13fa83f807fc0ffc0ffc9ffc7fffff"
+    },
+    {
+      "speciesId": "buizel",
+      "name": "Buizel",
+      "hash": "fffffffffffffffffffffc7ff87ff03ff01ff007f807f80ffc0ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "floatzel",
+      "name": "Floatzel",
+      "hash": "fffffffffffffffffe3ffc3ff83ff033f133f023f02bf807fc07fc0ffc3fffff"
+    },
+    {
+      "speciesId": "shellos",
+      "name": "Shellos",
+      "hash": "fffffffffffffffffc7ffc3ffc3ff83ff83ff81ff80ffc0ffc0ffc0ffc1fffff"
+    },
+    {
+      "speciesId": "gastrodon",
+      "name": "Gastrodon",
+      "hash": "ffffffffffffffffe1bff03ff03ff03ff07ff01ff80ffc0ff807f807fe1fffff"
+    },
+    {
+      "speciesId": "ambipom",
+      "name": "Ambipom",
+      "hash": "fffffffffdffe03fe07fe0e3e043e30bf103f003f133f8e7fc0ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "drifloon",
+      "name": "Drifloon",
+      "hash": "fffffffffffffffffe3ffc3ffc3ff83ff83ff83ffc3ffc1ffc0ffceffccfffdf"
+    },
+    {
+      "speciesId": "drifblim",
+      "name": "Drifblim",
+      "hash": "fffffffffc3ffc3ffc3ffc1ff80ff80ff80ff80ff807e007e21ffe0fffcfffff"
+    },
+    {
+      "speciesId": "mismagius",
+      "name": "Mismagius",
+      "hash": "fffffe7ffe3ff83ff81ff01ff00ff01ffc3ffc3ffc3ff80ff80ff80ffc1fffbf"
+    },
+    {
+      "speciesId": "honchkrow",
+      "name": "Honchkrow",
+      "hash": "fffffffffffffdfff8bff027e027f043f003f087f30ffa0ff80ff83ffe3fffff"
+    },
+    {
+      "speciesId": "chingling",
+      "name": "Chingling",
+      "hash": "ffffffffffffffffffffffcfff87ff03ff13fc03f803f80ff81ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "stunky",
+      "name": "Stunky",
+      "hash": "ffffffffffffffffffffffc7ff47ff03fa87f047f007e40fe00ff00ff03fffff"
+    },
+    {
+      "speciesId": "skuntank",
+      "name": "Skuntank",
+      "hash": "ffffffffffffff2ffc03fc03f803f863f893f703ce03ec07e007f02ff03fffff"
+    },
+    {
+      "speciesId": "bronzor",
+      "name": "Bronzor",
+      "hash": "fffffffffffffffffffffffffefff83ff81ffc1ff81ff81ff81ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "bronzong",
+      "name": "Bronzong",
+      "hash": "fffffffffffffcfffc3ffc1ffc1ff81fe21fe887e103fc43fc17fc1ffe3fffff"
+    },
+    {
+      "speciesId": "bonsly",
+      "name": "Bonsly",
+      "hash": "ffffffffffffffffff7ffe3ffc3ffc3ffc1ffc1ffc3ffc3ffc3ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "happiny",
+      "name": "Happiny",
+      "hash": "ffffffffffffffffffffff3fff3ffc3ffc3ffc1ff81ff81ff85ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "spiritomb",
+      "name": "Spiritomb",
+      "hash": "fffffffffffffffffebffc1ff01ff00ff00ff00ff00ff00ff81ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "gible",
+      "name": "Gible",
+      "hash": "ffffffffffffffffffffff3ffc3ff81ff81ffc1ff81ff00ff80ffc0ffc1fffff"
+    },
+    {
+      "speciesId": "gabite",
+      "name": "Gabite",
+      "hash": "fffffffffffffffff8fff03ff00ff01ff01ff027f00ff00fe00ff80fff1fffff"
+    },
+    {
+      "speciesId": "garchomp",
+      "name": "Garchomp",
+      "hash": "fffffffffffffbfff03ff01fe027e00ff60ff883f811f023f003f807ff8fffff"
+    },
+    {
+      "speciesId": "munchlax",
+      "name": "Munchlax",
+      "hash": "fffffffffffffffffffffe7ffc3ffc3ff81ff81ff81ffc1ffc1ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "riolu",
+      "name": "Riolu",
+      "hash": "fffffffffffffffffffffdfffc3ffc3ff83ff80ff80ffc0ffc0ffc1ffebfffff"
+    },
+    {
+      "speciesId": "lucario",
+      "name": "Lucario",
+      "hash": "fffffffffffffffffc7ffc7ffc3ffc1ff81ff81ff80ffe0ffc1ffe3fffbfffff"
+    },
+    {
+      "speciesId": "hippopotas",
+      "name": "Hippopotas",
+      "hash": "fffffffffffffffffffffcfffc7ffc1ffc0ff007f707e087e007f00ff83fffff"
+    },
+    {
+      "speciesId": "hippowdon",
+      "name": "Hippowdon",
+      "hash": "fffffffffffffffffbfff00ff007f003f687e18be0ebe043e003f817ff1fffff"
+    },
+    {
+      "speciesId": "croagunk",
+      "name": "Croagunk",
+      "hash": "fffffffffffffffffffffffffc7ff83ff83ff81ff80ffc0ffc0fff0fffcfffff"
+    },
+    {
+      "speciesId": "toxicroak",
+      "name": "Toxicroak",
+      "hash": "fffffffffffffdfffcfff83ff81ff01ff00ff80ff00ff00ff00ffe0fff0fffff"
+    },
+    {
+      "speciesId": "finneon",
+      "name": "Finneon",
+      "hash": "ffffffffffffffffffffff0fff0ff807f807f807f80ff80ff00ff03ff97fffff"
+    },
+    {
+      "speciesId": "lumineon",
+      "name": "Lumineon",
+      "hash": "fffffffffffffbbffb1ff117f007f027f827f00ff00ff01ff81ffcdffcffffff"
+    },
+    {
+      "speciesId": "snover",
+      "name": "Snover",
+      "hash": "ffffffffffffffffff7ffc3ffc3ff87ff9dffa1ff81ff19ff00ff80ffe0fffff"
+    },
+    {
+      "speciesId": "abomasnow",
+      "name": "Abomasnow",
+      "hash": "fffffffffffff9bff81ff84ff85ff89ff01ff00ff02ff00ff00ff90fff1fffff"
+    },
+    {
+      "speciesId": "weavile",
+      "name": "Weavile",
+      "hash": "fffffffffffffe7ffc3ff81ff80ff01ff03ff80ffc0ff81ff00ff00fff1fffff"
+    },
+    {
+      "speciesId": "magnezone",
+      "name": "Magnezone",
+      "hash": "ffffffffff7ffe3ff83ff83ff007e007e08fe277c087e40ff60fff8fff8fffff"
+    },
+    {
+      "speciesId": "rhyperior",
+      "name": "Rhyperior",
+      "hash": "fffffffffffffc7ffc3ff013f003f803f923f103e003fd4bf803fc03ff8fffff"
+    },
+    {
+      "speciesId": "electivire",
+      "name": "Electivire",
+      "hash": "fffffffffffff0fff03ff82ff007e007e59fe007f007f807f803ff07ff0fffff"
+    },
+    {
+      "speciesId": "magmortar",
+      "name": "Magmortar",
+      "hash": "fffffffffffff0fff0dff01ff017f013f347f003f083f10ff80ff80fff1fffff"
+    },
+    {
+      "speciesId": "yanmega",
+      "name": "Yanmega",
+      "hash": "ffffffffffffffcfff87ffc1e281c00fe00ff01fe00ff067e007f80ffeffffff"
+    },
+    {
+      "speciesId": "leafeon",
+      "name": "Leafeon",
+      "hash": "ffffffffffffffffe3bfe107f003e00fe04ff00ff01ff00ff81ff8bffcffffff"
+    },
+    {
+      "speciesId": "glaceon",
+      "name": "Glaceon",
+      "hash": "ffffffffffffefffe7f7e623f023e047f0d7e00fc45fc05ff81ff8dff8ffffff"
+    },
+    {
+      "speciesId": "gliscor",
+      "name": "Gliscor",
+      "hash": "ffffffffffffebffc8ffc50fe9cfc003c497e187f257f043f003f007f02fffff"
+    },
+    {
+      "speciesId": "mamoswine",
+      "name": "Mamoswine",
+      "hash": "fffffffffffffe3ff81ff00ff18ff003f2c3e347d507ea03f007f807fe1fffff"
+    },
+    {
+      "speciesId": "porygonz",
+      "name": "Porygon-Z",
+      "hash": "fffffffffffffefffcfff86ff84ff00ff00ff01ff21fff3fff3fff3fff3fffff"
+    },
+    {
+      "speciesId": "gallade",
+      "name": "Gallade",
+      "hash": "fffffffffcfffc7ff83ff83ff01ff857f837f007f007f00ffc0ffc1fff9fffff"
+    },
+    {
+      "speciesId": "probopass",
+      "name": "Probopass",
+      "hash": "fffffffffffffc3ffc1ffc1ffc1ff01ff00fe08ff01ff007f007f01ff83fffff"
+    },
+    {
+      "speciesId": "dusknoir",
+      "name": "Dusknoir",
+      "hash": "ffffffffff7ffe3ff83ff81fc80fc00fe14fe00ffc87fc03fc03fe3fff3fffff"
+    },
+    {
+      "speciesId": "froslass",
+      "name": "Froslass",
+      "hash": "fffffffffffffb7ff83ff91ff85ff81ffa3ff80ffc0ffc1ff85ffc1fff3fffff"
+    },
+    {
+      "speciesId": "rotom",
+      "name": "Rotom",
+      "hash": "ffffffffff3fff3fff3ffe3ffc1ffc1ffc1ff01ff00fe207c207ff4fff47fff3"
+    },
+    {
+      "speciesId": "rotomheat",
+      "name": "Rotom-Heat",
+      "hash": "fffffffffffff7ffe3ffc273c033e003f803f113f907f807f003f81ffc3fffff"
+    },
+    {
+      "speciesId": "rotomwash",
+      "name": "Rotom-Wash",
+      "hash": "ffffffffffffffbfff1fff0ffc07fc07f807f547fc81f801fc01fe01ff93ffff"
+    },
+    {
+      "speciesId": "rotomfrost",
+      "name": "Rotom-Frost",
+      "hash": "ffffffffffffff3fff3fec1fc00fc00ff80ff00ff903f803f803f807fc3fffff"
+    },
+    {
+      "speciesId": "rotomfan",
+      "name": "Rotom-Fan",
+      "hash": "ffffffffffffffffe03fe01ff01ffc0ffc07fc13fc23fc13fc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "rotommow",
+      "name": "Rotom-Mow",
+      "hash": "fffffffffffffc3ffc1ff807f007e007f007f407f00ff80ff80ff19ff0fff1ff"
+    },
+    {
+      "speciesId": "uxie",
+      "name": "Uxie",
+      "hash": "fffffffffffffcfff87ff02ff007f001f02bf823fc23fc03fc07fe07ff0fffff"
+    },
+    {
+      "speciesId": "mesprit",
+      "name": "Mesprit",
+      "hash": "fffffffffffffcfff87ff02fe007e101e64bf803fc03fc03fc07fe07ff0fffff"
+    },
+    {
+      "speciesId": "azelf",
+      "name": "Azelf",
+      "hash": "ffffffffff3ffc3ffc3ff82ff007f001f08bf803fc23fc03fc07fe07ff0fffff"
+    },
+    {
+      "speciesId": "dialga",
+      "name": "Dialga",
+      "hash": "fffffc3ff02fd007c2b7e41fe097e40bc003f803ff07fe07f807f007f93fff3f"
+    },
+    {
+      "speciesId": "dialgaorigin",
+      "name": "Dialga-Origin",
+      "hash": "fffff83ff00fc087c28fe087e22fe057f007fc0ff40ff007f007f00ff13fff3f"
+    },
+    {
+      "speciesId": "palkia",
+      "name": "Palkia",
+      "hash": "ffffff3fc603d003db1bc2c7c30fe043f803f803f807f82ff80fff8fff8fffff"
+    },
+    {
+      "speciesId": "palkiaorigin",
+      "name": "Palkia-Origin",
+      "hash": "ffffcfffc067e007e897e22fe813f00bf803f807f80ff807f907f13ff83fff3f"
+    },
+    {
+      "speciesId": "heatran",
+      "name": "Heatran",
+      "hash": "fffffffffffffffffcfff007f007f007f643e183e90fe415c601ff83ff87ffff"
+    },
+    {
+      "speciesId": "regigigas",
+      "name": "Regigigas",
+      "hash": "fffffffffffff87ff82fe42fc007c3c7c00bc6c3dbc3fa83f001fd03ff03ffff"
+    },
+    {
+      "speciesId": "giratina",
+      "name": "Giratina",
+      "hash": "fffffffffefff09ff8cfe2c3cd03e983e003e253f83ff873f003f10fff3fffff"
+    },
+    {
+      "speciesId": "giratinaorigin",
+      "name": "Giratina-Origin",
+      "hash": "fffffc7ff82ff08ff08ff227ec4be103f127e407e10fe0c7f00ff80ffc7fffff"
+    },
+    {
+      "speciesId": "cresselia",
+      "name": "Cresselia",
+      "hash": "fffffdfffcfffcfffc47f803f00bf027f027f807f807f00fe007f403ffc3ffff"
+    },
+    {
+      "speciesId": "phione",
+      "name": "Phione",
+      "hash": "fffffffffffffffffffffffffe1ffc07fc07f823f833f833f03ff81ffe9fffff"
+    },
+    {
+      "speciesId": "manaphy",
+      "name": "Manaphy",
+      "hash": "ffffffffffffffffffdfff0fff07fc23fc37f83ff83ff83ff03ff81ffc1fffff"
+    },
+    {
+      "speciesId": "darkrai",
+      "name": "Darkrai",
+      "hash": "ffffff4ff28fe69df579f379f263f003f017f81ff11fec43cc07ec07fc0fff7f"
+    },
+    {
+      "speciesId": "shaymin",
+      "name": "Shaymin",
+      "hash": "fffffffffffffffffffffffffe3ffc1ffc0ff80ff80ff80ff80ff81ffc7fffff"
+    },
+    {
+      "speciesId": "shayminsky",
+      "name": "Shaymin-Sky",
+      "hash": "fffffffffffffbfff0fff00ff807f80ffc3ffc0ffb1ffc1ffe0ffe0fff3fffff"
+    },
+    {
+      "speciesId": "arceus",
+      "name": "Arceus",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusbug",
+      "name": "Arceus-Bug",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e207f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusdark",
+      "name": "Arceus-Dark",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusdragon",
+      "name": "Arceus-Dragon",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceuselectric",
+      "name": "Arceus-Electric",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusfairy",
+      "name": "Arceus-Fairy",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusfighting",
+      "name": "Arceus-Fighting",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusfire",
+      "name": "Arceus-Fire",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusflying",
+      "name": "Arceus-Flying",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e207f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusghost",
+      "name": "Arceus-Ghost",
+      "hash": "ffffff3ffe3fe47fe07bec03ee03ec07e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusgrass",
+      "name": "Arceus-Grass",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusground",
+      "name": "Arceus-Ground",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusice",
+      "name": "Arceus-Ice",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceuspoison",
+      "name": "Arceus-Poison",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceuspsychic",
+      "name": "Arceus-Psychic",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceusrock",
+      "name": "Arceus-Rock",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceussteel",
+      "name": "Arceus-Steel",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "arceuswater",
+      "name": "Arceus-Water",
+      "hash": "ffffff3ffe3fe47fe07bee03ee03e807e007f00ff907f90ff007f8c7fcfffeff"
+    },
+    {
+      "speciesId": "snivy",
+      "name": "Snivy",
+      "hash": "fffffffffffffffffffffffffc7ff03ff00ff00ff80ffc0ffc0ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "servine",
+      "name": "Servine",
+      "hash": "ffffffffffffffffff7ffc7ff87ff04ff00ff087f08ff80ff81ffc3ffc7fffff"
+    },
+    {
+      "speciesId": "serperior",
+      "name": "Serperior",
+      "hash": "ffffffffffffffdfff8fe30fe20fe41fe75fe08ff007fc23fe03fe03ff07ffff"
+    },
+    {
+      "speciesId": "tepig",
+      "name": "Tepig",
+      "hash": "fffffffffffffffffffffdfffd1ffc4ffccff80ff80ff01ff81ff81ffe7fffff"
+    },
+    {
+      "speciesId": "pignite",
+      "name": "Pignite",
+      "hash": "fffffffffffffffffebffa3ff03ff00ff00ff00ff80ff807f803f807ff3fffff"
+    },
+    {
+      "speciesId": "emboar",
+      "name": "Emboar",
+      "hash": "fffffffff9fff027f007f00ff08fe08fe18ff00fe027f823f007f38fff8fffff"
+    },
+    {
+      "speciesId": "oshawott",
+      "name": "Oshawott",
+      "hash": "fffffffffffffffffffffe7ffc3ffd9fff9ffc1ffc3ffc0ffc0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "dewott",
+      "name": "Dewott",
+      "hash": "fffffffffffffe7ffc7ff83ff03ff81ff03ff03ff83ff80ff80ff80fff3fffff"
+    },
+    {
+      "speciesId": "samurott",
+      "name": "Samurott",
+      "hash": "fffffffffffffebfce3fe033e30bc423d423f00fe127f0c7e003e713ff0fffff"
+    },
+    {
+      "speciesId": "samurotthisui",
+      "name": "Samurott-Hisui",
+      "hash": "fffffffffffffebfde3fe033e00bf083e083e0aff147f087e003e713ff0fffff"
+    },
+    {
+      "speciesId": "blitzle",
+      "name": "Blitzle",
+      "hash": "fffffffffffffdfffcfff87ff87ff84ff82ff80ff80ffc0ffc0ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "zebstrika",
+      "name": "Zebstrika",
+      "hash": "ffffffffffffe1ffe0ffe01fe00fe00fe07fe09ff51ff43ff09ff0bffcffffff"
+    },
+    {
+      "speciesId": "drilbur",
+      "name": "Drilbur",
+      "hash": "fffffffffffffffffffffffffc7ffc3ff83ffa3ff20ff00ff00ffc0fff0fffff"
+    },
+    {
+      "speciesId": "excadrill",
+      "name": "Excadrill",
+      "hash": "fffffffffffffffff87ff03ff01fe00fe90fe31fe803e033c803f813ff9fffff"
+    },
+    {
+      "speciesId": "timburr",
+      "name": "Timburr",
+      "hash": "fffffffffffffffffffff87ff03ff807fc07fc07f00fe00fe01ff61fff3fffff"
+    },
+    {
+      "speciesId": "gurdurr",
+      "name": "Gurdurr",
+      "hash": "fffffffff7ffe0fff03ff00ff003f303f003f087f80ffc1ff81ffc3fff3fffff"
+    },
+    {
+      "speciesId": "conkeldurr",
+      "name": "Conkeldurr",
+      "hash": "ffffffffffffff3ff03fc11fc1afd003d003d453d603d5f7c407c707ffc7ffc7"
+    },
+    {
+      "speciesId": "sewaddle",
+      "name": "Sewaddle",
+      "hash": "fffffffffffffffffffffffffe3ffc3ffc1ffc1ff80ff80ffc1ffe3fff3fffff"
+    },
+    {
+      "speciesId": "swadloon",
+      "name": "Swadloon",
+      "hash": "fffffffffffffffffffffffffcfffc7ffc7ffc3ffc3ff01ff01ff00ffc0fffff"
+    },
+    {
+      "speciesId": "leavanny",
+      "name": "Leavanny",
+      "hash": "fffffffffffffffffc7ffc3ffc3ffc3ffc1ffc1ffc3ffc3ff81fff1fff1fffff"
+    },
+    {
+      "speciesId": "cottonee",
+      "name": "Cottonee",
+      "hash": "fffffffffffffffffffffffffffffe7ffc3ff41ff01ff007f807fc0ffc3fffff"
+    },
+    {
+      "speciesId": "whimsicott",
+      "name": "Whimsicott",
+      "hash": "fffffffffffffc7ffc1ff80ff00ff00ff00ff00ff00ff00ff00ff81ffe3fffff"
+    },
+    {
+      "speciesId": "petilil",
+      "name": "Petilil",
+      "hash": "fffffffffffffffffffffd7ffc3ffc3ffe3ffc3ffc1ffc1ffc3ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "lilligant",
+      "name": "Lilligant",
+      "hash": "fffffffffffffffffc3ffc3ff81ff81ff83ff81ffc1ff80ff80ff80ffc0fffff"
+    },
+    {
+      "speciesId": "lilliganthisui",
+      "name": "Lilligant-Hisui",
+      "hash": "fffffffffffffc3ffc1ffc1ffc1ffc1ffe1ff81ff81ffc0ffe3ffe3ffe3fffff"
+    },
+    {
+      "speciesId": "basculin",
+      "name": "Basculin",
+      "hash": "fffffffffffffffffffffffffe7ffc0ffc4ffc0ff00ff00ff01ff81ff83fffff"
+    },
+    {
+      "speciesId": "basculinbluestriped",
+      "name": "Basculin-Blue-Striped",
+      "hash": "fffffffffffffffffffffffffe7ffc0ffc0ffc0ff00ff00ff81ff83ff87fffff"
+    },
+    {
+      "speciesId": "basculinwhitestriped",
+      "name": "Basculin-White-Striped",
+      "hash": "fffffffffffffffffffffffffe7ffc0ffc0ffc0ff00ff00ff81ff81ffc7fffff"
+    },
+    {
+      "speciesId": "sandile",
+      "name": "Sandile",
+      "hash": "ffffffffffffffffffffffffffffffeff9cff00ff00fe00fe00ff01fff3fffbf"
+    },
+    {
+      "speciesId": "krokorok",
+      "name": "Krokorok",
+      "hash": "fffffffffffffffffcfff87ff03fe03fe03ff037fc07fc0ff80ffd1fff1fffff"
+    },
+    {
+      "speciesId": "krookodile",
+      "name": "Krookodile",
+      "hash": "fffffffffffff8fff07ff03ff03fc013d243e103f703ff07f807fc0fff1fffff"
+    },
+    {
+      "speciesId": "scraggy",
+      "name": "Scraggy",
+      "hash": "ffffffffffffffffffffffffff7ffc7ffc7ff83ff83ffc3ffc0ffc0ffe3fffff"
+    },
+    {
+      "speciesId": "scrafty",
+      "name": "Scrafty",
+      "hash": "fffffffffffffffffc7ffc3ff83ff83ff83ff83ff02ff00ff80ff80ffe3fffff"
+    },
+    {
+      "speciesId": "zorua",
+      "name": "Zorua",
+      "hash": "fffffffffffffffffffffffffa7ff81ff81ff81ff80ff80ffc1ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "zoruahisui",
+      "name": "Zorua-Hisui",
+      "hash": "ffffffffffffff3ffe7ffe7ff87ff80ff82ff80ff80ff80ff80ff81ffc3fffff"
+    },
+    {
+      "speciesId": "zoroark",
+      "name": "Zoroark",
+      "hash": "fffffffffffffcfff0ffe03fe03fe007ec27f087e083e93bf03ff13fff3fffff"
+    },
+    {
+      "speciesId": "zoroarkhisui",
+      "name": "Zoroark-Hisui",
+      "hash": "fffffe0ff00ff003f003f1cff02fe00fe02fe30ff01ff00ff007fe07fe47ffe7"
+    },
+    {
+      "speciesId": "minccino",
+      "name": "Minccino",
+      "hash": "fffffffffffffffffffff3fff11ff01ff01ff00ff00ff807f807f80ffe1fffff"
+    },
+    {
+      "speciesId": "cinccino",
+      "name": "Cinccino",
+      "hash": "fffffffffffffffff89ff90ff88ff00ff00ffc07e017e307f007fa0ffe3fffff"
+    },
+    {
+      "speciesId": "gothita",
+      "name": "Gothita",
+      "hash": "ffffffffffffffffffffff7ffc3ff83ff81ff81ffc1ffc3ffc3ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "gothorita",
+      "name": "Gothorita",
+      "hash": "fffffffffffffffffbfff0dff007f047f00ff00ff00ffd0ffc3ffc7ffe7fffff"
+    },
+    {
+      "speciesId": "gothitelle",
+      "name": "Gothitelle",
+      "hash": "fffffffffffffa3ff03ff03ff00ff00ff80ff00ff80ffc0ffc0ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "solosis",
+      "name": "Solosis",
+      "hash": "fffffffffffffffffffffffffffffe3ffc3ffc1ff80ff80ff80ffc1ffc1fffff"
+    },
+    {
+      "speciesId": "duosion",
+      "name": "Duosion",
+      "hash": "fffffffffffffffffffffc3ffc1ff81ff80ff80ff80ff80ff80ff81ffe1fffff"
+    },
+    {
+      "speciesId": "reuniclus",
+      "name": "Reuniclus",
+      "hash": "fffffffffffffffff3fff00ff00fc00fc39fc39fc117f003f003f803fc67ffff"
+    },
+    {
+      "speciesId": "ducklett",
+      "name": "Ducklett",
+      "hash": "fffffffffffffffffffffc7ffc7ffc3ffc3ff81ff80ffc0ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "swanna",
+      "name": "Swanna",
+      "hash": "fffffffffffff9fff1fff2fff47ff01fe42fc073cd33fd03fc03fe07ff1fffff"
+    },
+    {
+      "speciesId": "deerling",
+      "name": "Deerling",
+      "hash": "fffffffffffffbfff17ff07ff85ff00ff01ff01ff01ffc1ffc0ffc4ffc7fffff"
+    },
+    {
+      "speciesId": "sawsbuck",
+      "name": "Sawsbuck",
+      "hash": "fffffffffbfff0fff03ff03ff83ff87ff04ff007f807f80ffc0ffc2fff7fffff"
+    },
+    {
+      "speciesId": "foongus",
+      "name": "Foongus",
+      "hash": "fffffffffffffffffffffffffc3ffc1ffa1ffb1ff81ffc3ffc3ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "amoonguss",
+      "name": "Amoonguss",
+      "hash": "fffffffffffffc7ff81ff00ff00ff00ff00ff00ff03ff00ff80ff80ffc1fffff"
+    },
+    {
+      "speciesId": "alomomola",
+      "name": "Alomomola",
+      "hash": "ffffffffffffff7ffe3ffc3ffc3ffc3ffc3ffc3ff83ff83ffc3ffe1ffe1fffff"
+    },
+    {
+      "speciesId": "joltik",
+      "name": "Joltik",
+      "hash": "ffffffffffffffffffffffffff7ffe1ffc1ff81ff00ff00ff00ff00ffe0fffff"
+    },
+    {
+      "speciesId": "galvantula",
+      "name": "Galvantula",
+      "hash": "ffffffffffffffbfff3ffd07f807f007f307e307e387e203e003e083fc9fffff"
+    },
+    {
+      "speciesId": "tynamo",
+      "name": "Tynamo",
+      "hash": "ffffffffffffffffffffffffffffffffffffff3ffe1ffc1ffa3ff83ff8ffffff"
+    },
+    {
+      "speciesId": "eelektrik",
+      "name": "Eelektrik",
+      "hash": "fffffffffffffffffffffcfffcfffc3ff83ff03ff03ff007f807fc0ffc1fffff"
+    },
+    {
+      "speciesId": "eelektross",
+      "name": "Eelektross",
+      "hash": "fffffffffffffffffc3ff803f023f00ff63bf433e403d107c007c607ff07ffff"
+    },
+    {
+      "speciesId": "litwick",
+      "name": "Litwick",
+      "hash": "ffffffffffffffffffffff7fff7ffe3ffe3ffc1ffe1ffcdffc1ffc9ffc3fffff"
+    },
+    {
+      "speciesId": "lampent",
+      "name": "Lampent",
+      "hash": "ffffffffffffffffffffff7fff7ffc1ff80ff00ff80ff01ff00ff80fff1fffff"
+    },
+    {
+      "speciesId": "chandelure",
+      "name": "Chandelure",
+      "hash": "fffffffffffffe7ffe7ffe3ff43fe03fc03bc67be39be003f003fe03fe4fffff"
+    },
+    {
+      "speciesId": "axew",
+      "name": "Axew",
+      "hash": "ffffffffffffffffffbfff3ffe3ffc3ffc3ff83ff00ff80ffe0ffe1fff9fffff"
+    },
+    {
+      "speciesId": "fraxure",
+      "name": "Fraxure",
+      "hash": "fffffffffffffffffcfffc7ff83fe03fe03fe017f807fc07fc07fc0fff1fffff"
+    },
+    {
+      "speciesId": "haxorus",
+      "name": "Haxorus",
+      "hash": "fffffffff3fff37fe07fe07fe07fe03ff83ff037f007fc0ff00ff00fff8fffff"
+    },
+    {
+      "speciesId": "cubchoo",
+      "name": "Cubchoo",
+      "hash": "fffffffffffffffffffffdfff83ff81ffc1ff81ff83ffc3ff81ff83ffe3fffff"
+    },
+    {
+      "speciesId": "beartic",
+      "name": "Beartic",
+      "hash": "ffffffffffffff7ffcbffa3ff03ff84ff047f007fc07f8cff84ff80fff8fffff"
+    },
+    {
+      "speciesId": "cryogonal",
+      "name": "Cryogonal",
+      "hash": "fffffffffffffffffcfff83ff01ff00ff80ff80ff01ff01ff80ffc0ffc5fffff"
+    },
+    {
+      "speciesId": "mienfoo",
+      "name": "Mienfoo",
+      "hash": "fffffffffffffffffffffc7ffc3ffc3ffc3ff83ff82ff80ffc0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "mienshao",
+      "name": "Mienshao",
+      "hash": "fffffffffffffcfffc7ffc3ff89ff03ff037f003f00ff40fe01ff13fff3fffff"
+    },
+    {
+      "speciesId": "golett",
+      "name": "Golett",
+      "hash": "fffffffffffffffffffffefffc7ffc3ff83ff01ff00ff00ff80ff81fff3fffff"
+    },
+    {
+      "speciesId": "golurk",
+      "name": "Golurk",
+      "hash": "fffffffffa3ff03ff037f007f02fe027e00fc00fe82ffc0ff80fff1fff1fffff"
+    },
+    {
+      "speciesId": "pawniard",
+      "name": "Pawniard",
+      "hash": "fffffffffffffffffd7ffc3ffc1ff81ff81ff81ff83ff81ffc1ffc1fff1fffff"
+    },
+    {
+      "speciesId": "bisharp",
+      "name": "Bisharp",
+      "hash": "fffffffffffffa7ff83ff83ff81ffc1ff83ff00ff00ff007f007fc07fd0fffbf"
+    },
+    {
+      "speciesId": "rufflet",
+      "name": "Rufflet",
+      "hash": "fffffffffffffffffc3ff81ff91ff80ff80ff80ff80ff80ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "braviary",
+      "name": "Braviary",
+      "hash": "fffffffffffffffffffff1ffe0dfe00fe707e607e40ff107e007e007f74fffcf"
+    },
+    {
+      "speciesId": "braviaryhisui",
+      "name": "Braviary-Hisui",
+      "hash": "fffffffffffffffffffff1ffe0dfe00fe407e527e12ff007e007e007f74fffcf"
+    },
+    {
+      "speciesId": "vullaby",
+      "name": "Vullaby",
+      "hash": "ffffffffffffffffffffff3ffe3ff03ff01ff01ff807fc0ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "mandibuzz",
+      "name": "Mandibuzz",
+      "hash": "fffffffffffffe3ffe1ffc1ffc3ff83ff83ff81ff80ff80ffc0ffc0ffc1fffff"
+    },
+    {
+      "speciesId": "deino",
+      "name": "Deino",
+      "hash": "ffffffffffffffffff3fff3ffc7ff83ff83ff83ff80ffc0ffc0ffc0fff3fffff"
+    },
+    {
+      "speciesId": "zweilous",
+      "name": "Zweilous",
+      "hash": "fffffffffffffbffe0ffe03fe02fe003e007f80ff20ff00fe00ff00ffcffffff"
+    },
+    {
+      "speciesId": "hydreigon",
+      "name": "Hydreigon",
+      "hash": "fffffffff8fff0b7e027e047f60fed03ee03ec83f847f083f403fc07fe8fffff"
+    },
+    {
+      "speciesId": "larvesta",
+      "name": "Larvesta",
+      "hash": "fffffffffffffffffffffe7ff67ff05ff31ff31ff01ff00ff00ff80ffc1fffff"
+    },
+    {
+      "speciesId": "volcarona",
+      "name": "Volcarona",
+      "hash": "fffffffffffff3fff1c7f087f007f00ff00fe00fe347f303f007f00ffc8fffff"
+    },
+    {
+      "speciesId": "cobalion",
+      "name": "Cobalion",
+      "hash": "fffffffffe5ffc1ff83ff04ff00ff00ff80ff00ff00ff80ff04ff00ffe3fffff"
+    },
+    {
+      "speciesId": "terrakion",
+      "name": "Terrakion",
+      "hash": "fffffffffffffffffeffe81fc007c007c817c227e707f84bf003f103ff1fffff"
+    },
+    {
+      "speciesId": "virizion",
+      "name": "Virizion",
+      "hash": "fffffbfff3fff1fff01ff01ff03ff05ff89ff81ff80ff80ff81ffc9ffeffffff"
+    },
+    {
+      "speciesId": "tornadus",
+      "name": "Tornadus",
+      "hash": "ffffffefff0ff007f01fe007cd07cccff88ff01fe00fe13bf1c7f80ffc1fffff"
+    },
+    {
+      "speciesId": "tornadustherian",
+      "name": "Tornadus-Therian",
+      "hash": "fffff5cfe087ea83ecc3c2e3c0c7dc83ec6bc03be017e02fe03fe47ffc7fffff"
+    },
+    {
+      "speciesId": "thundurus",
+      "name": "Thundurus",
+      "hash": "ffffff3fff4ffc27f017f243e12fc4cfc20fe027f4a3e713c0c7c00ff81fffff"
+    },
+    {
+      "speciesId": "thundurustherian",
+      "name": "Thundurus-Therian",
+      "hash": "fffffffffe7ffd3fe9dfc00fd00fe00fe38fee47d803c033f8d1fcb3fe13fff7"
+    },
+    {
+      "speciesId": "reshiram",
+      "name": "Reshiram",
+      "hash": "fffffff3f067e043ed2bd2c1d909ca1dc237e47bf007f00ff01ff00fff0fffff"
+    },
+    {
+      "speciesId": "zekrom",
+      "name": "Zekrom",
+      "hash": "ffffc3ffc33fe033f0c3f0c7f0c7f00fe003fc03ccc7fc4ff00ff30fff0fffff"
+    },
+    {
+      "speciesId": "landorus",
+      "name": "Landorus",
+      "hash": "fffffc9ff94fc033c03bcc0fce0fc4e3c08fc237e0ebe13be1c7f80ff81fffff"
+    },
+    {
+      "speciesId": "landorustherian",
+      "name": "Landorus-Therian",
+      "hash": "ff9fff0fff07f003ef23e1b3f053e017e847e90ff007f037e00fe00ffc7fffff"
+    },
+    {
+      "speciesId": "kyurem",
+      "name": "Kyurem",
+      "hash": "f7ffc3e7c3c3c0c3e283fa07e40fe02fd26fcc4fc007f407c023e1c7ffc7ffff"
+    },
+    {
+      "speciesId": "kyuremblack",
+      "name": "Kyurem-Black",
+      "hash": "ff3ffe3ff427e043f047f087ec8fe809eee1f283f003ec27c407c40ffc0ffebf"
+    },
+    {
+      "speciesId": "kyuremwhite",
+      "name": "Kyurem-White",
+      "hash": "fcfff0fff07fe07fe0ffc0ffc01fe001e1aec31dc932f0e1f003f01ff11fff1f"
+    },
+    {
+      "speciesId": "keldeo",
+      "name": "Keldeo",
+      "hash": "fffffffffffff87ff03fe01fe01ff01ff027f403f007f987f83ff83ff8bfffff"
+    },
+    {
+      "speciesId": "keldeoresolute",
+      "name": "Keldeo-Resolute",
+      "hash": "fffffffffffffe7ffc0fcc0fe00ff03ff033f00bf003fce3f81ff81ffcbfffff"
+    },
+    {
+      "speciesId": "meloetta",
+      "name": "Meloetta",
+      "hash": "fffffffffffffffffffffe1ffc0ffc0ffd0ffc0ffc1ffc3ffe1ffe1fff5fffff"
+    },
+    {
+      "speciesId": "chespin",
+      "name": "Chespin",
+      "hash": "ffffffffffffff3ffc3ffc0ffc0ff81ff81ff81ff81ffc0ffc0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "quilladin",
+      "name": "Quilladin",
+      "hash": "fffffffffffff3fff0eff80ff80ff81ff81ff01ff01ff007fc0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "chesnaught",
+      "name": "Chesnaught",
+      "hash": "fffffffffbfff9f7f807f017f00ff087f127f107e80fe207c407f887ff8fffff"
+    },
+    {
+      "speciesId": "fennekin",
+      "name": "Fennekin",
+      "hash": "fffffffffffffffffffff9fff93ff01ff03ff80ff80ff00ff81ffc3ffc7fffff"
+    },
+    {
+      "speciesId": "braixen",
+      "name": "Braixen",
+      "hash": "fffffffffffffdfff1bff00ff01ff80ff00ff00ff81ffc0ffc0ffc0fff7fffff"
+    },
+    {
+      "speciesId": "delphox",
+      "name": "Delphox",
+      "hash": "fffffffffffff3ffe11ff01ff00ff01fe11ff017f003fc07f807f80fff1fffff"
+    },
+    {
+      "speciesId": "froakie",
+      "name": "Froakie",
+      "hash": "fffffffffffffffffffffcfffc3ff81ff82ff80ff80ffc0ff81ff00ffd8fff9f"
+    },
+    {
+      "speciesId": "frogadier",
+      "name": "Frogadier",
+      "hash": "fffffffffffffffffdfffc3ff833f803f037f007f80ffc1ff81ff01ff00ffe3f"
+    },
+    {
+      "speciesId": "greninja",
+      "name": "Greninja",
+      "hash": "fffffffffffffffffd5ffc1ff813f803f807f80ff80bfc03fc13f80fe08fe1ff"
+    },
+    {
+      "speciesId": "fletchling",
+      "name": "Fletchling",
+      "hash": "ffffffffffffffffffffffffffffffcfffcffc0ff80ff80ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "fletchinder",
+      "name": "Fletchinder",
+      "hash": "ffffffffffffffffffcfffc7fc07f80ff80ff80ff00ff00ff81ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "talonflame",
+      "name": "Talonflame",
+      "hash": "fffffffffffffff1ffe1fcc1f8c1f041f007f00fe40ff80ff81ff81ffa1ffe7f"
+    },
+    {
+      "speciesId": "scatterbug",
+      "name": "Scatterbug",
+      "hash": "fffffffffffffffffe7ffe3ffe3ffc7ffc3ff83ff83ffc3ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "spewpa",
+      "name": "Spewpa",
+      "hash": "fffffffffffffffffffffffffc3ffc3ffc1ffc1ff81ff81ff89ff80ffc3fffff"
+    },
+    {
+      "speciesId": "vivillon",
+      "name": "Vivillon",
+      "hash": "fffffbffe13fe53ff833fc43fc47f803f003f007f807fe0ffc0ffd4fff7fffff"
+    },
+    {
+      "speciesId": "vivillonfancy",
+      "name": "Vivillon-Fancy",
+      "hash": "fffffbffe13fe53ff833fc43fc47f803f003f007f807fe0ffc0ffd4fff7fffff"
+    },
+    {
+      "speciesId": "vivillonpokeball",
+      "name": "Vivillon-Pokeball",
+      "hash": "fffffbffe13fe53ff833fc43fc47f803f003f007f807fe0ffc0ffd4fff7fffff"
+    },
+    {
+      "speciesId": "litleo",
+      "name": "Litleo",
+      "hash": "fffffffffffffffffdfff03ff007f007f04ff00ff81ffc0ff80ff80ffe7fffff"
+    },
+    {
+      "speciesId": "pyroar",
+      "name": "Pyroar",
+      "hash": "fffffffffae0e0c0e0ade42fe40fe08fe687e00ff047e20fe04ff07ffc7fffff"
+    },
+    {
+      "speciesId": "flabebe",
+      "name": "Flabébé",
+      "hash": "fffffffffffffffffffffdfffc3ffc0ffcdffc0ffc3ffc3ff81ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "floette",
+      "name": "Floette",
+      "hash": "ffffffffffffff3ffe1ffc0ffc0ffc0ff81ff03ff03ffc3ffc1ff89ff89fffff"
+    },
+    {
+      "speciesId": "florges",
+      "name": "Florges",
+      "hash": "fffffffff83ff00ff00ff30ff20fe00ff24bf003f047f887f80ffc1ffc3fff3f"
+    },
+    {
+      "speciesId": "skiddo",
+      "name": "Skiddo",
+      "hash": "fffffffffffffffffffffbfff87ff01ff01ff81ff00ff00ff80ffc5ffc7fffff"
+    },
+    {
+      "speciesId": "gogoat",
+      "name": "Gogoat",
+      "hash": "fffffffffffff9fff80ff007f00ff00ff00fe80ff00ff00ff80ff87ffe7fffff"
+    },
+    {
+      "speciesId": "espurr",
+      "name": "Espurr",
+      "hash": "fffffffffffffffffffffd7ff81ff80ff80ff80ff81ffc3ffc3ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "meowstic",
+      "name": "Meowstic",
+      "hash": "fffffffffffffbfff3fff0bff03ff23ff03ff00ff00ff007f807f847fccfffff"
+    },
+    {
+      "speciesId": "meowsticf",
+      "name": "Meowstic-F",
+      "hash": "fffffffffffffbfff1fff0bff01ff07ff23ff80ff007f80ff907f827fccfffff"
+    },
+    {
+      "speciesId": "inkay",
+      "name": "Inkay",
+      "hash": "ffffffffffffffffff7ffe3ffc1ffc1ffc1ff81ff80ff81ff01ff00ffe4fffff"
+    },
+    {
+      "speciesId": "malamar",
+      "name": "Malamar",
+      "hash": "fffffffffedffc1ff81ff82ff80ff00ff00ff00ff00ff00ff40ffc07fe07fff7"
+    },
+    {
+      "speciesId": "skrelp",
+      "name": "Skrelp",
+      "hash": "ffffffffffffffffff0ffa0ff01ff81ffc3ff83ff81ffc1ffc0ffc0ffe3fffff"
+    },
+    {
+      "speciesId": "dragalge",
+      "name": "Dragalge",
+      "hash": "fffffffffffff97ff83fe03fe03ff031f033e911e4b3e263f003f803fe27ffff"
+    },
+    {
+      "speciesId": "clauncher",
+      "name": "Clauncher",
+      "hash": "fffffffffffffffffffffffffe3ffc3ffc7ffc2ff007f007f00ff80ffc3ffc3f"
+    },
+    {
+      "speciesId": "clawitzer",
+      "name": "Clawitzer",
+      "hash": "fffffffffffffffffff7fd67f00ff004f381fa03f703fe83e01bec3ff87ff9ff"
+    },
+    {
+      "speciesId": "sylveon",
+      "name": "Sylveon",
+      "hash": "fffffffffffff0fff02ff00ff00ff00ff94ff00ff807f807f81ff89ffcffffff"
+    },
+    {
+      "speciesId": "hawlucha",
+      "name": "Hawlucha",
+      "hash": "fffffffffffffffffffffc7ffc7ff07fe03fe03fe01ff00ff007fc07ff1fffff"
+    },
+    {
+      "speciesId": "dedenne",
+      "name": "Dedenne",
+      "hash": "fffffffffffffffffffffffff9fff80ff80ff00fe00ff02ff00ff83ffe3fffff"
+    },
+    {
+      "speciesId": "carbink",
+      "name": "Carbink",
+      "hash": "fffffffffffffffffffffffffffffffff97ff81ffc1ff81ff81ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "goomy",
+      "name": "Goomy",
+      "hash": "fffffffffffffffffffffffffffffefffefffe3ffc3ffc3ffc3ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "sliggoo",
+      "name": "Sliggoo",
+      "hash": "fffffffffffffefffc3ffc3ffc3ff87ff83ff83ffc7ffc3ffc1ffc0ffc1fffff"
+    },
+    {
+      "speciesId": "sliggoohisui",
+      "name": "Sliggoo-Hisui",
+      "hash": "fffffffffffffefffc3ffc3ffc3ff87ff83ff83ffc1ff80ff80ff80ffc1fffff"
+    },
+    {
+      "speciesId": "goodra",
+      "name": "Goodra",
+      "hash": "fffffffffffff0fff07ff00ff10fe00ff0fff027f027f007f007fc0ffc3fff3f"
+    },
+    {
+      "speciesId": "goodrahisui",
+      "name": "Goodra-Hisui",
+      "hash": "fffffffffbcff887f123f683fe23f003f143f803f083fcc3fc07fc0ffc3fff3f"
+    },
+    {
+      "speciesId": "klefki",
+      "name": "Klefki",
+      "hash": "ffffffffffffff3fff3fff33f007c00fc0cfe00ff80ff00ff00ff00fff27ffef"
+    },
+    {
+      "speciesId": "phantump",
+      "name": "Phantump",
+      "hash": "ffffffffffffffffff7ff23fc00fe00fe00fe00ff00ff81ffc3ffc1ffc1fffff"
+    },
+    {
+      "speciesId": "trevenant",
+      "name": "Trevenant",
+      "hash": "fffffffffc3ff80ffc0ffc0ff01fe007f007f207f807f80ff80ff80ffc9fffff"
+    },
+    {
+      "speciesId": "bergmite",
+      "name": "Bergmite",
+      "hash": "ffffffffffffffffffffff7ffe7ff83ff81ff81ff01ff00ff80ff81ffe5fffff"
+    },
+    {
+      "speciesId": "avalugg",
+      "name": "Avalugg",
+      "hash": "ffffffffffcffc0ff00ff12ff483f003e093e047e60ff20ff00ff00ffc1fffff"
+    },
+    {
+      "speciesId": "avalugghisui",
+      "name": "Avalugg-Hisui",
+      "hash": "ffffffffffffff8ffe0ffc0ff807f003f443e603e617e01fe00fe00fe0ffffff"
+    },
+    {
+      "speciesId": "noibat",
+      "name": "Noibat",
+      "hash": "ffffffffffffff3ffe0ffc0ffc1ff01ff03ff03ff00ff00ffc0ffc3fffffffff"
+    },
+    {
+      "speciesId": "noivern",
+      "name": "Noivern",
+      "hash": "ffffffffff7ffe7ffc0fe41fe41fc03be07be073e807fd07f80ffc1fff3fffff"
+    },
+    {
+      "speciesId": "diancie",
+      "name": "Diancie",
+      "hash": "fffffffffffffffffc1ffc1ffc1ffc1ff81ff00ff007f007fc2ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "hoopa",
+      "name": "Hoopa",
+      "hash": "ffffffffffffffffff7ffe1ff01ff00ff00ff00ff00ff80ff00ff80fffdfffff"
+    },
+    {
+      "speciesId": "hoopaunbound",
+      "name": "Hoopa-Unbound",
+      "hash": "ffffff9ff70ff20fc81fff8c990af025f205f10bf00ff80ff80ff81ffc1fff9f"
+    },
+    {
+      "speciesId": "volcanion",
+      "name": "Volcanion",
+      "hash": "fffffcfffc1ff81ff01ff00ff00ff007f80ff00fe00fe20fc007f00ff31fff1f"
+    },
+    {
+      "speciesId": "rowlet",
+      "name": "Rowlet",
+      "hash": "fffffffffffffffffe3ffc1ff80ffa4ff84ff88ff80ffc0ffc1fff3fffffffff"
+    },
+    {
+      "speciesId": "dartrix",
+      "name": "Dartrix",
+      "hash": "fffffffffffffc3ff83ff81ffc1ff80ff90ff82ff80ffc1ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "decidueye",
+      "name": "Decidueye",
+      "hash": "ffffffffff3ffe3ffc3ff83ff03ff03ff81ff01ff80ff81ff01ff80ffc0fff0f"
+    },
+    {
+      "speciesId": "decidueyehisui",
+      "name": "Decidueye-Hisui",
+      "hash": "fffffffffe7ffc7ff81ff00ff01ff81ff81ffc1ff80ff007fc0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "litten",
+      "name": "Litten",
+      "hash": "fffffffffffffffff9fff87ff827f823f007e00ff00ffc0ffc0ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "torracat",
+      "name": "Torracat",
+      "hash": "fffffffffafff87ff847f847f027e00ff00fe00ff80ffc0ffc0ffc0ffc7fffff"
+    },
+    {
+      "speciesId": "incineroar",
+      "name": "Incineroar",
+      "hash": "fffffffffefffc3ff02ff00ff007f00ff00ff00ff00ff807fc07fc0fff3fffff"
+    },
+    {
+      "speciesId": "popplio",
+      "name": "Popplio",
+      "hash": "ffffffffffffffffff3ffc1ff81ffc0ffd0ffe0ffc0ffc0ffc0ffc0ffe3fffff"
+    },
+    {
+      "speciesId": "brionne",
+      "name": "Brionne",
+      "hash": "fffffffffffffc5ffc0ffc0ff81ff03ff83ff83ffc1ffe0ffc03f803f81ffe7f"
+    },
+    {
+      "speciesId": "primarina",
+      "name": "Primarina",
+      "hash": "ffffff7ffe3bfc13f893f803ff03f003f797e007e10fe00ff407f00ff83ffe7f"
+    },
+    {
+      "speciesId": "pikipek",
+      "name": "Pikipek",
+      "hash": "ffffffffffffff7fff3fff3ffc1ffc1ffc1ffc0ffc0ff80ffa1ffe3fff3fffff"
+    },
+    {
+      "speciesId": "trumbeak",
+      "name": "Trumbeak",
+      "hash": "ffffffffffffffbffe3ffc1ffc1ffc3ffc3ff83ff04ff40ffc1ffe3ffe3fffff"
+    },
+    {
+      "speciesId": "toucannon",
+      "name": "Toucannon",
+      "hash": "fffffffffffffffffc3ff83ff03ff03ff03fe11fe40ff60ffe07fc07ff3fffff"
+    },
+    {
+      "speciesId": "yungoos",
+      "name": "Yungoos",
+      "hash": "fffffffffffffffffffffff7fdf3f083f603f247f40ff00ff80ffc3fffffffff"
+    },
+    {
+      "speciesId": "gumshoos",
+      "name": "Gumshoos",
+      "hash": "fffffffffcfff87ff83ff03ff83ff83ffc3ffc1ffc2ffc07f80ff81fff3fffff"
+    },
+    {
+      "speciesId": "grubbin",
+      "name": "Grubbin",
+      "hash": "ffffffffffffffffffffffffff3ffe1ffc0ffc0ff80ff80ffa1ffebfffffffff"
+    },
+    {
+      "speciesId": "charjabug",
+      "name": "Charjabug",
+      "hash": "ffffffffffffffffff3ffe0ffc0ff80ff80ff80ff80ff80ff81ffa3fff7fffff"
+    },
+    {
+      "speciesId": "vikavolt",
+      "name": "Vikavolt",
+      "hash": "fffffffffffffefffc3ffc0ffc0ff00ff807f807f807f03ff0bff1fff3ffffff"
+    },
+    {
+      "speciesId": "crabrawler",
+      "name": "Crabrawler",
+      "hash": "fffffffffffffdfffdfffcfffc7ffc3ffc3ff81ff80ff807f007fa0fffdfffff"
+    },
+    {
+      "speciesId": "crabominable",
+      "name": "Crabominable",
+      "hash": "fffffffffe7ffe0fff1ffe3ffc1ff40feaefd82fc1e3c007c021f801ffcfffff"
+    },
+    {
+      "speciesId": "oricorio",
+      "name": "Oricorio",
+      "hash": "ffffffffffffffffff7ffc3ffc3ff83ff83ff81ffc0ffc0ffc0ffe0fff3fffff"
+    },
+    {
+      "speciesId": "oricoriopompom",
+      "name": "Oricorio-Pom-Pom",
+      "hash": "fffffffffffffffffcbffc1ffc1ff03ff01ff00ff00ff80ffc1ffe3fff3fffff"
+    },
+    {
+      "speciesId": "oricoriopau",
+      "name": "Oricorio-Pa'u",
+      "hash": "fffffffffffffe7ffc3ffc3ffc3ffc3ffc2ffc07fc07fc0ffc0ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "oricoriosensu",
+      "name": "Oricorio-Sensu",
+      "hash": "fffffffffffffe3ffc3ffc1ffc1ffc1ffc3ff81ff80ffc0ffe0ffc0fff3fffff"
+    },
+    {
+      "speciesId": "cutiefly",
+      "name": "Cutiefly",
+      "hash": "fffffffffffffefffe4ffe17fc0ff81ff83ffc1ffc3ffc3ffc3fff7fffffffff"
+    },
+    {
+      "speciesId": "ribombee",
+      "name": "Ribombee",
+      "hash": "fffffffffffffe7ffc7ffc07f817f807fa27f80ffc1ff80ffa3ffe7fff7fffff"
+    },
+    {
+      "speciesId": "rockruff",
+      "name": "Rockruff",
+      "hash": "ffffffffffffffdff98ff00ff00ff80ff80ff00ff81ffc0ffc0ffc1fff3fffff"
+    },
+    {
+      "speciesId": "lycanroc",
+      "name": "Lycanroc",
+      "hash": "fffffffffffffbbff807f897f043f40be023f307f007fc0ffc0ffc0ffc3fff7f"
+    },
+    {
+      "speciesId": "lycanrocmidnight",
+      "name": "Lycanroc-Midnight",
+      "hash": "fffffffffcfffc3ff01ff00ff00ff00ff00ff00ff01ffc0ffc0ffc07fe2fffff"
+    },
+    {
+      "speciesId": "lycanrocdusk",
+      "name": "Lycanroc-Dusk",
+      "hash": "fffffffffcfff83ff807f097f043f40be023f607f007fc0ffc0ffc0ffc3fff7f"
+    },
+    {
+      "speciesId": "mareanie",
+      "name": "Mareanie",
+      "hash": "fffffffffffffffffc3ffc3ff81ff80ff84ff807f007f007f00ffc1fff7fffff"
+    },
+    {
+      "speciesId": "toxapex",
+      "name": "Toxapex",
+      "hash": "fffffffffffff9bff10ff00ff81ff03ff81ff00ff00ff003e007e207ff0fff3f"
+    },
+    {
+      "speciesId": "mudbray",
+      "name": "Mudbray",
+      "hash": "fffffffffffff07ff87ff87ff07ff06ff04ff007f80ffe0ffc07fc0ffe3fffff"
+    },
+    {
+      "speciesId": "mudsdale",
+      "name": "Mudsdale",
+      "hash": "fffffffff7fff07ff03ff03ff01ff00ff007f007fc17fc4ff80ff85ffc7fffff"
+    },
+    {
+      "speciesId": "dewpider",
+      "name": "Dewpider",
+      "hash": "fffffffffffffffffe7ffc3ffc1ff81ff81ffc1ffc3ffc3ffc1ffd1fff9fffff"
+    },
+    {
+      "speciesId": "araquanid",
+      "name": "Araquanid",
+      "hash": "ffffffffffffffffff7ffc2ffc07f807fc07f807f083f00ff02ff86fffffffff"
+    },
+    {
+      "speciesId": "fomantis",
+      "name": "Fomantis",
+      "hash": "ffffffffffffffffff3ffe3ffc1ffc0ffc0ffc1ffc1ffc1ffc0ffc1fffbfffff"
+    },
+    {
+      "speciesId": "lurantis",
+      "name": "Lurantis",
+      "hash": "fffffffffffffebffc3ffc3ff80ff00ff00ff80ff81ff00ff00ff83ffc3fffff"
+    },
+    {
+      "speciesId": "salandit",
+      "name": "Salandit",
+      "hash": "fffffffffffffffffffffe7ff80ff00ff04ff00ff80ff00ff00ffe0fff7fffff"
+    },
+    {
+      "speciesId": "salazzle",
+      "name": "Salazzle",
+      "hash": "fffffffffffffe7ffc3ffc3ff83ff03ffa7ffc13fc03fc07f80ffc1fff3fffff"
+    },
+    {
+      "speciesId": "bounsweet",
+      "name": "Bounsweet",
+      "hash": "ffffffffffffffffff7ffe3ffc3ff80ffc0ffc0ffc0ffc1ffc1ffc3fff7fffff"
+    },
+    {
+      "speciesId": "steenee",
+      "name": "Steenee",
+      "hash": "ffffffffff7ffe3ffc3ff81ff80ff80ff90ffc0ffc0ffc0ffc3ffe7fff7fffff"
+    },
+    {
+      "speciesId": "tsareena",
+      "name": "Tsareena",
+      "hash": "fffffffffe7ffe3ffc1ff80ffc0ffc0ffc0ff80ff007f807fc27fc3ffe7fffff"
+    },
+    {
+      "speciesId": "comfey",
+      "name": "Comfey",
+      "hash": "ffdff987f907f803f823f033f033f053f0a3f063f063f047f087f00ff80ffc1f"
+    },
+    {
+      "speciesId": "oranguru",
+      "name": "Oranguru",
+      "hash": "fffffffffffffffffe3ffc4fe407c027e0abe06bf043e1c7f007fc07ff8fffff"
+    },
+    {
+      "speciesId": "passimian",
+      "name": "Passimian",
+      "hash": "fffffffffd73fc63fc43f00ff02ff00ff80ff80ff82ff02ff83ff8fff8fffcff"
+    },
+    {
+      "speciesId": "sandygast",
+      "name": "Sandygast",
+      "hash": "ffffffffffffff7fff3fff3ffe3ffc3ffc3ff01ff01fe00ff007f007fe0fffff"
+    },
+    {
+      "speciesId": "palossand",
+      "name": "Palossand",
+      "hash": "ffffffffff7fff3fff3ffe3ff01ff00ff14ff207f087f44ff007f807fe0fffff"
+    },
+    {
+      "speciesId": "minior",
+      "name": "Minior",
+      "hash": "ffffffffffffffffff7ffe3ff83ff81ff80ff00ff01ff81ffc3ffe3fffffffff"
+    },
+    {
+      "speciesId": "komala",
+      "name": "Komala",
+      "hash": "fffffffffffffefffe7ffc0ffc07f007f007f00ff80ff81ffc0ffc1fffffffff"
+    },
+    {
+      "speciesId": "mimikyu",
+      "name": "Mimikyu",
+      "hash": "fffffffffffffefffe7ffc7ffc5ffc0ffc1ffc0ffc0ffc1ff81ffc3ffc7fffff"
+    },
+    {
+      "speciesId": "bruxish",
+      "name": "Bruxish",
+      "hash": "fffffffffffffffffe7ffc6ffc07fc07fc07fc0ff80ff00ff03ff03ff9ffffff"
+    },
+    {
+      "speciesId": "jangmoo",
+      "name": "Jangmo-o",
+      "hash": "fffffffffffff0fff0fff047f047f04ff14ff00ff81ffc1ffc0ffc1ffe7fffff"
+    },
+    {
+      "speciesId": "hakamoo",
+      "name": "Hakamo-o",
+      "hash": "fffffffffcfffc7ff87ff80ffc4ff80ff80ff80ffc0ff00ff01ff01fff1fff3f"
+    },
+    {
+      "speciesId": "kommoo",
+      "name": "Kommo-o",
+      "hash": "fffffffffcfff8c1fa63f003f023fc23f037f007f047f08fe00fe00ff40fff3f"
+    },
+    {
+      "speciesId": "cosmog",
+      "name": "Cosmog",
+      "hash": "fffffffffffffbfff1fff17ff027fc03f803f807f81ff81ffc3ffe7fffffffff"
+    },
+    {
+      "speciesId": "cosmoem",
+      "name": "Cosmoem",
+      "hash": "fffffffffffffffffc7ff83ff00ff00ff00ff00ff807f807f80ffe1fffffffff"
+    },
+    {
+      "speciesId": "solgaleo",
+      "name": "Solgaleo",
+      "hash": "ffffffbff837f0b3f187e26be01be033e0e7e8c7f017f007f807f807fd3fff3f"
+    },
+    {
+      "speciesId": "lunala",
+      "name": "Lunala",
+      "hash": "ffffe7ffe3cfc7c7e7d7e5bfe233e073e393f213f003fc83fc07fc0ffc1fff3f"
+    },
+    {
+      "speciesId": "necrozma",
+      "name": "Necrozma",
+      "hash": "ff7fff1ffe0fec0fe40fe40ff80ff013f217f203e04fe507f403ff03ffe3ffe7"
+    },
+    {
+      "speciesId": "necrozmaduskmane",
+      "name": "Necrozma-Dusk-Mane",
+      "hash": "fdffe877e063c041cc91ccc7c187d0cfc1cf839fc01fe02ff01fe01ff07ffcff"
+    },
+    {
+      "speciesId": "necrozmadawnwings",
+      "name": "Necrozma-Dawn-Wings",
+      "hash": "f7ffc3ffc3cfc5c3f873c037c03be23be013f033f813f467c00fc20fe43ffe3f"
+    },
+    {
+      "speciesId": "magearna",
+      "name": "Magearna",
+      "hash": "fffffefffc5ffc0ffc0ffc1ff81ffc1ffc1ff03ff01ff81ff81ffc1ffc3fff7f"
+    },
+    {
+      "speciesId": "magearnaoriginal",
+      "name": "Magearna-Original",
+      "hash": "fffffefffc5ffc0ffc0ffc1ff81ffc1ffc1ff03ff01ff81ff81ffc1ffc3fff7f"
+    },
+    {
+      "speciesId": "grookey",
+      "name": "Grookey",
+      "hash": "fffffffffebffc3ffc3ffc3ff83ff01ff01ff81ff80ffc0ffc0ffc0fff7fffff"
+    },
+    {
+      "speciesId": "thwackey",
+      "name": "Thwackey",
+      "hash": "fffffffffcbffc3ffc3ff00ff00ff00ff03ff03ff01ff00ff007f007ffbfffff"
+    },
+    {
+      "speciesId": "rillaboom",
+      "name": "Rillaboom",
+      "hash": "fffffffffcbffc1ff80ff00ff00ff00ff80ff00ff00fe027e003f883ff9fffff"
+    },
+    {
+      "speciesId": "scorbunny",
+      "name": "Scorbunny",
+      "hash": "fffffffffe4ffc0ffc0ffe0ffe1ffc1ffc1ffc0ffe0ff80ff80ffc1fff1fffff"
+    },
+    {
+      "speciesId": "raboot",
+      "name": "Raboot",
+      "hash": "fffffffffefffe3ffc1ffc1ff80ff80ff00ff007f027fc1ffc1ffc1fff9fffff"
+    },
+    {
+      "speciesId": "cinderace",
+      "name": "Cinderace",
+      "hash": "fffffedffc5ffc0ffc0ffc1ff80ff81ffc1ffe3ffc1ffc1ffc1ffc1ffc9fff9f"
+    },
+    {
+      "speciesId": "sobble",
+      "name": "Sobble",
+      "hash": "ffffffffff7ffe3ffc7ffc7ff00ff00ff107f007f00ff80ff80ff81fff3fffff"
+    },
+    {
+      "speciesId": "drizzile",
+      "name": "Drizzile",
+      "hash": "fffffffff3fff0fff07ff02fe007e047fa07f007f00ff107f80ff91fff9fffff"
+    },
+    {
+      "speciesId": "inteleon",
+      "name": "Inteleon",
+      "hash": "fffffdfff8fff8fff0fff07ff07ff05ff0cff4c7f807f00ff00ff03ff27ffe7f"
+    },
+    {
+      "speciesId": "skwovet",
+      "name": "Skwovet",
+      "hash": "ffffffffffffff1ffd8ff807f807f807f00ff00ff01ff01ff83ffcffffffffff"
+    },
+    {
+      "speciesId": "greedent",
+      "name": "Greedent",
+      "hash": "fffffffffdbff807fa77f047f007f007f047f00ff10ff00ff00ff03ffeffffff"
+    },
+    {
+      "speciesId": "rookidee",
+      "name": "Rookidee",
+      "hash": "fffffffffffffffff86ff80ff00ff00ff81ff01ff83ffc3ffeffffffffffffff"
+    },
+    {
+      "speciesId": "corvisquire",
+      "name": "Corvisquire",
+      "hash": "fffffffffffffdfff07ff047f00ff00ff00ff00ff00ffc1ffc3fff7fffffffff"
+    },
+    {
+      "speciesId": "corviknight",
+      "name": "Corviknight",
+      "hash": "fffffffff9fff0f3f063f863f403e007e007e00ff80ffc1ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "chewtle",
+      "name": "Chewtle",
+      "hash": "fffffffffffffe7ffc3ffc3ff81ff81ff81ff81ffc1ffc1ffc0ffc0fffbfffff"
+    },
+    {
+      "speciesId": "drednaw",
+      "name": "Drednaw",
+      "hash": "ffffffffff7fbe7fcc3fd00fd60fc807d547de23fc01fa03e003e233fe3fffff"
+    },
+    {
+      "speciesId": "rolycoly",
+      "name": "Rolycoly",
+      "hash": "fffffffffffffffffc1ff81ff80ff00ff00ff00ff80ff81ffe1fffffffffffff"
+    },
+    {
+      "speciesId": "carkol",
+      "name": "Carkol",
+      "hash": "fffffffffe3ffe3ffc1ff80ff80ff00ff00ff00ff00ff00ff80ff80fffbfffff"
+    },
+    {
+      "speciesId": "coalossal",
+      "name": "Coalossal",
+      "hash": "fffffffffe7ffe0ffc0ff00ff00ff00ffa0ff00ff007f007f803f803fc9fffff"
+    },
+    {
+      "speciesId": "applin",
+      "name": "Applin",
+      "hash": "fffffffffffffffffc3ffc3ffc3ffc3ffc3ff83ff80ffc0ffc3fffffffffffff"
+    },
+    {
+      "speciesId": "flapple",
+      "name": "Flapple",
+      "hash": "fffffffff9fff8efe0d7f083f247e00fe00fe01fe03ff01ffc1ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "appletun",
+      "name": "Appletun",
+      "hash": "ffffffffff5fff1fff0ffc07fc07fc03fc03fc47f007f007e007e00fe03fffff"
+    },
+    {
+      "speciesId": "silicobra",
+      "name": "Silicobra",
+      "hash": "fffffffffffffe3ffc1ff81ff00ff00ff81ffc1ffe1ffc0ffc0fff1fffffffff"
+    },
+    {
+      "speciesId": "sandaconda",
+      "name": "Sandaconda",
+      "hash": "fffffffffffffcfff03ff01fe00fe00ff02ff417f007f01ff03ffcffffffffff"
+    },
+    {
+      "speciesId": "cramorant",
+      "name": "Cramorant",
+      "hash": "fffffe5ff00fe00fe03ffc3ff83ff00ff00ff00ff607f007f417fc3ffc3fffff"
+    },
+    {
+      "speciesId": "arrokuda",
+      "name": "Arrokuda",
+      "hash": "fffffffffffffffffff7ff87fc07f807f003f017f01ff87fff7fffffffffffff"
+    },
+    {
+      "speciesId": "barraskewda",
+      "name": "Barraskewda",
+      "hash": "fffffffffffffffffd0ff80ff803f003f003e023e03bf4bffdffffffffffffff"
+    },
+    {
+      "speciesId": "toxel",
+      "name": "Toxel",
+      "hash": "fffffffffffff8bff83ff83ff03ff81ff83ff80ff80ff81ff83ffc3fffffffff"
+    },
+    {
+      "speciesId": "toxtricity",
+      "name": "Toxtricity",
+      "hash": "fffffffffefffc3ff81ff83ff81ff81ffc1ffc3ffc1ff81ff80ffc0ffc1fffff"
+    },
+    {
+      "speciesId": "toxtricitylowkey",
+      "name": "Toxtricity-Low-Key",
+      "hash": "fffffffffdbffc1ffc1ffc0ffc1ffc1ffe3ffe3ffc1ff80ff80ffc1fff9fffff"
+    },
+    {
+      "speciesId": "sinistea",
+      "name": "Sinistea",
+      "hash": "fffffffffffffffffc3ff80ff80ff80ff80ffc0ffc1ffe3fffffffffffffffff"
+    },
+    {
+      "speciesId": "polteageist",
+      "name": "Polteageist",
+      "hash": "fffffffffefffc3ff83ff83ffc3ffc0ff807f007f407f80ff81ffc1ffe1fffff"
+    },
+    {
+      "speciesId": "hatenna",
+      "name": "Hatenna",
+      "hash": "ffffffffff7ffe3ffe3fff3ffe3ffc3ff81ff81ff01ff81ff00ff80ffeffffff"
+    },
+    {
+      "speciesId": "hattrem",
+      "name": "Hattrem",
+      "hash": "ffffffffffbffe0ffc1ff03ff01ff01ff01ff01ff01ff00ff007fc8fffffffff"
+    },
+    {
+      "speciesId": "hatterene",
+      "name": "Hatterene",
+      "hash": "fffffffff93ff01ff01ff00ff00ff007f007f007f10ff80ff80ff80ffc3fffff"
+    },
+    {
+      "speciesId": "impidimp",
+      "name": "Impidimp",
+      "hash": "fffffffffffff81ff80ff80ff80ff80ff81ffc3ffc3ffc1ffc3fff3fffffffff"
+    },
+    {
+      "speciesId": "morgrem",
+      "name": "Morgrem",
+      "hash": "fffffffffbfff07ff01ff01ff01ff01ff01ff01ff81ff007f80ffc3fff7fffff"
+    },
+    {
+      "speciesId": "grimmsnarl",
+      "name": "Grimmsnarl",
+      "hash": "fffffbfffa4ff80ff817f807f807f807f907f007f007f80ffc8ffc8ffc8fffff"
+    },
+    {
+      "speciesId": "perrserker",
+      "name": "Perrserker",
+      "hash": "fffffffff3fff80ff00ff80ff00ff00ff00ff00ff00ff80ff81ff99fff9fffff"
+    },
+    {
+      "speciesId": "milcery",
+      "name": "Milcery",
+      "hash": "ffffffffffffffffffcffd0ffc3ffc1ffc1ff80ff81ff81ffc1fffffffffffff"
+    },
+    {
+      "speciesId": "alcremie",
+      "name": "Alcremie",
+      "hash": "fffffffffffffe3ffe3ff81ff01ff00ff80ff00ff00ff81ffc3ff81ffc3fffff"
+    },
+    {
+      "speciesId": "falinks",
+      "name": "Falinks",
+      "hash": "fffffffff7dff00ff007f02be1abe19bc473cac3e247e40ff01ff07ffcffffff"
+    },
+    {
+      "speciesId": "pincurchin",
+      "name": "Pincurchin",
+      "hash": "ffffffffffffffffff7fff5ffc1ff00ff81ff80ff80ff80ffc0fffffffffffff"
+    },
+    {
+      "speciesId": "snom",
+      "name": "Snom",
+      "hash": "fffffffffffffffffebffc1ffc0ffc0ff80ff80ff81ffc3fffffffffffffffff"
+    },
+    {
+      "speciesId": "frosmoth",
+      "name": "Frosmoth",
+      "hash": "fffffffffbfff3bff33fe00ff203f003f007f00ff81ffc3ffc3ffdbfffffffff"
+    },
+    {
+      "speciesId": "stonjourner",
+      "name": "Stonjourner",
+      "hash": "fffff7ffe3ffe23ff033f203f283f887f807f80ff01ff01ff00ff90fff1fffff"
+    },
+    {
+      "speciesId": "eiscue",
+      "name": "Eiscue",
+      "hash": "ffffffbfff3ffc1ff80ff80ff80ff80ff80ff80ffc1ffc1ffc0ffe1ffc1fffbf"
+    },
+    {
+      "speciesId": "indeedee",
+      "name": "Indeedee",
+      "hash": "fffffffffc9ff84ff00ff00ff80ff80ff81ffc1ffc0ffc1ffc3ffe3fff7fffff"
+    },
+    {
+      "speciesId": "indeedeef",
+      "name": "Indeedee-F",
+      "hash": "fffffffffcfff80ff00ff007f087f04ff80ffc3ff83ff81ffc3ffe3fff7fffff"
+    },
+    {
+      "speciesId": "morpeko",
+      "name": "Morpeko",
+      "hash": "fffffffffffffe7ffc4ffc0ff80ff80ff81ff81ff81ffc1ffc1fff3fffffffff"
+    },
+    {
+      "speciesId": "cufant",
+      "name": "Cufant",
+      "hash": "fffffffffe7ffc3ffc07fc03f407f007e007e107fd07fc07fc0fff1fffffffff"
+    },
+    {
+      "speciesId": "copperajah",
+      "name": "Copperajah",
+      "hash": "fffffffffc3ff80ff807fc23f803f807f007f087f007fc27e027f03ffbffffff"
+    },
+    {
+      "speciesId": "duraludon",
+      "name": "Duraludon",
+      "hash": "fffffffffe7ffc3ffc3ff83ff81ff81ffc1ff80ff007f00ff00ff00ff18fffff"
+    },
+    {
+      "speciesId": "dreepy",
+      "name": "Dreepy",
+      "hash": "fffffffffffffffff0fff01ff01ff007e007f007fc0ffc1ffc7fffffffffffff"
+    },
+    {
+      "speciesId": "drakloak",
+      "name": "Drakloak",
+      "hash": "fffffffff2bfe00fe00fe00ff01ff82ffc27fc03fc07fc0ffe1ffebfffbfffff"
+    },
+    {
+      "speciesId": "dragapult",
+      "name": "Dragapult",
+      "hash": "fffff9fff18fc183e003f00fc89fcc5fdd0fc80fcc0fc20fc00fe03ff07fffff"
+    },
+    {
+      "speciesId": "zacian",
+      "name": "Zacian",
+      "hash": "fffffffff7ffe5ffe1ffe803e243e047c80fe087f227e34fc8dffcfffdffffff"
+    },
+    {
+      "speciesId": "zamazenta",
+      "name": "Zamazenta",
+      "hash": "ffffff7ffc7ffc3ff87ff40ff007e007f407f007f027f88ff00ff20ffe3fff7f"
+    },
+    {
+      "speciesId": "eternatus",
+      "name": "Eternatus",
+      "hash": "ffffff3ff03ff001e063c0cdcc57d8d3f047c40bfc83c11fc21fc60fff1fff3f"
+    },
+    {
+      "speciesId": "kubfu",
+      "name": "Kubfu",
+      "hash": "fffffffffffffefff87ff03ff21ffb1ff01ff00ff80ff80ff83ff83ffc3fffff"
+    },
+    {
+      "speciesId": "urshifu",
+      "name": "Urshifu",
+      "hash": "fffffffffffffa3ff83ff827f003f007e81fe01fe00ff00ff80ff81fff3fffff"
+    },
+    {
+      "speciesId": "zarude",
+      "name": "Zarude",
+      "hash": "ffffffffcf7fc85fe05fe01fe01ff80fec43e1a1c3efcc07c003c003f917ffff"
+    },
+    {
+      "speciesId": "zarudedada",
+      "name": "Zarude-Dada",
+      "hash": "ffffffffcf7fc85fe01fc09fe09fe80bec43e0a1c3efcc07c003c003f917ffff"
+    },
+    {
+      "speciesId": "regieleki",
+      "name": "Regieleki",
+      "hash": "ffffffffecffe027e20ff00ff00ff00ff817e827e817c42bc433fe3fff7fffff"
+    },
+    {
+      "speciesId": "regidrago",
+      "name": "Regidrago",
+      "hash": "fffffdfffcbffc3ff93ff87ff00ff00ff03fe20fe20fe007e003e403fc23ffff"
+    },
+    {
+      "speciesId": "glastrier",
+      "name": "Glastrier",
+      "hash": "fffffffff9fff87ff07ff04fe007e047f0e7e187f00ffc0ffc4ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "spectrier",
+      "name": "Spectrier",
+      "hash": "fffffffff1fff1fff8efe01fe00ff003e007f007f047fc4ffc7ffc7fff7fffff"
+    },
+    {
+      "speciesId": "calyrex",
+      "name": "Calyrex",
+      "hash": "fffffffffe3ffc1ff00ff80ff80ffc1ffd3ffc1ffc0ffc0ffe1fff3fffffffff"
+    },
+    {
+      "speciesId": "calyrexice",
+      "name": "Calyrex-Ice",
+      "hash": "fffffe3ffc0ffc0ff81ff03ff01ff40fec07e887e8a7e187f40ffc0ffc7ffc3f"
+    },
+    {
+      "speciesId": "calyrexshadow",
+      "name": "Calyrex-Shadow",
+      "hash": "ff3ffc0ffc0ffc0ffa3ff03ff81fe00fe84ffc07e807f017f047fc4ffc7ffd7f"
+    },
+    {
+      "speciesId": "wyrdeer",
+      "name": "Wyrdeer",
+      "hash": "fffff33fe23fe21ff01ff03ff01ff00ff08ff00ff81ff80ff80ffc0ffe7fffff"
+    },
+    {
+      "speciesId": "kleavor",
+      "name": "Kleavor",
+      "hash": "ffffffffff7ffe2ffc0ffc07fc07f807fc07f40fe00fe00fe007f00ffc0fffff"
+    },
+    {
+      "speciesId": "ursaluna",
+      "name": "Ursaluna",
+      "hash": "fffffffffc7ff83ff03ff313f083e803fc07f807dc07f003f003f207ff1fffff"
+    },
+    {
+      "speciesId": "ursalunabloodmoon",
+      "name": "Ursaluna-Bloodmoon",
+      "hash": "fffffe6ffc07f803f823f337f013f003e793c303c80ffc0bfc03fc07fcc7ffc7"
+    },
+    {
+      "speciesId": "basculegion",
+      "name": "Basculegion",
+      "hash": "fffffffffdfffc7fff11fe13f003f007c01fc1a7e01fe07fe00fe19fedffffff"
+    },
+    {
+      "speciesId": "basculegionf",
+      "name": "Basculegion-F",
+      "hash": "fffffffffdfffc7fff11fa07f003c037c437c1a7c117e03fe00ff39fffffffff"
+    },
+    {
+      "speciesId": "sneasler",
+      "name": "Sneasler",
+      "hash": "fffffd8ffc0ff807f827f80ff80ff80ff83ff21ff01ff00ffc1ff83fff3fffff"
+    },
+    {
+      "speciesId": "overqwil",
+      "name": "Overqwil",
+      "hash": "fffffffffeffecfff4c7f013f80bf00bf003e007f01ff19ff00ff00ffc3fffff"
+    },
+    {
+      "speciesId": "enamorus",
+      "name": "Enamorus",
+      "hash": "fcfffc1ffc1ffc1ffc0ff80ff80ff80ffc1ff83ff81bf003f413f307f00ff81f"
+    },
+    {
+      "speciesId": "enamorustherian",
+      "name": "Enamorus-Therian",
+      "hash": "ffffffffe5c7c0c7e0c7f1cfe90fc105d005b8a9c4fbf991f001f30dff1fffff"
+    },
+    {
+      "speciesId": "sprigatito",
+      "name": "Sprigatito",
+      "hash": "fffffffffffffdfff83ff81ff81ff03ff01ff00ff00ffc0ffc07fc0ffc1fffff"
+    },
+    {
+      "speciesId": "floragato",
+      "name": "Floragato",
+      "hash": "fffffffffffffdfffc9ffc1ff83ff81ff81ff81ff81ff83ff81ffc1fff3fffff"
+    },
+    {
+      "speciesId": "meowscarada",
+      "name": "Meowscarada",
+      "hash": "fffffdfffd9ff91ff83ff83ff80ff00ff00ff01ff80ff00ff00ff80fff0fffff"
+    },
+    {
+      "speciesId": "fuecoco",
+      "name": "Fuecoco",
+      "hash": "fffffffffcfffc7ffc7ffc7ff83ff03ff03ff03ff81ff80ff80ffc0ffc1fffff"
+    },
+    {
+      "speciesId": "crocalor",
+      "name": "Crocalor",
+      "hash": "fffffffffffffffffcfff83ff01ff01ff817f007f607f007f80ff80ff81fffff"
+    },
+    {
+      "speciesId": "skeledirge",
+      "name": "Skeledirge",
+      "hash": "ffffffffffffffcffbcff0c3f003e003e38bf403fe03d843c007e00ff18fffff"
+    },
+    {
+      "speciesId": "quaxly",
+      "name": "Quaxly",
+      "hash": "fffffffffffffc3ff81ff80ff80ff81ff81ff81ff83ffc0ffc0ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "quaxwell",
+      "name": "Quaxwell",
+      "hash": "fffffffffffffc3ff83ff81ff81ff81ffc0ff81ffc1ff01ff00ffc1ffc1fffff"
+    },
+    {
+      "speciesId": "quaquaval",
+      "name": "Quaquaval",
+      "hash": "fffffffffc5ff80ff01ff01ff01ff80ff847fc0ff007f027f007fc0fff8fffff"
+    },
+    {
+      "speciesId": "lechonk",
+      "name": "Lechonk",
+      "hash": "fffffffffffffffffffffffffffffe0ff80ff01ff00ff80ff80ffc1ffc1fffff"
+    },
+    {
+      "speciesId": "oinkologne",
+      "name": "Oinkologne",
+      "hash": "fffffffffffffffffffff87ff00fe007e20bf307f00ff00ff80ffc0fff3fffff"
+    },
+    {
+      "speciesId": "oinkolognef",
+      "name": "Oinkologne-F",
+      "hash": "ffffffffffffffffffcffcc7f047e007e407e08ff10ff00ff00ffc0fff3fffff"
+    },
+    {
+      "speciesId": "tarountula",
+      "name": "Tarountula",
+      "hash": "ffffffffffffffbfff3ffc3ffc1ff80ff80ff00ff807f00ff00ff81fffbfffff"
+    },
+    {
+      "speciesId": "spidops",
+      "name": "Spidops",
+      "hash": "fffffffffcfff83ff03ff03ff81ff80ff80ff00ff007f10ff10ff1c7ffc7ffff"
+    },
+    {
+      "speciesId": "nymble",
+      "name": "Nymble",
+      "hash": "fffffffffffffffffffffefffc3ff81ff80ff00ff80ff80ff80ff92fff3fffff"
+    },
+    {
+      "speciesId": "lokix",
+      "name": "Lokix",
+      "hash": "fffffd7ff86ff807f807f807f807f807f00ff00ff00ff00ff80ff93fff3fffff"
+    },
+    {
+      "speciesId": "pawmi",
+      "name": "Pawmi",
+      "hash": "fffffffffffffffffffffdfff81ff81ffc1ff81ff80ffc0ff81ff81fff1fffff"
+    },
+    {
+      "speciesId": "pawmo",
+      "name": "Pawmo",
+      "hash": "fffffffffffffffffffff97ff81ff81ffc1ff81ff82ff80ff80ff81fff1fffff"
+    },
+    {
+      "speciesId": "pawmot",
+      "name": "Pawmot",
+      "hash": "fffffffffdfffc3ff80ff80ff80ff81ff82ff80ff80ff00ff00ffc1fff3fffff"
+    },
+    {
+      "speciesId": "tandemaus",
+      "name": "Tandemaus",
+      "hash": "ffffffffffffe3ffe03fc157cc0bee2bee7fe073f013f807ff83ffcfffffffff"
+    },
+    {
+      "speciesId": "maushold",
+      "name": "Maushold",
+      "hash": "ffffffffffffe3ffe03fc157cc0bee2bee7fe073f013f803ff83ffc3ffe3ffff"
+    },
+    {
+      "speciesId": "mausholdfour",
+      "name": "Maushold-Four",
+      "hash": "ffffffffffffe3ffe03fc157cc0bee2bee7fc47bc213c003c783ffc3ffe3ffff"
+    },
+    {
+      "speciesId": "fidough",
+      "name": "Fidough",
+      "hash": "fffffffffffffffffffff1bff01ff00ff00ff007f00ff80ff80ffc1ffc7fffff"
+    },
+    {
+      "speciesId": "dachsbun",
+      "name": "Dachsbun",
+      "hash": "fffffffffffffffffbeff007f007e007e00ff01ff00ff80ff80ff07ffc7fffff"
+    },
+    {
+      "speciesId": "smoliv",
+      "name": "Smoliv",
+      "hash": "ffffffffffffffffff7ffe3ffc3ffc1ffc1ffc1ffc3ffc1ffc1ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "dolliv",
+      "name": "Dolliv",
+      "hash": "fffffffffffffcfff81ff80ff80ff80ffc3ffc3ffc3ffc3ff83ffc3ffd3fffff"
+    },
+    {
+      "speciesId": "arboliva",
+      "name": "Arboliva",
+      "hash": "fffffe7ff83ff83ffc0fcc5fc513c023e003e007f507fe7ffc3ff81ffc5fffff"
+    },
+    {
+      "speciesId": "squawkabilly",
+      "name": "Squawkabilly",
+      "hash": "fffffffffffffffff9fff0fff07ff00ff00ff80ff00ff00ffc0ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "squawkabillyblue",
+      "name": "Squawkabilly-Blue",
+      "hash": "fffffffffffffffff9fff0fff07ff00ff00ff80ff00ff00ffc0ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "squawkabillyyellow",
+      "name": "Squawkabilly-Yellow",
+      "hash": "fffffffffffffffff9fff0fff07ff00ff00ff80ff00ff00ffc0ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "squawkabillywhite",
+      "name": "Squawkabilly-White",
+      "hash": "fffffffffffffffff9fff0fff07ff00ff00ff80ff00ff00ffc0ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "nacli",
+      "name": "Nacli",
+      "hash": "ffffffffffffffffffffff1ffc0ff80ff81ff00ff00ff80ff80ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "naclstack",
+      "name": "Naclstack",
+      "hash": "fffffffffffffffffffffe7ff80ff80ff80ff00ff00ff007f007f107fb1fffff"
+    },
+    {
+      "speciesId": "garganacl",
+      "name": "Garganacl",
+      "hash": "ff7fff3fff3ffc1ffc0ff807f00bf013ec77ec67f007c403e00b8ea3fe57fd3f"
+    },
+    {
+      "speciesId": "charcadet",
+      "name": "Charcadet",
+      "hash": "ffffffffffffffffff9ffe3ffc1ffc3ff81ff81ffc3ff81ff81ffe1ffe3fffff"
+    },
+    {
+      "speciesId": "armarouge",
+      "name": "Armarouge",
+      "hash": "ffffff3ffe3ffe0ffc0ff81ff81ff01ff00ff00ff00ff00ff00ffc0ffc9fffbf"
+    },
+    {
+      "speciesId": "ceruledge",
+      "name": "Ceruledge",
+      "hash": "ffffffbfff1ffe0ffc1ffc1ff80ff80ffc5ff01fe007c007cc03fc03fe93ffbf"
+    },
+    {
+      "speciesId": "tadbulb",
+      "name": "Tadbulb",
+      "hash": "fffffffffffffffffe3ffc3ffc1ffc1ffc3ffc3ffe3ffe7ffe3ffe3fffffffff"
+    },
+    {
+      "speciesId": "bellibolt",
+      "name": "Bellibolt",
+      "hash": "fffffffffffffffffd7ff81ff80ff80ff80ff00ff00ff80ff80ff81ffe1fffff"
+    },
+    {
+      "speciesId": "wattrel",
+      "name": "Wattrel",
+      "hash": "fffffffffffffffffffffffffc7ff87ff83ff83ffc1ffc0ffc0ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "kilowattrel",
+      "name": "Kilowattrel",
+      "hash": "fffffffffffffffffc7ff83ff80ff007f007f80ff80ff00ff80ff81ffe3fffff"
+    },
+    {
+      "speciesId": "maschiff",
+      "name": "Maschiff",
+      "hash": "fffffffffffffffffbfff0fff07ff00ff2a7f017f0d7f247f007f20fff3fffff"
+    },
+    {
+      "speciesId": "mabosstiff",
+      "name": "Mabosstiff",
+      "hash": "fffffffffffffffffcfff87ff00ff007f90ff007f007f00ff007f00ffc3fffff"
+    },
+    {
+      "speciesId": "shroodle",
+      "name": "Shroodle",
+      "hash": "fffffffffffffffffffffffffffffe7ffe7ffc3ffc1ffc0ff81ff81ff83fffff"
+    },
+    {
+      "speciesId": "grafaiai",
+      "name": "Grafaiai",
+      "hash": "fffffffffffffffffc3ff02ff007f007f8c7f407f007f007f81ffc3ffc3fffff"
+    },
+    {
+      "speciesId": "bramblin",
+      "name": "Bramblin",
+      "hash": "fffffffffffffffffffffffffdfffc1ffc0ff00ff00ff00ff80ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "brambleghast",
+      "name": "Brambleghast",
+      "hash": "ffffffffffffffffffffffbffc1ff01ff80ff00ff00ff80ff00ffc0ffe1fffff"
+    },
+    {
+      "speciesId": "toedscool",
+      "name": "Toedscool",
+      "hash": "fffffffffffffe3ffc3ffc1ffc1ff80ff80ffc0ffc1ffcbffc3ff81ffc1fffff"
+    },
+    {
+      "speciesId": "toedscruel",
+      "name": "Toedscruel",
+      "hash": "fffffffffc3ffc1ff80ff00ff00ff00ffc3ff83ff81ff81ff81ff80ffc3fffff"
+    },
+    {
+      "speciesId": "klawf",
+      "name": "Klawf",
+      "hash": "fffffffffffffffffffffffff0ffe01fe80ff20fe047c387c003e003fe03ffff"
+    },
+    {
+      "speciesId": "capsakid",
+      "name": "Capsakid",
+      "hash": "fffffffffffffffffe3ff83ff81ff81ff81ff81ff83ffc1ffc3ffc3ffe3fffff"
+    },
+    {
+      "speciesId": "scovillain",
+      "name": "Scovillain",
+      "hash": "fffffffffffff9fff19ff04fe007f007e007f00ffc0ffc1ffc0ffc0fff3fffff"
+    },
+    {
+      "speciesId": "rellor",
+      "name": "Rellor",
+      "hash": "ffffffffffffffffffffffcffc0ff807f007f40ff00fe80fe007f007f0efffff"
+    },
+    {
+      "speciesId": "rabsca",
+      "name": "Rabsca",
+      "hash": "fffffd1ff81ff80ff80ff80ff80ffc0ffc1ff83ff03ff00ff00ff00fff1fffff"
+    },
+    {
+      "speciesId": "flittle",
+      "name": "Flittle",
+      "hash": "fffffffffffffffffffffcdffc0ffc0ffc1ffc1ff80ff80ffc1fff7fffffffff"
+    },
+    {
+      "speciesId": "espathra",
+      "name": "Espathra",
+      "hash": "fffffffffffff3ffe1ffe03fe01fe007e007f807f807fe43fc87fc2fff3fffff"
+    },
+    {
+      "speciesId": "tinkatink",
+      "name": "Tinkatink",
+      "hash": "fffffffffffffffffffffcfffc7ffc3ffc3ffc3ffc3ffc0ff81ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "tinkatuff",
+      "name": "Tinkatuff",
+      "hash": "ffffffffffffffffff3ffe1ffc0ffc0ffc0ffc0ffc3ff80ffc0ffc0fff8fffff"
+    },
+    {
+      "speciesId": "tinkaton",
+      "name": "Tinkaton",
+      "hash": "ffefff87fe07fc27fc03fc03f8a1f321f321f7a1f083e0c3e0cfc05fe01ff81f"
+    },
+    {
+      "speciesId": "wiglett",
+      "name": "Wiglett",
+      "hash": "fffffffffffffffffc3ffc3ff81ffc1fff1fff3ffe3ffc1ff80ffc0ffc3fffff"
+    },
+    {
+      "speciesId": "wugtrio",
+      "name": "Wugtrio",
+      "hash": "ffffffffffffff8fff0fff0ff30fe007f817f81ff01ff007f807f807fe0fffff"
+    },
+    {
+      "speciesId": "bombirdier",
+      "name": "Bombirdier",
+      "hash": "ffffffffff3ffe1ffc1ff03ff13ff63ffe3ffc1ffc1ffc1ffe0ffc0ffc0fffff"
+    },
+    {
+      "speciesId": "finizen",
+      "name": "Finizen",
+      "hash": "fffffffffffffffffffffcfff03ff00ff087f007f00ff01ff03fff3fffffffff"
+    },
+    {
+      "speciesId": "palafin",
+      "name": "Palafin",
+      "hash": "fffffffffffffffffffffcfff03ff00ff087f007f00ff01ff03fff3fffffffff"
+    },
+    {
+      "speciesId": "varoom",
+      "name": "Varoom",
+      "hash": "ffffffffffffffffff3fff1ff21ff01ff03ff03ff00ff007f007f03ffeffffff"
+    },
+    {
+      "speciesId": "revavroom",
+      "name": "Revavroom",
+      "hash": "fffffffffffff8fff0bff03ff00ff007f607f017f007f107f003fe0fffbfffff"
+    },
+    {
+      "speciesId": "cyclizar",
+      "name": "Cyclizar",
+      "hash": "fffffffffe7ff83ff07ff0fff07ffc3ffc37f003f007f00ff80ff83ff91fffff"
+    },
+    {
+      "speciesId": "orthworm",
+      "name": "Orthworm",
+      "hash": "fffff87ff03ff01ff01ff01ff83ffc3ffc3ffc3ffc27fc03fc03fc07fe0fff3f"
+    },
+    {
+      "speciesId": "glimmet",
+      "name": "Glimmet",
+      "hash": "fffffffffffffffffcfff83ff83ff03ff03ff81ffc0ffc87fe87ffc7ffcfffff"
+    },
+    {
+      "speciesId": "glimmora",
+      "name": "Glimmora",
+      "hash": "fffffffffffffffffffffe7ffc1ff80ff80ff80ff00ff00ff81ffc3fffffffff"
+    },
+    {
+      "speciesId": "greavard",
+      "name": "Greavard",
+      "hash": "fffffffffffffffffcfffcfffcfffceffc4ff80ff00ff00ff00ff01ffc3fffff"
+    },
+    {
+      "speciesId": "houndstone",
+      "name": "Houndstone",
+      "hash": "fffffffffffffdfff813f803f807f067f0a7f187e487e007e00fe01ff23fffff"
+    },
+    {
+      "speciesId": "flamigo",
+      "name": "Flamigo",
+      "hash": "fffffe7ffc3ff83ff83ffc3ffe7ffc1ffc1ffe0ffe0fff1fff1fff3fff3fffff"
+    },
+    {
+      "speciesId": "cetoddle",
+      "name": "Cetoddle",
+      "hash": "fffffffffffffffffffffffffc7ffc27fc07f80ff00ff00ffc07fc27ff3fffff"
+    },
+    {
+      "speciesId": "cetitan",
+      "name": "Cetitan",
+      "hash": "fffffffffffff9fff81fcb5fc640ec40f065c46bd523c13ff003f00ff3cfffff"
+    },
+    {
+      "speciesId": "veluza",
+      "name": "Veluza",
+      "hash": "fffffffffffffffffe7ffe3ffc0bfc03fbe3f003fc0be01ff03ff93fff7fffff"
+    },
+    {
+      "speciesId": "dondozo",
+      "name": "Dondozo",
+      "hash": "fffffff1ffe1f911f043fbf1c683c247f205f0c5fe15f00bf01ff87ff8fffcff"
+    },
+    {
+      "speciesId": "tatsugiri",
+      "name": "Tatsugiri",
+      "hash": "ffffffffffffffffffffff3ff83ff03ff01ff01ff80ffc0ff80ffc0fff1fffff"
+    },
+    {
+      "speciesId": "tatsugiridroopy",
+      "name": "Tatsugiri-Droopy",
+      "hash": "ffffffffffffffffffffff3ff83ff03ff01ff01ff80ffc0ff80ffc0fff1fffff"
+    },
+    {
+      "speciesId": "tatsugiristretchy",
+      "name": "Tatsugiri-Stretchy",
+      "hash": "ffffffffffffffffffffff3ff83ff03ff01ff01ff80ffc0ff80ffc0fff1fffff"
+    },
+    {
+      "speciesId": "annihilape",
+      "name": "Annihilape",
+      "hash": "ffffff7fff1ff007f967e41fe00fe003f29bf007f00fe00fe007f807ff07ffff"
+    },
+    {
+      "speciesId": "clodsire",
+      "name": "Clodsire",
+      "hash": "fffffffffffffffffffffffffffffc3ff80ff08ff007f007f00ff00ff81fffff"
+    },
+    {
+      "speciesId": "farigiraf",
+      "name": "Farigiraf",
+      "hash": "fefffc3ff01ff01ff01ff03ff03ff00ffc0ffe07fe07fe07fe07fe07fe07ff9f"
+    },
+    {
+      "speciesId": "dudunsparce",
+      "name": "Dudunsparce",
+      "hash": "ffffffefffc7ffc7ff47ff07f907fc07f807f007f00ff01ff03ff03ff8ffffff"
+    },
+    {
+      "speciesId": "kingambit",
+      "name": "Kingambit",
+      "hash": "fdfff8fff8fff8fff83fe817e007f00ff80ff00ff007f027f007f80ffc07fc0f"
+    },
+    {
+      "speciesId": "greattusk",
+      "name": "Great Tusk",
+      "hash": "ffffffffff1ffc0ff80ff803d03be28be9cbe053e063cda3e003f00ff81fffff"
+    },
+    {
+      "speciesId": "screamtail",
+      "name": "Scream Tail",
+      "hash": "fffffffffffffffff81ff0c7f007f007f387f34bf241f0c1f003f03fff3fffff"
+    },
+    {
+      "speciesId": "brutebonnet",
+      "name": "Brute Bonnet",
+      "hash": "fffffffffffffe3ff80ff80ff007f007f007f007f14ff00ff007fc07ff0fffff"
+    },
+    {
+      "speciesId": "fluttermane",
+      "name": "Flutter Mane",
+      "hash": "fffffffffbfff9eff90ff80ff007f003f003f003f80ffc3ffc1ffc3ffe7fffff"
+    },
+    {
+      "speciesId": "slitherwing",
+      "name": "Slither Wing",
+      "hash": "fffffe7ffc7ffc7ff83ff827f807f00bf503fb03f283f063e007e007f02ff83f"
+    },
+    {
+      "speciesId": "sandyshocks",
+      "name": "Sandy Shocks",
+      "hash": "ffffff3ff61ff00ff007e007fc0ff80ff80ff80ffc07fc07f043f0c3ffc7ffff"
+    },
+    {
+      "speciesId": "irontreads",
+      "name": "Iron Treads",
+      "hash": "fffffffffffffc1ff00fe207f047e8e3c0f3e037e037f02bf007f11ff93fffff"
+    },
+    {
+      "speciesId": "ironbundle",
+      "name": "Iron Bundle",
+      "hash": "fffffffffefffcdffc1ffc0ffc1ffc1ffc1ff80ff807f007f807fc0fff3fffff"
+    },
+    {
+      "speciesId": "ironhands",
+      "name": "Iron Hands",
+      "hash": "ffffff7fe03fe037e443c843ef83f781f7c1f483e00ff007f007fb0fff9fffff"
+    },
+    {
+      "speciesId": "ironjugulis",
+      "name": "Iron Jugulis",
+      "hash": "fffffdfff07ff023e663f05fe403ec1ffe87e043e0cff483fc07fe0fffdfffff"
+    },
+    {
+      "speciesId": "ironmoth",
+      "name": "Iron Moth",
+      "hash": "fffff3fff1f7f0a7f007fc07f00ff027f103fd03f027f00fe007e0c7ffe7fff7"
+    },
+    {
+      "speciesId": "ironthorns",
+      "name": "Iron Thorns",
+      "hash": "ff7ffc7ff83ff81ff80ff80ff80ff01fe00ff00ff80ffa03f003f007ff1fff9f"
+    },
+    {
+      "speciesId": "frigibax",
+      "name": "Frigibax",
+      "hash": "fffffffffffffffffffffc3ffc3ffc3ffc3ffc1ff81ff81ff81ffc1ffc1fffff"
+    },
+    {
+      "speciesId": "arctibax",
+      "name": "Arctibax",
+      "hash": "fffffffffffffffffffffc5ff80ff80ff10ff007f007f80ff80ff80ffe1fffff"
+    },
+    {
+      "speciesId": "baxcalibur",
+      "name": "Baxcalibur",
+      "hash": "fffffcfffc7ff81ff00ff007f807f80ff10bf013f907f80ff00ff80fff1fffff"
+    },
+    {
+      "speciesId": "gimmighoul",
+      "name": "Gimmighoul",
+      "hash": "fffffcfff80ff807f807f807f80ffa0ff41ff81ff80ff80ff80ff81ff9bfffff"
+    },
+    {
+      "speciesId": "gimmighoulroaming",
+      "name": "Gimmighoul-Roaming",
+      "hash": "fffffffffffffffffbfff9fffe0ffc0ffc3ffc3ffc1ffc1ffc1ffc1ffe3fffff"
+    },
+    {
+      "speciesId": "gholdengo",
+      "name": "Gholdengo",
+      "hash": "ffffff3ffc1ff81ff80ffc1ffc3ffe1ffc0ff807f007f00ffc1ffc1ffc3fffff"
+    },
+    {
+      "speciesId": "wochien",
+      "name": "Wo-Chien",
+      "hash": "f7ffc33fc31fe017f287f857f207f407f083f483f6c3f403f003e007f81ffeff"
+    },
+    {
+      "speciesId": "chienpao",
+      "name": "Chien-Pao",
+      "hash": "fffffffffffffbf3f1f3f0d9c701e42be883e0efe007e157e0cfe0fff9ffffff"
+    },
+    {
+      "speciesId": "tinglu",
+      "name": "Ting-Lu",
+      "hash": "ffffc5dfc09fc00fe00fe01fe81fe20fe00fe037fc27f803f803fc0ffe9fffdf"
+    },
+    {
+      "speciesId": "chiyu",
+      "name": "Chi-Yu",
+      "hash": "ffffffffffffff3ffe27fc0ffc0ff00ff00ff00ff10ff027f817fb0fffdfffff"
+    },
+    {
+      "speciesId": "roaringmoon",
+      "name": "Roaring Moon",
+      "hash": "fffffc3fe40fc003d183d843fe03f703c407e043f9b3f0e3e003e617ff9fffff"
+    },
+    {
+      "speciesId": "ironvaliant",
+      "name": "Iron Valiant",
+      "hash": "fffffcfffc7ffc7ff83ff017f007f007f027f007f00ff80ff80ffc0fff9fffff"
+    },
+    {
+      "speciesId": "koraidon",
+      "name": "Koraidon",
+      "hash": "f3ffe10fc00fc00fe1ebe023f02ff807e02be40dfc0bfc0ff803f803fd8fff8f"
+    },
+    {
+      "speciesId": "miraidon",
+      "name": "Miraidon",
+      "hash": "fffff82ff807f80ff80ff00ff01ff833fcb3f913fa01c121c003e00ff80fff8f"
+    },
+    {
+      "speciesId": "walkingwake",
+      "name": "Walking Wake",
+      "hash": "fffff8fff03ff03ff137c487e04fe80bf011ec09f04ff11ff04ff00fff8fffff"
+    },
+    {
+      "speciesId": "ironleaves",
+      "name": "Iron Leaves",
+      "hash": "fffffbfff3fff1fff01ff01ff03ff05ff89ff80ff80ff81ff81ffc9ffeffffff"
+    },
+    {
+      "speciesId": "dipplin",
+      "name": "Dipplin",
+      "hash": "ffffffffffffff3ffd7ff83ff83ff83ffc3ff81ff80ff00ff00ffc1ffe7fffff"
+    },
+    {
+      "speciesId": "poltchageist",
+      "name": "Poltchageist",
+      "hash": "fffffffffefffc7ff83ff83ff837e033e237e007f00ffc07ffcfffdfffffffff"
+    },
+    {
+      "speciesId": "sinistcha",
+      "name": "Sinistcha",
+      "hash": "fffffffffc7ffc7ff87ff01ff00ff00ff00ff00ff00ff80ffc1ffe3fff7fffff"
+    },
+    {
+      "speciesId": "okidogi",
+      "name": "Okidogi",
+      "hash": "fffffffffdfffc33fc33f821f003d30fc0afe00fc20ff81ff007f80fff3fff3f"
+    },
+    {
+      "speciesId": "munkidori",
+      "name": "Munkidori",
+      "hash": "ffffffffffffff3ffc1ff80ff80ffc0ffc0ff80ff81ff80ffc0ffe3fffffffff"
+    },
+    {
+      "speciesId": "fezandipiti",
+      "name": "Fezandipiti",
+      "hash": "fffffdfffc7ff03ff03ff03ff01ff01ffc8ffc27f007e00fe00ffc1ffc3fff3f"
+    },
+    {
+      "speciesId": "ogerpon",
+      "name": "Ogerpon",
+      "hash": "ffffffffff3ffe3ff83fe03fe007e007f807f007f00ff80ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "ogerponwellspring",
+      "name": "Ogerpon-Wellspring",
+      "hash": "ffffffffff3ffd3ff83fe03fe007e007f307f007f007f80ffc1ffc3fff3fffff"
+    },
+    {
+      "speciesId": "ogerponhearthflame",
+      "name": "Ogerpon-Hearthflame",
+      "hash": "fffffffffa1ff00ff02ff11ff807f023f183f007f807fe0ffe1ffc3fffbfffff"
+    },
+    {
+      "speciesId": "ogerponcornerstone",
+      "name": "Ogerpon-Cornerstone",
+      "hash": "fffffffff93ff83ff03fe03fe00fe007e007e00ff00ffc1ffc3ffc3fff7fffff"
+    },
+    {
+      "speciesId": "archaludon",
+      "name": "Archaludon",
+      "hash": "fefffc9ff09ff017f407f407e007ea97d377d233c423e123f003f807e00fe78f"
+    },
+    {
+      "speciesId": "hydrapple",
+      "name": "Hydrapple",
+      "hash": "fd7ffc7ff03fe01fe25fc01fc03fc01fe90ff80ff00bf803f801f803f80ffc1f"
+    },
+    {
+      "speciesId": "gougingfire",
+      "name": "Gouging Fire",
+      "hash": "ffffe27ff07ff0ffe07fe087d19dc80bcf0be007e80ff40fe047c44fcc7ffcff"
+    },
+    {
+      "speciesId": "ragingbolt",
+      "name": "Raging Bolt",
+      "hash": "fdfffcfff87ff03ff03fc01fc03fe03ff0fff82ff807f803f003f80ff00ffc5f"
+    },
+    {
+      "speciesId": "ironboulder",
+      "name": "Iron Boulder",
+      "hash": "fffffffffcdffc0ff88fe127e017f013e003e407f323fc37e203e38fff8fffff"
+    },
+    {
+      "speciesId": "ironcrown",
+      "name": "Iron Crown",
+      "hash": "fffffc3ff83ff87ff83ff00ff04ff00ff80ff80ff00ff00ff80ff80ff83fff7f"
+    },
+    {
+      "speciesId": "terapagos",
+      "name": "Terapagos",
+      "hash": "fffffffffffffffffcfff8e7f1c7e007e00fe09ff04ff007f80ff99fff9fffff"
+    },
+    {
+      "speciesId": "pecharunt",
+      "name": "Pecharunt",
+      "hash": "ffffffffefffe6ffe06fc807d313d297d099d619c775e053f083f3a3fff3ffff"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+/* Pokémon-themed design tokens (plan §6). Clean, modern, unmistakably Pokémon. */
+@import './ui.css';
+
+:root {
+  /* Pokéball brand */
+  --poke-red: #ee1515; /* primary action / accent */
+  --poke-red-dark: #c50e0e; /* hover/active */
+  --poke-black: #1a1a1a; /* the band / primary text */
+  --poke-white: #ffffff;
+  --gold: #b3a125; /* league/champion accent, sparing */
+
+  /* Neutral canvas (clean, slightly cool) */
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #eef1f5;
+  --border: #dfe3e8;
+  --text: #1a1a1a;
+  --text-mut: #5b6470;
+
+  /* Status */
+  --ok: #2e9e5b; /* outspeed / favourable */
+  --warn: #e8a33d; /* speed-tie / neutral risk */
+  --bad: #d64545; /* outsped / unfavourable */
+
+  /* Speed-tier flag chips (Stat emphasis + speed flags) */
+  --speed-faster-bg: rgba(46, 158, 91, 0.14);
+  --speed-tie-bg: rgba(232, 163, 61, 0.16);
+  --speed-slower-bg: rgba(214, 69, 69, 0.14);
+
+  /* Matchup-grid tint scale (see theme/matchup.ts) */
+  --matchup-immune: var(--surface-2);
+  --matchup-resist-1: rgba(46, 158, 91, 0.16); /* 1/2x */
+  --matchup-resist-2: rgba(46, 158, 91, 0.34); /* 1/4x */
+  --matchup-resist-fg: #1a5132;
+  --matchup-weak-1: rgba(214, 69, 69, 0.16); /* 2x */
+  --matchup-weak-2: rgba(214, 69, 69, 0.36); /* 4x */
+  --matchup-weak-fg: #8a1f1f;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.1), 0 2px 4px rgba(16, 24, 40, 0.06);
+  --focus-ring: 0 0 0 3px rgba(238, 21, 21, 0.35);
+  --transition: 140ms ease;
+  --font-ui: 'Inter', system-ui, sans-serif;
+  --font-battle: clamp(18px, 2.2vw, 28px); /* Flow C readability */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+}
+
+/* Battle / dark mode for Flow C (optional toggle) */
+[data-mode='battle'] {
+  --bg: #14161a;
+  --surface: #1e2127;
+  --surface-2: #262a31;
+  --border: #333842;
+  --text: #f2f4f7;
+  --text-mut: #9aa4b2;
+
+  /* Tints read better with lighter text on the dark canvas */
+  --matchup-resist-1: rgba(46, 158, 91, 0.24);
+  --matchup-resist-2: rgba(46, 158, 91, 0.46);
+  --matchup-resist-fg: #8be0aa;
+  --matchup-weak-1: rgba(214, 69, 69, 0.24);
+  --matchup-weak-2: rgba(214, 69, 69, 0.48);
+  --matchup-weak-fg: #f3a3a3;
+
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --focus-ring: 0 0 0 3px rgba(238, 21, 21, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}

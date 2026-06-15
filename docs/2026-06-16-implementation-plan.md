@@ -4,11 +4,23 @@
 > _what_ to build; this document defines _how_ to build it, in what order, and **how to split
 > the work across a team of parallel subagents** without merge conflicts or blocked hand-offs.
 
+> **🟢 Execution status (2026-06-16):** **Phase 0 (Foundation) and Wave 1 (M1) are
+> COMPLETE** — see [`2026-06-16-progress-report-1.md`](./2026-06-16-progress-report-1.md)
+> for the full snapshot. Whole-repo health: `tsc` clean · 49/49 tests pass · 0 lint
+> errors · renderer builds. **Remaining: Wave 2 (WS-E), Wave 3 (WS-F), Wave 4 (polish).**
+> Completed items below are marked **✅ DONE**; reality discoveries are folded in inline.
+
 ---
 
 ## 1. Current state vs. spec assumptions (read this first)
 
 The spec assumed an `electron-vite` template. The repo is actually **Electron Forge + `@electron-forge/plugin-vite`**, which changes a few structural things. Agents must code against _reality_, not the spec's assumed layout.
+
+> **✅ All Phase-0 actions in this table are DONE.** Notable outcomes: TS bumped to
+> **5.4.5**; React **19** + `@vitejs/plugin-react@4` (v6 needs Vite 8, Forge is on
+> Vite 5); persistence is **hand-rolled JSON via IPC** (chosen over `electron-store`);
+> `@smogon/calc@0.11` has **no `exports` map**, so the entry path is
+> `@smogon/calc/dist/adaptable`, not `@smogon/calc/adaptable` (see §2).
 
 | Area | Spec assumed | Repo reality | Action |
 | --- | --- | --- | --- |
@@ -63,7 +75,7 @@ These are decided once so every agent shares the same assumptions.
 - **Process model**: renderer does all calc/detection (it has `@pkmn`/`@smogon` + canvas). Main process owns only: window lifecycle, disk persistence, media-access permission, and `@pkmn/smogon` network fetch (to keep `fetch`/CORS predictable). Communication via a **typed preload bridge** `window.api`.
 - **IPC contract**: defined once in `src/shared/ipc.ts` (channel name constants + request/response types). Preload implements typed wrappers; main implements handlers. No raw `ipcRenderer.invoke('string')` anywhere else.
 - **Persistence**: hand-rolled JSON files in `app.getPath('userData')` via IPC (`teams.json`, `settings.json`, `cache/usage-<format>-<month>.json`). Chosen over `electron-store` for explicit control and easy testing. (If an agent finds `electron-store` materially simpler, that's a Phase-0 callout, not a mid-stream change.)
-- **Calc entry**: always `@smogon/calc/adaptable`, driven by the single `gen` from `lib/calc/gen.ts`. No other `@smogon/calc` import path anywhere.
+- **Calc entry**: always the adaptable build, driven by the single `gen` from `lib/calc/gen.ts`. **Reality:** `@smogon/calc@0.11` ships no `exports` map, so the documented `@smogon/calc/adaptable` path does NOT resolve under Node/Vite/TS bundler resolution — the working path is **`@smogon/calc/dist/adaptable`**, imported _only_ in `gen.ts` and re-exported (`calculate`, `Pokemon`, `Move`, `Field`). No other `@smogon/calc` import path anywhere.
 
 ---
 
@@ -121,9 +133,9 @@ Multi-agent throughput lives or dies on two things: **frozen interfaces** and **
 
 ---
 
-## 4. Phase 0 — Foundation (sequential, blocks everything)
+## 4. Phase 0 — Foundation (sequential, blocks everything) — ✅ DONE
 
-Do this as one focused pass (me, or a single agent) before fanning out. Definition of done: `npm start` opens a window showing the React app shell with three navigable (empty) screens, themed, and `npm run lint`/typecheck pass.
+Done as one focused pass before fanning out. Definition of done met: the React app shell with three navigable screens is themed and runs; `npm run lint`/typecheck pass. All 12 steps below are complete. Two reality notes folded in: the `usage:*` cache **handlers were implemented here in Phase 0** (so WS-B only needed the renderer-side fetch lib), and a small `store/nav.ts` was added for the screen-enum routing.
 
 1. **Dependencies.** Add and pin:
    - runtime: `react`, `react-dom`, `zustand`, `@pkmn/dex`, `@pkmn/data`, `@pkmn/sets`, `@pkmn/img`, `@pkmn/smogon`, `@smogon/calc`, `blockhash-core` (or chosen pHash lib).
@@ -146,34 +158,36 @@ Do this as one focused pass (me, or a single agent) before fanning out. Definiti
 
 Each is sized to ~one focused agent. Each lists deliverables, the interface it must honour, and its definition of done (DoD).
 
-### WS-A — Calc engine (`lib/calc/`)
+### WS-A — Calc engine (`lib/calc/`) — ✅ DONE (16 tests)
 Pure, dependency-light, highly testable — ideal first parallel task.
 - `typeMatchup.ts`: `getMatchup(attackType, defenderTypes) → multiplier`; `defensiveProfile(species) → Record<type, mult>`. Pure lookups from `gen.types`.
 - `speedTiers.ts`: compute Speed stat from a set; produce a sorted tier list given an array of `{label, set|stat}`; apply modifiers (Tailwind ×2, Trick Room reverse, paralysis ×0.5, Choice Scarf ×1.5) as composable functions for Flow C reuse.
 - `damageCalc.ts`: thin wrapper over `calculate()` from `@smogon/calc/adaptable` — `calcDamage(attacker, defender, move, field) → { minPct, maxPct, koChance, desc }`. Build `Pokemon`/`Move`/`Field` from our domain types.
 - **DoD**: unit tests (against fixtures) for a known matchup, a known speed order, and a known damage roll matching Showdown's calculator within rounding.
 
-### WS-B — Smogon usage data (`lib/smogon/` + cache IPC)
-- `usageData.ts`: `Smogon` init with the renderer/main `fetch`; `fetchUsage(format) → common sets/items/abilities/spreads/Tera/moves by usage %`. Read-through cache: ask main for `cache/usage-<format>-<month>.json`; if miss/stale or manual refresh, fetch + write-back via IPC.
-- Adds the `usage:*` cache handler in `main/ipc` (coordinate channel names with Phase-0 `ipc.ts`).
-- **DoD**: `fetchUsage('gen9championsvgc2026regma')` returns parsed data, persists to disk, and second call serves from cache; a "refresh" path re-fetches. Handle network-absent gracefully (return cached or empty + flag).
+### WS-B — Smogon usage data (`lib/smogon/`) — ✅ DONE (10 tests)
+- `usageData.ts`: `fetchUsage(format, {refresh, now, fetchImpl})` → common sets/items/abilities/spreads/Tera/moves by usage %. Read-through cache via `window.api.usage` (the `usage:*` IPC handlers were **already built in Phase 0** — WS-B only owns the renderer fetch lib). `window` is lazy-accessed so the module imports cleanly under vitest's node env.
+- **Reality (R4):** the upstream stats endpoint (`https://data.pkmn.cc/stats/<format>.json`) serves "latest", **not month-addressable** — the month key only keys our _disk_ cache. `gen9championsvgc2026regma` currently **404s** upstream (Reg M-A just arriving); offline/404 returns cached data or an empty-but-valid `UsageData`, never throws.
+- **DoD met:** cache miss → fetch+write; second call → cache; refresh re-fetches; offline graceful (validated against a live `gen9vgc2024` report + mocked target format).
 
-### WS-C — Team Setup screen (Flow A)
-- `screens/TeamSetup/`: textarea import → `split(/\n\s*\n/)` → `Sets.importSet` → validate vs `gen.species.get`. Error surfacing for illegal/typo species.
-- `components/PokemonCard.tsx`: icon via `@pkmn/img` `Icons.get`, name/item/ability/Tera/nature/EVs, computed stats with **Speed highlighted**.
-- `store/teams.ts`: CRUD over `MyTeam[]`, write-through to persistence IPC, "active team" selection.
-- Team picker (sidebar/dropdown); edit/delete/re-paste-to-update.
-- **DoD**: paste fixture PokePaste → 6 cards render with correct stats → save with a name → reload app → team persists and is selectable as active.
+### WS-C — Team Setup screen (Flow A) — ✅ DONE (9 tests)
+- `screens/TeamSetup/`: textarea import → `split(/\n\s*\n/)` → `Sets.importSet` → validate vs `gen.species.get`. Error surfacing for illegal/typo species. Live preview parses on each keystroke.
+- `components/PokemonCard.tsx`: icon via `@pkmn/img` `Icons.getPokemon` (returns a sprite-sheet `background-position` CSS string, parsed into a React style object), name/item/ability/Tera/nature/EVs, computed stats with **Speed highlighted** via `Stat` `emphasis`.
+- `store/teams.ts`: deepened with `parsePokepaste`/`createTeam`/`computeStat` (pure, testable); CRUD over `MyTeam[]`, write-through to persistence IPC, "active team" selection. Store API kept stable.
+- Team picker (dropdown); edit/delete/re-paste-to-update.
+- **DoD met:** fixture paste → 6 cards with correct stats (Speed emphasised) → save → active/edit/delete; save path verified to call `window.api.teams.save` with the full `MyTeam[]` (app-restart persistence to be confirmed in manual `npm start` testing).
 
-### WS-D — Detection pipeline (`lib/detection/` + script)
-Independent of UI; can run fully in parallel.
-- `scripts/buildIconHashes.ts`: enumerate legal species for `gen9championsvgc2026regma` (see Risk R2), fetch each icon via `@pkmn/img`, pHash at 32×32, write `src/data/iconHashes.json`.
-- `frameCapture.ts` (video frame → `ImageData`), `cropRegions.ts` (apply normalized 0–1 calibration rects), `iconMatcher.ts` (pHash a crop, Hamming-distance vs table, top-3 + confidence `1 - dist/maxBits`), `detectionPipeline.ts` (orchestrate 6 crops → `OpponentSlot.candidates`).
-- Tunable auto-accept threshold constant.
-- **DoD**: given a static test screenshot + hand-set calibration rects, pipeline returns correct top-1 species for all 6 slots above threshold. (Capture-device wiring belongs to WS-E.)
+### WS-D — Detection pipeline (`lib/detection/` + script) — ✅ DONE (14 tests)
+Independent of UI; ran fully in parallel.
+- `scripts/buildIconHashes.ts`: enumerates legal species (R2 filter `[...gen.species].filter(s => !s.battleOnly)`), downloads the `@pkmn/img` sprite **sheet** once, crops each 40×30 icon cell by its `Icons.getPokemon` offset, normalizes to 32×32, blockhashes. **`src/data/iconHashes.json` generated — 852 unique species cells.** Regenerate: `npx vite-node scripts/buildIconHashes.ts`.
+- `hash.ts` (shared build/run hash core — `RgbaImage`, `hashImage` via `blockhash-core` at 256 bits, `hammingDistance`, `resampleNearest`; `iconHashes.ts` guards param parity), `frameCapture.ts` (video frame → `ImageData`), `cropRegions.ts` (apply `NormalizedRect[]`), `iconMatcher.ts` (top-3 + confidence `1 - dist/maxBits`, `AUTO_ACCEPT_THRESHOLD = 0.85`), `detectionPipeline.ts` (6 crops → `OpponentTeam`).
+- **Dev-dep added:** `pngjs` + `@types/pngjs` (Node PNG decode for the build script only; never in the renderer bundle).
+- **Reality note:** solid-colour icons hash near-degenerately — real matching relies on icons having visual texture (fine for Showdown sprites).
+- **DoD met** via synthetic-icon tests (matcher returns top-1 above threshold; `cropRegions` slices a synthetic `ImageData` correctly). Capture-device wiring is WS-E.
 
-### WS-E — Detection screen (Flow B)
-The largest UI surface; can be split into **E1 (capture/calibration/detect)** and **E2 (analysis dashboard)** if two agents are available.
+### WS-E — Detection screen (Flow B) — ⏭️ NEXT (Wave 2)
+The largest UI surface; can be split into **E1 (capture/calibration/detect)** and **E2 (analysis dashboard)** if two agents are available. All dependencies (WS-A/B/D libs, WS-G primitives, fixtures) are ready.
+> **Hand-off:** E **authors** `TypeMatchupGrid/SpeedTierList/DamageCalcTable`; F **consumes** them — so accept "my mons" + "opponent mons" as props (don't hard-code 6) to support F's active-4 filter. Consume `matchupTint` (WS-G) for grid cells, `buildSpeedTiers`/`calcDamage`/`typeMatchup` (WS-A), and `fetchUsage` (WS-B).
 - E1: device enumeration + picker (persist `deviceId` in settings), `getUserMedia` → `<video>`, one-time calibration UI (drag 6 rects on a paused frame, store normalized), "Detect" button → `detectionPipeline` → slot UI with confidence + override dropdowns; auto-accept high-confidence.
 - E2 (the dashboard, spec §4.3 — bulk of the UI): tabbed/accordion, one tab per opponent mon, each with:
   - `TypeMatchupGrid.tsx` (offensive/defensive vs your 6 — WS-A `typeMatchup`),
@@ -182,7 +196,7 @@ The largest UI surface; can be split into **E1 (capture/calibration/detect)** an
   - `DamageCalcTable.tsx` (WS-A `damageCalc`, your moves vs common defensive spread and vice versa).
 - **DoD**: against `fixtures.opponentTeam`, the full dashboard renders for all 6 (no detection needed); then swapping in WS-D output populates the same dashboard.
 
-### WS-F — In-Battle screen (Flow C)
+### WS-F — In-Battle screen (Flow C) — ⏭️ Wave 3 (after WS-E)
 - `screens/InBattle/`: lead-selection (pick 4 of 6 → `myActiveFour`; mark relevant opponent mons → `opponentActiveFour`).
 - `components/FieldStateToggles.tsx`: weather/terrain/Tailwind-per-side/Trick Room/Choice-lock-per-mon/Tera+Mega-per-mon → feeds `FieldState` + `OpponentSlot` overrides.
 - `store/session.ts`: in-memory `BattleSession`; "New Battle" reset.
@@ -190,12 +204,13 @@ The largest UI surface; can be split into **E1 (capture/calibration/detect)** an
 - Large readable type for the "during the timer countdown" use case (theme `--font-battle` scale).
 - **DoD**: select 4v4, flip weather/Tailwind/Trick Room → speed order and damage rolls update live and correctly.
 
-### WS-G — Design system (`ui/` + `theme/`)
-- Flesh out Phase-0 stubs into a clean, consistent Pokémon-coloured component library (§6). Owns visual polish so screen agents focus on logic.
-- **DoD**: a `ui/Gallery` dev route (or Storybook-lite page) renders every primitive in light/battle modes; type badges show all 18 colours.
+### WS-G — Design system (`ui/` + `theme/`) — ✅ DONE
+- Fleshed out Phase-0 stubs into a clean Pokémon-coloured library (§6). Real interaction states via `theme/ui.css` (`@import`-ed from `tokens.css`) using `.pk-*` classes layered over the existing inline-style call sites — public API unchanged (only additive optional props: `Card.interactive`, `Stat.tone`).
+- Added `theme/matchup.ts` (`matchupTint(multiplier) → {bg, fg, label}`) for WS-E's matchup grid, and `ui/Gallery.tsx` (self-contained showcase, not yet wired into nav).
+- **DoD met:** `Gallery` renders every primitive in light/battle modes with all 18 type badges, matchup tints, and speed-flag chips.
 
-### WS-R — Risk spikes (research only, output to `docs/spikes/`)
-Run **first / in parallel with Phase 0** so blockers surface early. One short memo per risk (§7).
+### WS-R — Risk spikes (research only, output to `docs/spikes/`) — ✅ DONE
+Ran in parallel with Wave 1. All four memos written to `docs/spikes/` (R1–R4); outcomes folded into the §7 table below.
 
 ---
 
@@ -264,16 +279,19 @@ export const TYPE_COLORS: Record<string, string> = {
 
 ---
 
-## 7. Risk spikes (de-risk in parallel with Phase 0) — spec §9
+## 7. Risk spikes (de-risk in parallel with Phase 0) — spec §9 — ✅ ALL RESOLVED
 
-| ID | Risk | Spike output |
+| ID | Risk | Outcome (memo in `docs/spikes/`) |
 | --- | --- | --- |
-| R1 | Champions data completeness in `@pkmn/dex` (Mega abilities, returned Megas, format legality) | Confirm installed version; if gaps, design a single `lib/calc/dataExtensions.ts` patch module (isolated, removable). |
-| R2 | Enumerating the legal species pool for `gen9championsvgc2026regma` (scopes `iconHashes.json`; regenerate at Reg M-A→M-B on **2026-06-17**) | Find cleanest `gen.species` filter; document the regenerate command. |
-| R3 | `getUserMedia` for Elgato HD60X in Electron renderer on macOS | Verify `systemPreferences.askForMediaAccess('camera')` in main is sufficient; no `desktopCapturer`. |
-| R4 | `@pkmn/smogon` `fetch` availability in Electron context | Confirm native `fetch`; else provide a minimal shim. Decide renderer-vs-main fetch (we chose main in §2). |
+| R1 | Champions data completeness in `@pkmn/dex` | `@pkmn/dex@0.10.10` confirmed. Returned **Mega formes missing under Gen 9** (present under Gen 7); Mega abilities present. `Dex.formats` is `undefined` (no legality query). Calc degrades gracefully — `dataExtensions.ts` **described but not needed to ship**. |
+| R2 | Legal species pool for `gen9championsvgc2026regma` | Filter chosen: `[...gen.species].filter(s => !s.battleOnly)` → 860 species / 852 unique icon cells. A superset is safe for recognition. Regenerate: `npx vite-node scripts/buildIconHashes.ts`. |
+| R3 | `getUserMedia` for Elgato HD60X (Electron renderer, macOS) | HD60X enumerates as a normal UVC `videoinput`; existing `askForMediaAccess('camera')` is **sufficient — no `desktopCapturer`**. WS-E gotchas: empty device labels pre-permission, black no-signal frames, variable geometry → normalized rects. |
+| R4 | `@pkmn/smogon` `fetch` availability in Electron | Renderer native `fetch` suffices — **no shim**. We fetch the format report directly (renderer-side); `window.api.usage` is the disk cache only. Stats endpoint is "latest", not month-addressable. |
 
-> R1 and R2 gate WS-D and accurate WS-A/B output, so prioritise them. **Note the 2026-06-17 Reg M-A → M-B cutover lands two days after planning** — `iconHashes.json` and any legality filters will need regeneration right after launch; bake the regenerate script into WS-D and flag it in the release checklist.
+> **⚠️ Release-checklist carry-over:** the **2026-06-17 Reg M-A → M-B cutover** (tomorrow,
+> relative to this plan) means `iconHashes.json` must be **regenerated** and `fetchUsage`
+> re-pointed once `gen9championsvgc2026regma` stats publish upstream (it currently 404s).
+> The regenerate command is baked into WS-D's script header and R2 memo.
 
 ---
 
@@ -281,12 +299,12 @@ export const TYPE_COLORS: Record<string, string> = {
 
 Mirrors the spec's build order (§10), re-expressed as agent waves.
 
-- **M0 — Foundation (sequential).** Phase 0 complete; app shell runs themed; contracts frozen. _Plus_ WS-R spikes in flight.
-- **M1 — Calc + Setup (parallel wave 1).** WS-A, WS-B, WS-C, WS-G, WS-D all start. Validates `@pkmn/sets` + persistence + calc against real data. This is the spec's steps 1–2 plus a head-start on 3.
-- **M2 — Static dashboard (parallel wave 2).** WS-E (E2 dashboard) against `fixtures.opponentTeam`, consuming A/B. Spec step 3 — full analysis with a hardcoded opponent, detection skipped.
+- **M0 — Foundation (sequential).** ✅ **DONE.** Phase 0 complete; app shell runs themed; contracts frozen. WS-R spikes all resolved.
+- **M1 — Calc + Setup (parallel wave 1).** ✅ **DONE.** WS-A, WS-B, WS-C, WS-G, WS-D delivered (49 tests). Validated `@pkmn/sets` + persistence + calc against real data; Team Setup is end-to-end usable.
+- **M2 — Static dashboard (parallel wave 2).** ⏭️ **NEXT.** WS-E (E2 dashboard) against `FIXTURE_OPPONENT_TEAM`, consuming A/B/G. Spec step 3 — full analysis with a hardcoded opponent, detection skipped.
 - **M3 — Detection live.** WS-E (E1) wires capture + calibration + Detect to WS-D, replacing the fixture. Spec step 4.
 - **M4 — In-Battle.** WS-F builds Flow C reusing A's calc/speed modules + E's dashboard components with the active-4 filter and `Field` modifiers. Spec step 5.
-- **M5 — Polish & integration.** WS-G final pass, battle-mode theme, end-to-end run-through, README/run docs.
+- **M5 — Polish & integration.** WS-G final pass, battle-mode theme toggle, mount `Gallery` behind a dev route, end-to-end run-through, README/run docs, post-cutover data regeneration.
 
 ### Dependency quick-reference
 - Everything → **Phase 0 contracts**.
@@ -310,15 +328,18 @@ Mirrors the spec's build order (§10), re-expressed as agent waves.
 
 ## 10. Suggested agent roster (if launching subagents)
 
-| Agent | Workstream(s) | Why grouped |
-| --- | --- | --- |
-| 1 | Phase 0 foundation | Must be one coherent pass; everyone depends on it. |
-| 2 | WS-A calc + WS-R(R1) | Calc accuracy and the data-completeness spike are intertwined. |
-| 3 | WS-B smogon + WS-R(R4) | Usage fetch and the fetch-in-Electron spike are intertwined. |
-| 4 | WS-C Team Setup | Self-contained Flow A vertical slice. |
-| 5 | WS-D detection + WS-R(R2,R3) | Pipeline, legality enumeration, and capture access all cluster here. |
-| 6 | WS-E detection screen (E1+E2) | Largest UI; split into two agents if available. |
-| 7 | WS-F in-battle | Starts after A + E components exist. |
-| 8 | WS-G design system | Parallel throughout; owns visual consistency. |
+| Agent | Workstream(s) | Status | Why grouped |
+| --- | --- | --- | --- |
+| 1 | Phase 0 foundation | ✅ done | Must be one coherent pass; everyone depends on it. |
+| 2 | WS-A calc + WS-R(R1) | ✅ done | Calc accuracy and the data-completeness spike are intertwined. |
+| 3 | WS-B smogon + WS-R(R4) | ✅ done | Usage fetch and the fetch-in-Electron spike are intertwined. |
+| 4 | WS-C Team Setup | ✅ done | Self-contained Flow A vertical slice. |
+| 5 | WS-D detection + WS-R(R2,R3) | ✅ done | Pipeline, legality enumeration, and capture access all cluster here. |
+| 6 | WS-E detection screen (E1+E2) | ⏭️ next | Largest UI; split into two agents if available. |
+| 7 | WS-F in-battle | ⏳ after E | Starts after A + E components exist. |
+| 8 | WS-G design system | ✅ done | Parallel throughout; owns visual consistency. |
 
 > If running fewer agents, collapse in this order: G into Phase 0 + screen agents; F after E; B into E. The hard floor is: **Phase 0 first, alone.**
+>
+> **Resume point:** Phase 0 + agents 2/3/4/5/8 are complete. Launch **agent 6 (WS-E)** as
+> 1–2 subagents next, then **agent 7 (WS-F)**, then M5 polish.
