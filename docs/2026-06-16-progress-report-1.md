@@ -5,8 +5,15 @@
 > the working tree holds all the changes for local testing.
 >
 > **Integration health (whole repo, verified):** `tsc --noEmit` clean · `npm test`
-> 49/49 passing (8 suites) · `npm run lint` 0 errors (6 non-null-assertion warnings
+> 60/60 passing (10 suites) · `npm run lint` 0 errors (6 non-null-assertion warnings
 > in test files only) · `vite build` of the renderer succeeds.
+>
+> **Update (2026-06-15):** R5 follow-up spike implemented — see
+> [§5 below](#5-update--r5-champions-legality-pool--decoupled-icon-table). Detection
+> (Wave 2 / WS-E) re-sequenced to a screenshot-drop-first plan — see
+> [§2 Wave 2](#wave-2-m2m3--ws-e-detection-screen-flow-b--the-largest-ui-surface)
+> and the implementation plan §5/§7. Risk-spike memos previously under
+> `docs/spikes/` have been folded into the implementation plan and removed.
 
 ---
 
@@ -57,22 +64,23 @@ The contracts everything else depends on are frozen and the app shell runs.
 | **A — Calc engine** | ✅ 16 tests | `lib/calc/{typeMatchup,speedTiers,damageCalc}.ts`. `getMatchup`, `defensiveProfile`; `calcSpeed`, `applySpeedModifiers` (composable Tailwind/Scarf/para/TR), `buildSpeedTiers`; `calcDamage` over `calculate()` with `FieldState`→`Field` mapping. |
 | **B — Smogon usage** | ✅ 10 tests | `lib/smogon/usageData.ts`. `fetchUsage(format, {refresh,now,fetchImpl})` with read-through disk cache via `window.api.usage`, graceful offline/404. Fetches `https://data.pkmn.cc/stats/<format>.json`. |
 | **C — Team Setup (Flow A)** | ✅ 9 tests | `screens/TeamSetup/`, `components/PokemonCard.tsx`, deepened `store/teams.ts` (`parsePokepaste`, `createTeam`, `computeStat`). PokePaste import → 6 cards (Speed emphasised) → save/active/edit/delete. |
-| **D — Detection pipeline** | ✅ 14 tests | `lib/detection/{hash,frameCapture,cropRegions,iconMatcher,detectionPipeline,iconHashes}.ts`, `scripts/buildIconHashes.ts`, **`data/iconHashes.json` generated — 852 species** (256-bit blockhash, shared build/run hash core). |
+| **D — Detection pipeline** | ✅ 14 tests (+9 R5) | `lib/detection/{hash,frameCapture,cropRegions,iconMatcher,detectionPipeline,iconHashes,championsLegality}.ts`, `scripts/{buildIconHashes,buildChampionsLegality,championsFormatsParser}.ts`, **`data/iconHashes.json` — 1259 species** (regulation-independent, R5) + **`data/championsLegality.json` — 253/1285 legal under Reg M-A** (256-bit blockhash, shared build/run hash core). |
 | **G — Design system** | ✅ | Polished all 7 primitives with `theme/ui.css` (real hover/focus/active states), `theme/matchup.ts` (`matchupTint`), `ui/Gallery.tsx` showcase. Public API unchanged (additive props only). |
 
-### Risk spikes (done, in `docs/spikes/`)
+### Risk spikes (done, folded into the implementation plan)
 
 - **R1** (calc data): `@pkmn/dex@0.10.10` confirmed. Returned **Mega formes are
   missing under Gen 9** (present under Gen 7); Mega abilities exist. `Dex.formats`
   is `undefined` — no format-legality query. Calc degrades gracefully; an
   isolated `dataExtensions.ts` is described but **not needed to ship**.
-- **R2** (legal pool): filter is `[...gen.species].filter(s => !s.battleOnly)`
-  → 860 species (852 unique icon cells). **Regenerate `iconHashes.json` at the
-  Reg M-A→M-B cutover on 2026-06-17:** `npx vite-node scripts/buildIconHashes.ts`.
+- **R2** (legal pool): ~~filter is `[...gen.species].filter(s => !s.battleOnly)`
+  → 860 species (852 unique icon cells).~~ **Superseded by R5** (below) —
+  `gen.species` is Gen 9's SV-regional dex, not the Champions roster.
 - **R3** (capture): Elgato HD60X enumerates as a normal `videoinput`; the existing
   `askForMediaAccess('camera')` is sufficient — no `desktopCapturer`. Gotchas for
   WS-E noted (empty device labels pre-permission, black no-signal frames, variable
-  geometry → normalized calibration rects).
+  geometry → normalized calibration rects). **Now scoped as E1b**, after the
+  screenshot-drop detection path (E1a, §2 below).
 - **R4** (fetch): Electron renderer native `fetch` satisfies `@pkmn/smogon`. The
   stats endpoint is "latest", not month-addressable — the month key only keys our
   **disk** cache. `gen9championsvgc2026regma` currently 404s upstream (Reg M-A just
@@ -85,21 +93,42 @@ The contracts everything else depends on are frozen and the app shell runs.
 ### Wave 2 (M2/M3) — WS-E Detection screen (Flow B) — **the largest UI surface**
 
 Owns: `screens/Detection/*`, `components/{TypeMatchupGrid,SpeedTierList,DamageCalcTable}.tsx`,
-and the capture/calibration parts of `store/settings.ts`. Splittable into two agents:
+`lib/detection/imageSource.ts` (new), and the capture/calibration parts of
+`store/settings.ts`. Splittable into agents:
 
-- **E1 — capture/calibration/detect:** device enumeration + picker (persist
-  `deviceId` in settings), `getUserMedia` → `<video>`, one-time calibration UI
-  (drag 6 rects on a paused frame, store as `NormalizedRect[]`), "Detect" button →
-  `detectionPipeline` (WS-D) → slot UI with confidence + override dropdowns,
-  auto-accept above `AUTO_ACCEPT_THRESHOLD`.
+> **Re-sequenced (2026-06-15):** build detection against a **dropped-in
+> screenshot first** (E1a) — no capture hardware needed — then add the live
+> capture device (E1b) on top of the same pipeline. The target screenshot is a
+> Nintendo Switch team-preview capture at a fixed, known resolution, so a
+> default calibration can be pre-seeded for it.
+
+- **E1a — screenshot-drop detect (build first):** new
+  `lib/detection/imageSource.ts::loadImageFromFile(file): Promise<RgbaImage>`
+  (decode a dropped/selected image via `<img>`/`createImageBitmap` + canvas
+  `getImageData` — same `RgbaImage` shape `frameCapture.captureVideoFrame`
+  produces from video). Drop-zone/file-picker in `screens/Detection/`,
+  one-time calibration UI (drag 6 rects on the static image, store as
+  `NormalizedRect[]`, pre-seeded defaults for the Switch screenshot
+  resolution), "Detect" button → `detectionPipeline` (WS-D) → slot UI with
+  confidence + override dropdowns, auto-accept above `AUTO_ACCEPT_THRESHOLD`.
+  **DoD:** drop a real Switch team-preview screenshot → "Detect" → all 6
+  opponent slots populate with the correct species, no capture device
+  connected.
+- **E1b — live capture device (after E1a):** device enumeration + picker
+  (persist `deviceId` in settings), `getUserMedia` → `<video>`,
+  `frameCapture.captureVideoFrame` feeding the **same** `detectionPipeline`
+  call and slot UI as E1a (R3: HD60X enumerates as a normal `videoinput`, no
+  `desktopCapturer`). **DoD:** "Detect" on a paused live frame populates the
+  same slot UI as E1a.
 - **E2 — analysis dashboard (spec §4.3, the bulk):** tabbed, one tab per opponent
   mon, each with `TypeMatchupGrid` (WS-A `typeMatchup` + `matchupTint` from WS-G),
   common sets (WS-B `fetchUsage` + manual refresh), `SpeedTierList` (WS-A
   `buildSpeedTiers`), `DamageCalcTable` (WS-A `calcDamage`).
-- **DoD:** dashboard renders for all 6 of `FIXTURE_OPPONENT_TEAM` with no
-  detection; then live detect populates the same dashboard.
-- **Dependencies:** WS-A, WS-B (hard), WS-D (live detect only — fixtures unblock
-  E2 first), WS-G primitives. All ready.
+  **DoD:** dashboard renders for all 6 of `FIXTURE_OPPONENT_TEAM` with no
+  detection; then E1a/E1b output populates the same dashboard.
+- **Dependencies:** WS-A, WS-B (hard for E2), WS-D (`detectionPipeline`, for
+  E1a and E1b — fixtures unblock E2 first), WS-G primitives. E1b additionally
+  depends on R3 (capture device). All ready.
 
 > **Hand-off note:** E **authors** `TypeMatchupGrid/SpeedTierList/DamageCalcTable`;
 > F **consumes** them. Keep their props general enough for the active-4 filter F
@@ -126,8 +155,11 @@ Owns: `screens/InBattle/*`, `components/FieldStateToggles.tsx`, deepens
 - Wire `Gallery` behind a dev route (optional). End-to-end run-through:
   `npm start` → import team → detect/fixture → dashboard → in-battle.
 - Battle-mode theme toggle in chrome. README / run docs.
-- **Pre-release:** regenerate `iconHashes.json` after the 2026-06-17 Reg M-A→M-B
-  cutover; re-point `fetchUsage` once `gen9championsvgc2026regma` stats publish.
+- **Pre-release:** regenerate `championsLegality.json` after the 2026-06-17
+  Reg M-A→M-B cutover (`npx vite-node scripts/buildChampionsLegality.ts`);
+  re-point `fetchUsage` once `gen9championsvgc2026regmb` stats publish.
+  `iconHashes.json` does **not** need regeneration for this cutover (R5,
+  regulation-independent).
 
 ---
 
@@ -136,7 +168,7 @@ Owns: `screens/InBattle/*`, `components/FieldStateToggles.tsx`, deepens
 ```bash
 npm start          # launches the Electron app — themed 3-screen shell;
                    # Team Setup is fully functional (paste a team / "Load sample")
-npm test           # 49 unit tests (calc, smogon cache, detection, team import)
+npm test           # 60 unit tests (calc, smogon cache, detection, champions legality, team import)
 npm run typecheck  # tsc --noEmit, clean
 npm run lint       # 0 errors
 ```
@@ -148,8 +180,52 @@ screens that wire them up are Wave 2 / Wave 3.
 
 ## 4. Resuming the build
 
-Launch Wave 2 as 1–2 subagents for WS-E (E1 + E2), each constrained to its owned
-files, reading the frozen contracts + WS-A/B/D public signatures + WS-G primitives.
-Then Wave 3 for WS-F. The ownership map in plan §3 and the per-WS DoDs in §5 still
-apply unchanged. Contracts in `src/shared/*` remain frozen — any change is a
-broadcast event.
+Launch Wave 2 as 1–2 subagents for WS-E (E1a screenshot-drop detect + E2
+dashboard), each constrained to its owned files, reading the frozen contracts +
+WS-A/B/D public signatures + WS-G primitives. E1b (live capture device) follows
+once capture hardware is available, then Wave 3 for WS-F. The ownership map in
+plan §3 and the per-WS DoDs in §5 still apply unchanged. Contracts in
+`src/shared/*` remain frozen — any change is a broadcast event.
+
+---
+
+## 5. Update — R5: Champions legality pool + decoupled icon table
+
+A follow-up spike (R5) found that R2's
+filter (`[...gen.species].filter(s => !s.battleOnly)`, Gen 9's SV-regional dex)
+is **not** the Champions roster — it's missing legal-via-champions species
+(e.g. Lopunny) and contains zero real Mega formes. The real source is the live
+`champions` mod in `smogon/pokemon-showdown` (`data/mods/champions/
+formats-data.ts`), which `@pkmn/dex`/`@pkmn/sim` don't ship.
+
+**What changed:**
+
+- **`scripts/buildIconHashes.ts`** now enumerates the icon pool from
+  `Dex.species.all()` (ungated) filtered `num > 0 && !battleOnly &&
+  isNonstandard ∈ {null, 'Past'}` — 1285 species → **`data/iconHashes.json`
+  regenerated, 1259 unique icon cells** (was 852). This table is
+  **regulation-independent**: regenerate only if `@pkmn/dex`'s base species
+  data changes, not on regulation cutovers.
+- **New `data/championsLegality.json`** (regulation-specific): `scripts/
+  buildChampionsLegality.ts` fetches `champions/formats-data.ts` from
+  `raw.githubusercontent.com/smogon/pokemon-showdown`, parses it with the
+  TypeScript compiler API (`scripts/championsFormatsParser.ts`, no `eval`),
+  and derives `{speciesId, name, legal, tier, isNonstandard}` for the same
+  1285-species pool — **253/1285 legal under Reg M-A**. Regenerate on every
+  regulation cutover: `npx vite-node scripts/buildChampionsLegality.ts`.
+- **New `src/lib/detection/championsLegality.ts`** (runtime-safe, no
+  `typescript` import): `deriveLegality`, `buildLegalityIndex`,
+  `isChampionsLegal` — the second layer of the two-layer architecture. At
+  query time: match a detected icon against `iconHashes.json` to get a
+  `speciesId`, then look it up in `championsLegality.json` to flag a banned
+  opponent Pokémon for the current regulation.
+- **+11 tests** (8 for `deriveLegality`/`buildLegalityIndex`/`isChampionsLegal`,
+  3 for `parseFormatsDataOverrides`) → suite total **49 → 60**, 10 suites.
+- Full derivation rules, worked examples (Lopunny/Flutter Mane), and the
+  Arceus-Bug `isNonstandard`-override edge case are documented in
+  `championsLegality.ts`'s `deriveLegality` doc comment and the implementation
+  plan's R5 risk-spike row (§7).
+
+**Release-checklist impact:** the 2026-06-17 Reg M-A → M-B cutover now only
+requires regenerating `championsLegality.json` (+ re-pointing `fetchUsage`).
+`iconHashes.json` is unaffected by regulation changes going forward.

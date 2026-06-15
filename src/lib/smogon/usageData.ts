@@ -10,8 +10,6 @@
  * src/main/ipc/persistence.ts). This module owns ONLY the network fetch +
  * shaping + cache orchestration; it never registers IPC handlers.
  *
- * R4 spike notes live in docs/spikes/R4-pkmn-smogon-fetch.md.
- *
  * Design notes:
  *  - `window` is accessed lazily inside functions (never at import time) so the
  *    module stays importable in a bare Node/vitest environment.

@@ -1,0 +1,9002 @@
+{
+  "format": "gen9championsvgc2026regma",
+  "generatedAt": "2026-06-15T18:51:28.997Z",
+  "source": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/formats-data.ts",
+  "entries": [
+    {
+      "speciesId": "bulbasaur",
+      "name": "Bulbasaur",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ivysaur",
+      "name": "Ivysaur",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "venusaur",
+      "name": "Venusaur",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "venusaurgmax",
+      "name": "Venusaur-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "charmander",
+      "name": "Charmander",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "charmeleon",
+      "name": "Charmeleon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "charizard",
+      "name": "Charizard",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "charizardgmax",
+      "name": "Charizard-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "squirtle",
+      "name": "Squirtle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wartortle",
+      "name": "Wartortle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "blastoise",
+      "name": "Blastoise",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "blastoisegmax",
+      "name": "Blastoise-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "caterpie",
+      "name": "Caterpie",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "metapod",
+      "name": "Metapod",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "butterfree",
+      "name": "Butterfree",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "butterfreegmax",
+      "name": "Butterfree-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "weedle",
+      "name": "Weedle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kakuna",
+      "name": "Kakuna",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "beedrill",
+      "name": "Beedrill",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pidgey",
+      "name": "Pidgey",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pidgeotto",
+      "name": "Pidgeotto",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pidgeot",
+      "name": "Pidgeot",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rattata",
+      "name": "Rattata",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rattataalola",
+      "name": "Rattata-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "raticate",
+      "name": "Raticate",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "raticatealola",
+      "name": "Raticate-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "raticatealolatotem",
+      "name": "Raticate-Alola-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "spearow",
+      "name": "Spearow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "fearow",
+      "name": "Fearow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ekans",
+      "name": "Ekans",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arbok",
+      "name": "Arbok",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "pikachu",
+      "name": "Pikachu",
+      "legal": true,
+      "tier": "NFE",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "pikachucosplay",
+      "name": "Pikachu-Cosplay",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachurockstar",
+      "name": "Pikachu-Rock-Star",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachubelle",
+      "name": "Pikachu-Belle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachupopstar",
+      "name": "Pikachu-Pop-Star",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachuphd",
+      "name": "Pikachu-PhD",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachulibre",
+      "name": "Pikachu-Libre",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachuoriginal",
+      "name": "Pikachu-Original",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachuhoenn",
+      "name": "Pikachu-Hoenn",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachusinnoh",
+      "name": "Pikachu-Sinnoh",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachuunova",
+      "name": "Pikachu-Unova",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachukalos",
+      "name": "Pikachu-Kalos",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachualola",
+      "name": "Pikachu-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachupartner",
+      "name": "Pikachu-Partner",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachugmax",
+      "name": "Pikachu-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pikachuworld",
+      "name": "Pikachu-World",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "raichu",
+      "name": "Raichu",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "raichualola",
+      "name": "Raichu-Alola",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "sandshrew",
+      "name": "Sandshrew",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sandshrewalola",
+      "name": "Sandshrew-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sandslash",
+      "name": "Sandslash",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sandslashalola",
+      "name": "Sandslash-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nidoranf",
+      "name": "Nidoran-F",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nidorina",
+      "name": "Nidorina",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nidoqueen",
+      "name": "Nidoqueen",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nidoranm",
+      "name": "Nidoran-M",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nidorino",
+      "name": "Nidorino",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nidoking",
+      "name": "Nidoking",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "clefairy",
+      "name": "Clefairy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "clefable",
+      "name": "Clefable",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vulpix",
+      "name": "Vulpix",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vulpixalola",
+      "name": "Vulpix-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ninetales",
+      "name": "Ninetales",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "ninetalesalola",
+      "name": "Ninetales-Alola",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "jigglypuff",
+      "name": "Jigglypuff",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wigglytuff",
+      "name": "Wigglytuff",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zubat",
+      "name": "Zubat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "golbat",
+      "name": "Golbat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "oddish",
+      "name": "Oddish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gloom",
+      "name": "Gloom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vileplume",
+      "name": "Vileplume",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "paras",
+      "name": "Paras",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "parasect",
+      "name": "Parasect",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "venonat",
+      "name": "Venonat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "venomoth",
+      "name": "Venomoth",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "diglett",
+      "name": "Diglett",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "diglettalola",
+      "name": "Diglett-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dugtrio",
+      "name": "Dugtrio",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dugtrioalola",
+      "name": "Dugtrio-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meowth",
+      "name": "Meowth",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meowthalola",
+      "name": "Meowth-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meowthgalar",
+      "name": "Meowth-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meowthgmax",
+      "name": "Meowth-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "persian",
+      "name": "Persian",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "persianalola",
+      "name": "Persian-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "psyduck",
+      "name": "Psyduck",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "golduck",
+      "name": "Golduck",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mankey",
+      "name": "Mankey",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "primeape",
+      "name": "Primeape",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "growlithe",
+      "name": "Growlithe",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "growlithehisui",
+      "name": "Growlithe-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arcanine",
+      "name": "Arcanine",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "arcaninehisui",
+      "name": "Arcanine-Hisui",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "poliwag",
+      "name": "Poliwag",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "poliwhirl",
+      "name": "Poliwhirl",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "poliwrath",
+      "name": "Poliwrath",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "abra",
+      "name": "Abra",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kadabra",
+      "name": "Kadabra",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "alakazam",
+      "name": "Alakazam",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "machop",
+      "name": "Machop",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "machoke",
+      "name": "Machoke",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "machamp",
+      "name": "Machamp",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "machampgmax",
+      "name": "Machamp-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bellsprout",
+      "name": "Bellsprout",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "weepinbell",
+      "name": "Weepinbell",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "victreebel",
+      "name": "Victreebel",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "tentacool",
+      "name": "Tentacool",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tentacruel",
+      "name": "Tentacruel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "geodude",
+      "name": "Geodude",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "geodudealola",
+      "name": "Geodude-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "graveler",
+      "name": "Graveler",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "graveleralola",
+      "name": "Graveler-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "golem",
+      "name": "Golem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "golemalola",
+      "name": "Golem-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ponyta",
+      "name": "Ponyta",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ponytagalar",
+      "name": "Ponyta-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rapidash",
+      "name": "Rapidash",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rapidashgalar",
+      "name": "Rapidash-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slowpoke",
+      "name": "Slowpoke",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slowpokegalar",
+      "name": "Slowpoke-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slowbro",
+      "name": "Slowbro",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "slowbrogalar",
+      "name": "Slowbro-Galar",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "magnemite",
+      "name": "Magnemite",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "magneton",
+      "name": "Magneton",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "farfetchd",
+      "name": "Farfetch’d",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "farfetchdgalar",
+      "name": "Farfetch’d-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "doduo",
+      "name": "Doduo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dodrio",
+      "name": "Dodrio",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "seel",
+      "name": "Seel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dewgong",
+      "name": "Dewgong",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grimer",
+      "name": "Grimer",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grimeralola",
+      "name": "Grimer-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "muk",
+      "name": "Muk",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mukalola",
+      "name": "Muk-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shellder",
+      "name": "Shellder",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cloyster",
+      "name": "Cloyster",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gastly",
+      "name": "Gastly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "haunter",
+      "name": "Haunter",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gengar",
+      "name": "Gengar",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "gengargmax",
+      "name": "Gengar-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "onix",
+      "name": "Onix",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drowzee",
+      "name": "Drowzee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hypno",
+      "name": "Hypno",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "krabby",
+      "name": "Krabby",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kingler",
+      "name": "Kingler",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kinglergmax",
+      "name": "Kingler-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "voltorb",
+      "name": "Voltorb",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "voltorbhisui",
+      "name": "Voltorb-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "electrode",
+      "name": "Electrode",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "electrodehisui",
+      "name": "Electrode-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "exeggcute",
+      "name": "Exeggcute",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "exeggutor",
+      "name": "Exeggutor",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "exeggutoralola",
+      "name": "Exeggutor-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cubone",
+      "name": "Cubone",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "marowak",
+      "name": "Marowak",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "marowakalola",
+      "name": "Marowak-Alola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "marowakalolatotem",
+      "name": "Marowak-Alola-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hitmonlee",
+      "name": "Hitmonlee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hitmonchan",
+      "name": "Hitmonchan",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lickitung",
+      "name": "Lickitung",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "koffing",
+      "name": "Koffing",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "weezing",
+      "name": "Weezing",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "weezinggalar",
+      "name": "Weezing-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rhyhorn",
+      "name": "Rhyhorn",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rhydon",
+      "name": "Rhydon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chansey",
+      "name": "Chansey",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tangela",
+      "name": "Tangela",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kangaskhan",
+      "name": "Kangaskhan",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "horsea",
+      "name": "Horsea",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "seadra",
+      "name": "Seadra",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "goldeen",
+      "name": "Goldeen",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "seaking",
+      "name": "Seaking",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "staryu",
+      "name": "Staryu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "starmie",
+      "name": "Starmie",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mrmime",
+      "name": "Mr. Mime",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mrmimegalar",
+      "name": "Mr. Mime-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "scyther",
+      "name": "Scyther",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "jynx",
+      "name": "Jynx",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "electabuzz",
+      "name": "Electabuzz",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "magmar",
+      "name": "Magmar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pinsir",
+      "name": "Pinsir",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tauros",
+      "name": "Tauros",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "taurospaldeacombat",
+      "name": "Tauros-Paldea-Combat",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "taurospaldeablaze",
+      "name": "Tauros-Paldea-Blaze",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "taurospaldeaaqua",
+      "name": "Tauros-Paldea-Aqua",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "magikarp",
+      "name": "Magikarp",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gyarados",
+      "name": "Gyarados",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "lapras",
+      "name": "Lapras",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "laprasgmax",
+      "name": "Lapras-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ditto",
+      "name": "Ditto",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "eevee",
+      "name": "Eevee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "eeveegmax",
+      "name": "Eevee-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vaporeon",
+      "name": "Vaporeon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "jolteon",
+      "name": "Jolteon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "flareon",
+      "name": "Flareon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "porygon",
+      "name": "Porygon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "omanyte",
+      "name": "Omanyte",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "omastar",
+      "name": "Omastar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kabuto",
+      "name": "Kabuto",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kabutops",
+      "name": "Kabutops",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "aerodactyl",
+      "name": "Aerodactyl",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "snorlax",
+      "name": "Snorlax",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "snorlaxgmax",
+      "name": "Snorlax-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "articuno",
+      "name": "Articuno",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "articunogalar",
+      "name": "Articuno-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zapdos",
+      "name": "Zapdos",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zapdosgalar",
+      "name": "Zapdos-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "moltres",
+      "name": "Moltres",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "moltresgalar",
+      "name": "Moltres-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dratini",
+      "name": "Dratini",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dragonair",
+      "name": "Dragonair",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dragonite",
+      "name": "Dragonite",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "mewtwo",
+      "name": "Mewtwo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mew",
+      "name": "Mew",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chikorita",
+      "name": "Chikorita",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bayleef",
+      "name": "Bayleef",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meganium",
+      "name": "Meganium",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "cyndaquil",
+      "name": "Cyndaquil",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "quilava",
+      "name": "Quilava",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "typhlosion",
+      "name": "Typhlosion",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "typhlosionhisui",
+      "name": "Typhlosion-Hisui",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "totodile",
+      "name": "Totodile",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "croconaw",
+      "name": "Croconaw",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "feraligatr",
+      "name": "Feraligatr",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "sentret",
+      "name": "Sentret",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "furret",
+      "name": "Furret",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hoothoot",
+      "name": "Hoothoot",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "noctowl",
+      "name": "Noctowl",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ledyba",
+      "name": "Ledyba",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ledian",
+      "name": "Ledian",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "spinarak",
+      "name": "Spinarak",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ariados",
+      "name": "Ariados",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "crobat",
+      "name": "Crobat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chinchou",
+      "name": "Chinchou",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lanturn",
+      "name": "Lanturn",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pichu",
+      "name": "Pichu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pichuspikyeared",
+      "name": "Pichu-Spiky-eared",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cleffa",
+      "name": "Cleffa",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "igglybuff",
+      "name": "Igglybuff",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "togepi",
+      "name": "Togepi",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "togetic",
+      "name": "Togetic",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "natu",
+      "name": "Natu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "xatu",
+      "name": "Xatu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mareep",
+      "name": "Mareep",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "flaaffy",
+      "name": "Flaaffy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ampharos",
+      "name": "Ampharos",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "bellossom",
+      "name": "Bellossom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "marill",
+      "name": "Marill",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "azumarill",
+      "name": "Azumarill",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "sudowoodo",
+      "name": "Sudowoodo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "politoed",
+      "name": "Politoed",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "hoppip",
+      "name": "Hoppip",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "skiploom",
+      "name": "Skiploom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "jumpluff",
+      "name": "Jumpluff",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "aipom",
+      "name": "Aipom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sunkern",
+      "name": "Sunkern",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sunflora",
+      "name": "Sunflora",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "yanma",
+      "name": "Yanma",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wooper",
+      "name": "Wooper",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wooperpaldea",
+      "name": "Wooper-Paldea",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "quagsire",
+      "name": "Quagsire",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "espeon",
+      "name": "Espeon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "umbreon",
+      "name": "Umbreon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "murkrow",
+      "name": "Murkrow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slowking",
+      "name": "Slowking",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "slowkinggalar",
+      "name": "Slowking-Galar",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "misdreavus",
+      "name": "Misdreavus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "unown",
+      "name": "Unown",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wobbuffet",
+      "name": "Wobbuffet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "girafarig",
+      "name": "Girafarig",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pineco",
+      "name": "Pineco",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "forretress",
+      "name": "Forretress",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "dunsparce",
+      "name": "Dunsparce",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gligar",
+      "name": "Gligar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "steelix",
+      "name": "Steelix",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "snubbull",
+      "name": "Snubbull",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "granbull",
+      "name": "Granbull",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "qwilfish",
+      "name": "Qwilfish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "qwilfishhisui",
+      "name": "Qwilfish-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "scizor",
+      "name": "Scizor",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "shuckle",
+      "name": "Shuckle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "heracross",
+      "name": "Heracross",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "sneasel",
+      "name": "Sneasel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sneaselhisui",
+      "name": "Sneasel-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "teddiursa",
+      "name": "Teddiursa",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ursaring",
+      "name": "Ursaring",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slugma",
+      "name": "Slugma",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "magcargo",
+      "name": "Magcargo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swinub",
+      "name": "Swinub",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "piloswine",
+      "name": "Piloswine",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "corsola",
+      "name": "Corsola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "corsolagalar",
+      "name": "Corsola-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "remoraid",
+      "name": "Remoraid",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "octillery",
+      "name": "Octillery",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "delibird",
+      "name": "Delibird",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mantine",
+      "name": "Mantine",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "skarmory",
+      "name": "Skarmory",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "houndour",
+      "name": "Houndour",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "houndoom",
+      "name": "Houndoom",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "kingdra",
+      "name": "Kingdra",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "phanpy",
+      "name": "Phanpy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "donphan",
+      "name": "Donphan",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "porygon2",
+      "name": "Porygon2",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "stantler",
+      "name": "Stantler",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "smeargle",
+      "name": "Smeargle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tyrogue",
+      "name": "Tyrogue",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hitmontop",
+      "name": "Hitmontop",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "smoochum",
+      "name": "Smoochum",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "elekid",
+      "name": "Elekid",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "magby",
+      "name": "Magby",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "miltank",
+      "name": "Miltank",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "blissey",
+      "name": "Blissey",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "raikou",
+      "name": "Raikou",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "entei",
+      "name": "Entei",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "suicune",
+      "name": "Suicune",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "larvitar",
+      "name": "Larvitar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pupitar",
+      "name": "Pupitar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tyranitar",
+      "name": "Tyranitar",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "lugia",
+      "name": "Lugia",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hooh",
+      "name": "Ho-Oh",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "celebi",
+      "name": "Celebi",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "treecko",
+      "name": "Treecko",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grovyle",
+      "name": "Grovyle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sceptile",
+      "name": "Sceptile",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "torchic",
+      "name": "Torchic",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "combusken",
+      "name": "Combusken",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "blaziken",
+      "name": "Blaziken",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mudkip",
+      "name": "Mudkip",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "marshtomp",
+      "name": "Marshtomp",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swampert",
+      "name": "Swampert",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "poochyena",
+      "name": "Poochyena",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mightyena",
+      "name": "Mightyena",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zigzagoon",
+      "name": "Zigzagoon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zigzagoongalar",
+      "name": "Zigzagoon-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "linoone",
+      "name": "Linoone",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "linoonegalar",
+      "name": "Linoone-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wurmple",
+      "name": "Wurmple",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silcoon",
+      "name": "Silcoon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "beautifly",
+      "name": "Beautifly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cascoon",
+      "name": "Cascoon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dustox",
+      "name": "Dustox",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lotad",
+      "name": "Lotad",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lombre",
+      "name": "Lombre",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ludicolo",
+      "name": "Ludicolo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "seedot",
+      "name": "Seedot",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nuzleaf",
+      "name": "Nuzleaf",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shiftry",
+      "name": "Shiftry",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "taillow",
+      "name": "Taillow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swellow",
+      "name": "Swellow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wingull",
+      "name": "Wingull",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pelipper",
+      "name": "Pelipper",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "ralts",
+      "name": "Ralts",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kirlia",
+      "name": "Kirlia",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gardevoir",
+      "name": "Gardevoir",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "surskit",
+      "name": "Surskit",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "masquerain",
+      "name": "Masquerain",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shroomish",
+      "name": "Shroomish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "breloom",
+      "name": "Breloom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slakoth",
+      "name": "Slakoth",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vigoroth",
+      "name": "Vigoroth",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slaking",
+      "name": "Slaking",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nincada",
+      "name": "Nincada",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ninjask",
+      "name": "Ninjask",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shedinja",
+      "name": "Shedinja",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "whismur",
+      "name": "Whismur",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "loudred",
+      "name": "Loudred",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "exploud",
+      "name": "Exploud",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "makuhita",
+      "name": "Makuhita",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hariyama",
+      "name": "Hariyama",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "azurill",
+      "name": "Azurill",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nosepass",
+      "name": "Nosepass",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "skitty",
+      "name": "Skitty",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "delcatty",
+      "name": "Delcatty",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sableye",
+      "name": "Sableye",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "mawile",
+      "name": "Mawile",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "aron",
+      "name": "Aron",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lairon",
+      "name": "Lairon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "aggron",
+      "name": "Aggron",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meditite",
+      "name": "Meditite",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "medicham",
+      "name": "Medicham",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "electrike",
+      "name": "Electrike",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "manectric",
+      "name": "Manectric",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "plusle",
+      "name": "Plusle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "minun",
+      "name": "Minun",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "volbeat",
+      "name": "Volbeat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "illumise",
+      "name": "Illumise",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "roselia",
+      "name": "Roselia",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gulpin",
+      "name": "Gulpin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swalot",
+      "name": "Swalot",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "carvanha",
+      "name": "Carvanha",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sharpedo",
+      "name": "Sharpedo",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wailmer",
+      "name": "Wailmer",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wailord",
+      "name": "Wailord",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "numel",
+      "name": "Numel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "camerupt",
+      "name": "Camerupt",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "torkoal",
+      "name": "Torkoal",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "spoink",
+      "name": "Spoink",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grumpig",
+      "name": "Grumpig",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "spinda",
+      "name": "Spinda",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "trapinch",
+      "name": "Trapinch",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vibrava",
+      "name": "Vibrava",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "flygon",
+      "name": "Flygon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cacnea",
+      "name": "Cacnea",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cacturne",
+      "name": "Cacturne",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swablu",
+      "name": "Swablu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "altaria",
+      "name": "Altaria",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "zangoose",
+      "name": "Zangoose",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "seviper",
+      "name": "Seviper",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lunatone",
+      "name": "Lunatone",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "solrock",
+      "name": "Solrock",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "barboach",
+      "name": "Barboach",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "whiscash",
+      "name": "Whiscash",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "corphish",
+      "name": "Corphish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "crawdaunt",
+      "name": "Crawdaunt",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "baltoy",
+      "name": "Baltoy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "claydol",
+      "name": "Claydol",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lileep",
+      "name": "Lileep",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cradily",
+      "name": "Cradily",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "anorith",
+      "name": "Anorith",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "armaldo",
+      "name": "Armaldo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "feebas",
+      "name": "Feebas",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "milotic",
+      "name": "Milotic",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "castform",
+      "name": "Castform",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kecleon",
+      "name": "Kecleon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shuppet",
+      "name": "Shuppet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "banette",
+      "name": "Banette",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "duskull",
+      "name": "Duskull",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dusclops",
+      "name": "Dusclops",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tropius",
+      "name": "Tropius",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chimecho",
+      "name": "Chimecho",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "absol",
+      "name": "Absol",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wynaut",
+      "name": "Wynaut",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "snorunt",
+      "name": "Snorunt",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "glalie",
+      "name": "Glalie",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "spheal",
+      "name": "Spheal",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sealeo",
+      "name": "Sealeo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "walrein",
+      "name": "Walrein",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "clamperl",
+      "name": "Clamperl",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "huntail",
+      "name": "Huntail",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gorebyss",
+      "name": "Gorebyss",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "relicanth",
+      "name": "Relicanth",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "luvdisc",
+      "name": "Luvdisc",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bagon",
+      "name": "Bagon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shelgon",
+      "name": "Shelgon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "salamence",
+      "name": "Salamence",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "beldum",
+      "name": "Beldum",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "metang",
+      "name": "Metang",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "metagross",
+      "name": "Metagross",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "regirock",
+      "name": "Regirock",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "regice",
+      "name": "Regice",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "registeel",
+      "name": "Registeel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "latias",
+      "name": "Latias",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "latios",
+      "name": "Latios",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kyogre",
+      "name": "Kyogre",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "groudon",
+      "name": "Groudon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rayquaza",
+      "name": "Rayquaza",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "jirachi",
+      "name": "Jirachi",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "deoxys",
+      "name": "Deoxys",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "deoxysattack",
+      "name": "Deoxys-Attack",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "deoxysdefense",
+      "name": "Deoxys-Defense",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "deoxysspeed",
+      "name": "Deoxys-Speed",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "turtwig",
+      "name": "Turtwig",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grotle",
+      "name": "Grotle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "torterra",
+      "name": "Torterra",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "chimchar",
+      "name": "Chimchar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "monferno",
+      "name": "Monferno",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "infernape",
+      "name": "Infernape",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "piplup",
+      "name": "Piplup",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "prinplup",
+      "name": "Prinplup",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "empoleon",
+      "name": "Empoleon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "starly",
+      "name": "Starly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "staravia",
+      "name": "Staravia",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "staraptor",
+      "name": "Staraptor",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bidoof",
+      "name": "Bidoof",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bibarel",
+      "name": "Bibarel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kricketot",
+      "name": "Kricketot",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kricketune",
+      "name": "Kricketune",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shinx",
+      "name": "Shinx",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "luxio",
+      "name": "Luxio",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "luxray",
+      "name": "Luxray",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "budew",
+      "name": "Budew",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "roserade",
+      "name": "Roserade",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cranidos",
+      "name": "Cranidos",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rampardos",
+      "name": "Rampardos",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "shieldon",
+      "name": "Shieldon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bastiodon",
+      "name": "Bastiodon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "burmy",
+      "name": "Burmy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "burmysandy",
+      "name": "Burmy-Sandy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "burmytrash",
+      "name": "Burmy-Trash",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wormadam",
+      "name": "Wormadam",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wormadamsandy",
+      "name": "Wormadam-Sandy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wormadamtrash",
+      "name": "Wormadam-Trash",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mothim",
+      "name": "Mothim",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "combee",
+      "name": "Combee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vespiquen",
+      "name": "Vespiquen",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pachirisu",
+      "name": "Pachirisu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "buizel",
+      "name": "Buizel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "floatzel",
+      "name": "Floatzel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cherubi",
+      "name": "Cherubi",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cherrim",
+      "name": "Cherrim",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shellos",
+      "name": "Shellos",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shelloseast",
+      "name": "Shellos-East",
+      "legal": true,
+      "tier": "LC",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "gastrodon",
+      "name": "Gastrodon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gastrodoneast",
+      "name": "Gastrodon-East",
+      "legal": true,
+      "tier": "RU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "ambipom",
+      "name": "Ambipom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drifloon",
+      "name": "Drifloon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drifblim",
+      "name": "Drifblim",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "buneary",
+      "name": "Buneary",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lopunny",
+      "name": "Lopunny",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mismagius",
+      "name": "Mismagius",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "honchkrow",
+      "name": "Honchkrow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "glameow",
+      "name": "Glameow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "purugly",
+      "name": "Purugly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chingling",
+      "name": "Chingling",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "stunky",
+      "name": "Stunky",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "skuntank",
+      "name": "Skuntank",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bronzor",
+      "name": "Bronzor",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bronzong",
+      "name": "Bronzong",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bonsly",
+      "name": "Bonsly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mimejr",
+      "name": "Mime Jr.",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "happiny",
+      "name": "Happiny",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chatot",
+      "name": "Chatot",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "spiritomb",
+      "name": "Spiritomb",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "gible",
+      "name": "Gible",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gabite",
+      "name": "Gabite",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "garchomp",
+      "name": "Garchomp",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "munchlax",
+      "name": "Munchlax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "riolu",
+      "name": "Riolu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lucario",
+      "name": "Lucario",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "hippopotas",
+      "name": "Hippopotas",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hippowdon",
+      "name": "Hippowdon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "skorupi",
+      "name": "Skorupi",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drapion",
+      "name": "Drapion",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "croagunk",
+      "name": "Croagunk",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toxicroak",
+      "name": "Toxicroak",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "carnivine",
+      "name": "Carnivine",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "finneon",
+      "name": "Finneon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lumineon",
+      "name": "Lumineon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mantyke",
+      "name": "Mantyke",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "snover",
+      "name": "Snover",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "abomasnow",
+      "name": "Abomasnow",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "weavile",
+      "name": "Weavile",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "magnezone",
+      "name": "Magnezone",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lickilicky",
+      "name": "Lickilicky",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rhyperior",
+      "name": "Rhyperior",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "tangrowth",
+      "name": "Tangrowth",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "electivire",
+      "name": "Electivire",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "magmortar",
+      "name": "Magmortar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "togekiss",
+      "name": "Togekiss",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "yanmega",
+      "name": "Yanmega",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "leafeon",
+      "name": "Leafeon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "glaceon",
+      "name": "Glaceon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "gliscor",
+      "name": "Gliscor",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "mamoswine",
+      "name": "Mamoswine",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "porygonz",
+      "name": "Porygon-Z",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gallade",
+      "name": "Gallade",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "probopass",
+      "name": "Probopass",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dusknoir",
+      "name": "Dusknoir",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "froslass",
+      "name": "Froslass",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "rotom",
+      "name": "Rotom",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "rotomheat",
+      "name": "Rotom-Heat",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "rotomwash",
+      "name": "Rotom-Wash",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "rotomfrost",
+      "name": "Rotom-Frost",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "rotomfan",
+      "name": "Rotom-Fan",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "rotommow",
+      "name": "Rotom-Mow",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "uxie",
+      "name": "Uxie",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mesprit",
+      "name": "Mesprit",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "azelf",
+      "name": "Azelf",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dialga",
+      "name": "Dialga",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dialgaorigin",
+      "name": "Dialga-Origin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "palkia",
+      "name": "Palkia",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "palkiaorigin",
+      "name": "Palkia-Origin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "heatran",
+      "name": "Heatran",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "regigigas",
+      "name": "Regigigas",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "giratina",
+      "name": "Giratina",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "giratinaorigin",
+      "name": "Giratina-Origin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cresselia",
+      "name": "Cresselia",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "phione",
+      "name": "Phione",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "manaphy",
+      "name": "Manaphy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "darkrai",
+      "name": "Darkrai",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shaymin",
+      "name": "Shaymin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shayminsky",
+      "name": "Shaymin-Sky",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceus",
+      "name": "Arceus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusbug",
+      "name": "Arceus-Bug",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusdark",
+      "name": "Arceus-Dark",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusdragon",
+      "name": "Arceus-Dragon",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceuselectric",
+      "name": "Arceus-Electric",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusfairy",
+      "name": "Arceus-Fairy",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusfighting",
+      "name": "Arceus-Fighting",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusfire",
+      "name": "Arceus-Fire",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusflying",
+      "name": "Arceus-Flying",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusghost",
+      "name": "Arceus-Ghost",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusgrass",
+      "name": "Arceus-Grass",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusground",
+      "name": "Arceus-Ground",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusice",
+      "name": "Arceus-Ice",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceuspoison",
+      "name": "Arceus-Poison",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceuspsychic",
+      "name": "Arceus-Psychic",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceusrock",
+      "name": "Arceus-Rock",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceussteel",
+      "name": "Arceus-Steel",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arceuswater",
+      "name": "Arceus-Water",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "victini",
+      "name": "Victini",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "snivy",
+      "name": "Snivy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "servine",
+      "name": "Servine",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "serperior",
+      "name": "Serperior",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "tepig",
+      "name": "Tepig",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pignite",
+      "name": "Pignite",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "emboar",
+      "name": "Emboar",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "oshawott",
+      "name": "Oshawott",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dewott",
+      "name": "Dewott",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "samurott",
+      "name": "Samurott",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "samurotthisui",
+      "name": "Samurott-Hisui",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "patrat",
+      "name": "Patrat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "watchog",
+      "name": "Watchog",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lillipup",
+      "name": "Lillipup",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "herdier",
+      "name": "Herdier",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "stoutland",
+      "name": "Stoutland",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "purrloin",
+      "name": "Purrloin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "liepard",
+      "name": "Liepard",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pansage",
+      "name": "Pansage",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "simisage",
+      "name": "Simisage",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pansear",
+      "name": "Pansear",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "simisear",
+      "name": "Simisear",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "panpour",
+      "name": "Panpour",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "simipour",
+      "name": "Simipour",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "munna",
+      "name": "Munna",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "musharna",
+      "name": "Musharna",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pidove",
+      "name": "Pidove",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tranquill",
+      "name": "Tranquill",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "unfezant",
+      "name": "Unfezant",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "blitzle",
+      "name": "Blitzle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zebstrika",
+      "name": "Zebstrika",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "roggenrola",
+      "name": "Roggenrola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "boldore",
+      "name": "Boldore",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gigalith",
+      "name": "Gigalith",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "woobat",
+      "name": "Woobat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swoobat",
+      "name": "Swoobat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drilbur",
+      "name": "Drilbur",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "excadrill",
+      "name": "Excadrill",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "audino",
+      "name": "Audino",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "timburr",
+      "name": "Timburr",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gurdurr",
+      "name": "Gurdurr",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "conkeldurr",
+      "name": "Conkeldurr",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "tympole",
+      "name": "Tympole",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "palpitoad",
+      "name": "Palpitoad",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "seismitoad",
+      "name": "Seismitoad",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "throh",
+      "name": "Throh",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sawk",
+      "name": "Sawk",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sewaddle",
+      "name": "Sewaddle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swadloon",
+      "name": "Swadloon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "leavanny",
+      "name": "Leavanny",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "venipede",
+      "name": "Venipede",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "whirlipede",
+      "name": "Whirlipede",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "scolipede",
+      "name": "Scolipede",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cottonee",
+      "name": "Cottonee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "whimsicott",
+      "name": "Whimsicott",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "petilil",
+      "name": "Petilil",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lilligant",
+      "name": "Lilligant",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lilliganthisui",
+      "name": "Lilligant-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "basculin",
+      "name": "Basculin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "basculinbluestriped",
+      "name": "Basculin-Blue-Striped",
+      "legal": false,
+      "tier": "ZU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "basculinwhitestriped",
+      "name": "Basculin-White-Striped",
+      "legal": false,
+      "tier": "ZU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sandile",
+      "name": "Sandile",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "krokorok",
+      "name": "Krokorok",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "krookodile",
+      "name": "Krookodile",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "darumaka",
+      "name": "Darumaka",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "darumakagalar",
+      "name": "Darumaka-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "darmanitan",
+      "name": "Darmanitan",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "darmanitangalar",
+      "name": "Darmanitan-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "maractus",
+      "name": "Maractus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dwebble",
+      "name": "Dwebble",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "crustle",
+      "name": "Crustle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "scraggy",
+      "name": "Scraggy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "scrafty",
+      "name": "Scrafty",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sigilyph",
+      "name": "Sigilyph",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "yamask",
+      "name": "Yamask",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "yamaskgalar",
+      "name": "Yamask-Galar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cofagrigus",
+      "name": "Cofagrigus",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tirtouga",
+      "name": "Tirtouga",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "carracosta",
+      "name": "Carracosta",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "archen",
+      "name": "Archen",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "archeops",
+      "name": "Archeops",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "trubbish",
+      "name": "Trubbish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "garbodor",
+      "name": "Garbodor",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "garbodorgmax",
+      "name": "Garbodor-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zorua",
+      "name": "Zorua",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zoruahisui",
+      "name": "Zorua-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zoroark",
+      "name": "Zoroark",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "zoroarkhisui",
+      "name": "Zoroark-Hisui",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "minccino",
+      "name": "Minccino",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cinccino",
+      "name": "Cinccino",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gothita",
+      "name": "Gothita",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gothorita",
+      "name": "Gothorita",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gothitelle",
+      "name": "Gothitelle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "solosis",
+      "name": "Solosis",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "duosion",
+      "name": "Duosion",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "reuniclus",
+      "name": "Reuniclus",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "ducklett",
+      "name": "Ducklett",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swanna",
+      "name": "Swanna",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vanillite",
+      "name": "Vanillite",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vanillish",
+      "name": "Vanillish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vanilluxe",
+      "name": "Vanilluxe",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "deerling",
+      "name": "Deerling",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "deerlingsummer",
+      "name": "Deerling-Summer",
+      "legal": true,
+      "tier": "LC",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "deerlingautumn",
+      "name": "Deerling-Autumn",
+      "legal": true,
+      "tier": "LC",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "deerlingwinter",
+      "name": "Deerling-Winter",
+      "legal": true,
+      "tier": "LC",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "sawsbuck",
+      "name": "Sawsbuck",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "emolga",
+      "name": "Emolga",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "karrablast",
+      "name": "Karrablast",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "escavalier",
+      "name": "Escavalier",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "foongus",
+      "name": "Foongus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "amoonguss",
+      "name": "Amoonguss",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "frillish",
+      "name": "Frillish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "jellicent",
+      "name": "Jellicent",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "alomomola",
+      "name": "Alomomola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "joltik",
+      "name": "Joltik",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "galvantula",
+      "name": "Galvantula",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ferroseed",
+      "name": "Ferroseed",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ferrothorn",
+      "name": "Ferrothorn",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "klink",
+      "name": "Klink",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "klang",
+      "name": "Klang",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "klinklang",
+      "name": "Klinklang",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tynamo",
+      "name": "Tynamo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "eelektrik",
+      "name": "Eelektrik",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "eelektross",
+      "name": "Eelektross",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "elgyem",
+      "name": "Elgyem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "beheeyem",
+      "name": "Beheeyem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "litwick",
+      "name": "Litwick",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lampent",
+      "name": "Lampent",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chandelure",
+      "name": "Chandelure",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "axew",
+      "name": "Axew",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "fraxure",
+      "name": "Fraxure",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "haxorus",
+      "name": "Haxorus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cubchoo",
+      "name": "Cubchoo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "beartic",
+      "name": "Beartic",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "cryogonal",
+      "name": "Cryogonal",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shelmet",
+      "name": "Shelmet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "accelgor",
+      "name": "Accelgor",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "stunfisk",
+      "name": "Stunfisk",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "stunfiskgalar",
+      "name": "Stunfisk-Galar",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mienfoo",
+      "name": "Mienfoo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mienshao",
+      "name": "Mienshao",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "druddigon",
+      "name": "Druddigon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "golett",
+      "name": "Golett",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "golurk",
+      "name": "Golurk",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "pawniard",
+      "name": "Pawniard",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bisharp",
+      "name": "Bisharp",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bouffalant",
+      "name": "Bouffalant",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rufflet",
+      "name": "Rufflet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "braviary",
+      "name": "Braviary",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "braviaryhisui",
+      "name": "Braviary-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vullaby",
+      "name": "Vullaby",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mandibuzz",
+      "name": "Mandibuzz",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "heatmor",
+      "name": "Heatmor",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "durant",
+      "name": "Durant",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "deino",
+      "name": "Deino",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zweilous",
+      "name": "Zweilous",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hydreigon",
+      "name": "Hydreigon",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "larvesta",
+      "name": "Larvesta",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "volcarona",
+      "name": "Volcarona",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "cobalion",
+      "name": "Cobalion",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "terrakion",
+      "name": "Terrakion",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "virizion",
+      "name": "Virizion",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tornadus",
+      "name": "Tornadus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tornadustherian",
+      "name": "Tornadus-Therian",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "thundurus",
+      "name": "Thundurus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "thundurustherian",
+      "name": "Thundurus-Therian",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "reshiram",
+      "name": "Reshiram",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zekrom",
+      "name": "Zekrom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "landorus",
+      "name": "Landorus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "landorustherian",
+      "name": "Landorus-Therian",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kyurem",
+      "name": "Kyurem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kyuremblack",
+      "name": "Kyurem-Black",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kyuremwhite",
+      "name": "Kyurem-White",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "keldeo",
+      "name": "Keldeo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "keldeoresolute",
+      "name": "Keldeo-Resolute",
+      "legal": false,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meloetta",
+      "name": "Meloetta",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "genesect",
+      "name": "Genesect",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "genesectdouse",
+      "name": "Genesect-Douse",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "genesectshock",
+      "name": "Genesect-Shock",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "genesectburn",
+      "name": "Genesect-Burn",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "genesectchill",
+      "name": "Genesect-Chill",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chespin",
+      "name": "Chespin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "quilladin",
+      "name": "Quilladin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chesnaught",
+      "name": "Chesnaught",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "fennekin",
+      "name": "Fennekin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "braixen",
+      "name": "Braixen",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "delphox",
+      "name": "Delphox",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "froakie",
+      "name": "Froakie",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "frogadier",
+      "name": "Frogadier",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "greninja",
+      "name": "Greninja",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "greninjabond",
+      "name": "Greninja-Bond",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bunnelby",
+      "name": "Bunnelby",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "diggersby",
+      "name": "Diggersby",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "fletchling",
+      "name": "Fletchling",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "fletchinder",
+      "name": "Fletchinder",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "talonflame",
+      "name": "Talonflame",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "scatterbug",
+      "name": "Scatterbug",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "spewpa",
+      "name": "Spewpa",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vivillon",
+      "name": "Vivillon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonicysnow",
+      "name": "Vivillon-Icy Snow",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonpolar",
+      "name": "Vivillon-Polar",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillontundra",
+      "name": "Vivillon-Tundra",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivilloncontinental",
+      "name": "Vivillon-Continental",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillongarden",
+      "name": "Vivillon-Garden",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonelegant",
+      "name": "Vivillon-Elegant",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonmodern",
+      "name": "Vivillon-Modern",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonmarine",
+      "name": "Vivillon-Marine",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonarchipelago",
+      "name": "Vivillon-Archipelago",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonhighplains",
+      "name": "Vivillon-High Plains",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonsandstorm",
+      "name": "Vivillon-Sandstorm",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonriver",
+      "name": "Vivillon-River",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonmonsoon",
+      "name": "Vivillon-Monsoon",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonsavanna",
+      "name": "Vivillon-Savanna",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonsun",
+      "name": "Vivillon-Sun",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonocean",
+      "name": "Vivillon-Ocean",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonjungle",
+      "name": "Vivillon-Jungle",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonfancy",
+      "name": "Vivillon-Fancy",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "vivillonpokeball",
+      "name": "Vivillon-Pokeball",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "litleo",
+      "name": "Litleo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pyroar",
+      "name": "Pyroar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "flabebe",
+      "name": "Flabébé",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "floette",
+      "name": "Floette",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "floetteeternal",
+      "name": "Floette-Eternal",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "florges",
+      "name": "Florges",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "skiddo",
+      "name": "Skiddo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gogoat",
+      "name": "Gogoat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pancham",
+      "name": "Pancham",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pangoro",
+      "name": "Pangoro",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "furfrou",
+      "name": "Furfrou",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "espurr",
+      "name": "Espurr",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meowstic",
+      "name": "Meowstic",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "meowsticf",
+      "name": "Meowstic-F",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "honedge",
+      "name": "Honedge",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "doublade",
+      "name": "Doublade",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "aegislash",
+      "name": "Aegislash",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "spritzee",
+      "name": "Spritzee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "aromatisse",
+      "name": "Aromatisse",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "swirlix",
+      "name": "Swirlix",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slurpuff",
+      "name": "Slurpuff",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "inkay",
+      "name": "Inkay",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "malamar",
+      "name": "Malamar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "binacle",
+      "name": "Binacle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "barbaracle",
+      "name": "Barbaracle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "skrelp",
+      "name": "Skrelp",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dragalge",
+      "name": "Dragalge",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "clauncher",
+      "name": "Clauncher",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "clawitzer",
+      "name": "Clawitzer",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "helioptile",
+      "name": "Helioptile",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "heliolisk",
+      "name": "Heliolisk",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tyrunt",
+      "name": "Tyrunt",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tyrantrum",
+      "name": "Tyrantrum",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "amaura",
+      "name": "Amaura",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "aurorus",
+      "name": "Aurorus",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sylveon",
+      "name": "Sylveon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "hawlucha",
+      "name": "Hawlucha",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "dedenne",
+      "name": "Dedenne",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "carbink",
+      "name": "Carbink",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "goomy",
+      "name": "Goomy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sliggoo",
+      "name": "Sliggoo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sliggoohisui",
+      "name": "Sliggoo-Hisui",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "goodra",
+      "name": "Goodra",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "goodrahisui",
+      "name": "Goodra-Hisui",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "klefki",
+      "name": "Klefki",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "phantump",
+      "name": "Phantump",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "trevenant",
+      "name": "Trevenant",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "pumpkaboo",
+      "name": "Pumpkaboo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pumpkaboosmall",
+      "name": "Pumpkaboo-Small",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pumpkaboolarge",
+      "name": "Pumpkaboo-Large",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pumpkaboosuper",
+      "name": "Pumpkaboo-Super",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gourgeist",
+      "name": "Gourgeist",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gourgeistsmall",
+      "name": "Gourgeist-Small",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gourgeistlarge",
+      "name": "Gourgeist-Large",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gourgeistsuper",
+      "name": "Gourgeist-Super",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bergmite",
+      "name": "Bergmite",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "avalugg",
+      "name": "Avalugg",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "avalugghisui",
+      "name": "Avalugg-Hisui",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "noibat",
+      "name": "Noibat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "noivern",
+      "name": "Noivern",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "xerneas",
+      "name": "Xerneas",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "yveltal",
+      "name": "Yveltal",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zygarde",
+      "name": "Zygarde",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zygarde10",
+      "name": "Zygarde-10%",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "diancie",
+      "name": "Diancie",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hoopa",
+      "name": "Hoopa",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hoopaunbound",
+      "name": "Hoopa-Unbound",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "volcanion",
+      "name": "Volcanion",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rowlet",
+      "name": "Rowlet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dartrix",
+      "name": "Dartrix",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "decidueye",
+      "name": "Decidueye",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "decidueyehisui",
+      "name": "Decidueye-Hisui",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "litten",
+      "name": "Litten",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "torracat",
+      "name": "Torracat",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "incineroar",
+      "name": "Incineroar",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "popplio",
+      "name": "Popplio",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "brionne",
+      "name": "Brionne",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "primarina",
+      "name": "Primarina",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "pikipek",
+      "name": "Pikipek",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "trumbeak",
+      "name": "Trumbeak",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toucannon",
+      "name": "Toucannon",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "yungoos",
+      "name": "Yungoos",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gumshoos",
+      "name": "Gumshoos",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gumshoostotem",
+      "name": "Gumshoos-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grubbin",
+      "name": "Grubbin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "charjabug",
+      "name": "Charjabug",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vikavolt",
+      "name": "Vikavolt",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "vikavolttotem",
+      "name": "Vikavolt-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "crabrawler",
+      "name": "Crabrawler",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "crabominable",
+      "name": "Crabominable",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "oricorio",
+      "name": "Oricorio",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "oricoriopompom",
+      "name": "Oricorio-Pom-Pom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "oricoriopau",
+      "name": "Oricorio-Pa'u",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "oricoriosensu",
+      "name": "Oricorio-Sensu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cutiefly",
+      "name": "Cutiefly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ribombee",
+      "name": "Ribombee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ribombeetotem",
+      "name": "Ribombee-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rockruff",
+      "name": "Rockruff",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rockruffdusk",
+      "name": "Rockruff-Dusk",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lycanroc",
+      "name": "Lycanroc",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "lycanrocmidnight",
+      "name": "Lycanroc-Midnight",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "lycanrocdusk",
+      "name": "Lycanroc-Dusk",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "wishiwashi",
+      "name": "Wishiwashi",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mareanie",
+      "name": "Mareanie",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toxapex",
+      "name": "Toxapex",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "mudbray",
+      "name": "Mudbray",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mudsdale",
+      "name": "Mudsdale",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "dewpider",
+      "name": "Dewpider",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "araquanid",
+      "name": "Araquanid",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "araquanidtotem",
+      "name": "Araquanid-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "fomantis",
+      "name": "Fomantis",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lurantis",
+      "name": "Lurantis",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lurantistotem",
+      "name": "Lurantis-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "morelull",
+      "name": "Morelull",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shiinotic",
+      "name": "Shiinotic",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "salandit",
+      "name": "Salandit",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "salazzle",
+      "name": "Salazzle",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "salazzletotem",
+      "name": "Salazzle-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "stufful",
+      "name": "Stufful",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bewear",
+      "name": "Bewear",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bounsweet",
+      "name": "Bounsweet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "steenee",
+      "name": "Steenee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tsareena",
+      "name": "Tsareena",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "comfey",
+      "name": "Comfey",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "oranguru",
+      "name": "Oranguru",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "passimian",
+      "name": "Passimian",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "wimpod",
+      "name": "Wimpod",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "golisopod",
+      "name": "Golisopod",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sandygast",
+      "name": "Sandygast",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "palossand",
+      "name": "Palossand",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pyukumuku",
+      "name": "Pyukumuku",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "typenull",
+      "name": "Type: Null",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvally",
+      "name": "Silvally",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallybug",
+      "name": "Silvally-Bug",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallydark",
+      "name": "Silvally-Dark",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallydragon",
+      "name": "Silvally-Dragon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyelectric",
+      "name": "Silvally-Electric",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyfairy",
+      "name": "Silvally-Fairy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyfighting",
+      "name": "Silvally-Fighting",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyfire",
+      "name": "Silvally-Fire",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyflying",
+      "name": "Silvally-Flying",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyghost",
+      "name": "Silvally-Ghost",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallygrass",
+      "name": "Silvally-Grass",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyground",
+      "name": "Silvally-Ground",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyice",
+      "name": "Silvally-Ice",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallypoison",
+      "name": "Silvally-Poison",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallypsychic",
+      "name": "Silvally-Psychic",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallyrock",
+      "name": "Silvally-Rock",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallysteel",
+      "name": "Silvally-Steel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silvallywater",
+      "name": "Silvally-Water",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "minior",
+      "name": "Minior",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "miniororange",
+      "name": "Minior-Orange",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "minioryellow",
+      "name": "Minior-Yellow",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "miniorgreen",
+      "name": "Minior-Green",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "miniorblue",
+      "name": "Minior-Blue",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "miniorindigo",
+      "name": "Minior-Indigo",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "miniorviolet",
+      "name": "Minior-Violet",
+      "legal": true,
+      "tier": "ZU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "komala",
+      "name": "Komala",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "turtonator",
+      "name": "Turtonator",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "togedemaru",
+      "name": "Togedemaru",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "togedemarutotem",
+      "name": "Togedemaru-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mimikyu",
+      "name": "Mimikyu",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "mimikyutotem",
+      "name": "Mimikyu-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bruxish",
+      "name": "Bruxish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drampa",
+      "name": "Drampa",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dhelmise",
+      "name": "Dhelmise",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "jangmoo",
+      "name": "Jangmo-o",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hakamoo",
+      "name": "Hakamo-o",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kommoo",
+      "name": "Kommo-o",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "kommoototem",
+      "name": "Kommo-o-Totem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tapukoko",
+      "name": "Tapu Koko",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tapulele",
+      "name": "Tapu Lele",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tapubulu",
+      "name": "Tapu Bulu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tapufini",
+      "name": "Tapu Fini",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cosmog",
+      "name": "Cosmog",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cosmoem",
+      "name": "Cosmoem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "solgaleo",
+      "name": "Solgaleo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lunala",
+      "name": "Lunala",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nihilego",
+      "name": "Nihilego",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "buzzwole",
+      "name": "Buzzwole",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pheromosa",
+      "name": "Pheromosa",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "xurkitree",
+      "name": "Xurkitree",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "celesteela",
+      "name": "Celesteela",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kartana",
+      "name": "Kartana",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "guzzlord",
+      "name": "Guzzlord",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "necrozma",
+      "name": "Necrozma",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "necrozmaduskmane",
+      "name": "Necrozma-Dusk-Mane",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "necrozmadawnwings",
+      "name": "Necrozma-Dawn-Wings",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "magearna",
+      "name": "Magearna",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "magearnaoriginal",
+      "name": "Magearna-Original",
+      "legal": false,
+      "tier": "Uber",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "marshadow",
+      "name": "Marshadow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "poipole",
+      "name": "Poipole",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "naganadel",
+      "name": "Naganadel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "stakataka",
+      "name": "Stakataka",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "blacephalon",
+      "name": "Blacephalon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zeraora",
+      "name": "Zeraora",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meltan",
+      "name": "Meltan",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "melmetal",
+      "name": "Melmetal",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "melmetalgmax",
+      "name": "Melmetal-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grookey",
+      "name": "Grookey",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "thwackey",
+      "name": "Thwackey",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rillaboom",
+      "name": "Rillaboom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rillaboomgmax",
+      "name": "Rillaboom-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "scorbunny",
+      "name": "Scorbunny",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "raboot",
+      "name": "Raboot",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cinderace",
+      "name": "Cinderace",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cinderacegmax",
+      "name": "Cinderace-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sobble",
+      "name": "Sobble",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drizzile",
+      "name": "Drizzile",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "inteleon",
+      "name": "Inteleon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "inteleongmax",
+      "name": "Inteleon-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "skwovet",
+      "name": "Skwovet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "greedent",
+      "name": "Greedent",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rookidee",
+      "name": "Rookidee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "corvisquire",
+      "name": "Corvisquire",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "corviknight",
+      "name": "Corviknight",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "corviknightgmax",
+      "name": "Corviknight-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "blipbug",
+      "name": "Blipbug",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dottler",
+      "name": "Dottler",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "orbeetle",
+      "name": "Orbeetle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "orbeetlegmax",
+      "name": "Orbeetle-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nickit",
+      "name": "Nickit",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "thievul",
+      "name": "Thievul",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gossifleur",
+      "name": "Gossifleur",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "eldegoss",
+      "name": "Eldegoss",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wooloo",
+      "name": "Wooloo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dubwool",
+      "name": "Dubwool",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chewtle",
+      "name": "Chewtle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drednaw",
+      "name": "Drednaw",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drednawgmax",
+      "name": "Drednaw-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "yamper",
+      "name": "Yamper",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "boltund",
+      "name": "Boltund",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rolycoly",
+      "name": "Rolycoly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "carkol",
+      "name": "Carkol",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "coalossal",
+      "name": "Coalossal",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "coalossalgmax",
+      "name": "Coalossal-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "applin",
+      "name": "Applin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "flapple",
+      "name": "Flapple",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "flapplegmax",
+      "name": "Flapple-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "appletun",
+      "name": "Appletun",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "appletungmax",
+      "name": "Appletun-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "silicobra",
+      "name": "Silicobra",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sandaconda",
+      "name": "Sandaconda",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "sandacondagmax",
+      "name": "Sandaconda-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cramorant",
+      "name": "Cramorant",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arrokuda",
+      "name": "Arrokuda",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "barraskewda",
+      "name": "Barraskewda",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toxel",
+      "name": "Toxel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toxtricity",
+      "name": "Toxtricity",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toxtricitylowkey",
+      "name": "Toxtricity-Low-Key",
+      "legal": false,
+      "tier": "RU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toxtricitygmax",
+      "name": "Toxtricity-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sizzlipede",
+      "name": "Sizzlipede",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "centiskorch",
+      "name": "Centiskorch",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "centiskorchgmax",
+      "name": "Centiskorch-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "clobbopus",
+      "name": "Clobbopus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grapploct",
+      "name": "Grapploct",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sinistea",
+      "name": "Sinistea",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sinisteaantique",
+      "name": "Sinistea-Antique",
+      "legal": false,
+      "tier": "LC",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "polteageist",
+      "name": "Polteageist",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "polteageistantique",
+      "name": "Polteageist-Antique",
+      "legal": true,
+      "tier": "UUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "hatenna",
+      "name": "Hatenna",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hattrem",
+      "name": "Hattrem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "hatterene",
+      "name": "Hatterene",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "hatterenegmax",
+      "name": "Hatterene-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "impidimp",
+      "name": "Impidimp",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "morgrem",
+      "name": "Morgrem",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grimmsnarl",
+      "name": "Grimmsnarl",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grimmsnarlgmax",
+      "name": "Grimmsnarl-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "obstagoon",
+      "name": "Obstagoon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "perrserker",
+      "name": "Perrserker",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cursola",
+      "name": "Cursola",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sirfetchd",
+      "name": "Sirfetch’d",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mrrime",
+      "name": "Mr. Rime",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "runerigus",
+      "name": "Runerigus",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "milcery",
+      "name": "Milcery",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "alcremie",
+      "name": "Alcremie",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "alcremierubycream",
+      "name": "Alcremie-Ruby-Cream",
+      "legal": true,
+      "tier": "ZUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "alcremiematchacream",
+      "name": "Alcremie-Matcha-Cream",
+      "legal": true,
+      "tier": "ZUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "alcremiemintcream",
+      "name": "Alcremie-Mint-Cream",
+      "legal": true,
+      "tier": "ZUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "alcremielemoncream",
+      "name": "Alcremie-Lemon-Cream",
+      "legal": true,
+      "tier": "ZUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "alcremierubyswirl",
+      "name": "Alcremie-Ruby-Swirl",
+      "legal": true,
+      "tier": "ZUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "alcremiecaramelswirl",
+      "name": "Alcremie-Caramel-Swirl",
+      "legal": true,
+      "tier": "ZUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "alcremierainbowswirl",
+      "name": "Alcremie-Rainbow-Swirl",
+      "legal": true,
+      "tier": "ZUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "alcremiegmax",
+      "name": "Alcremie-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "falinks",
+      "name": "Falinks",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pincurchin",
+      "name": "Pincurchin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "snom",
+      "name": "Snom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "frosmoth",
+      "name": "Frosmoth",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "stonjourner",
+      "name": "Stonjourner",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "eiscue",
+      "name": "Eiscue",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "indeedee",
+      "name": "Indeedee",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "indeedeef",
+      "name": "Indeedee-F",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "morpeko",
+      "name": "Morpeko",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "cufant",
+      "name": "Cufant",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "copperajah",
+      "name": "Copperajah",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "copperajahgmax",
+      "name": "Copperajah-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dracozolt",
+      "name": "Dracozolt",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arctozolt",
+      "name": "Arctozolt",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dracovish",
+      "name": "Dracovish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arctovish",
+      "name": "Arctovish",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "duraludon",
+      "name": "Duraludon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "duraludongmax",
+      "name": "Duraludon-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dreepy",
+      "name": "Dreepy",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "drakloak",
+      "name": "Drakloak",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dragapult",
+      "name": "Dragapult",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "zacian",
+      "name": "Zacian",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zamazenta",
+      "name": "Zamazenta",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "eternatus",
+      "name": "Eternatus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "eternatuseternamax",
+      "name": "Eternatus-Eternamax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kubfu",
+      "name": "Kubfu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "urshifu",
+      "name": "Urshifu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "urshifurapidstrike",
+      "name": "Urshifu-Rapid-Strike",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "urshifugmax",
+      "name": "Urshifu-Gmax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zarude",
+      "name": "Zarude",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "zarudedada",
+      "name": "Zarude-Dada",
+      "legal": false,
+      "tier": "UUBL",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "regieleki",
+      "name": "Regieleki",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "regidrago",
+      "name": "Regidrago",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "glastrier",
+      "name": "Glastrier",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "spectrier",
+      "name": "Spectrier",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "calyrex",
+      "name": "Calyrex",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "calyrexice",
+      "name": "Calyrex-Ice",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "calyrexshadow",
+      "name": "Calyrex-Shadow",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wyrdeer",
+      "name": "Wyrdeer",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "kleavor",
+      "name": "Kleavor",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "ursaluna",
+      "name": "Ursaluna",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ursalunabloodmoon",
+      "name": "Ursaluna-Bloodmoon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "basculegion",
+      "name": "Basculegion",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "basculegionf",
+      "name": "Basculegion-F",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "sneasler",
+      "name": "Sneasler",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "overqwil",
+      "name": "Overqwil",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "enamorus",
+      "name": "Enamorus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "enamorustherian",
+      "name": "Enamorus-Therian",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sprigatito",
+      "name": "Sprigatito",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "floragato",
+      "name": "Floragato",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "meowscarada",
+      "name": "Meowscarada",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "fuecoco",
+      "name": "Fuecoco",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "crocalor",
+      "name": "Crocalor",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "skeledirge",
+      "name": "Skeledirge",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "quaxly",
+      "name": "Quaxly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "quaxwell",
+      "name": "Quaxwell",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "quaquaval",
+      "name": "Quaquaval",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "lechonk",
+      "name": "Lechonk",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "oinkologne",
+      "name": "Oinkologne",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "oinkolognef",
+      "name": "Oinkologne-F",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tarountula",
+      "name": "Tarountula",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "spidops",
+      "name": "Spidops",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nymble",
+      "name": "Nymble",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "lokix",
+      "name": "Lokix",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pawmi",
+      "name": "Pawmi",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pawmo",
+      "name": "Pawmo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pawmot",
+      "name": "Pawmot",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tandemaus",
+      "name": "Tandemaus",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "maushold",
+      "name": "Maushold",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "mausholdfour",
+      "name": "Maushold-Four",
+      "legal": true,
+      "tier": "RU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "fidough",
+      "name": "Fidough",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dachsbun",
+      "name": "Dachsbun",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "smoliv",
+      "name": "Smoliv",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dolliv",
+      "name": "Dolliv",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arboliva",
+      "name": "Arboliva",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "squawkabilly",
+      "name": "Squawkabilly",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "squawkabillyblue",
+      "name": "Squawkabilly-Blue",
+      "legal": false,
+      "tier": "ZU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "squawkabillyyellow",
+      "name": "Squawkabilly-Yellow",
+      "legal": false,
+      "tier": "ZU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "squawkabillywhite",
+      "name": "Squawkabilly-White",
+      "legal": false,
+      "tier": "ZU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "nacli",
+      "name": "Nacli",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "naclstack",
+      "name": "Naclstack",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "garganacl",
+      "name": "Garganacl",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "charcadet",
+      "name": "Charcadet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "armarouge",
+      "name": "Armarouge",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "ceruledge",
+      "name": "Ceruledge",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "tadbulb",
+      "name": "Tadbulb",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bellibolt",
+      "name": "Bellibolt",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "wattrel",
+      "name": "Wattrel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kilowattrel",
+      "name": "Kilowattrel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "maschiff",
+      "name": "Maschiff",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "mabosstiff",
+      "name": "Mabosstiff",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "shroodle",
+      "name": "Shroodle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "grafaiai",
+      "name": "Grafaiai",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bramblin",
+      "name": "Bramblin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "brambleghast",
+      "name": "Brambleghast",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toedscool",
+      "name": "Toedscool",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "toedscruel",
+      "name": "Toedscruel",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "klawf",
+      "name": "Klawf",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "capsakid",
+      "name": "Capsakid",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "scovillain",
+      "name": "Scovillain",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "rellor",
+      "name": "Rellor",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "rabsca",
+      "name": "Rabsca",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "flittle",
+      "name": "Flittle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "espathra",
+      "name": "Espathra",
+      "legal": true,
+      "tier": "UUBL",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "tinkatink",
+      "name": "Tinkatink",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tinkatuff",
+      "name": "Tinkatuff",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tinkaton",
+      "name": "Tinkaton",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "wiglett",
+      "name": "Wiglett",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wugtrio",
+      "name": "Wugtrio",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "bombirdier",
+      "name": "Bombirdier",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "finizen",
+      "name": "Finizen",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "palafin",
+      "name": "Palafin",
+      "legal": true,
+      "tier": "Uber",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "varoom",
+      "name": "Varoom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "revavroom",
+      "name": "Revavroom",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cyclizar",
+      "name": "Cyclizar",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "orthworm",
+      "name": "Orthworm",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "glimmet",
+      "name": "Glimmet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "glimmora",
+      "name": "Glimmora",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "greavard",
+      "name": "Greavard",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "houndstone",
+      "name": "Houndstone",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "flamigo",
+      "name": "Flamigo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cetoddle",
+      "name": "Cetoddle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "cetitan",
+      "name": "Cetitan",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "veluza",
+      "name": "Veluza",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dondozo",
+      "name": "Dondozo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tatsugiri",
+      "name": "Tatsugiri",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tatsugiridroopy",
+      "name": "Tatsugiri-Droopy",
+      "legal": false,
+      "tier": "PU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tatsugiristretchy",
+      "name": "Tatsugiri-Stretchy",
+      "legal": false,
+      "tier": "PU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "annihilape",
+      "name": "Annihilape",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "clodsire",
+      "name": "Clodsire",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "farigiraf",
+      "name": "Farigiraf",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "dudunsparce",
+      "name": "Dudunsparce",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dudunsparcethreesegment",
+      "name": "Dudunsparce-Three-Segment",
+      "legal": false,
+      "tier": "NU",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "kingambit",
+      "name": "Kingambit",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "greattusk",
+      "name": "Great Tusk",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "screamtail",
+      "name": "Scream Tail",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "brutebonnet",
+      "name": "Brute Bonnet",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "fluttermane",
+      "name": "Flutter Mane",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "slitherwing",
+      "name": "Slither Wing",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sandyshocks",
+      "name": "Sandy Shocks",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "irontreads",
+      "name": "Iron Treads",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironbundle",
+      "name": "Iron Bundle",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironhands",
+      "name": "Iron Hands",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironjugulis",
+      "name": "Iron Jugulis",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironmoth",
+      "name": "Iron Moth",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironthorns",
+      "name": "Iron Thorns",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "frigibax",
+      "name": "Frigibax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "arctibax",
+      "name": "Arctibax",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "baxcalibur",
+      "name": "Baxcalibur",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gimmighoul",
+      "name": "Gimmighoul",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gimmighoulroaming",
+      "name": "Gimmighoul-Roaming",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "gholdengo",
+      "name": "Gholdengo",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "wochien",
+      "name": "Wo-Chien",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chienpao",
+      "name": "Chien-Pao",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "tinglu",
+      "name": "Ting-Lu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "chiyu",
+      "name": "Chi-Yu",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "roaringmoon",
+      "name": "Roaring Moon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironvaliant",
+      "name": "Iron Valiant",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "koraidon",
+      "name": "Koraidon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "miraidon",
+      "name": "Miraidon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "walkingwake",
+      "name": "Walking Wake",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironleaves",
+      "name": "Iron Leaves",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "dipplin",
+      "name": "Dipplin",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "poltchageist",
+      "name": "Poltchageist",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "poltchageistartisan",
+      "name": "Poltchageist-Artisan",
+      "legal": false,
+      "tier": "LC",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "sinistcha",
+      "name": "Sinistcha",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "sinistchamasterpiece",
+      "name": "Sinistcha-Masterpiece",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "okidogi",
+      "name": "Okidogi",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "munkidori",
+      "name": "Munkidori",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "fezandipiti",
+      "name": "Fezandipiti",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ogerpon",
+      "name": "Ogerpon",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ogerponwellspring",
+      "name": "Ogerpon-Wellspring",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ogerponhearthflame",
+      "name": "Ogerpon-Hearthflame",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ogerponcornerstone",
+      "name": "Ogerpon-Cornerstone",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "archaludon",
+      "name": "Archaludon",
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "hydrapple",
+      "name": "Hydrapple",
+      "legal": true,
+      "tier": "UU",
+      "isNonstandard": null
+    },
+    {
+      "speciesId": "gougingfire",
+      "name": "Gouging Fire",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ragingbolt",
+      "name": "Raging Bolt",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironboulder",
+      "name": "Iron Boulder",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "ironcrown",
+      "name": "Iron Crown",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "terapagos",
+      "name": "Terapagos",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    },
+    {
+      "speciesId": "pecharunt",
+      "name": "Pecharunt",
+      "legal": false,
+      "tier": "Illegal",
+      "isNonstandard": "Past"
+    }
+  ]
+}

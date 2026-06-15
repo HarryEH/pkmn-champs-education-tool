@@ -6,8 +6,11 @@
  *  module resolution. `npx tsx scripts/buildIconHashes.ts` works too if tsx is added.)
  *
  * What it does, per the WS-D design constraints:
- *   1. Enumerate the legal species pool from `gen.species` (see R2 memo for the
- *      exact filter and the Reg M-A -> M-B cutover caveat).
+ *   1. Enumerate every real National Dex species+forme from @pkmn/dex's
+ *      UNGATED `Dex.species` (see R5 memo: `gen.species` is Scarlet/Violet's
+ *      regional dex, NOT a useful base — it's missing species like Lopunny
+ *      that Champions legalizes, and including/excluding them per-regulation
+ *      would require regenerating this file on every regulation change).
  *   2. Download the Showdown icon SPRITE SHEET once (a single
  *      pokemonicons-sheet.png; @pkmn/img `Icons` returns background-position
  *      offsets into it, NOT per-icon files).
@@ -16,17 +19,20 @@
  *      function the renderer uses, so build/run agree.
  *   4. Write the table to src/data/iconHashes.json.
  *
- * REGENERATE TRIGGER: the format flips Reg M-A -> M-B on 2026-06-17. The legal
- * pool changes then, so re-run this script on/after that date and re-commit the
- * JSON. The CURRENT_FORMAT constant + the format field in the JSON make staleness
- * detectable.
+ * REGENERATE TRIGGER (R5 "decoupled" architecture): this table is now
+ * regulation-INDEPENDENT — it's every real, recognizable species icon, forever.
+ * Regenerate only if @pkmn/dex's base species data changes (new Pokémon/formes
+ * added upstream), NOT on regulation cutovers. Regulation-specific legality
+ * (which of these species are legal/banned this format) lives separately in
+ * src/data/championsLegality.json (scripts/buildChampionsLegality.ts), which
+ * DOES need regenerating on regulation changes.
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PNG } from 'pngjs';
 import { Icons } from '@pkmn/img';
-import { gen } from '../src/lib/calc/gen';
+import { Dex } from '@pkmn/dex';
 import { CURRENT_FORMAT } from '../src/shared/types';
 import {
   NORMALIZE_SIZE,
@@ -45,18 +51,25 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = resolve(__dirname, '../src/data/iconHashes.json');
 
 /**
- * R2 filter: the legal Pokémon pool to hash.
+ * R5 filter: the full National Dex icon pool to hash (regulation-independent).
  *
- * `gen.species` (Gen 9) already yields only standard species (876): every entry
- * has `isNonstandard == null`, `num > 0`, and cosmetic formes / G-Max are already
- * excluded. `Dex.formats` is undefined in @pkmn/dex 0.10.10 (R1), so we cannot
- * query Reg M-A legality directly. We therefore additionally drop `battleOnly`
- * formes (e.g. Terapagos-Terastal, Zacian-Crowned, Ogerpon-*-Tera) — those are
- * in-battle transformations that never appear as a distinct TEAM-PREVIEW icon
- * (and would collide on sprite num with their base forme anyway). Result: ~860.
+ * `Dex.species.all()` (ungated — every gen, every forme: 1517 entries) keeps
+ * `num > 0` (drops CAP placeholders with num <= 0) and `isNonstandard ∈ {null,
+ * 'Past'}` (drops Future/LGPE/Custom/CAP — non-real or not-yet-real species).
+ * We additionally drop `battleOnly` formes (Mega evolutions, Terapagos-Terastal,
+ * Zacian-Crowned, Ogerpon-*-Tera, etc.) — those are in-battle transformations
+ * that never appear as a distinct TEAM-PREVIEW icon (team preview always shows
+ * the base forme, and battle-only formes collide on sprite cell with it anyway).
+ * Result: ~1285, vs. 860 under the old Gen-9-regional-dex filter — the ~425
+ * difference is exactly the "Past" species (e.g. Lopunny) that are absent from
+ * `gen.species` but legal/encounterable in Champions. See R5 spike memo.
  */
 function legalSpecies() {
-  return [...gen.species].filter((s) => !s.battleOnly);
+  return Dex.species
+    .all()
+    .filter(
+      (s) => s.num > 0 && !s.battleOnly && (s.isNonstandard === null || s.isNonstandard === 'Past'),
+    );
 }
 
 async function fetchSpriteSheet(): Promise<PNG> {
@@ -95,7 +108,7 @@ function cropIcon(sheet: PNG, leftOffset: number, topOffset: number) {
 
 async function main() {
   const species = legalSpecies();
-  console.log(`[buildIconHashes] legal species after filter: ${species.length}`);
+  console.log(`[buildIconHashes] species after filter: ${species.length}`);
 
   console.log(`[buildIconHashes] downloading sprite sheet ${SPRITE_SHEET_URL} ...`);
   const sheet = await fetchSpriteSheet();
@@ -118,6 +131,9 @@ async function main() {
   }
 
   const table: IconHashTable = {
+    // Provenance only (R5): this table is regulation-independent, so `format`
+    // no longer signals staleness — it just records what was current at
+    // generation time. Regulation-specific legality is championsLegality.json.
     format: CURRENT_FORMAT,
     generatedAt: new Date().toISOString(),
     hashBitsSide: HASH_BITS_SIDE,

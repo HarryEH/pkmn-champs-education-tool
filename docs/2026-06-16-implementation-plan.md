@@ -6,9 +6,21 @@
 
 > **🟢 Execution status (2026-06-16):** **Phase 0 (Foundation) and Wave 1 (M1) are
 > COMPLETE** — see [`2026-06-16-progress-report-1.md`](./2026-06-16-progress-report-1.md)
-> for the full snapshot. Whole-repo health: `tsc` clean · 49/49 tests pass · 0 lint
+> for the full snapshot. Whole-repo health: `tsc` clean · 60/60 tests pass · 0 lint
 > errors · renderer builds. **Remaining: Wave 2 (WS-E), Wave 3 (WS-F), Wave 4 (polish).**
 > Completed items below are marked **✅ DONE**; reality discoveries are folded in inline.
+>
+> **🟢 R5 follow-up spike DONE (2026-06-15):** `gen.species`-based enumeration was
+> found to be the wrong base entirely (missing legal species like Lopunny, and not
+> a superset once Mega Evolution is in play). Resolved via a **decoupled two-layer
+> architecture** — see §5 WS-D and §7. `iconHashes.json` regenerated (852 → 1259,
+> now regulation-independent); new `championsLegality.json` (regulation-specific,
+> 253/1285 legal under Reg M-A) added.
+>
+> **🟡 Detection re-scoped (2026-06-15):** WS-E (Wave 2) now ships a
+> **screenshot-drop detection path first** (E1a), before live capture-device input
+> (E1b) — see §5 WS-E and §7 risk-spike R3 note. Risk-spike memos previously in
+> `docs/spikes/` have been folded into this plan (§7) and removed.
 
 ---
 
@@ -51,16 +63,20 @@ src/
     store/{teams.ts,session.ts,settings.ts}
   lib/
     calc/{gen.ts,damageCalc.ts,speedTiers.ts,typeMatchup.ts}
-    detection/{frameCapture.ts,cropRegions.ts,iconMatcher.ts,detectionPipeline.ts}
+    detection/{frameCapture.ts,cropRegions.ts,iconMatcher.ts,detectionPipeline.ts,
+               iconHashes.ts,championsLegality.ts}
     smogon/usageData.ts
   shared/
     types.ts                  # the cross-process domain contract
     ipc.ts                    # IPC channel names + payload types (single source of truth)
     fixtures.ts               # mock team + mock opponent for offline/parallel dev
   data/
-    iconHashes.json
+    iconHashes.json           # regulation-independent (R5) — every real National Dex species icon
+    championsLegality.json    # regulation-specific (R5) — Reg M-A legal/banned per species
 scripts/
   buildIconHashes.ts
+  buildChampionsLegality.ts
+  championsFormatsParser.ts
 ```
 
 ---
@@ -123,11 +139,11 @@ Multi-agent throughput lives or dies on two things: **frozen interfaces** and **
 | **A Calc** | `lib/calc/{damageCalc,speedTiers,typeMatchup}.ts` + their tests | `gen.ts`, `shared/types.ts` |
 | **B Smogon** | `lib/smogon/usageData.ts`, `main/ipc` cache handler + channel | `shared/{types,ipc}.ts`, `gen.ts` |
 | **C TeamSetup** | `screens/TeamSetup/*`, `components/PokemonCard.tsx`, `store/teams.ts`, persistence IPC handler | types, gen, ui, theme |
-| **D Detection lib** | `lib/detection/*`, `scripts/buildIconHashes.ts`, `data/iconHashes.json` | types, `@pkmn/img` |
+| **D Detection lib** | `lib/detection/*`, `scripts/{buildIconHashes,buildChampionsLegality,championsFormatsParser}.ts`, `data/{iconHashes,championsLegality}.json` | types, `@pkmn/img`, `@pkmn/dex` |
 | **E Detection screen** | `screens/Detection/*`, `components/{TypeMatchupGrid,SpeedTierList,DamageCalcTable}.tsx`, `store/settings.ts` (capture/calibration parts) | A, B, D, fixtures, ui, theme |
 | **F InBattle** | `screens/InBattle/*`, `components/FieldStateToggles.tsx`, `store/session.ts` | A, ui, theme, reuses E's dashboard components |
 | **G Design system** | fills out `ui/*` primitives + `theme/*` beyond Phase-0 stubs | theme tokens only |
-| **R Risk spikes** | `docs/spikes/*.md` only (research, no app code) | everything (read) |
+| **R Risk spikes** | ✅ done — findings folded into §7 below (no separate memo files) | everything (read) |
 
 > Shared-component risk: `components/{TypeMatchupGrid,SpeedTierList,DamageCalcTable}` are authored by **E** and consumed by **F**. To avoid a write-collision, **E owns the files; F consumes them**. If F needs a prop F adds it via a documented PR hand-off, not a parallel edit. The `ui/` primitives are owned by **G**, but Phase 0 ships **typed stubs** so E/F/C can import them immediately.
 
@@ -177,24 +193,77 @@ Pure, dependency-light, highly testable — ideal first parallel task.
 - Team picker (dropdown); edit/delete/re-paste-to-update.
 - **DoD met:** fixture paste → 6 cards with correct stats (Speed emphasised) → save → active/edit/delete; save path verified to call `window.api.teams.save` with the full `MyTeam[]` (app-restart persistence to be confirmed in manual `npm start` testing).
 
-### WS-D — Detection pipeline (`lib/detection/` + script) — ✅ DONE (14 tests)
+### WS-D — Detection pipeline (`lib/detection/` + script) — ✅ DONE (14 tests, +9 from R5)
 Independent of UI; ran fully in parallel.
-- `scripts/buildIconHashes.ts`: enumerates legal species (R2 filter `[...gen.species].filter(s => !s.battleOnly)`), downloads the `@pkmn/img` sprite **sheet** once, crops each 40×30 icon cell by its `Icons.getPokemon` offset, normalizes to 32×32, blockhashes. **`src/data/iconHashes.json` generated — 852 unique species cells.** Regenerate: `npx vite-node scripts/buildIconHashes.ts`.
+- `scripts/buildIconHashes.ts`: enumerates the full National Dex icon pool (R5
+  filter — `Dex.species.all()` ungated, `num > 0 && !battleOnly && isNonstandard
+  ∈ {null, 'Past'}`), downloads the `@pkmn/img` sprite **sheet** once, crops each
+  40×30 icon cell by its `Icons.getPokemon` offset, normalizes to 32×32,
+  blockhashes. **`src/data/iconHashes.json` generated — 1259 unique species
+  cells** (was 852 under the original Gen-9-regional-dex filter; R2's filter was
+  superseded by R5, see below). Regenerate: `npx vite-node scripts/buildIconHashes.ts`
+  — now only needed if `@pkmn/dex`'s base species data changes, **not** on
+  regulation cutovers.
 - `hash.ts` (shared build/run hash core — `RgbaImage`, `hashImage` via `blockhash-core` at 256 bits, `hammingDistance`, `resampleNearest`; `iconHashes.ts` guards param parity), `frameCapture.ts` (video frame → `ImageData`), `cropRegions.ts` (apply `NormalizedRect[]`), `iconMatcher.ts` (top-3 + confidence `1 - dist/maxBits`, `AUTO_ACCEPT_THRESHOLD = 0.85`), `detectionPipeline.ts` (6 crops → `OpponentTeam`).
-- **Dev-dep added:** `pngjs` + `@types/pngjs` (Node PNG decode for the build script only; never in the renderer bundle).
+- **R5 (new):** `scripts/buildChampionsLegality.ts` + `scripts/championsFormatsParser.ts`
+  fetch and parse the live `champions` mod's `formats-data.ts` from
+  `smogon/pokemon-showdown` (TS compiler API, no `eval`), merge onto the same
+  1285-species base pool, and derive Reg M-A legality →
+  **`src/data/championsLegality.json`** (253/1285 legal). Runtime types +
+  `isChampionsLegal` lookup in `lib/detection/championsLegality.ts`. This file
+  **is** regulation-specific — regenerate on every regulation cutover (e.g.
+  M-A → M-B): `npx vite-node scripts/buildChampionsLegality.ts`. Full
+  derivation rules (worked examples, Arceus-Bug `isNonstandard`-override edge
+  case) are documented in `championsLegality.ts`'s `deriveLegality` doc comment
+  and the R5 row of §7 below.
+- **Dev-dep usage:** `pngjs` + `@types/pngjs` (icon build script) and `typescript`
+  (champions formats-data parser) — both Node-only, never in the renderer bundle.
 - **Reality note:** solid-colour icons hash near-degenerately — real matching relies on icons having visual texture (fine for Showdown sprites).
-- **DoD met** via synthetic-icon tests (matcher returns top-1 above threshold; `cropRegions` slices a synthetic `ImageData` correctly). Capture-device wiring is WS-E.
+- **DoD met** via synthetic-icon tests (matcher returns top-1 above threshold; `cropRegions` slices a synthetic `ImageData` correctly) plus R5's `deriveLegality`/parser unit tests (8 + 3 tests). Capture-device wiring is WS-E.
 
 ### WS-E — Detection screen (Flow B) — ⏭️ NEXT (Wave 2)
 The largest UI surface; can be split into **E1 (capture/calibration/detect)** and **E2 (analysis dashboard)** if two agents are available. All dependencies (WS-A/B/D libs, WS-G primitives, fixtures) are ready.
 > **Hand-off:** E **authors** `TypeMatchupGrid/SpeedTierList/DamageCalcTable`; F **consumes** them — so accept "my mons" + "opponent mons" as props (don't hard-code 6) to support F's active-4 filter. Consume `matchupTint` (WS-G) for grid cells, `buildSpeedTiers`/`calcDamage`/`typeMatchup` (WS-A), and `fetchUsage` (WS-B).
-- E1: device enumeration + picker (persist `deviceId` in settings), `getUserMedia` → `<video>`, one-time calibration UI (drag 6 rects on a paused frame, store normalized), "Detect" button → `detectionPipeline` → slot UI with confidence + override dropdowns; auto-accept high-confidence.
+
+> **🟡 Re-sequenced (2026-06-15):** ship detection against a **dropped-in
+> screenshot first** (no capture hardware required), then add the live capture
+> device on top. `detectionPipeline.detectOpponentTeam` (WS-D) already takes a
+> source-agnostic `RgbaImage` + `NormalizedRect[]` — both the screenshot path and
+> the video path feed it the same shape, so the calibration UI, slot UI, and
+> dashboard hand-off are shared and built once.
+
+- **E1a — Screenshot-drop detect (build this first):**
+  - New `lib/detection/imageSource.ts` (renderer, mirrors `frameCapture.ts`):
+    `loadImageFromFile(file: File): Promise<RgbaImage>` — decode a dropped/
+    selected image via `<img>`/`createImageBitmap` + offscreen canvas
+    `getImageData`, same `RgbaImage` shape `captureVideoFrame` produces from
+    video.
+  - Drop-zone / file-picker in `screens/Detection/`. Once an image loads, reuse
+    the one-time calibration UI (drag 6 rects, stored normalized in
+    `store/settings.ts`) against the static image, then "Detect" →
+    `detectionPipeline.detectOpponentTeam` (WS-D) → slot UI with confidence +
+    override dropdowns; auto-accept high-confidence.
+  - The target screenshot is a Nintendo Switch team-preview capture at a fixed,
+    known resolution — pre-seed a default calibration rect set for that
+    resolution so first-run needs little/no manual calibration (still
+    user-adjustable).
+  - **DoD**: drop a real Switch team-preview screenshot → "Detect" → all 6
+    opponent slots populate with the correct species at acceptable confidence,
+    with no capture device connected.
+- **E1b — Live capture device (after E1a, when capture hardware is on hand):**
+  - device enumeration + picker (persist `deviceId` in settings), `getUserMedia`
+    → `<video>`, `frameCapture.captureVideoFrame` feeding the **same**
+    `detectionPipeline` call and slot UI as E1a (R3 capture-device findings
+    apply here — HD60X enumerates as a normal UVC `videoinput`, no
+    `desktopCapturer` needed).
+  - **DoD**: "Detect" on a paused live video frame populates the same slot UI as
+    E1a.
 - E2 (the dashboard, spec §4.3 — bulk of the UI): tabbed/accordion, one tab per opponent mon, each with:
   - `TypeMatchupGrid.tsx` (offensive/defensive vs your 6 — WS-A `typeMatchup`),
   - common sets from WS-B with manual "refresh data",
   - `SpeedTierList.tsx` (WS-A `speedTiers`, plausible spreads + your 6, sorted, flag out/under-speed),
   - `DamageCalcTable.tsx` (WS-A `damageCalc`, your moves vs common defensive spread and vice versa).
-- **DoD**: against `fixtures.opponentTeam`, the full dashboard renders for all 6 (no detection needed); then swapping in WS-D output populates the same dashboard.
+- **DoD**: against `fixtures.opponentTeam`, the full dashboard renders for all 6 (no detection needed); then swapping in E1a/E1b output populates the same dashboard.
 
 ### WS-F — In-Battle screen (Flow C) — ⏭️ Wave 3 (after WS-E)
 - `screens/InBattle/`: lead-selection (pick 4 of 6 → `myActiveFour`; mark relevant opponent mons → `opponentActiveFour`).
@@ -209,8 +278,8 @@ The largest UI surface; can be split into **E1 (capture/calibration/detect)** an
 - Added `theme/matchup.ts` (`matchupTint(multiplier) → {bg, fg, label}`) for WS-E's matchup grid, and `ui/Gallery.tsx` (self-contained showcase, not yet wired into nav).
 - **DoD met:** `Gallery` renders every primitive in light/battle modes with all 18 type badges, matchup tints, and speed-flag chips.
 
-### WS-R — Risk spikes (research only, output to `docs/spikes/`) — ✅ DONE
-Ran in parallel with Wave 1. All four memos written to `docs/spikes/` (R1–R4); outcomes folded into the §7 table below.
+### WS-R — Risk spikes (research only) — ✅ DONE
+Ran in parallel with Wave 1 (R1–R4) plus a Wave-1 follow-up (R5). Findings folded directly into the §7 table below; no separate memo files are kept.
 
 ---
 
@@ -281,17 +350,21 @@ export const TYPE_COLORS: Record<string, string> = {
 
 ## 7. Risk spikes (de-risk in parallel with Phase 0) — spec §9 — ✅ ALL RESOLVED
 
-| ID | Risk | Outcome (memo in `docs/spikes/`) |
+| ID | Risk | Outcome |
 | --- | --- | --- |
 | R1 | Champions data completeness in `@pkmn/dex` | `@pkmn/dex@0.10.10` confirmed. Returned **Mega formes missing under Gen 9** (present under Gen 7); Mega abilities present. `Dex.formats` is `undefined` (no legality query). Calc degrades gracefully — `dataExtensions.ts` **described but not needed to ship**. |
-| R2 | Legal species pool for `gen9championsvgc2026regma` | Filter chosen: `[...gen.species].filter(s => !s.battleOnly)` → 860 species / 852 unique icon cells. A superset is safe for recognition. Regenerate: `npx vite-node scripts/buildIconHashes.ts`. |
-| R3 | `getUserMedia` for Elgato HD60X (Electron renderer, macOS) | HD60X enumerates as a normal UVC `videoinput`; existing `askForMediaAccess('camera')` is **sufficient — no `desktopCapturer`**. WS-E gotchas: empty device labels pre-permission, black no-signal frames, variable geometry → normalized rects. |
+| R2 | Legal species pool for `gen9championsvgc2026regma` | ~~Filter chosen: `[...gen.species].filter(s => !s.battleOnly)` → 860 species / 852 unique icon cells. A superset is safe for recognition.~~ **Superseded by R5** — `gen.species` is Gen 9's SV-regional dex, not the Champions roster (missing legal species like Lopunny, no real Mega formes). R5 replaces the icon-pool filter and adds a separate regulation-legality table. |
+| R3 | `getUserMedia` for Elgato HD60X (Electron renderer, macOS) | HD60X enumerates as a normal UVC `videoinput`; existing `askForMediaAccess('camera')` is **sufficient — no `desktopCapturer`**. WS-E gotchas: empty device labels pre-permission, black no-signal frames, variable geometry → normalized rects. **Note (2026-06-15):** this is now E1b (after the screenshot-drop path, E1a) — not blocking the first detection milestone. |
 | R4 | `@pkmn/smogon` `fetch` availability in Electron | Renderer native `fetch` suffices — **no shim**. We fetch the format report directly (renderer-side); `window.api.usage` is the disk cache only. Stats endpoint is "latest", not month-addressable. |
+| R5 | Champions Reg M-A legal species pool + regulation-cutover sync | `gen.species`-based enumeration (R2) doesn't match the Champions roster. Real source is `smogon/pokemon-showdown`'s live `data/mods/champions/formats-data.ts`, parsed via the TS compiler API (`scripts/championsFormatsParser.ts`) and merged onto `@pkmn/dex`'s ungated `Dex.species.all()` (1285 species). Derivation: `isNonstandard` override from champions → illegal; else effective tier `Illegal`/`CAP`/`Unreleased` → illegal; else `Mythical`/`Restricted Legendary` tags → illegal (Flat Rules banlist). Result: 253/1285 legal under Reg M-A → `src/data/championsLegality.json`. Introduces the **decoupled two-layer architecture**: `iconHashes.json` (regulation-independent, 1259 entries) for icon→species matching, `championsLegality.json` (regulation-specific) for the legality lookup. |
 
 > **⚠️ Release-checklist carry-over:** the **2026-06-17 Reg M-A → M-B cutover** (tomorrow,
-> relative to this plan) means `iconHashes.json` must be **regenerated** and `fetchUsage`
-> re-pointed once `gen9championsvgc2026regma` stats publish upstream (it currently 404s).
-> The regenerate command is baked into WS-D's script header and R2 memo.
+> relative to this plan) means `championsLegality.json` must be **regenerated**
+> (`npx vite-node scripts/buildChampionsLegality.ts`) and `fetchUsage` re-pointed once
+> `gen9championsvgc2026regmb` stats publish upstream. Per R5's decoupled architecture,
+> `iconHashes.json` does **not** need regeneration for this cutover — it's
+> regulation-independent and only needs rebuilding if `@pkmn/dex`'s base species data
+> changes.
 
 ---
 
@@ -301,16 +374,25 @@ Mirrors the spec's build order (§10), re-expressed as agent waves.
 
 - **M0 — Foundation (sequential).** ✅ **DONE.** Phase 0 complete; app shell runs themed; contracts frozen. WS-R spikes all resolved.
 - **M1 — Calc + Setup (parallel wave 1).** ✅ **DONE.** WS-A, WS-B, WS-C, WS-G, WS-D delivered (49 tests). Validated `@pkmn/sets` + persistence + calc against real data; Team Setup is end-to-end usable.
-- **M2 — Static dashboard (parallel wave 2).** ⏭️ **NEXT.** WS-E (E2 dashboard) against `FIXTURE_OPPONENT_TEAM`, consuming A/B/G. Spec step 3 — full analysis with a hardcoded opponent, detection skipped.
-- **M3 — Detection live.** WS-E (E1) wires capture + calibration + Detect to WS-D, replacing the fixture. Spec step 4.
+- **M2 — Static dashboard + screenshot detection (parallel wave 2).** ⏭️ **NEXT.**
+  WS-E E2 (dashboard) against `FIXTURE_OPPONENT_TEAM`, consuming A/B/G (spec step
+  3 — hardcoded opponent). In parallel, WS-E E1a wires the **screenshot-drop**
+  path (`lib/detection/imageSource.ts` + drop-zone + calibration) to WS-D's
+  `detectionPipeline`, replacing the fixture once an image is dropped — no
+  capture hardware needed.
+- **M3 — Live capture detection.** WS-E E1b adds `getUserMedia` + device picker,
+  feeding the same `detectionPipeline` call as E1a via `frameCapture`. Spec step
+  4.
 - **M4 — In-Battle.** WS-F builds Flow C reusing A's calc/speed modules + E's dashboard components with the active-4 filter and `Field` modifiers. Spec step 5.
 - **M5 — Polish & integration.** WS-G final pass, battle-mode theme toggle, mount `Gallery` behind a dev route, end-to-end run-through, README/run docs, post-cutover data regeneration.
 
 ### Dependency quick-reference
 - Everything → **Phase 0 contracts**.
-- WS-E → WS-A, WS-B (hard for dashboard), WS-D (only for live detect; fixtures unblock earlier).
+- WS-E → WS-A, WS-B (hard for dashboard), WS-D (E1a screenshot detect and E1b
+  live detect both depend on WS-D's `detectionPipeline`; fixtures unblock E2
+  earlier). E1b additionally depends on R3 (capture device).
 - WS-F → WS-A (hard), WS-E components (reuse).
-- WS-D → R1/R2 spikes.
+- WS-D → R1/R5 spikes.
 
 ---
 
@@ -334,12 +416,14 @@ Mirrors the spec's build order (§10), re-expressed as agent waves.
 | 2 | WS-A calc + WS-R(R1) | ✅ done | Calc accuracy and the data-completeness spike are intertwined. |
 | 3 | WS-B smogon + WS-R(R4) | ✅ done | Usage fetch and the fetch-in-Electron spike are intertwined. |
 | 4 | WS-C Team Setup | ✅ done | Self-contained Flow A vertical slice. |
-| 5 | WS-D detection + WS-R(R2,R3) | ✅ done | Pipeline, legality enumeration, and capture access all cluster here. |
-| 6 | WS-E detection screen (E1+E2) | ⏭️ next | Largest UI; split into two agents if available. |
+| 5 | WS-D detection + WS-R(R2/R5,R3) | ✅ done | Pipeline, legality enumeration, and capture access all cluster here. |
+| 6 | WS-E detection screen (E1a+E2, then E1b) | ⏭️ next | Largest UI; split E1a/E2 into two agents if available, E1b as a follow-on once capture hardware is on hand. |
 | 7 | WS-F in-battle | ⏳ after E | Starts after A + E components exist. |
 | 8 | WS-G design system | ✅ done | Parallel throughout; owns visual consistency. |
 
 > If running fewer agents, collapse in this order: G into Phase 0 + screen agents; F after E; B into E. The hard floor is: **Phase 0 first, alone.**
 >
-> **Resume point:** Phase 0 + agents 2/3/4/5/8 are complete. Launch **agent 6 (WS-E)** as
-> 1–2 subagents next, then **agent 7 (WS-F)**, then M5 polish.
+> **Resume point:** Phase 0 + agents 2/3/4/5/8 are complete. Launch **agent 6
+> (WS-E E1a screenshot-drop detect + E2 dashboard)** as 1–2 subagents next — no
+> capture hardware required. E1b (live capture device) and **agent 7 (WS-F)**
+> follow, then M5 polish.

@@ -18,7 +18,12 @@ export interface IconHashEntry {
 
 /** Top-level shape of src/data/iconHashes.json. */
 export interface IconHashTable {
-  /** Generator/format provenance, so stale tables are obvious. */
+  /**
+   * Format active when this table was generated. Provenance only (R5): this
+   * table covers the full National Dex and is regulation-INDEPENDENT, so this
+   * field does not indicate staleness — see src/data/championsLegality.json
+   * for regulation-specific legality.
+   */
   format: string;
   /** ISO date the table was generated. */
   generatedAt: string;
