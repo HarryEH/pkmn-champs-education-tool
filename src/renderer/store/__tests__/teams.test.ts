@@ -88,6 +88,26 @@ Level: 50
 - Knock Off`);
     expect(errors.some((e) => /cannot learn Knock Off/.test(e.message))).toBe(true);
   });
+
+  // Champions revives Mega Evolution: Mega Stones and never-released bases like
+  // Floette-Eternal are legal there but stripped from the gated Gen-9 dex. They
+  // must resolve (via the ungated view) and pass legality, not read as "unknown".
+  it('accepts revived Mega content — Mega Stones and Floette-Eternal', () => {
+    const { pokemon, errors } = parsePokepaste(`Charizard @ Charizardite Y
+Ability: Drought
+Level: 50
+- Heat Wave
+- Protect
+
+Floette-Eternal @ Floettite
+Ability: Fairy Aura
+Level: 50
+- Moonblast
+- Calm Mind`);
+    expect(pokemon).toHaveLength(2);
+    expect(pokemon.find((p) => p.set.species === 'Floette-Eternal')?.speed).toBeGreaterThan(0);
+    expect(errors).toHaveLength(0);
+  });
 });
 
 describe('computeStat', () => {

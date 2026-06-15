@@ -13,7 +13,7 @@
  * The JSON data files are imported and indexed ONCE at module scope (mirrors
  * Detection/constants.ts), so callers pay the indexing cost a single time.
  */
-import { gen } from '../calc/gen';
+import { dexGen } from '../calc/gen';
 import {
   buildLegalityIndex,
   isChampionsLegal,
@@ -59,8 +59,8 @@ export function checkSetLegality(set: PokemonSet, species: LegalitySpecies): str
   }
 
   if (set.item) {
-    const item = gen.items.get(set.item);
-    if (!item) {
+    const item = dexGen.items.get(set.item);
+    if (!item?.exists) {
       violations.push(`${who}: unknown item "${set.item}".`);
     } else if (!isItemLegal(OVERRIDES, item.id, item.isNonstandard)) {
       violations.push(`${who}: item ${item.name} is banned in Champions Reg M-A.`);
@@ -68,8 +68,8 @@ export function checkSetLegality(set: PokemonSet, species: LegalitySpecies): str
   }
 
   if (set.ability) {
-    const ability = gen.abilities.get(set.ability);
-    if (!ability) {
+    const ability = dexGen.abilities.get(set.ability);
+    if (!ability?.exists) {
       violations.push(`${who}: unknown ability "${set.ability}".`);
     } else if (!isAbilityLegal(OVERRIDES, ability.id, ability.isNonstandard)) {
       violations.push(`${who}: ability ${ability.name} is banned in Champions Reg M-A.`);
@@ -78,8 +78,8 @@ export function checkSetLegality(set: PokemonSet, species: LegalitySpecies): str
 
   for (const moveText of set.moves ?? []) {
     if (!moveText) continue;
-    const move = gen.moves.get(moveText);
-    if (!move) {
+    const move = dexGen.moves.get(moveText);
+    if (!move?.exists) {
       violations.push(`${who}: unknown move "${moveText}".`);
       continue;
     }

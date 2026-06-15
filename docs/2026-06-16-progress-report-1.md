@@ -292,3 +292,23 @@ regenerating `championsOverrides.json` (`scripts/buildChampionsOverrides.ts`)
 and `championsLearnsets.json` (`scripts/buildChampionsLearnsets.ts`) alongside
 `championsLegality.json`. All three are regulation-specific; `iconHashes.json`
 remains regulation-independent.
+
+### R6 addendum — ungated dex resolution for revived Mega content
+
+Follow-up bug found in testing: Champions **revives Mega Evolution** (Mega Stones
+as items, Mega formes, the new/revived Mega abilities) and re-allows never-released
+bases like **Floette-Eternal** — none of which exist in the **Gen-9 SV-regional dex**
+that the `gen` singleton exposes. Our legality *tables* were already built ungated
+(so `floetteeternal` and the un-banned Mega Stones are in them), but the *runtime*
+resolved names through the gated `gen.{species,items,abilities,moves}.get()`, so
+`Charizard @ Charizardite Y` and `Floette-Eternal @ Floettite` read as "unknown
+item/species" before legality was ever consulted. **Note:** Mega *formes*
+themselves (Charizard-Mega-Y, …) are correctly absent from the species table —
+teams list the base species + stone, and the forme is a battle-only transformation.
+
+Fix: a new **ungated** Gen-9 view, `dexGen` in `gen.ts`
+(`new Generations(Dex, () => true).get(9)`), used for all Team-Setup/legality
+resolution (`computeStat`, `parsePokepaste`, `checkSetLegality`). `gen` stays the
+default for everything else. A miss on `dexGen` returns `{exists: false}` (not
+`undefined`), so callers test `.exists`. +1 regression test (Mega Stones +
+Floette-Eternal parse with 0 errors) → suite **67 → 68**.

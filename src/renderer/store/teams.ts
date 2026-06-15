@@ -8,7 +8,7 @@
  */
 import { create } from 'zustand';
 import { Sets } from '@pkmn/sets';
-import { gen } from '../../lib/calc/gen';
+import { gen, dexGen } from '../../lib/calc/gen';
 import { checkSetLegality } from '../../lib/legality/teamLegality';
 import type { MyPokemon, MyTeam, PokemonSet } from '../../shared/types';
 
@@ -36,8 +36,9 @@ export function computeStat(
   stat: 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe',
   set: PokemonSet,
 ): number {
-  const species = gen.species.get(set.species ?? '');
-  if (!species) return 0;
+  // Ungated lookup so Mega-era / non-SV bases (e.g. Floette-Eternal) still resolve.
+  const species = dexGen.species.get(set.species ?? '');
+  if (!species?.exists) return 0;
   const nature = gen.natures.get(set.nature ?? 'Serious') ?? undefined;
   const level = set.level ?? 50;
   const base = species.baseStats[stat];
@@ -83,8 +84,11 @@ export function parsePokepaste(pokepasteText: string): ImportResult {
       return;
     }
 
-    const species = gen.species.get(speciesText);
-    if (!species) {
+    // Ungated lookup: the Champions roster includes Mega-era / non-SV species
+    // (e.g. Floette-Eternal) that the gated Gen-9 dex strips out. Legality is
+    // enforced separately below via checkSetLegality, not by resolvability.
+    const species = dexGen.species.get(speciesText);
+    if (!species?.exists) {
       errors.push({
         index,
         species: speciesText,
