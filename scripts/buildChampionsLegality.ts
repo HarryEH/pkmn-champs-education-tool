@@ -7,7 +7,7 @@
  *   1. Fetches the LIVE `champions` mod's formats-data.ts from the
  *      smogon/pokemon-showdown server repo (NOT @pkmn/dex/@pkmn/sim, which
  *      package only generation mods and don't have `champions` at all).
- *   2. Parses it (TS AST, see championsFormatsParser.ts) into a per-species
+ *   2. Parses it (TS AST, see championsModParser.ts) into a per-species
  *      `{ isNonstandard?, tier? }` override map.
  *   3. Takes the SAME base species pool as buildIconHashes.ts (every real,
  *      battle-capable, non-CAP/Custom/Future/LGPE National Dex species — see
@@ -26,7 +26,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Dex } from '@pkmn/dex';
-import { parseFormatsDataOverrides } from './championsFormatsParser';
+import { parseFormatsDataOverrides } from './championsModParser';
 import {
   deriveLegality,
   type ChampionsLegalityEntry,

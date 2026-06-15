@@ -5,7 +5,7 @@
 > the working tree holds all the changes for local testing.
 >
 > **Integration health (whole repo, verified):** `tsc --noEmit` clean · `npm test`
-> 60/60 passing (10 suites) · `npm run lint` 0 errors (6 non-null-assertion warnings
+> 67/67 passing (10 suites) · `npm run lint` 0 errors (6 non-null-assertion warnings
 > in test files only) · `vite build` of the renderer succeeds.
 >
 > **Update (2026-06-15):** R5 follow-up spike implemented — see
@@ -14,6 +14,10 @@
 > [§2 Wave 2](#wave-2-m2m3--ws-e-detection-screen-flow-b--the-largest-ui-surface)
 > and the implementation plan §5/§7. Risk-spike memos previously under
 > `docs/spikes/` have been folded into the implementation plan and removed.
+>
+> **Update (2026-06-15):** R6 follow-up spike implemented — full Team Setup
+> legality (items, abilities, moves, learnsets) under Champions Reg M-A. See
+> [§6 below](#6-update--r6-full-team-setup-legality-items-abilities-moves-learnsets).
 
 ---
 
@@ -168,7 +172,7 @@ Owns: `screens/InBattle/*`, `components/FieldStateToggles.tsx`, deepens
 ```bash
 npm start          # launches the Electron app — themed 3-screen shell;
                    # Team Setup is fully functional (paste a team / "Load sample")
-npm test           # 60 unit tests (calc, smogon cache, detection, champions legality, team import)
+npm test           # 67 unit tests (calc, smogon cache, detection, champions legality, team import + R6 legality)
 npm run typecheck  # tsc --noEmit, clean
 npm run lint       # 0 errors
 ```
@@ -229,3 +233,62 @@ formats-data.ts`), which `@pkmn/dex`/`@pkmn/sim` don't ship.
 **Release-checklist impact:** the 2026-06-17 Reg M-A → M-B cutover now only
 requires regenerating `championsLegality.json` (+ re-pointing `fetchUsage`).
 `iconHashes.json` is unaffected by regulation changes going forward.
+
+---
+
+## 6. Update — R6: Full Team Setup legality (items, abilities, moves, learnsets)
+
+R5 made the app aware of which **species** are legal. R6 extends that to the rest
+of a set, so **Team Setup** validates an imported team the way the format actually
+would: the `champions` mod doesn't just curate the species roster — it bans and
+un-bans **items, moves, and abilities** (e.g. Assault Vest / Booster Energy /
+Safety Goggles banned; Mega Stones un-banned), and it re-cuts **learnsets**
+("Champions" is its own game, so movepools differ from Scarlet/Violet — e.g.
+Incineroar genuinely cannot run Knock Off there).
+
+**What changed:**
+
+- **`scripts/championsModParser.ts`** (replaces `championsFormatsParser.ts`):
+  a generic `parseModOverrides(source, exportName, fields)` over the TS compiler
+  API, plus `parseModLearnsets`. **The critical fix:** it captures explicit
+  `null` literals, not just strings. Champions uses `isNonstandard: null` to
+  *un-ban* a past-gen item/ability — that must round-trip distinctly from "field
+  absent" (which means "defer to vanilla"). Runtime merging uses
+  `'isNonstandard' in override` presence checks, **never `??`** (`null ?? base`
+  would silently re-ban the un-banned item).
+- **New `data/championsOverrides.json`** (regulation-specific, ~27 KB): the
+  item/move/ability `isNonstandard` **delta** over vanilla — 259 items, 217
+  moves, 4 abilities. Built by `scripts/buildChampionsOverrides.ts`. Kept as a
+  delta (not a full table) because `gen.{items,moves,abilities}.get()` is
+  synchronous, so legality resolves at runtime as `override ?? vanilla`.
+- **New `data/championsLearnsets.json`** (regulation-specific, ~1 MB): the full
+  prevo-merged movepool for every species in the 1285-species pool. Built by
+  `scripts/buildChampionsLearnsets.ts` (champions' own `learnsets.ts` where it
+  lists a species, vanilla `@pkmn/data` learnset otherwise, unioned up the
+  `prevo` chain). Baked at build time because `gen.learnsets.get()` is **async**
+  and `parsePokepaste` must stay synchronous (it runs in the live-import preview).
+- **New `src/lib/legality/`** (runtime, no `typescript` import):
+  `championsOverrides.ts` (`isItemLegal`/`isMoveLegal`/`isAbilityLegal`),
+  `championsLearnsets.ts` (`buildLearnsetIndex`/`canLearnMove`), and
+  `teamLegality.ts::checkSetLegality(set, species)` — one synchronous entry
+  point combining all five layers, with the data files imported and indexed
+  once at module scope.
+- **`store/teams.ts`**: `parsePokepaste` now appends a **non-blocking**
+  `ImportError` per violation (banned species/item/ability/move, or un-learnable
+  move). The Pokémon stays in the gallery; the existing `ImportErrors` UI
+  surfaces the messages with **zero UI changes**.
+- **`scripts/championsSpeciesPool.ts`**: the base-species filter (previously
+  duplicated in `buildIconHashes.ts` and `buildChampionsLegality.ts`) factored
+  into one shared helper now that three build scripts need it.
+- **Fixtures fixed:** `FIXTURE_POKEPASTE` had several now-illegal picks (Choice
+  Specs, Assault Vest, Safety Goggles, Tera Blast, Incineroar's Knock Off) —
+  rebuilt with verified-legal items/moves so it parses with **0 errors** again.
+- **+7 tests** (suite total **60 → 67**): 3 new parser tests (incl. the
+  `null`-literal case) and 4 new `parsePokepaste` legality tests (banned
+  species/item/move + un-learnable move, each asserting the Pokémon is kept).
+
+**Release-checklist impact:** the Reg M-A → M-B cutover now also requires
+regenerating `championsOverrides.json` (`scripts/buildChampionsOverrides.ts`)
+and `championsLearnsets.json` (`scripts/buildChampionsLearnsets.ts`) alongside
+`championsLegality.json`. All three are regulation-specific; `iconHashes.json`
+remains regulation-independent.

@@ -6,7 +6,7 @@
 
 > **🟢 Execution status (2026-06-16):** **Phase 0 (Foundation) and Wave 1 (M1) are
 > COMPLETE** — see [`2026-06-16-progress-report-1.md`](./2026-06-16-progress-report-1.md)
-> for the full snapshot. Whole-repo health: `tsc` clean · 60/60 tests pass · 0 lint
+> for the full snapshot. Whole-repo health: `tsc` clean · 67/67 tests pass · 0 lint
 > errors · renderer builds. **Remaining: Wave 2 (WS-E), Wave 3 (WS-F), Wave 4 (polish).**
 > Completed items below are marked **✅ DONE**; reality discoveries are folded in inline.
 >
@@ -16,6 +16,12 @@
 > architecture** — see §5 WS-D and §7. `iconHashes.json` regenerated (852 → 1259,
 > now regulation-independent); new `championsLegality.json` (regulation-specific,
 > 253/1285 legal under Reg M-A) added.
+>
+> **🟢 R6 follow-up spike DONE (2026-06-15):** Team Setup legality extended beyond
+> species to **items, abilities, moves, and per-species learnsets** under Champions
+> Reg M-A. New regulation-specific data (`championsOverrides.json`,
+> `championsLearnsets.json`), lookups in `lib/legality/*`, wired non-blocking into
+> `parsePokepaste`. See §5 WS-C and §7 R6.
 >
 > **🟡 Detection re-scoped (2026-06-15):** WS-E (Wave 2) now ships a
 > **screenshot-drop detection path first** (E1a), before live capture-device input
@@ -65,6 +71,7 @@ src/
     calc/{gen.ts,damageCalc.ts,speedTiers.ts,typeMatchup.ts}
     detection/{frameCapture.ts,cropRegions.ts,iconMatcher.ts,detectionPipeline.ts,
                iconHashes.ts,championsLegality.ts}
+    legality/{championsOverrides.ts,championsLearnsets.ts,teamLegality.ts}  # R6 — Team Setup legality
     smogon/usageData.ts
   shared/
     types.ts                  # the cross-process domain contract
@@ -73,10 +80,15 @@ src/
   data/
     iconHashes.json           # regulation-independent (R5) — every real National Dex species icon
     championsLegality.json    # regulation-specific (R5) — Reg M-A legal/banned per species
+    championsOverrides.json   # regulation-specific (R6) — banned/un-banned items, moves, abilities
+    championsLearnsets.json   # regulation-specific (R6) — per-species champions movepools (prevo-merged)
 scripts/
   buildIconHashes.ts
   buildChampionsLegality.ts
-  championsFormatsParser.ts
+  buildChampionsOverrides.ts  # R6 — item/move/ability isNonstandard deltas
+  buildChampionsLearnsets.ts  # R6 — per-species movepools (champions override + vanilla fallback)
+  championsModParser.ts       # R6 — generic mod-table parser (handles string AND `null` literals)
+  championsSpeciesPool.ts     # R6 — shared base species pool filter (was duplicated)
 ```
 
 ---
@@ -139,7 +151,8 @@ Multi-agent throughput lives or dies on two things: **frozen interfaces** and **
 | **A Calc** | `lib/calc/{damageCalc,speedTiers,typeMatchup}.ts` + their tests | `gen.ts`, `shared/types.ts` |
 | **B Smogon** | `lib/smogon/usageData.ts`, `main/ipc` cache handler + channel | `shared/{types,ipc}.ts`, `gen.ts` |
 | **C TeamSetup** | `screens/TeamSetup/*`, `components/PokemonCard.tsx`, `store/teams.ts`, persistence IPC handler | types, gen, ui, theme |
-| **D Detection lib** | `lib/detection/*`, `scripts/{buildIconHashes,buildChampionsLegality,championsFormatsParser}.ts`, `data/{iconHashes,championsLegality}.json` | types, `@pkmn/img`, `@pkmn/dex` |
+| **D Detection lib** | `lib/detection/*`, `scripts/{buildIconHashes,buildChampionsLegality,championsModParser}.ts`, `data/{iconHashes,championsLegality}.json` | types, `@pkmn/img`, `@pkmn/dex` |
+| **C+ Legality (R6)** | `lib/legality/*`, `scripts/{buildChampionsOverrides,buildChampionsLearnsets,championsModParser,championsSpeciesPool}.ts`, `data/{championsOverrides,championsLearnsets}.json` | `gen.ts`, `championsLegality.ts`, types |
 | **E Detection screen** | `screens/Detection/*`, `components/{TypeMatchupGrid,SpeedTierList,DamageCalcTable}.tsx`, `store/settings.ts` (capture/calibration parts) | A, B, D, fixtures, ui, theme |
 | **F InBattle** | `screens/InBattle/*`, `components/FieldStateToggles.tsx`, `store/session.ts` | A, ui, theme, reuses E's dashboard components |
 | **G Design system** | fills out `ui/*` primitives + `theme/*` beyond Phase-0 stubs | theme tokens only |
@@ -186,8 +199,9 @@ Pure, dependency-light, highly testable — ideal first parallel task.
 - **Reality (R4):** the upstream stats endpoint (`https://data.pkmn.cc/stats/<format>.json`) serves "latest", **not month-addressable** — the month key only keys our _disk_ cache. `gen9championsvgc2026regma` currently **404s** upstream (Reg M-A just arriving); offline/404 returns cached data or an empty-but-valid `UsageData`, never throws.
 - **DoD met:** cache miss → fetch+write; second call → cache; refresh re-fetches; offline graceful (validated against a live `gen9vgc2024` report + mocked target format).
 
-### WS-C — Team Setup screen (Flow A) — ✅ DONE (9 tests)
+### WS-C — Team Setup screen (Flow A) — ✅ DONE (9 tests; +R6 legality, see §7)
 - `screens/TeamSetup/`: textarea import → `split(/\n\s*\n/)` → `Sets.importSet` → validate vs `gen.species.get`. Error surfacing for illegal/typo species. Live preview parses on each keystroke.
+- **R6 (new):** `parsePokepaste` now also runs full Champions Reg M-A legality (`lib/legality/teamLegality.ts::checkSetLegality`) over each resolved set — banned **species/item/ability/move** and **un-learnable moves** each surface as a non-blocking `ImportError` (the Pokémon stays in the gallery). Reuses the existing `ImportErrors` UI unchanged. See §7 R6.
 - `components/PokemonCard.tsx`: icon via `@pkmn/img` `Icons.getPokemon` (returns a sprite-sheet `background-position` CSS string, parsed into a React style object), name/item/ability/Tera/nature/EVs, computed stats with **Speed highlighted** via `Stat` `emphasis`.
 - `store/teams.ts`: deepened with `parsePokepaste`/`createTeam`/`computeStat` (pure, testable); CRUD over `MyTeam[]`, write-through to persistence IPC, "active team" selection. Store API kept stable.
 - Team picker (dropdown); edit/delete/re-paste-to-update.
@@ -356,13 +370,16 @@ export const TYPE_COLORS: Record<string, string> = {
 | R2 | Legal species pool for `gen9championsvgc2026regma` | ~~Filter chosen: `[...gen.species].filter(s => !s.battleOnly)` → 860 species / 852 unique icon cells. A superset is safe for recognition.~~ **Superseded by R5** — `gen.species` is Gen 9's SV-regional dex, not the Champions roster (missing legal species like Lopunny, no real Mega formes). R5 replaces the icon-pool filter and adds a separate regulation-legality table. |
 | R3 | `getUserMedia` for Elgato HD60X (Electron renderer, macOS) | HD60X enumerates as a normal UVC `videoinput`; existing `askForMediaAccess('camera')` is **sufficient — no `desktopCapturer`**. WS-E gotchas: empty device labels pre-permission, black no-signal frames, variable geometry → normalized rects. **Note (2026-06-15):** this is now E1b (after the screenshot-drop path, E1a) — not blocking the first detection milestone. |
 | R4 | `@pkmn/smogon` `fetch` availability in Electron | Renderer native `fetch` suffices — **no shim**. We fetch the format report directly (renderer-side); `window.api.usage` is the disk cache only. Stats endpoint is "latest", not month-addressable. |
-| R5 | Champions Reg M-A legal species pool + regulation-cutover sync | `gen.species`-based enumeration (R2) doesn't match the Champions roster. Real source is `smogon/pokemon-showdown`'s live `data/mods/champions/formats-data.ts`, parsed via the TS compiler API (`scripts/championsFormatsParser.ts`) and merged onto `@pkmn/dex`'s ungated `Dex.species.all()` (1285 species). Derivation: `isNonstandard` override from champions → illegal; else effective tier `Illegal`/`CAP`/`Unreleased` → illegal; else `Mythical`/`Restricted Legendary` tags → illegal (Flat Rules banlist). Result: 253/1285 legal under Reg M-A → `src/data/championsLegality.json`. Introduces the **decoupled two-layer architecture**: `iconHashes.json` (regulation-independent, 1259 entries) for icon→species matching, `championsLegality.json` (regulation-specific) for the legality lookup. |
+| R5 | Champions Reg M-A legal species pool + regulation-cutover sync | `gen.species`-based enumeration (R2) doesn't match the Champions roster. Real source is `smogon/pokemon-showdown`'s live `data/mods/champions/formats-data.ts`, parsed via the TS compiler API (`scripts/championsModParser.ts`, formerly `championsFormatsParser.ts`) and merged onto `@pkmn/dex`'s ungated `Dex.species.all()` (1285 species). Derivation: `isNonstandard` override from champions → illegal; else effective tier `Illegal`/`CAP`/`Unreleased` → illegal; else `Mythical`/`Restricted Legendary` tags → illegal (Flat Rules banlist). Result: 253/1285 legal under Reg M-A → `src/data/championsLegality.json`. Introduces the **decoupled two-layer architecture**: `iconHashes.json` (regulation-independent, 1259 entries) for icon→species matching, `championsLegality.json` (regulation-specific) for the legality lookup. |
+| R6 | Full Team Setup legality — items, abilities, moves, learnsets | R5 covered species only; Team Setup needs the rest. The `champions` mod also bans/un-bans **items, moves, abilities** (via `isNonstandard` overrides in `items.ts`/`moves.ts`/`abilities.ts` — e.g. Assault Vest/Booster Energy/Safety Goggles banned, Mega Stones un-banned) and re-cuts **learnsets** (`learnsets.ts` — "Champions" is its own game, so movepools differ from SV; e.g. Incineroar can't learn Knock Off). **Critical correctness point:** `isNonstandard: null` is an explicit *un-ban* and must round-trip distinctly from "field absent" — the generic `parseModOverrides` captures `null` literals (not just strings), and runtime merging uses `'isNonstandard' in override` presence checks, **never `??`** (`null ?? base` would silently re-ban). Items/moves/abilities are small **delta** tables (`championsOverrides.json`) combined at runtime with vanilla `gen.X.get()`; learnsets must be a **full baked** table (`championsLearnsets.json`, prevo-merged) because `gen.learnsets.get()` is async and `parsePokepaste` is sync. Lookups in `lib/legality/{championsOverrides,championsLearnsets,teamLegality}.ts`; wired non-blocking into `parsePokepaste`. |
 
 > **⚠️ Release-checklist carry-over:** the **2026-06-17 Reg M-A → M-B cutover** (tomorrow,
-> relative to this plan) means `championsLegality.json` must be **regenerated**
-> (`npx vite-node scripts/buildChampionsLegality.ts`) and `fetchUsage` re-pointed once
-> `gen9championsvgc2026regmb` stats publish upstream. Per R5's decoupled architecture,
-> `iconHashes.json` does **not** need regeneration for this cutover — it's
+> relative to this plan) means the regulation-specific tables must be **regenerated** —
+> `championsLegality.json` (`npx vite-node scripts/buildChampionsLegality.ts`),
+> **plus R6's `championsOverrides.json` (`scripts/buildChampionsOverrides.ts`) and
+> `championsLearnsets.json` (`scripts/buildChampionsLearnsets.ts`)** — and `fetchUsage`
+> re-pointed once `gen9championsvgc2026regmb` stats publish upstream. Per R5's decoupled
+> architecture, `iconHashes.json` does **not** need regeneration for this cutover — it's
 > regulation-independent and only needs rebuilding if `@pkmn/dex`'s base species data
 > changes.
 

@@ -19,26 +19,24 @@ describe('parsePokepaste', () => {
 
   it('attaches species types', () => {
     const { pokemon } = parsePokepaste(FIXTURE_POKEPASTE);
-    const flutter = pokemon.find((p) => p.set.species === 'Flutter Mane')!;
-    expect(flutter.types).toEqual(['Ghost', 'Fairy']);
+    const gardevoir = pokemon.find((p) => p.set.species === 'Gardevoir')!;
+    expect(gardevoir.types).toEqual(['Psychic', 'Fairy']);
   });
 
-  it('surfaces a clear error for an illegal/typo species and keeps valid ones', () => {
+  it('surfaces a clear error for a typo species and keeps valid ones', () => {
     const bad = `Notarealmon @ Leftovers
 Ability: Levitate
 Level: 50
 - Tackle
 
-Flutter Mane @ Booster Energy
-Ability: Protosynthesis
+Garchomp @ Focus Sash
+Ability: Rough Skin
 Level: 50
-Tera Type: Fairy
-EVs: 4 HP / 252 SpA / 252 Spe
-Timid Nature
-- Moonblast`;
+- Earthquake
+- Protect`;
     const { pokemon, errors } = parsePokepaste(bad);
     expect(pokemon).toHaveLength(1);
-    expect(pokemon[0].set.species).toBe('Flutter Mane');
+    expect(pokemon[0].set.species).toBe('Garchomp');
     expect(errors).toHaveLength(1);
     expect(errors[0].index).toBe(1);
     expect(errors[0].species).toBe('Notarealmon');
@@ -52,11 +50,51 @@ Timid Nature
   });
 });
 
+describe('parsePokepaste Champions legality (non-blocking)', () => {
+  it('flags a banned species but keeps it in the team', () => {
+    const { pokemon, errors } = parsePokepaste(`Flutter Mane @ Lum Berry
+Ability: Protosynthesis
+Level: 50
+- Moonblast`);
+    expect(pokemon).toHaveLength(1);
+    expect(pokemon[0].set.species).toBe('Flutter Mane');
+    expect(errors.some((e) => /not legal in Champions/.test(e.message))).toBe(true);
+  });
+
+  it('flags a banned item (Assault Vest) but keeps the Pokémon', () => {
+    const { pokemon, errors } = parsePokepaste(`Garchomp @ Assault Vest
+Ability: Rough Skin
+Level: 50
+- Earthquake
+- Protect`);
+    expect(pokemon).toHaveLength(1);
+    expect(errors.some((e) => /item Assault Vest is banned/.test(e.message))).toBe(true);
+  });
+
+  it('flags a banned move (Tera Blast)', () => {
+    const { errors } = parsePokepaste(`Garchomp @ Focus Sash
+Ability: Rough Skin
+Level: 50
+- Earthquake
+- Tera Blast`);
+    expect(errors.some((e) => /move Tera Blast is banned/.test(e.message))).toBe(true);
+  });
+
+  it('flags a move the species cannot learn (Incineroar / Knock Off)', () => {
+    const { errors } = parsePokepaste(`Incineroar @ Lum Berry
+Ability: Intimidate
+Level: 50
+- Fake Out
+- Knock Off`);
+    expect(errors.some((e) => /cannot learn Knock Off/.test(e.message))).toBe(true);
+  });
+});
+
 describe('computeStat', () => {
-  it('matches gen.stats.calc for a known spread (Timid 252 Spe Flutter Mane = 205)', () => {
+  it('matches gen.stats.calc for a known spread (Timid 252 Spe Gardevoir = 145)', () => {
     const { pokemon } = parsePokepaste(FIXTURE_POKEPASTE);
-    const flutter = pokemon.find((p) => p.set.species === 'Flutter Mane')!;
-    expect(computeStat('spe', flutter.set)).toBe(205);
+    const gardevoir = pokemon.find((p) => p.set.species === 'Gardevoir')!;
+    expect(computeStat('spe', gardevoir.set)).toBe(145);
   });
 });
 

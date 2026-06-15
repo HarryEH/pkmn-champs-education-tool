@@ -9,20 +9,26 @@ import { Sets } from '@pkmn/sets';
 import { gen } from '../lib/calc/gen';
 import type { MyPokemon, MyTeam, OpponentTeam, PokemonSet } from './types';
 
-/** A complete, legal-looking Champions-era team in Showdown export format. */
-export const FIXTURE_POKEPASTE = `Incineroar @ Safety Goggles
+/**
+ * A complete, legal-looking Champions VGC 2026 Reg M-A team in Showdown export
+ * format. Every species here is in the `champions` mod's legal pool (see
+ * src/data/championsLegality.json) — this mod's roster is a curated subset of
+ * the National Dex, NOT the full Gen 9 dex, so fixtures must be checked against
+ * that table rather than assumed from general VGC knowledge.
+ */
+export const FIXTURE_POKEPASTE = `Incineroar @ Lum Berry
 Ability: Intimidate
 Level: 50
 Tera Type: Grass
 EVs: 244 HP / 4 Atk / 12 Def / 124 SpD / 124 Spe
 Adamant Nature
 - Fake Out
-- Knock Off
+- Darkest Lariat
 - Flare Blitz
 - Parting Shot
 
-Flutter Mane @ Booster Energy
-Ability: Protosynthesis
+Gardevoir @ Choice Scarf
+Ability: Telepathy
 Level: 50
 Tera Type: Fairy
 EVs: 4 HP / 252 SpA / 252 Spe
@@ -30,53 +36,53 @@ Timid Nature
 IVs: 0 Atk
 - Moonblast
 - Shadow Ball
-- Dazzling Gleam
-- Protect
+- Psychic
+- Trick
 
-Amoonguss @ Sitrus Berry
-Ability: Regenerator
+Dragapult @ Choice Scarf
+Ability: Clear Body
 Level: 50
-Tera Type: Water
-EVs: 236 HP / 4 Def / 268 SpD
-Calm Nature
-IVs: 0 Atk / 0 Spe
-- Spore
-- Rage Powder
-- Pollen Puff
-- Protect
-
-Urshifu-Rapid-Strike @ Mystic Water
-Ability: Unseen Fist
-Level: 50
-Tera Type: Water
+Tera Type: Ghost
 EVs: 4 HP / 252 Atk / 252 Spe
 Jolly Nature
-- Surging Strikes
-- Close Combat
-- Aqua Jet
-- Protect
-
-Rillaboom @ Assault Vest
-Ability: Grassy Surge
-Level: 50
-Tera Type: Fire
-EVs: 252 HP / 116 Atk / 140 Spe
-Adamant Nature
-- Grassy Glide
-- Wood Hammer
+- Dragon Darts
+- Phantom Force
 - U-turn
-- Fake Out
+- Flamethrower
 
-Landorus-Therian @ Choice Scarf
-Ability: Intimidate
+Garchomp @ Focus Sash
+Ability: Rough Skin
 Level: 50
-Tera Type: Flying
+Tera Type: Steel
 EVs: 4 HP / 252 Atk / 252 Spe
 Jolly Nature
 - Earthquake
+- Dragon Claw
+- Stone Edge
+- Protect
+
+Tyranitar @ Leftovers
+Ability: Sand Stream
+Level: 50
+Tera Type: Fairy
+EVs: 244 HP / 12 Atk / 252 SpD
+Careful Nature
 - Rock Slide
-- U-turn
-- Stomping Tantrum`;
+- Knock Off
+- Earthquake
+- Ice Punch
+
+Hatterene @ Sitrus Berry
+Ability: Magic Bounce
+Level: 50
+Tera Type: Psychic
+EVs: 252 HP / 4 Def / 252 SpA
+Sassy Nature
+IVs: 0 Spe
+- Dazzling Gleam
+- Psychic
+- Trick Room
+- Protect`;
 
 /** Build a MyPokemon (parsed set + computed speed + types) from a set block. */
 function toMyPokemon(block: string): MyPokemon {
@@ -107,15 +113,8 @@ export const FIXTURE_MY_TEAM: MyTeam = {
     .map(toMyPokemon),
 };
 
-/** Confirmed opponent team (species ids) for static dashboard dev. */
-const OPPONENT_SPECIES = [
-  'Calyrex-Shadow',
-  'Miraidon',
-  'Whimsicott',
-  'Iron Hands',
-  'Chien-Pao',
-  'Farigiraf',
-];
+/** Confirmed opponent team (species ids) for static dashboard dev. All Champions-legal. */
+const OPPONENT_SPECIES = ['Hydreigon', 'Talonflame', 'Mimikyu', 'Sylveon', 'Kingambit', 'Volcarona'];
 
 export const FIXTURE_OPPONENT_TEAM: OpponentTeam = {
   detectedAt: 0,

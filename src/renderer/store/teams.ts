@@ -9,6 +9,7 @@
 import { create } from 'zustand';
 import { Sets } from '@pkmn/sets';
 import { gen } from '../../lib/calc/gen';
+import { checkSetLegality } from '../../lib/legality/teamLegality';
 import type { MyPokemon, MyTeam, PokemonSet } from '../../shared/types';
 
 /** One unparseable / illegal block, surfaced to the UI. */
@@ -99,6 +100,12 @@ export function parsePokepaste(pokepasteText: string): ImportResult {
       speed: computeStat('spe', set),
       types: [...species.types],
     });
+
+    // Champions Reg M-A legality — non-blocking: the Pokémon stays in the team
+    // (gallery still renders it) but each violation is surfaced as its own error.
+    for (const message of checkSetLegality(set, species)) {
+      errors.push({ index, species: species.name, message });
+    }
   });
 
   return { pokemon, errors };

@@ -1,0 +1,1455 @@
+{
+  "format": "gen9championsvgc2026regma",
+  "generatedAt": "2026-06-15T20:40:26.231Z",
+  "sources": {
+    "items": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/items.ts",
+    "moves": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/moves.ts",
+    "abilities": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/abilities.ts"
+  },
+  "items": {
+    "abilityshield": {
+      "isNonstandard": "Past"
+    },
+    "abomasite": {
+      "isNonstandard": null
+    },
+    "absolite": {
+      "isNonstandard": null
+    },
+    "absorbbulb": {
+      "isNonstandard": "Past"
+    },
+    "adamantcrystal": {
+      "isNonstandard": "Past"
+    },
+    "adamantorb": {
+      "isNonstandard": "Past"
+    },
+    "adrenalineorb": {
+      "isNonstandard": "Past"
+    },
+    "aerodactylite": {
+      "isNonstandard": null
+    },
+    "aggronite": {
+      "isNonstandard": null
+    },
+    "aguavberry": {
+      "isNonstandard": "Past"
+    },
+    "airballoon": {
+      "isNonstandard": "Past"
+    },
+    "alakazite": {
+      "isNonstandard": null
+    },
+    "altarianite": {
+      "isNonstandard": null
+    },
+    "ampharosite": {
+      "isNonstandard": null
+    },
+    "apicotberry": {
+      "isNonstandard": "Past"
+    },
+    "assaultvest": {
+      "isNonstandard": "Past"
+    },
+    "audinite": {
+      "isNonstandard": null
+    },
+    "auspiciousarmor": {
+      "isNonstandard": "Past"
+    },
+    "banettite": {
+      "isNonstandard": null
+    },
+    "beastball": {
+      "isNonstandard": "Past"
+    },
+    "beedrillite": {
+      "isNonstandard": null
+    },
+    "berrysweet": {
+      "isNonstandard": "Past"
+    },
+    "bignugget": {
+      "isNonstandard": "Past"
+    },
+    "bigroot": {
+      "isNonstandard": "Past"
+    },
+    "bindingband": {
+      "isNonstandard": "Past"
+    },
+    "blacksludge": {
+      "isNonstandard": "Past"
+    },
+    "blastoisinite": {
+      "isNonstandard": null
+    },
+    "blunderpolicy": {
+      "isNonstandard": "Past"
+    },
+    "boosterenergy": {
+      "isNonstandard": "Past"
+    },
+    "bottlecap": {
+      "isNonstandard": "Past"
+    },
+    "cameruptite": {
+      "isNonstandard": null
+    },
+    "cellbattery": {
+      "isNonstandard": "Past"
+    },
+    "chandelurite": {
+      "isNonstandard": null
+    },
+    "charizarditex": {
+      "isNonstandard": null
+    },
+    "charizarditey": {
+      "isNonstandard": null
+    },
+    "chesnaughtite": {
+      "isNonstandard": null
+    },
+    "chimechite": {
+      "isNonstandard": null
+    },
+    "chippedpot": {
+      "isNonstandard": "Past"
+    },
+    "choiceband": {
+      "isNonstandard": "Past"
+    },
+    "choicespecs": {
+      "isNonstandard": "Past"
+    },
+    "clearamulet": {
+      "isNonstandard": "Past"
+    },
+    "clefablite": {
+      "isNonstandard": null
+    },
+    "cloversweet": {
+      "isNonstandard": "Past"
+    },
+    "cornerstonemask": {
+      "isNonstandard": "Past"
+    },
+    "covertcloak": {
+      "isNonstandard": "Past"
+    },
+    "crabominite": {
+      "isNonstandard": null
+    },
+    "crackedpot": {
+      "isNonstandard": "Past"
+    },
+    "custapberry": {
+      "isNonstandard": "Past"
+    },
+    "damprock": {
+      "isNonstandard": "Past"
+    },
+    "darkranite": {
+      "isNonstandard": "Past"
+    },
+    "dawnstone": {
+      "isNonstandard": "Past"
+    },
+    "delphoxite": {
+      "isNonstandard": null
+    },
+    "destinyknot": {
+      "isNonstandard": "Past"
+    },
+    "diveball": {
+      "isNonstandard": "Past"
+    },
+    "dracoplate": {
+      "isNonstandard": "Past"
+    },
+    "dragalgite": {
+      "isNonstandard": "Past"
+    },
+    "dragoninite": {
+      "isNonstandard": null
+    },
+    "dragonscale": {
+      "isNonstandard": "Past"
+    },
+    "drampanite": {
+      "isNonstandard": null
+    },
+    "dreadplate": {
+      "isNonstandard": "Past"
+    },
+    "dreamball": {
+      "isNonstandard": "Past"
+    },
+    "dubiousdisc": {
+      "isNonstandard": "Past"
+    },
+    "duskball": {
+      "isNonstandard": "Past"
+    },
+    "duskstone": {
+      "isNonstandard": "Past"
+    },
+    "earthplate": {
+      "isNonstandard": "Past"
+    },
+    "eelektrossite": {
+      "isNonstandard": "Past"
+    },
+    "ejectbutton": {
+      "isNonstandard": "Past"
+    },
+    "ejectpack": {
+      "isNonstandard": "Past"
+    },
+    "electirizer": {
+      "isNonstandard": "Past"
+    },
+    "electricseed": {
+      "isNonstandard": "Past"
+    },
+    "emboarite": {
+      "isNonstandard": null
+    },
+    "enigmaberry": {
+      "isNonstandard": "Past"
+    },
+    "eviolite": {
+      "isNonstandard": "Past"
+    },
+    "excadrite": {
+      "isNonstandard": null
+    },
+    "expertbelt": {
+      "isNonstandard": "Past"
+    },
+    "falinksite": {
+      "isNonstandard": "Past"
+    },
+    "fastball": {
+      "isNonstandard": "Past"
+    },
+    "feraligite": {
+      "isNonstandard": null
+    },
+    "figyberry": {
+      "isNonstandard": "Past"
+    },
+    "firestone": {
+      "isNonstandard": "Past"
+    },
+    "fistplate": {
+      "isNonstandard": "Past"
+    },
+    "flameorb": {
+      "isNonstandard": "Past"
+    },
+    "flameplate": {
+      "isNonstandard": "Past"
+    },
+    "floatstone": {
+      "isNonstandard": "Past"
+    },
+    "floettite": {
+      "isNonstandard": null
+    },
+    "flowersweet": {
+      "isNonstandard": "Past"
+    },
+    "friendball": {
+      "isNonstandard": "Past"
+    },
+    "froslassite": {
+      "isNonstandard": null
+    },
+    "galaricacuff": {
+      "isNonstandard": "Past"
+    },
+    "galaricawreath": {
+      "isNonstandard": "Past"
+    },
+    "galladite": {
+      "isNonstandard": null
+    },
+    "ganlonberry": {
+      "isNonstandard": "Past"
+    },
+    "garchompite": {
+      "isNonstandard": null
+    },
+    "gardevoirite": {
+      "isNonstandard": null
+    },
+    "gengarite": {
+      "isNonstandard": null
+    },
+    "glalitite": {
+      "isNonstandard": null
+    },
+    "glimmoranite": {
+      "isNonstandard": null
+    },
+    "goldbottlecap": {
+      "isNonstandard": "Past"
+    },
+    "golisopite": {
+      "isNonstandard": "Past"
+    },
+    "golurkite": {
+      "isNonstandard": null
+    },
+    "grassyseed": {
+      "isNonstandard": "Past"
+    },
+    "greatball": {
+      "isNonstandard": "Past"
+    },
+    "greninjite": {
+      "isNonstandard": null
+    },
+    "grepaberry": {
+      "isNonstandard": "Past"
+    },
+    "gripclaw": {
+      "isNonstandard": "Past"
+    },
+    "griseouscore": {
+      "isNonstandard": "Past"
+    },
+    "griseousorb": {
+      "isNonstandard": "Past"
+    },
+    "gyaradosite": {
+      "isNonstandard": null
+    },
+    "hawluchanite": {
+      "isNonstandard": null
+    },
+    "healball": {
+      "isNonstandard": "Past"
+    },
+    "hearthflamemask": {
+      "isNonstandard": "Past"
+    },
+    "heatranite": {
+      "isNonstandard": "Past"
+    },
+    "heatrock": {
+      "isNonstandard": "Past"
+    },
+    "heavyball": {
+      "isNonstandard": "Past"
+    },
+    "heavydutyboots": {
+      "isNonstandard": "Past"
+    },
+    "heracronite": {
+      "isNonstandard": null
+    },
+    "hondewberry": {
+      "isNonstandard": "Past"
+    },
+    "houndoominite": {
+      "isNonstandard": null
+    },
+    "iapapaberry": {
+      "isNonstandard": "Past"
+    },
+    "icestone": {
+      "isNonstandard": "Past"
+    },
+    "icicleplate": {
+      "isNonstandard": "Past"
+    },
+    "icyrock": {
+      "isNonstandard": "Past"
+    },
+    "insectplate": {
+      "isNonstandard": "Past"
+    },
+    "ironball": {
+      "isNonstandard": "Past"
+    },
+    "ironplate": {
+      "isNonstandard": "Past"
+    },
+    "jabocaberry": {
+      "isNonstandard": "Past"
+    },
+    "kangaskhanite": {
+      "isNonstandard": null
+    },
+    "keeberry": {
+      "isNonstandard": "Past"
+    },
+    "kelpsyberry": {
+      "isNonstandard": "Past"
+    },
+    "laggingtail": {
+      "isNonstandard": "Past"
+    },
+    "lansatberry": {
+      "isNonstandard": "Past"
+    },
+    "leafstone": {
+      "isNonstandard": "Past"
+    },
+    "levelball": {
+      "isNonstandard": "Past"
+    },
+    "liechiberry": {
+      "isNonstandard": "Past"
+    },
+    "lifeorb": {
+      "isNonstandard": "Past"
+    },
+    "lightclay": {
+      "isNonstandard": "Past"
+    },
+    "loadeddice": {
+      "isNonstandard": "Past"
+    },
+    "lopunnite": {
+      "isNonstandard": null
+    },
+    "loveball": {
+      "isNonstandard": "Past"
+    },
+    "lovesweet": {
+      "isNonstandard": "Past"
+    },
+    "lucarionite": {
+      "isNonstandard": null
+    },
+    "luminousmoss": {
+      "isNonstandard": "Past"
+    },
+    "lureball": {
+      "isNonstandard": "Past"
+    },
+    "lustrousglobe": {
+      "isNonstandard": "Past"
+    },
+    "lustrousorb": {
+      "isNonstandard": "Past"
+    },
+    "luxuryball": {
+      "isNonstandard": "Past"
+    },
+    "magmarizer": {
+      "isNonstandard": "Past"
+    },
+    "magoberry": {
+      "isNonstandard": "Past"
+    },
+    "maliciousarmor": {
+      "isNonstandard": "Past"
+    },
+    "manectite": {
+      "isNonstandard": null
+    },
+    "marangaberry": {
+      "isNonstandard": "Past"
+    },
+    "masterball": {
+      "isNonstandard": "Past"
+    },
+    "masterpieceteacup": {
+      "isNonstandard": "Past"
+    },
+    "meadowplate": {
+      "isNonstandard": "Past"
+    },
+    "medichamite": {
+      "isNonstandard": null
+    },
+    "meganiumite": {
+      "isNonstandard": null
+    },
+    "meowsticite": {
+      "isNonstandard": null
+    },
+    "metalalloy": {
+      "isNonstandard": "Past"
+    },
+    "metronome": {
+      "isNonstandard": "Past"
+    },
+    "micleberry": {
+      "isNonstandard": "Past"
+    },
+    "mindplate": {
+      "isNonstandard": "Past"
+    },
+    "mirrorherb": {
+      "isNonstandard": "Past"
+    },
+    "mistyseed": {
+      "isNonstandard": "Past"
+    },
+    "moonball": {
+      "isNonstandard": "Past"
+    },
+    "moonstone": {
+      "isNonstandard": "Past"
+    },
+    "muscleband": {
+      "isNonstandard": "Past"
+    },
+    "nestball": {
+      "isNonstandard": "Past"
+    },
+    "netball": {
+      "isNonstandard": "Past"
+    },
+    "normalgem": {
+      "isNonstandard": "Past"
+    },
+    "ovalstone": {
+      "isNonstandard": "Past"
+    },
+    "parkball": {
+      "isNonstandard": "Past"
+    },
+    "petayaberry": {
+      "isNonstandard": "Past"
+    },
+    "pidgeotite": {
+      "isNonstandard": null
+    },
+    "pinsirite": {
+      "isNonstandard": null
+    },
+    "pixieplate": {
+      "isNonstandard": "Past"
+    },
+    "pokeball": {
+      "isNonstandard": "Past"
+    },
+    "pomegberry": {
+      "isNonstandard": "Past"
+    },
+    "poweranklet": {
+      "isNonstandard": "Past"
+    },
+    "powerband": {
+      "isNonstandard": "Past"
+    },
+    "powerbelt": {
+      "isNonstandard": "Past"
+    },
+    "powerbracer": {
+      "isNonstandard": "Past"
+    },
+    "powerherb": {
+      "isNonstandard": "Past"
+    },
+    "powerlens": {
+      "isNonstandard": "Past"
+    },
+    "powerweight": {
+      "isNonstandard": "Past"
+    },
+    "premierball": {
+      "isNonstandard": "Past"
+    },
+    "prettyfeather": {
+      "isNonstandard": "Past"
+    },
+    "prismscale": {
+      "isNonstandard": "Past"
+    },
+    "protectivepads": {
+      "isNonstandard": "Past"
+    },
+    "protector": {
+      "isNonstandard": "Past"
+    },
+    "psychicseed": {
+      "isNonstandard": "Past"
+    },
+    "punchingglove": {
+      "isNonstandard": "Past"
+    },
+    "qualotberry": {
+      "isNonstandard": "Past"
+    },
+    "quickball": {
+      "isNonstandard": "Past"
+    },
+    "rarebone": {
+      "isNonstandard": "Past"
+    },
+    "razorclaw": {
+      "isNonstandard": "Past"
+    },
+    "razorfang": {
+      "isNonstandard": "Past"
+    },
+    "reapercloth": {
+      "isNonstandard": "Past"
+    },
+    "redcard": {
+      "isNonstandard": "Past"
+    },
+    "repeatball": {
+      "isNonstandard": "Past"
+    },
+    "ribbonsweet": {
+      "isNonstandard": "Past"
+    },
+    "ringtarget": {
+      "isNonstandard": "Past"
+    },
+    "rockyhelmet": {
+      "isNonstandard": "Past"
+    },
+    "roomservice": {
+      "isNonstandard": "Past"
+    },
+    "rowapberry": {
+      "isNonstandard": "Past"
+    },
+    "rustedshield": {
+      "isNonstandard": "Past"
+    },
+    "rustedsword": {
+      "isNonstandard": "Past"
+    },
+    "sablenite": {
+      "isNonstandard": null
+    },
+    "safariball": {
+      "isNonstandard": "Past"
+    },
+    "safetygoggles": {
+      "isNonstandard": "Past"
+    },
+    "salacberry": {
+      "isNonstandard": "Past"
+    },
+    "scizorite": {
+      "isNonstandard": null
+    },
+    "scovillainite": {
+      "isNonstandard": null
+    },
+    "sharpedonite": {
+      "isNonstandard": null
+    },
+    "shedshell": {
+      "isNonstandard": "Past"
+    },
+    "shinystone": {
+      "isNonstandard": "Past"
+    },
+    "skarmorite": {
+      "isNonstandard": null
+    },
+    "skyplate": {
+      "isNonstandard": "Past"
+    },
+    "slowbronite": {
+      "isNonstandard": null
+    },
+    "smoothrock": {
+      "isNonstandard": "Past"
+    },
+    "snowball": {
+      "isNonstandard": "Past"
+    },
+    "souldew": {
+      "isNonstandard": "Past"
+    },
+    "spelltag": {
+      "isNonstandard": null
+    },
+    "splashplate": {
+      "isNonstandard": "Past"
+    },
+    "spookyplate": {
+      "isNonstandard": "Past"
+    },
+    "sportball": {
+      "isNonstandard": "Past"
+    },
+    "starfberry": {
+      "isNonstandard": "Past"
+    },
+    "starminite": {
+      "isNonstandard": null
+    },
+    "starsweet": {
+      "isNonstandard": "Past"
+    },
+    "steelixite": {
+      "isNonstandard": null
+    },
+    "stickybarb": {
+      "isNonstandard": "Past"
+    },
+    "stoneplate": {
+      "isNonstandard": "Past"
+    },
+    "strangeball": {
+      "isNonstandard": "Past"
+    },
+    "strawberrysweet": {
+      "isNonstandard": "Past"
+    },
+    "sunstone": {
+      "isNonstandard": "Past"
+    },
+    "sweetapple": {
+      "isNonstandard": "Past"
+    },
+    "syrupyapple": {
+      "isNonstandard": "Past"
+    },
+    "tamatoberry": {
+      "isNonstandard": "Past"
+    },
+    "tartapple": {
+      "isNonstandard": "Past"
+    },
+    "terrainextender": {
+      "isNonstandard": "Past"
+    },
+    "throatspray": {
+      "isNonstandard": "Past"
+    },
+    "thunderstone": {
+      "isNonstandard": "Past"
+    },
+    "timerball": {
+      "isNonstandard": "Past"
+    },
+    "toxicorb": {
+      "isNonstandard": "Past"
+    },
+    "toxicplate": {
+      "isNonstandard": "Past"
+    },
+    "tyranitarite": {
+      "isNonstandard": null
+    },
+    "ultraball": {
+      "isNonstandard": "Past"
+    },
+    "unremarkableteacup": {
+      "isNonstandard": "Past"
+    },
+    "upgrade": {
+      "isNonstandard": "Past"
+    },
+    "utilityumbrella": {
+      "isNonstandard": "Past"
+    },
+    "venusaurite": {
+      "isNonstandard": null
+    },
+    "victreebelite": {
+      "isNonstandard": null
+    },
+    "waterstone": {
+      "isNonstandard": "Past"
+    },
+    "weaknesspolicy": {
+      "isNonstandard": "Past"
+    },
+    "wellspringmask": {
+      "isNonstandard": "Past"
+    },
+    "widelens": {
+      "isNonstandard": "Past"
+    },
+    "wikiberry": {
+      "isNonstandard": "Past"
+    },
+    "wiseglasses": {
+      "isNonstandard": "Past"
+    },
+    "zapplate": {
+      "isNonstandard": "Past"
+    },
+    "zoomlens": {
+      "isNonstandard": "Past"
+    }
+  },
+  "moves": {
+    "absorb": {
+      "isNonstandard": "Past"
+    },
+    "acid": {
+      "isNonstandard": "Past"
+    },
+    "aeroblast": {
+      "isNonstandard": "Past"
+    },
+    "armthrust": {
+      "isNonstandard": "Past"
+    },
+    "astonish": {
+      "isNonstandard": "Past"
+    },
+    "astralbarrage": {
+      "isNonstandard": "Past"
+    },
+    "attackorder": {
+      "isNonstandard": "Past"
+    },
+    "aurorabeam": {
+      "isNonstandard": "Past"
+    },
+    "barbbarrage": {
+      "isNonstandard": "Past"
+    },
+    "behemothbash": {
+      "isNonstandard": "Past"
+    },
+    "behemothblade": {
+      "isNonstandard": "Past"
+    },
+    "blazingtorque": {
+      "isNonstandard": "Past"
+    },
+    "bleakwindstorm": {
+      "isNonstandard": "Past"
+    },
+    "bloodmoon": {
+      "isNonstandard": "Past"
+    },
+    "blueflare": {
+      "isNonstandard": "Past"
+    },
+    "boltstrike": {
+      "isNonstandard": "Past"
+    },
+    "branchpoke": {
+      "isNonstandard": "Past"
+    },
+    "brine": {
+      "isNonstandard": "Past"
+    },
+    "bubblebeam": {
+      "isNonstandard": "Past"
+    },
+    "burningbulwark": {
+      "isNonstandard": "Past"
+    },
+    "burnup": {
+      "isNonstandard": null
+    },
+    "celebrate": {
+      "isNonstandard": "Past"
+    },
+    "chloroblast": {
+      "isNonstandard": "Past"
+    },
+    "collisioncourse": {
+      "isNonstandard": "Past"
+    },
+    "combattorque": {
+      "isNonstandard": "Past"
+    },
+    "confide": {
+      "isNonstandard": "Past"
+    },
+    "confusion": {
+      "isNonstandard": "Past"
+    },
+    "conversion": {
+      "isNonstandard": "Past"
+    },
+    "conversion2": {
+      "isNonstandard": "Past"
+    },
+    "corrosivegas": {
+      "isNonstandard": null
+    },
+    "courtchange": {
+      "isNonstandard": "Past"
+    },
+    "crushgrip": {
+      "isNonstandard": "Past"
+    },
+    "cut": {
+      "isNonstandard": "Past"
+    },
+    "darkvoid": {
+      "isNonstandard": "Past"
+    },
+    "defendorder": {
+      "isNonstandard": "Past"
+    },
+    "defensecurl": {
+      "isNonstandard": "Past"
+    },
+    "diamondstorm": {
+      "isNonstandard": "Past"
+    },
+    "disarmingvoice": {
+      "isNonstandard": "Past"
+    },
+    "doodle": {
+      "isNonstandard": "Past"
+    },
+    "doomdesire": {
+      "isNonstandard": "Past"
+    },
+    "doublekick": {
+      "isNonstandard": "Past"
+    },
+    "doubleshock": {
+      "isNonstandard": "Custom"
+    },
+    "dragonascent": {
+      "isNonstandard": "Past"
+    },
+    "dragonbreath": {
+      "isNonstandard": "Past"
+    },
+    "dragonenergy": {
+      "isNonstandard": "Past"
+    },
+    "dragonhammer": {
+      "isNonstandard": "Past"
+    },
+    "dreameater": {
+      "isNonstandard": "Past"
+    },
+    "drumbeating": {
+      "isNonstandard": "Past"
+    },
+    "dynamaxcannon": {
+      "isNonstandard": "Past"
+    },
+    "echoedvoice": {
+      "isNonstandard": "Past"
+    },
+    "electrify": {
+      "isNonstandard": null
+    },
+    "electrodrift": {
+      "isNonstandard": "Past"
+    },
+    "ember": {
+      "isNonstandard": "Past"
+    },
+    "esperwing": {
+      "isNonstandard": "Past"
+    },
+    "fairywind": {
+      "isNonstandard": "Past"
+    },
+    "falsesurrender": {
+      "isNonstandard": "Past"
+    },
+    "falseswipe": {
+      "isNonstandard": "Past"
+    },
+    "fierywrath": {
+      "isNonstandard": "Past"
+    },
+    "filletaway": {
+      "isNonstandard": "Past"
+    },
+    "firepledge": {
+      "isNonstandard": "Past"
+    },
+    "flamewheel": {
+      "isNonstandard": "Past"
+    },
+    "fleurcannon": {
+      "isNonstandard": "Past"
+    },
+    "floralhealing": {
+      "isNonstandard": "Past"
+    },
+    "forcepalm": {
+      "isNonstandard": "Past"
+    },
+    "freezeshock": {
+      "isNonstandard": "Past"
+    },
+    "freezingglare": {
+      "isNonstandard": "Past"
+    },
+    "furyattack": {
+      "isNonstandard": "Past"
+    },
+    "furycutter": {
+      "isNonstandard": "Past"
+    },
+    "furyswipes": {
+      "isNonstandard": "Past"
+    },
+    "fusionbolt": {
+      "isNonstandard": "Past"
+    },
+    "fusionflare": {
+      "isNonstandard": "Past"
+    },
+    "glaciallance": {
+      "isNonstandard": "Past"
+    },
+    "glaciate": {
+      "isNonstandard": "Past"
+    },
+    "glaiverush": {
+      "isNonstandard": "Past"
+    },
+    "grasspledge": {
+      "isNonstandard": "Past"
+    },
+    "growl": {
+      "isNonstandard": "Past"
+    },
+    "gust": {
+      "isNonstandard": "Past"
+    },
+    "happyhour": {
+      "isNonstandard": "Past"
+    },
+    "harden": {
+      "isNonstandard": "Past"
+    },
+    "headbutt": {
+      "isNonstandard": "Past"
+    },
+    "heartswap": {
+      "isNonstandard": "Past"
+    },
+    "holdback": {
+      "isNonstandard": "Past"
+    },
+    "holdhands": {
+      "isNonstandard": "Past"
+    },
+    "honeclaws": {
+      "isNonstandard": "Past"
+    },
+    "hornattack": {
+      "isNonstandard": "Past"
+    },
+    "hydrosteam": {
+      "isNonstandard": "Past"
+    },
+    "hyperdrill": {
+      "isNonstandard": "Past"
+    },
+    "hyperspacefury": {
+      "isNonstandard": "Past"
+    },
+    "hyperspacehole": {
+      "isNonstandard": "Past"
+    },
+    "iceburn": {
+      "isNonstandard": "Past"
+    },
+    "incinerate": {
+      "isNonstandard": "Past"
+    },
+    "ivycudgel": {
+      "isNonstandard": "Past"
+    },
+    "jawlock": {
+      "isNonstandard": "Past"
+    },
+    "judgment": {
+      "isNonstandard": "Past"
+    },
+    "junglehealing": {
+      "isNonstandard": "Past"
+    },
+    "kingsshield": {
+      "isNonstandard": null
+    },
+    "leafage": {
+      "isNonstandard": "Past"
+    },
+    "leer": {
+      "isNonstandard": "Past"
+    },
+    "lick": {
+      "isNonstandard": "Past"
+    },
+    "lightofruin": {
+      "isNonstandard": null
+    },
+    "lunarblessing": {
+      "isNonstandard": "Past"
+    },
+    "lunardance": {
+      "isNonstandard": "Past"
+    },
+    "lusterpurge": {
+      "isNonstandard": "Past"
+    },
+    "magicalleaf": {
+      "isNonstandard": "Past"
+    },
+    "magicaltorque": {
+      "isNonstandard": "Past"
+    },
+    "magmastorm": {
+      "isNonstandard": "Past"
+    },
+    "makeitrain": {
+      "isNonstandard": "Past"
+    },
+    "malignantchain": {
+      "isNonstandard": "Past"
+    },
+    "megadrain": {
+      "isNonstandard": "Past"
+    },
+    "megapunch": {
+      "isNonstandard": "Past"
+    },
+    "metalclaw": {
+      "isNonstandard": "Past"
+    },
+    "metronome": {
+      "isNonstandard": "Past"
+    },
+    "mightycleave": {
+      "isNonstandard": "Past"
+    },
+    "mimic": {
+      "isNonstandard": "Past"
+    },
+    "mist": {
+      "isNonstandard": "Past"
+    },
+    "mistball": {
+      "isNonstandard": "Past"
+    },
+    "moongeistbeam": {
+      "isNonstandard": "Past"
+    },
+    "mysticalpower": {
+      "isNonstandard": "Past"
+    },
+    "noretreat": {
+      "isNonstandard": "Past"
+    },
+    "noxioustorque": {
+      "isNonstandard": "Past"
+    },
+    "orderup": {
+      "isNonstandard": "Past"
+    },
+    "originpulse": {
+      "isNonstandard": "Past"
+    },
+    "overdrive": {
+      "isNonstandard": "Past"
+    },
+    "payday": {
+      "isNonstandard": "Past"
+    },
+    "peck": {
+      "isNonstandard": "Past"
+    },
+    "photongeyser": {
+      "isNonstandard": "Past"
+    },
+    "playnice": {
+      "isNonstandard": "Past"
+    },
+    "poisongas": {
+      "isNonstandard": "Past"
+    },
+    "poisonsting": {
+      "isNonstandard": "Past"
+    },
+    "poisontail": {
+      "isNonstandard": "Past"
+    },
+    "powdersnow": {
+      "isNonstandard": "Past"
+    },
+    "powershift": {
+      "isNonstandard": null
+    },
+    "precipiceblades": {
+      "isNonstandard": "Past"
+    },
+    "present": {
+      "isNonstandard": "Past"
+    },
+    "prismaticlaser": {
+      "isNonstandard": "Past"
+    },
+    "psybeam": {
+      "isNonstandard": "Past"
+    },
+    "psyblade": {
+      "isNonstandard": "Past"
+    },
+    "psychoboost": {
+      "isNonstandard": "Past"
+    },
+    "psystrike": {
+      "isNonstandard": "Past"
+    },
+    "pyroball": {
+      "isNonstandard": "Past"
+    },
+    "ragefist": {
+      "isNonstandard": "Past"
+    },
+    "razorleaf": {
+      "isNonstandard": "Past"
+    },
+    "relicsong": {
+      "isNonstandard": "Past"
+    },
+    "retaliate": {
+      "isNonstandard": "Past"
+    },
+    "revelationdance": {
+      "isNonstandard": "Past"
+    },
+    "revivalblessing": {
+      "isNonstandard": "Custom"
+    },
+    "roaroftime": {
+      "isNonstandard": "Past"
+    },
+    "rocksmash": {
+      "isNonstandard": "Past"
+    },
+    "rockthrow": {
+      "isNonstandard": "Past"
+    },
+    "rollout": {
+      "isNonstandard": "Past"
+    },
+    "ruination": {
+      "isNonstandard": "Past"
+    },
+    "sacredfire": {
+      "isNonstandard": "Past"
+    },
+    "sandattack": {
+      "isNonstandard": "Past"
+    },
+    "sandsearstorm": {
+      "isNonstandard": "Past"
+    },
+    "scratch": {
+      "isNonstandard": "Past"
+    },
+    "secretsword": {
+      "isNonstandard": "Past"
+    },
+    "seedflare": {
+      "isNonstandard": "Past"
+    },
+    "shadowforce": {
+      "isNonstandard": "Past"
+    },
+    "shiftgear": {
+      "isNonstandard": "Past"
+    },
+    "shockwave": {
+      "isNonstandard": "Past"
+    },
+    "shoreup": {
+      "isNonstandard": "Past"
+    },
+    "silktrap": {
+      "isNonstandard": "Past"
+    },
+    "sketch": {
+      "isNonstandard": "Past"
+    },
+    "slam": {
+      "isNonstandard": "Past"
+    },
+    "slash": {
+      "isNonstandard": "Past"
+    },
+    "sludge": {
+      "isNonstandard": "Past"
+    },
+    "smog": {
+      "isNonstandard": "Past"
+    },
+    "smokescreen": {
+      "isNonstandard": "Past"
+    },
+    "snaptrap": {
+      "isNonstandard": null
+    },
+    "snipeshot": {
+      "isNonstandard": "Past"
+    },
+    "spacialrend": {
+      "isNonstandard": "Past"
+    },
+    "spark": {
+      "isNonstandard": "Past"
+    },
+    "spinout": {
+      "isNonstandard": "Past"
+    },
+    "spiritbreak": {
+      "isNonstandard": "Past"
+    },
+    "splash": {
+      "isNonstandard": "Past"
+    },
+    "springtidestorm": {
+      "isNonstandard": "Past"
+    },
+    "steameruption": {
+      "isNonstandard": "Past"
+    },
+    "stomp": {
+      "isNonstandard": "Past"
+    },
+    "stormthrow": {
+      "isNonstandard": null
+    },
+    "strangesteam": {
+      "isNonstandard": "Past"
+    },
+    "strength": {
+      "isNonstandard": "Past"
+    },
+    "sunsteelstrike": {
+      "isNonstandard": "Past"
+    },
+    "supersonic": {
+      "isNonstandard": "Past"
+    },
+    "surgingstrikes": {
+      "isNonstandard": "Past"
+    },
+    "swift": {
+      "isNonstandard": "Past"
+    },
+    "tachyoncutter": {
+      "isNonstandard": "Past"
+    },
+    "tackle": {
+      "isNonstandard": "Past"
+    },
+    "tailglow": {
+      "isNonstandard": "Past"
+    },
+    "tailwhip": {
+      "isNonstandard": "Past"
+    },
+    "takedown": {
+      "isNonstandard": "Past"
+    },
+    "takeheart": {
+      "isNonstandard": "Past"
+    },
+    "tarshot": {
+      "isNonstandard": "Past"
+    },
+    "teleport": {
+      "isNonstandard": "Past"
+    },
+    "terablast": {
+      "isNonstandard": "Past"
+    },
+    "terastarstorm": {
+      "isNonstandard": "Past"
+    },
+    "thundercage": {
+      "isNonstandard": "Past"
+    },
+    "thunderclap": {
+      "isNonstandard": "Past"
+    },
+    "thunderouskick": {
+      "isNonstandard": "Past"
+    },
+    "thundershock": {
+      "isNonstandard": "Past"
+    },
+    "topsyturvy": {
+      "isNonstandard": "Past"
+    },
+    "trickortreat": {
+      "isNonstandard": null
+    },
+    "tripledive": {
+      "isNonstandard": "Past"
+    },
+    "triplekick": {
+      "isNonstandard": "Past"
+    },
+    "twister": {
+      "isNonstandard": "Past"
+    },
+    "vcreate": {
+      "isNonstandard": "Past"
+    },
+    "victorydance": {
+      "isNonstandard": "Past"
+    },
+    "vinewhip": {
+      "isNonstandard": "Past"
+    },
+    "visegrip": {
+      "isNonstandard": "Past"
+    },
+    "watergun": {
+      "isNonstandard": "Past"
+    },
+    "waterpledge": {
+      "isNonstandard": "Past"
+    },
+    "wickedblow": {
+      "isNonstandard": "Past"
+    },
+    "wickedtorque": {
+      "isNonstandard": "Past"
+    },
+    "wildboltstorm": {
+      "isNonstandard": "Past"
+    },
+    "wingattack": {
+      "isNonstandard": "Past"
+    },
+    "withdraw": {
+      "isNonstandard": "Past"
+    },
+    "workup": {
+      "isNonstandard": "Past"
+    },
+    "zingzap": {
+      "isNonstandard": "Past"
+    }
+  },
+  "abilities": {
+    "dragonize": {
+      "isNonstandard": null
+    },
+    "megasol": {
+      "isNonstandard": null
+    },
+    "piercingdrill": {
+      "isNonstandard": null
+    },
+    "spicyspray": {
+      "isNonstandard": null
+    }
+  }
+}

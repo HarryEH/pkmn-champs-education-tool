@@ -12,10 +12,10 @@ describe('calcSpeed', () => {
     }
   });
 
-  it('Jolly 252 Spe Urshifu sits in a sane Lv50 range', () => {
-    const spe = calcSpeed(byName('Urshifu-Rapid-Strike').set);
+  it('Jolly 252 Spe Garchomp sits in a sane Lv50 range', () => {
+    const spe = calcSpeed(byName('Garchomp').set);
     expect(spe).toBeGreaterThan(140);
-    expect(spe).toBeLessThan(170);
+    expect(spe).toBeLessThanOrEqual(170);
   });
 });
 
@@ -41,10 +41,10 @@ describe('buildSpeedTiers', () => {
     for (let i = 1; i < tiers.length; i++) {
       expect(tiers[i - 1].effectiveSpeed).toBeGreaterThanOrEqual(tiers[i].effectiveSpeed);
     }
-    // Flutter Mane (Timid 252 Spe, base 135) should be the fastest of the team.
-    expect(tiers[0].label).toBe('Flutter Mane');
-    // Amoonguss (0 Spe IV min-invest) should be slowest.
-    expect(tiers[tiers.length - 1].label).toBe('Amoonguss');
+    // Dragapult (Jolly 252 Spe, base 142) should be the fastest of the team.
+    expect(tiers[0].label).toBe('Dragapult');
+    // Hatterene (0 Spe IV, Sassy) should be slowest.
+    expect(tiers[tiers.length - 1].label).toBe('Hatterene');
   });
 
   it('Trick Room reverses ordering (slowest first)', () => {

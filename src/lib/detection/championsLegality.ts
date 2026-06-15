@@ -14,8 +14,8 @@
 
 /** Per-species override fields the `champions` mod's formats-data.ts may set. */
 export interface ChampionsFormatOverride {
-  isNonstandard?: string;
-  tier?: string;
+  isNonstandard?: string | null;
+  tier?: string | null;
 }
 
 /** Minimal species shape {@link deriveLegality} needs (subset of @pkmn/dex Species). */
