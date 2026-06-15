@@ -49,7 +49,7 @@ blank lines):
 import { Sets } from '@pkmn/sets';
 
 const setBlocks = pokepasteText.trim().split(/\n\s*\n/);
-const pokemonSets = setBlocks.map(block => Sets.importSet(block));
+const pokemonSets = setBlocks.map((block) => Sets.importSet(block));
 ```
 
 Each `PokemonSet` gives you species, item, ability, level, shiny, Tera type,
@@ -78,20 +78,20 @@ hash table (see §5).
 
 ```ts
 interface MyPokemon {
-  set: PokemonSet;          // from @pkmn/sets
-  speed: number;             // computed stat at given level/EVs/nature
+  set: PokemonSet; // from @pkmn/sets
+  speed: number; // computed stat at given level/EVs/nature
   types: string[];
 }
 
 interface MyTeam {
   id: string;
   name: string;
-  pokepaste: string;         // raw, for re-import/edit
-  pokemon: MyPokemon[];      // parsed, 6 entries
+  pokepaste: string; // raw, for re-import/edit
+  pokemon: MyPokemon[]; // parsed, 6 entries
 }
 
 interface OpponentSlot {
-  speciesId: string | null;  // null until detected/confirmed
+  speciesId: string | null; // null until detected/confirmed
   candidates: { speciesId: string; confidence: number }[]; // top-N hash matches
   // user-editable overrides once revealed in battle:
   item?: string;
@@ -102,20 +102,20 @@ interface OpponentSlot {
 }
 
 interface OpponentTeam {
-  slots: OpponentSlot[];     // 6 entries after detection
+  slots: OpponentSlot[]; // 6 entries after detection
   detectedAt: number;
 }
 
 interface FieldState {
   weather?: 'sun' | 'rain' | 'sand' | 'snow';
   terrain?: 'electric' | 'grassy' | 'misty' | 'psychic';
-  attackerSide?: { tailwind?: boolean; trickRoom?: boolean; /* ... */ };
-  defenderSide?: { tailwind?: boolean; trickRoom?: boolean; /* ... */ };
+  attackerSide?: { tailwind?: boolean; trickRoom?: boolean /* ... */ };
+  defenderSide?: { tailwind?: boolean; trickRoom?: boolean /* ... */ };
 }
 
 interface BattleSession {
   myTeam: MyTeam;
-  myActiveFour: string[];    // species IDs of the 4 you brought
+  myActiveFour: string[]; // species IDs of the 4 you brought
   opponent: OpponentTeam;
   opponentActiveFour: string[]; // species IDs currently relevant/on field
   field: FieldState;
@@ -157,6 +157,7 @@ requirement).
 pre-battle analysis dashboard.
 
 ### 4.1 Video input
+
 - `navigator.mediaDevices.enumerateDevices()` to list video inputs, let the
   user pick the Elgato capture device from a dropdown (persist the chosen
   `deviceId` as a setting, not part of `MyTeam` persistence — separate small
@@ -168,6 +169,7 @@ pre-battle analysis dashboard.
   normalized (0–1) coordinates so they scale to any capture resolution.
 
 ### 4.2 "Detect" button
+
 1. Draw current video frame to an offscreen `<canvas>` → `ImageData`.
 2. Crop the 6 calibrated regions.
 3. Run icon-matching (§5) on each crop → `OpponentSlot.candidates`.
@@ -177,6 +179,7 @@ pre-battle analysis dashboard.
    confidence), trigger the analysis pass below.
 
 ### 4.3 Analysis dashboard (per confirmed opponent mon, against your active
+
 team)
 For each of the 6 opponent species:
 
@@ -186,7 +189,7 @@ For each of the 6 opponent species:
   (`gen9championsvgc2026regma`), cached locally (see §6) with a manual
   "refresh data" button since `@pkmn/smogon` needs network access. Show top
   items, abilities, EV spreads, Tera types, and moves by usage %.
-- **Speed tiers**: for each *plausible* spread (the common sets above — e.g.
+- **Speed tiers**: for each _plausible_ spread (the common sets above — e.g.
   base, Choice Scarf, Tailwind-adjusted), compute the resulting Speed stat and
   place it on a single sorted list alongside your 6 mons' Speed stats. Sort
   high→low; flag your mons that outspeed/are outsped by each variant.
@@ -208,6 +211,7 @@ sub-sections above.
 perceptual-hash nearest-neighbor.
 
 ### 5.1 Reference table (build once, ship with app or generate on first run)
+
 - Enumerate the legal species pool for the current regulation (from
   `gen.species` filtered by the format's `Tier`/legality data — flag as an
   open question in §8 if Champions legality isn't cleanly exposed yet).
@@ -221,6 +225,7 @@ perceptual-hash nearest-neighbor.
   M-A → M-B).
 
 ### 5.2 Matching at detect-time
+
 - For each cropped region from the captured frame: resize to the same
   normalized size, compute its hash.
 - Compute Hamming distance to every entry in `iconHashes.json`, return top 3
@@ -230,9 +235,10 @@ perceptual-hash nearest-neighbor.
   tunable constant; surface low-confidence detections clearly in the UI.
 
 ### 5.3 Shinies / formes
+
 Don't special-case — if the icon hash mismatches a shiny vs. regular icon, it
 has zero effect on the rest of the pipeline (stats/types/moves unaffected).
-Megas matter only insofar as the *held item* (Mega Stone) determines whether
+Megas matter only insofar as the _held item_ (Mega Stone) determines whether
 the mega-evolved forme's stats/typing/ability apply — this is a manual
 override field (`megaActivated`) the user toggles once they see the Mega
 Evolve animation in battle, not something detected from team preview.
