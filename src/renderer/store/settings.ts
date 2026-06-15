@@ -3,7 +3,7 @@
  * + hydrate + write-through. WS-E deepens capture/calibration parts.
  */
 import { create } from 'zustand';
-import type { Settings } from '../../shared/types';
+import type { NormalizedRect, Settings } from '../../shared/types';
 
 interface SettingsState {
   settings: Settings;
@@ -12,6 +12,8 @@ interface SettingsState {
   hydrate: () => Promise<void>;
   /** Patch settings, write-through to disk. */
   update: (patch: Partial<Settings>) => Promise<void>;
+  /** Persist the detection-screen calibration rects. */
+  setCalibrationRegions: (regions: NormalizedRect[]) => Promise<void>;
 }
 
 export const useSettingsStore = create<SettingsState>((set, get) => ({
@@ -27,5 +29,9 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
     const next = { ...get().settings, ...patch };
     set({ settings: next });
     await window.api.settings.save(next);
+  },
+
+  setCalibrationRegions: async (regions) => {
+    await get().update({ calibrationRegions: regions });
   },
 }));

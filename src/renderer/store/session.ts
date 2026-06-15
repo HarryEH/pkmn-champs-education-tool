@@ -20,6 +20,8 @@ interface SessionState {
   opponentActiveFour: string[];
   /** Set the detected opponent team (WS-E). */
   setOpponent: (opponent: OpponentTeam) => void;
+  /** Manually correct one detected slot's species (WS-E override dropdown). */
+  overrideSlot: (index: number, speciesId: string) => void;
   /** Patch field state (WS-F). */
   setField: (patch: Partial<FieldState>) => void;
   setMyActiveFour: (ids: string[]) => void;
@@ -36,6 +38,14 @@ export const useSessionStore = create<SessionState>((set) => ({
   opponentActiveFour: [],
 
   setOpponent: (opponent) => set({ opponent }),
+  overrideSlot: (index, speciesId) =>
+    set((s) => {
+      if (!s.opponent) return s;
+      const slots = s.opponent.slots.map((slot, i) =>
+        i === index ? { ...slot, speciesId } : slot,
+      );
+      return { opponent: { ...s.opponent, slots } };
+    }),
   setField: (patch) => set((s) => ({ field: { ...s.field, ...patch } })),
   setMyActiveFour: (ids) => set({ myActiveFour: ids }),
   setOpponentActiveFour: (ids) => set({ opponentActiveFour: ids }),
