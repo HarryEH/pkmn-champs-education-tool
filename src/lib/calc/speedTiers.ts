@@ -12,6 +12,7 @@
  * multiplicative modifiers freely.
  */
 import { gen } from './gen';
+import { resolveMegaForme } from './megaForme';
 import type { PokemonSet } from '../../shared/types';
 
 /** Multiplicative speed modifiers, applied in-game in this order. */
@@ -32,6 +33,8 @@ export interface SpeedTierInput {
   set?: PokemonSet;
   /** Base (unmodified) speed stat, if already computed. */
   stat?: number;
+  /** Mega evolved? Uses the held stone's Mega forme base Speed (set entries only). */
+  megaActivated?: boolean;
   /** Per-entry modifiers (the opponent might be scarfed, you might not, etc.). */
   modifiers?: SpeedModifiers;
 }
@@ -66,14 +69,32 @@ const STAGE_MULTIPLIERS: Record<number, number> = {
  * Raw Speed stat for a parsed set. IVs default to 31, EVs to 0, level to 50,
  * nature to Serious (neutral) — matching the fixtures' conventions.
  */
-export function calcSpeed(set: PokemonSet): number {
-  const species = gen.species.get(set.species ?? '');
+export function calcSpeed(set: PokemonSet, megaActivated = false): number {
+  // When Mega is active and the held stone resolves, the Mega forme's base
+  // Speed replaces the base species' (e.g. Manectric 105 → Manectric-Mega 135).
+  const megaForme = megaActivated ? resolveMegaForme(set.species ?? '', set.item || undefined) : null;
+  const species = gen.species.get(megaForme ?? set.species ?? '');
   if (!species?.exists) return 0; // `gen` is ungated: a miss is {exists:false}, not undefined.
   const nature = gen.natures.get(set.nature ?? 'Serious') ?? undefined;
   const level = set.level ?? 50;
   const iv = set.ivs?.spe ?? 31;
   const ev = set.evs?.spe ?? 0;
   return gen.stats.calc('spe', species.baseStats.spe, iv, ev, level, nature);
+}
+
+/**
+ * Plausible Speed bounds for a known base Speed stat at `level`, for opponents
+ * whose EV spread/nature is unknown: lower = 0 EVs / neutral nature, upper =
+ * 252 EVs / boosting nature (both 31 IV). Lets the In-Battle speed view show a
+ * range ("do I outspeed for sure / maybe / never") rather than a single guess.
+ */
+export function speedBounds(baseSpe: number, level = 50): { min: number; max: number } {
+  const neutral = gen.natures.get('Serious') ?? undefined;
+  const boosting = gen.natures.get('Jolly') ?? undefined; // +Spe
+  return {
+    min: gen.stats.calc('spe', baseSpe, 31, 0, level, neutral),
+    max: gen.stats.calc('spe', baseSpe, 31, 252, level, boosting),
+  };
 }
 
 /** Clamp a stage boost to the legal -6..+6 range. */
@@ -109,7 +130,7 @@ export function buildSpeedTiers(
   options: { trickRoom?: boolean } = {},
 ): SpeedTierEntry[] {
   const entries: SpeedTierEntry[] = inputs.map((input) => {
-    const baseSpeed = input.stat ?? (input.set ? calcSpeed(input.set) : 0);
+    const baseSpeed = input.stat ?? (input.set ? calcSpeed(input.set, input.megaActivated) : 0);
     const modifiers = input.modifiers ?? {};
     return {
       label: input.label,

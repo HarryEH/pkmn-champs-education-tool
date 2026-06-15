@@ -27,6 +27,17 @@
 > **screenshot-drop detection path first** (E1a), before live capture-device input
 > (E1b) — see §5 WS-E and §7 risk-spike R3 note. Risk-spike memos previously in
 > `docs/spikes/` have been folded into this plan (§7) and removed.
+>
+> **🔴 Detection matcher REWORKED (2026-06-15, R7) — supersedes WS-D's matching layer:**
+> the original **perceptual-hash** approach (blockhash of crops vs the Showdown icon
+> sheet) was validated against a **real Switch team-preview frame** and scored **0/6
+> top-1 and 0/6 top-3** (true species ranked #58–#774). Three compounding causes: wrong
+> art domain (Showdown menu sprites vs Nintendo box-icon renders), the red opponent-panel
+> background contaminating the hash, and no legal-only candidate filtering. **Replaced by
+> CLIP image-embedding nearest-neighbour against pokesprite box sprites** → **5/6 top-1**
+> on the same frame. The model is **downloaded on first run** (cached, not bundled). The
+> crop→`OpponentTeam` contract and the manual-override UI are unchanged. Full design in
+> §5 WS-D and §7 R7.
 
 ---
 
@@ -69,8 +80,14 @@ src/
     store/{teams.ts,session.ts,settings.ts}
   lib/
     calc/{gen.ts,damageCalc.ts,speedTiers.ts,typeMatchup.ts}
-    detection/{frameCapture.ts,cropRegions.ts,iconMatcher.ts,detectionPipeline.ts,
-               iconHashes.ts,championsLegality.ts}
+    detection/{frameCapture.ts,imageSource.ts,cropRegions.ts,segment.ts,
+               embedder.ts,iconMatcher.ts,boxEmbeddings.ts,detectionPipeline.ts,
+               championsLegality.ts}
+                                       # R7: embedder.ts (CLIP via transformers.js, lazy/first-run
+                                       #   download), iconMatcher.ts (centered-cosine NN),
+                                       #   boxEmbeddings.ts (ref-vector table + loader),
+                                       #   segment.ts (red-panel FG extraction).
+                                       #   REMOVED: hash.ts/iconHashes.ts (blockhash, R7).
     legality/{championsOverrides.ts,championsLearnsets.ts,teamLegality.ts}  # R6 — Team Setup legality
     smogon/usageData.ts
   shared/
@@ -78,12 +95,13 @@ src/
     ipc.ts                    # IPC channel names + payload types (single source of truth)
     fixtures.ts               # mock team + mock opponent for offline/parallel dev
   data/
-    iconHashes.json           # regulation-independent (R5) — every real National Dex species icon
+    boxEmbeddings.json        # R7 — regulation-independent — CLIP embedding per base-forme box sprite
+                              #   (+ pool mean for centering, model id). Replaces iconHashes.json.
     championsLegality.json    # regulation-specific (R5) — Reg M-A legal/banned per species
     championsOverrides.json   # regulation-specific (R6) — banned/un-banned items, moves, abilities
     championsLearnsets.json   # regulation-specific (R6) — per-species champions movepools (prevo-merged)
 scripts/
-  buildIconHashes.ts
+  buildBoxEmbeddings.ts       # R7 — maps legal base-forme species → pokesprite slugs, CLIP-embeds, centers
   buildChampionsLegality.ts
   buildChampionsOverrides.ts  # R6 — item/move/ability isNonstandard deltas
   buildChampionsLearnsets.ts  # R6 — per-species movepools (champions override + vanilla fallback)
@@ -207,33 +225,66 @@ Pure, dependency-light, highly testable — ideal first parallel task.
 - Team picker (dropdown); edit/delete/re-paste-to-update.
 - **DoD met:** fixture paste → 6 cards with correct stats (Speed emphasised) → save → active/edit/delete; save path verified to call `window.api.teams.save` with the full `MyTeam[]` (app-restart persistence to be confirmed in manual `npm start` testing).
 
-### WS-D — Detection pipeline (`lib/detection/` + script) — ✅ DONE (14 tests, +9 from R5)
-Independent of UI; ran fully in parallel.
-- `scripts/buildIconHashes.ts`: enumerates the full National Dex icon pool (R5
-  filter — `Dex.species.all()` ungated, `num > 0 && !battleOnly && isNonstandard
-  ∈ {null, 'Past'}`), downloads the `@pkmn/img` sprite **sheet** once, crops each
-  40×30 icon cell by its `Icons.getPokemon` offset, normalizes to 32×32,
-  blockhashes. **`src/data/iconHashes.json` generated — 1259 unique species
-  cells** (was 852 under the original Gen-9-regional-dex filter; R2's filter was
-  superseded by R5, see below). Regenerate: `npx vite-node scripts/buildIconHashes.ts`
-  — now only needed if `@pkmn/dex`'s base species data changes, **not** on
-  regulation cutovers.
-- `hash.ts` (shared build/run hash core — `RgbaImage`, `hashImage` via `blockhash-core` at 256 bits, `hammingDistance`, `resampleNearest`; `iconHashes.ts` guards param parity), `frameCapture.ts` (video frame → `ImageData`), `cropRegions.ts` (apply `NormalizedRect[]`), `iconMatcher.ts` (top-3 + confidence `1 - dist/maxBits`, `AUTO_ACCEPT_THRESHOLD = 0.85`), `detectionPipeline.ts` (6 crops → `OpponentTeam`).
-- **R5 (new):** `scripts/buildChampionsLegality.ts` + `scripts/championsFormatsParser.ts`
-  fetch and parse the live `champions` mod's `formats-data.ts` from
-  `smogon/pokemon-showdown` (TS compiler API, no `eval`), merge onto the same
-  1285-species base pool, and derive Reg M-A legality →
-  **`src/data/championsLegality.json`** (253/1285 legal). Runtime types +
-  `isChampionsLegal` lookup in `lib/detection/championsLegality.ts`. This file
-  **is** regulation-specific — regenerate on every regulation cutover (e.g.
-  M-A → M-B): `npx vite-node scripts/buildChampionsLegality.ts`. Full
-  derivation rules (worked examples, Arceus-Bug `isNonstandard`-override edge
-  case) are documented in `championsLegality.ts`'s `deriveLegality` doc comment
-  and the R5 row of §7 below.
-- **Dev-dep usage:** `pngjs` + `@types/pngjs` (icon build script) and `typescript`
-  (champions formats-data parser) — both Node-only, never in the renderer bundle.
-- **Reality note:** solid-colour icons hash near-degenerately — real matching relies on icons having visual texture (fine for Showdown sprites).
-- **DoD met** via synthetic-icon tests (matcher returns top-1 above threshold; `cropRegions` slices a synthetic `ImageData` correctly) plus R5's `deriveLegality`/parser unit tests (8 + 3 tests). Capture-device wiring is WS-E.
+### WS-D — Detection pipeline (`lib/detection/` + script) — 🔴 MATCHER REWORKED (R7)
+Independent of UI; ran fully in parallel. **The frame→crop→`OpponentTeam` scaffold and
+the legality layer stand; the *matching layer* was replaced** — the original blockhash
+approach scored **0/6** on a real Switch frame (see R7, §7). Status of the parts:
+
+**✅ Standing (unchanged):**
+- `frameCapture.ts` (video frame → `RgbaImage`), `imageSource.ts` (dropped PNG → `RgbaImage`),
+  `cropRegions.ts` (apply `NormalizedRect[]` → 6 crops), `detectionPipeline.ts`
+  (6 crops → `OpponentTeam` with top-3 candidates + auto-accept). The pipeline's
+  source-agnostic `RgbaImage` + `NormalizedRect[]` signature is **frozen** — both the
+  matcher swap and WS-E feed it unchanged.
+- **R5 legality** — `scripts/buildChampionsLegality.ts` + `scripts/championsModParser.ts`
+  parse the live `champions` mod's `formats-data.ts` (TS compiler API, no `eval`), merge
+  onto the 1285-species base pool, derive Reg M-A legality → **`src/data/championsLegality.json`**
+  (253/1285 legal). `isChampionsLegal` lookup in `lib/detection/championsLegality.ts`.
+  Regulation-specific — regenerate on cutover (`npx vite-node scripts/buildChampionsLegality.ts`).
+
+**🔴 Replaced (R7 — was blockhash, now CLIP embeddings):**
+- **Reference art = pokesprite gen-8 BOX sprites**, not the Showdown icon sheet. Spiked
+  empirically on a real frame: box sprites (same chibi ¾ pose as the in-game team-preview
+  icon) beat pokemondb HOME front-renders **5/6 vs 3/6 top-1** — *closest pose* matters
+  more than *newest/hi-fi*. Only **base formes** are needed: VGC team preview shows the
+  base forme (Mega is an in-battle reveal), so the "no external sprite for Mega Floette /
+  Champions-exclusive Megas" problem does **not** apply at detection time — those are
+  handled by the In-Battle "Mega used" toggle.
+- `scripts/buildBoxEmbeddings.ts` (build-time, Node): map each **legal base-forme** species
+  → its pokesprite slug (via pokesprite's own `data/pokemon.json`, so regional formes /
+  Rotom-Wash / Ogerpon masks / Tauros-Paldea resolve), fetch the box sprite, composite on
+  white, embed with **CLIP ViT-B/32** (`@huggingface/transformers`,
+  `Xenova/clip-vit-base-patch32`, image-feature-extraction, mean-pooled), **mean-center the
+  pool** (removes CLIP anisotropy — without it one sprite wins everything), write
+  **`src/data/boxEmbeddings.json`** (one centered vector per species + the pool mean +
+  model id for parity). Regulation-**independent** — regenerate only when `@pkmn/dex` base
+  species change, *not* on regulation cutover (legal-only filtering is applied at runtime).
+- `embedder.ts` (renderer): lazily loads the **same** CLIP model via transformers.js /
+  onnxruntime-web (WASM/WebGPU). **Downloaded on first run** and cached (transformers.js
+  HF cache, persisted under `userData`); **not bundled** — first detection needs network
+  once, thereafter offline. Build- and run-paths share the model id from `boxEmbeddings.json`
+  so embeddings are comparable (the parity invariant the old `assertTableCompatible` guarded).
+- `iconMatcher.ts` (rewritten): embed a crop → mean-center with the pool mean → **cosine
+  nearest-neighbour** over the legal-filtered reference vectors → top-3 + confidence. Crop
+  is embedded **raw** (raw beat segmented-on-white at pool scale); `segment.ts` (red-panel
+  border-median bg + largest-connected-component FG) is retained for templating/diagnostics
+  and as a fallback knob.
+- `boxEmbeddings.ts`: table types + loader + the cosine/centering helpers (shared math, the
+  build/run single source of truth — the role `hash.ts` used to play).
+
+**Regression gate (NEW — the old pipeline had none):** `__tests__/detectionAccuracy.test.ts`
+runs the real crop→match path over a committed real Switch frame
+(`fixtures/teampreview-jason.png`, 1280×720, 6 confirmed species, hand-tuned rects) and
+reports top-1/top-3. Baseline (blockhash) **0/6**; reworked target ratcheted up as it lands.
+
+- **Dev/runtime deps:** `pngjs` + `@types/pngjs` (Node build scripts) and `typescript`
+  (champions mod parser) stay Node-only. **NEW runtime dep `@huggingface/transformers`**
+  (+ onnxruntime-web) ships in the renderer; the CLIP weights are fetched on first run.
+- **REMOVED:** `hash.ts`, `iconHashes.ts`, `scripts/buildIconHashes.ts`, `blockhash-core`,
+  and `src/data/iconHashes.json` (all blockhash-era).
+- **DoD (revised):** drop a real Switch frame → all 6 slots resolve to the correct legal
+  species at acceptable confidence, measured by the accuracy harness, with the model fetched
+  on first run.
 
 ### WS-E — Detection screen (Flow B) — ⏭️ NEXT (Wave 2)
 The largest UI surface; can be split into **E1 (capture/calibration/detect)** and **E2 (analysis dashboard)** if two agents are available. All dependencies (WS-A/B/D libs, WS-G primitives, fixtures) are ready.
@@ -279,13 +330,15 @@ The largest UI surface; can be split into **E1 (capture/calibration/detect)** an
   - `DamageCalcTable.tsx` (WS-A `damageCalc`, your moves vs common defensive spread and vice versa).
 - **DoD**: against `fixtures.opponentTeam`, the full dashboard renders for all 6 (no detection needed); then swapping in E1a/E1b output populates the same dashboard.
 
-### WS-F — In-Battle screen (Flow C) — ⏭️ Wave 3 (after WS-E)
-- `screens/InBattle/`: lead-selection (pick 4 of 6 → `myActiveFour`; mark relevant opponent mons → `opponentActiveFour`).
-- `components/FieldStateToggles.tsx`: weather/terrain/Tailwind-per-side/Trick Room/Choice-lock-per-mon/Tera+Mega-per-mon → feeds `FieldState` + `OpponentSlot` overrides.
-- `store/session.ts`: in-memory `BattleSession`; "New Battle" reset.
-- On every toggle: recompute speed order (8 mons, Trick Room/Tailwind/para/Scarf via WS-A modifiers) and damage matrix restricted to active 8 via WS-A `damageCalc` with a `Field` built from toggles.
-- Large readable type for the "during the timer countdown" use case (theme `--font-battle` scale).
-- **DoD**: select 4v4, flip weather/Tailwind/Trick Room → speed order and damage rolls update live and correctly.
+### WS-F — In-Battle screen (Flow C) — ✅ DONE
+- `screens/InBattle/index.tsx`: explicit **two-step on-field selection per side** — bring 4 (→ `myActiveFour` / `opponentActiveFour`), then mark who's *currently in* (→ `myOnField` / `opponentOnField`, capped at 2), updated live as switches happen. `screens/InBattle/battleBuild.ts` holds the pure combatant/speed builders.
+- `components/FieldStateToggles.tsx`: weather / terrain / Trick Room / per-side Tailwind + screens (Reflect/Light Screen/Aurora Veil) → patches `FieldState` (convention: `attackerSide` = you, `defenderSide` = opponent; the their-moves table swaps sides).
+- **Per-mon Mega + Tera toggles on both sides.** Champions revives Mega Evolution, so the user manually controls their *own* Megas too. Mega is wired through the calc engine: `lib/calc/megaForme.ts::resolveMegaForme(species, item)` maps a held stone to its forme via `gen.items.get(stone).megaStone`; `damageCalc`/`speedTiers` gained a `megaActivated` flag that rebuilds the calc `Pokemon`/Speed as the forme (stats/typing/ability follow). Your side's per-mon toggle state is in-memory-only on the session store (`myBattleState`) to avoid widening the FROZEN `types.ts`; the opponent reuses `OpponentSlot.megaActivated/teraActivated`.
+- Opponent speed is shown as a **range** (0-EV neutral → max-invest via `speedTiers::speedBounds`) plus a Choice-Scarf "possibility" row, since their spread is unknown. Your mons use their exact set.
+- On every toggle/selection: recompute speed order + both damage matrices (your moves vs their active; their common moves vs yours), restricted to the on-field sets, via WS-A `calcDamage`/`buildSpeedTiers` with a `Field` built from toggles.
+- Large readable type for the "during the timer countdown" use case (theme `--font-battle` scale on mon names/results).
+- **DoD met**: select on-field mons per side, flip Mega/Tera/weather/Tailwind/Trick Room → speed order and damage rolls update live and correctly (verified: Mega Charizard-Y damage > base; Mega Manectric rises / Mega Garchomp drops in the speed order).
+- Deferred follow-ups: auto-suggesting a base+stone mon's Mega stats by default (vs the manual toggle); the opponent Mega toggle only appears when their *likely usage* item resolves a stone (a held stone outside top usage won't surface it yet).
 
 ### WS-G — Design system (`ui/` + `theme/`) — ✅ DONE
 - Fleshed out Phase-0 stubs into a clean Pokémon-coloured library (§6). Real interaction states via `theme/ui.css` (`@import`-ed from `tokens.css`) using `.pk-*` classes layered over the existing inline-style call sites — public API unchanged (only additive optional props: `Card.interactive`, `Stat.tone`).
@@ -357,7 +410,10 @@ export const TYPE_COLORS: Record<string, string> = {
 - **Speed-tier list**: single vertical sorted list; your mons in red accent, opponent in neutral, `--ok/--bad` markers for outspeed/outsped; Trick Room flips with an animated reorder.
 - **App chrome**: left nav with a small Pokéball glyph per screen; thin red top accent bar; Champion-format label (gold) in the header.
 - **Density**: comfortable, not cramped. Flow C is the exception — bigger text, fewer chrome elements, dark `battle` mode default.
-- **Sprites/icons**: always via `@pkmn/img` (Showdown art). Never bundle our own.
+- **Sprites/icons**: UI display always via `@pkmn/img` (Showdown art). Never bundle our own.
+  (Exception — *detection only*: matching references are pokesprite gen-8 **box** sprites,
+  embedded at build time into `boxEmbeddings.json`; this is reference data for the matcher,
+  not art rendered to the user. See WS-D / R7.)
 - **Accessibility**: type colours alone never encode meaning — always pair with text/label (colour-blind safety, since several type colours collide).
 
 ---
@@ -371,6 +427,7 @@ export const TYPE_COLORS: Record<string, string> = {
 | R3 | `getUserMedia` for Elgato HD60X (Electron renderer, macOS) | HD60X enumerates as a normal UVC `videoinput`; existing `askForMediaAccess('camera')` is **sufficient — no `desktopCapturer`**. WS-E gotchas: empty device labels pre-permission, black no-signal frames, variable geometry → normalized rects. **Note (2026-06-15):** this is now E1b (after the screenshot-drop path, E1a) — not blocking the first detection milestone. |
 | R4 | `@pkmn/smogon` `fetch` availability in Electron | Renderer native `fetch` suffices — **no shim**. We fetch the format report directly (renderer-side); `window.api.usage` is the disk cache only. Stats endpoint is "latest", not month-addressable. |
 | R5 | Champions Reg M-A legal species pool + regulation-cutover sync | `gen.species`-based enumeration (R2) doesn't match the Champions roster. Real source is `smogon/pokemon-showdown`'s live `data/mods/champions/formats-data.ts`, parsed via the TS compiler API (`scripts/championsModParser.ts`, formerly `championsFormatsParser.ts`) and merged onto `@pkmn/dex`'s ungated `Dex.species.all()` (1285 species). Derivation: `isNonstandard` override from champions → illegal; else effective tier `Illegal`/`CAP`/`Unreleased` → illegal; else `Mythical`/`Restricted Legendary` tags → illegal (Flat Rules banlist). Result: 253/1285 legal under Reg M-A → `src/data/championsLegality.json`. Introduces the **decoupled two-layer architecture**: `iconHashes.json` (regulation-independent, 1259 entries) for icon→species matching, `championsLegality.json` (regulation-specific) for the legality lookup. |
+| R7 | **Opponent detection accuracy on real Switch frames** | The blockhash matcher (R5-era `iconHashes.json`) **failed on a real team-preview frame: 0/6 top-1 AND top-3** (true species ranked #58–#774). Causes: matching Showdown menu sprites against Nintendo box-icon renders (wrong art domain), the red opponent-panel background dominating the hash, and ranking against all 1259 species with no legal filter. Classical fixes (foreground segmentation + HOG/colour descriptors) only reached 1/6 even among 6 candidates. **Resolved with CLIP image embeddings + nearest-neighbour:** embed crops and **pokesprite gen-8 box sprites** (closest pose to the in-game icon; beat HOME front-renders 5/6 vs 3/6), **mean-center** to kill CLIP anisotropy, cosine-rank against the **legal-filtered** pool → **5/6 top-1** on the real frame. Model (`Xenova/clip-vit-base-patch32`) is **downloaded on first run** and cached, not bundled. Only **base-forme** sprites are needed (team preview shows base; Mega is in-battle) so Champions-exclusive Megas are not a detection-time coverage gap. New regression gate over a committed real frame (`detectionAccuracy.test.ts`). See WS-D. |
 | R6 | Full Team Setup legality — items, abilities, moves, learnsets | R5 covered species only; Team Setup needs the rest. The `champions` mod also bans/un-bans **items, moves, abilities** (via `isNonstandard` overrides in `items.ts`/`moves.ts`/`abilities.ts` — e.g. Assault Vest/Booster Energy/Safety Goggles banned, Mega Stones un-banned) and re-cuts **learnsets** (`learnsets.ts` — "Champions" is its own game, so movepools differ from SV; e.g. Incineroar can't learn Knock Off). **Critical correctness point:** `isNonstandard: null` is an explicit *un-ban* and must round-trip distinctly from "field absent" — the generic `parseModOverrides` captures `null` literals (not just strings), and runtime merging uses `'isNonstandard' in override` presence checks, **never `??`** (`null ?? base` would silently re-ban). Items/moves/abilities are small **delta** tables (`championsOverrides.json`) combined at runtime with vanilla `gen.X.get()`; learnsets must be a **full baked** table (`championsLearnsets.json`, prevo-merged) because `gen.learnsets.get()` is async and `parsePokepaste` is sync. Lookups in `lib/legality/{championsOverrides,championsLearnsets,teamLegality}.ts`; wired non-blocking into `parsePokepaste`. |
 
 > **⚠️ Release-checklist carry-over:** the **2026-06-17 Reg M-A → M-B cutover** (tomorrow,
@@ -379,9 +436,10 @@ export const TYPE_COLORS: Record<string, string> = {
 > **plus R6's `championsOverrides.json` (`scripts/buildChampionsOverrides.ts`) and
 > `championsLearnsets.json` (`scripts/buildChampionsLearnsets.ts`)** — and `fetchUsage`
 > re-pointed once `gen9championsvgc2026regmb` stats publish upstream. Per R5's decoupled
-> architecture, `iconHashes.json` does **not** need regeneration for this cutover — it's
-> regulation-independent and only needs rebuilding if `@pkmn/dex`'s base species data
-> changes.
+> architecture, the detection reference table (**`boxEmbeddings.json`**, R7 — formerly
+> `iconHashes.json`) does **not** need regeneration for this cutover — it's
+> regulation-independent (legal-only filtering happens at runtime) and only needs rebuilding
+> if `@pkmn/dex`'s base species data changes.
 
 ---
 
@@ -409,7 +467,7 @@ Mirrors the spec's build order (§10), re-expressed as agent waves.
   live detect both depend on WS-D's `detectionPipeline`; fixtures unblock E2
   earlier). E1b additionally depends on R3 (capture device).
 - WS-F → WS-A (hard), WS-E components (reuse).
-- WS-D → R1/R5 spikes.
+- WS-D → R1/R5 spikes; **matching layer → R7** (CLIP embeddings + box sprites, first-run model download).
 
 ---
 

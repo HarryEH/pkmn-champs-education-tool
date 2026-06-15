@@ -138,21 +138,29 @@ Owns: `screens/Detection/*`, `components/{TypeMatchupGrid,SpeedTierList,DamageCa
 > F **consumes** them. Keep their props general enough for the active-4 filter F
 > needs (accept a list of "my" mons and "opponent" mons rather than hard-coding 6).
 
-### Wave 3 (M4) — WS-F In-Battle screen (Flow C)
+### Wave 3 (M4) — WS-F In-Battle screen (Flow C) — ✅ BUILT
 
-Owns: `screens/InBattle/*`, `components/FieldStateToggles.tsx`, deepens
-`store/session.ts`.
+Owns: `screens/InBattle/{index,battleBuild}.ts(x)`, `components/FieldStateToggles.tsx`,
+deepened `store/session.ts`; added `lib/calc/megaForme.ts` + `megaActivated`/`speedBounds`
+to `damageCalc`/`speedTiers`.
 
-- Lead selection (pick 4 of 6 → `myActiveFour`; mark opponent actives →
-  `opponentActiveFour`), `FieldStateToggles` (weather/terrain/Tailwind-per-side/
-  Trick Room/Choice-lock/Tera+Mega-per-mon) feeding `FieldState` + `OpponentSlot`
-  overrides. On every toggle: recompute speed order (WS-A modifiers) + damage
-  matrix restricted to the active 8 (WS-A `calcDamage` with `Field` from toggles).
-  Large `--font-battle` type; battle (dark) mode.
-- **DoD:** 4v4 selected, flip weather/Tailwind/Trick Room → speed order + rolls
-  update live and correctly.
-- **Dependencies:** WS-A (hard), reuses E's three dashboard components. Start after
-  Wave 2.
+- **Explicit two-step on-field selection per side**: bring 4 (`myActiveFour` /
+  `opponentActiveFour`) → mark who's currently in (`myOnField` / `opponentOnField`,
+  cap 2), updated live as switches happen. `FieldStateToggles` (weather / terrain /
+  Trick Room / per-side Tailwind + screens) feeds `FieldState`. Per-mon **Mega + Tera**
+  toggles on **both** sides (Champions revives Mega; user controls their own).
+- Mega wired through the calc engine: `resolveMegaForme(species, item)` →
+  `gen.items.get(stone).megaStone`; `megaActivated` rebuilds the calc `Pokemon`/Speed
+  as the forme. Your-side toggle state lives in-memory on the session store
+  (`myBattleState`) — no widening of FROZEN `types.ts`; opponent reuses `OpponentSlot`.
+- Opponent speed shown as a **range** (`speedBounds`: 0-EV neutral → max-invest) plus a
+  Choice-Scarf possibility row. On every toggle: speed order + both damage matrices
+  recompute, restricted to the on-field sets.
+- **DoD met:** select on-field mons, flip Mega/Tera/weather/Tailwind/Trick Room → speed
+  order + rolls update live and correctly (verified via runtime sanity script:
+  Mega Charizard-Y damage > base; Mega Manectric up / Mega Garchomp down).
+- **Tests:** +17 (megaForme, mega damage/speed, `speedBounds`, session-store toggles) →
+  repo total **85**.
 
 ### Wave 4 (M5) — Polish & integration (orchestrator or WS-G)
 
@@ -172,15 +180,15 @@ Owns: `screens/InBattle/*`, `components/FieldStateToggles.tsx`, deepens
 ```bash
 npm start          # launches the Electron app — themed 3-screen shell;
                    # Team Setup is fully functional (paste a team / "Load sample")
-npm test           # 67 unit tests (calc, smogon cache, detection, champions legality, team import + R6 legality)
+npm test           # 85 unit tests (calc incl. Mega, smogon cache, detection, champions legality, team import + R6 legality, session store)
 npm run typecheck  # tsc --noEmit, clean
 npm run lint       # 0 errors
 ```
 
 The **Team Setup** screen is end-to-end usable (import → cards → save → active →
-edit/delete). **Detection** and **In-Battle** are still Phase-0 placeholders —
-their logic libraries (calc, smogon, detection) are built and tested, but the
-screens that wire them up are Wave 2 / Wave 3.
+edit/delete). **In-Battle** (Wave 3 / WS-F) is now built: two-step on-field
+selection, per-mon Mega/Tera, field toggles, live speed range + damage matrices.
+(Detection's status is tracked in its own Wave 2 / WS-E section.)
 
 ## 4. Resuming the build
 

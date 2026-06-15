@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { calcSpeed, applySpeedModifiers, buildSpeedTiers } from '../speedTiers';
+import { Sets } from '@pkmn/sets';
+import { calcSpeed, applySpeedModifiers, buildSpeedTiers, speedBounds } from '../speedTiers';
 import { FIXTURE_MY_TEAM } from '../../../shared/fixtures';
+import type { PokemonSet } from '../../../shared/types';
 
 const byName = (name: string) =>
   FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === name)!;
@@ -64,5 +66,37 @@ describe('buildSpeedTiers', () => {
       { label: 'scarfed', stat: 110, modifiers: { choiceScarf: true } }, // 165 eff
     ]);
     expect(tiers[0].label).toBe('scarfed');
+  });
+});
+
+describe('Mega speed', () => {
+  const speedSet = (species: string, item: string): PokemonSet =>
+    Sets.importSet(
+      `${species} @ ${item}\nLevel: 50\nJolly Nature\nEVs: 252 Spe\n- Tackle`,
+    ) as PokemonSet;
+
+  it('Mega Manectric (105→135) speeds up; Mega Garchomp (102→92) slows down', () => {
+    const manectric = speedSet('Manectric', 'Manectite');
+    const garchomp = speedSet('Garchomp', 'Garchompite');
+    // Base order: Garchomp (102) ahead of Manectric (105)? Manectric base 105 > Garchomp 102.
+    expect(calcSpeed(manectric)).toBeGreaterThan(calcSpeed(garchomp));
+    // Mega: Manectric 135 > Garchomp 92 — gap widens, Manectric still first.
+    expect(calcSpeed(manectric, true)).toBeGreaterThan(calcSpeed(manectric));
+    expect(calcSpeed(garchomp, true)).toBeLessThan(calcSpeed(garchomp));
+
+    const tiers = buildSpeedTiers([
+      { label: 'Manectric', set: manectric, megaActivated: true },
+      { label: 'Garchomp', set: garchomp, megaActivated: true },
+    ]);
+    expect(tiers[0].label).toBe('Manectric');
+  });
+});
+
+describe('speedBounds', () => {
+  it('returns a sane min<max range for a base-100 Speed mon at Lv50', () => {
+    const { min, max } = speedBounds(100);
+    expect(min).toBeLessThan(max);
+    expect(min).toBeGreaterThan(90); // 0 EV neutral, base 100, Lv50
+    expect(max).toBeLessThanOrEqual(200);
   });
 });

@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
+import { Sets } from '@pkmn/sets';
 import { calcDamage } from '../damageCalc';
 import type { Combatant } from '../damageCalc';
 import { FIXTURE_MY_TEAM } from '../../../shared/fixtures';
-import type { FieldState } from '../../../shared/types';
+import type { FieldState, PokemonSet } from '../../../shared/types';
 
 const setOf = (name: string): Combatant => {
   const mon = FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === name)!;
@@ -66,5 +67,29 @@ describe('calcDamage', () => {
     const tera = calcDamage(teraAttacker, defender, 'Moonblast');
     // Gardevoir Tera Fairy on a Fairy move = STAB retained/boosted; max should not decrease.
     expect(tera.maxPct).toBeGreaterThanOrEqual(noTera.maxPct);
+  });
+});
+
+describe('calcDamage — Mega evolution', () => {
+  const charizardSet = (item: string): PokemonSet =>
+    Sets.importSet(
+      `Charizard @ ${item}\nAbility: Blaze\nLevel: 50\nModest Nature\nEVs: 4 HP / 252 SpA / 252 Spe\n- Heat Wave\n- Air Slash`,
+    ) as PokemonSet;
+  const bulkyDefender: Combatant = { kind: 'species', speciesId: 'tyranitar' };
+
+  it('Mega Charizard Y hits harder than base Charizard (Drought + SpA 159)', () => {
+    const set = charizardSet('Charizardite Y');
+    const base = calcDamage({ kind: 'set', set }, bulkyDefender, 'Heat Wave');
+    const mega = calcDamage({ kind: 'set', set, megaActivated: true }, bulkyDefender, 'Heat Wave');
+    expect(mega.maxPct).toBeGreaterThan(base.maxPct);
+    expect(mega.minPct).toBeGreaterThan(base.minPct);
+  });
+
+  it('megaActivated is a no-op without a Mega Stone held', () => {
+    const set = charizardSet('Heavy-Duty Boots');
+    const off = calcDamage({ kind: 'set', set }, bulkyDefender, 'Heat Wave');
+    const on = calcDamage({ kind: 'set', set, megaActivated: true }, bulkyDefender, 'Heat Wave');
+    expect(on.maxPct).toBe(off.maxPct);
+    expect(on.minPct).toBe(off.minPct);
   });
 });

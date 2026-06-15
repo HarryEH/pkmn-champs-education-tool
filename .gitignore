@@ -93,3 +93,4 @@ out/
 
 # Build output
 dist
+scripts/.embedcache.json

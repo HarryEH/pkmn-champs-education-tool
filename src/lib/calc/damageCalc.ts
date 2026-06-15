@@ -9,6 +9,7 @@
  *     ability, nature, EVs, tera, …) — the calc fills sensible defaults.
  */
 import { calculate, Pokemon, Move, Field, gen } from './gen';
+import { resolveMegaForme } from './megaForme';
 import type { FieldState, PokemonSet, SideState } from '../../shared/types';
 
 /**
@@ -25,6 +26,8 @@ export interface SetCombatant {
   set: PokemonSet;
   /** Tera activated this turn? Applies the set's teraType if true. */
   teraActivated?: boolean;
+  /** Mega evolved this turn? Builds the Mega forme of the set's held stone. */
+  megaActivated?: boolean;
 }
 
 /** A combatant specified by species id plus optional revealed details. */
@@ -40,6 +43,8 @@ export interface SpeciesCombatant {
   evs?: Partial<Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>>;
   ivs?: Partial<Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>>;
   boosts?: Partial<Record<'atk' | 'def' | 'spa' | 'spd' | 'spe', number>>;
+  /** Mega evolved this turn? Builds the Mega forme of the held stone (`item`). */
+  megaActivated?: boolean;
 }
 
 export type Combatant = SetCombatant | SpeciesCombatant;
@@ -60,32 +65,38 @@ const DEFAULT_LEVEL = 50;
 
 function buildSetPokemon(c: SetCombatant): Pokemon {
   const set = c.set;
+  // When Mega is active and the held stone resolves a forme, build that forme
+  // so its stats/typing apply, and drop the base ability so the Mega forme's
+  // own ability (e.g. Drought) takes over.
+  const megaForme = c.megaActivated ? resolveMegaForme(set.species ?? '', set.item || undefined) : null;
   const options = {
     level: set.level ?? DEFAULT_LEVEL,
     item: set.item || undefined,
-    ability: set.ability || undefined,
+    ability: megaForme ? undefined : set.ability || undefined,
     nature: set.nature || undefined,
     evs: set.evs,
     ivs: set.ivs,
     moves: set.moves,
     teraType: c.teraActivated && set.teraType ? set.teraType : undefined,
   };
-  return new Pokemon(gen, set.species ?? '', options as PokemonOptions);
+  return new Pokemon(gen, megaForme ?? set.species ?? '', options as PokemonOptions);
 }
 
 function buildSpeciesPokemon(c: SpeciesCombatant): Pokemon {
   const sp = gen.species.get(c.speciesId);
+  const baseName = sp?.name ?? c.speciesId;
+  const megaForme = c.megaActivated ? resolveMegaForme(baseName, c.item || undefined) : null;
   const options = {
     level: c.level ?? DEFAULT_LEVEL,
     item: c.item || undefined,
-    ability: c.ability || undefined,
+    ability: megaForme ? undefined : c.ability || undefined,
     nature: c.nature || undefined,
     evs: c.evs,
     ivs: c.ivs,
     boosts: c.boosts,
     teraType: c.teraActivated && c.teraType ? c.teraType : undefined,
   };
-  return new Pokemon(gen, sp?.name ?? c.speciesId, options as PokemonOptions);
+  return new Pokemon(gen, megaForme ?? baseName, options as PokemonOptions);
 }
 
 /** Construct a calc `Pokemon` from either combatant flavour. */
