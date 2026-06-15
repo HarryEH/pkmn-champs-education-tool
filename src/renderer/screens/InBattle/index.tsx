@@ -316,7 +316,7 @@ export function InBattleScreen() {
       myOnFieldMons.map((mon) => {
         const toggles = myBattleState[myId(mon)];
         const types = toggles?.megaActivated
-          ? activeTypes(myId(mon), true, mon.set.item || undefined)
+          ? activeTypes(myId(mon), myMegaForme(mon))
           : mon.types;
         return {
           label: myDisplayName(mon),
@@ -489,8 +489,7 @@ export function InBattleScreen() {
               opponentLabel={speciesName(id)}
               opponentTypes={activeTypes(
                 id,
-                slotFor(id)?.megaActivated,
-                findUsage(usage, id)?.items[0]?.name,
+                slotFor(id)?.megaActivated ? opponentMegaForme(id, findUsage(usage, id)) : null,
               )}
               myMons={myMatchupMons}
             />

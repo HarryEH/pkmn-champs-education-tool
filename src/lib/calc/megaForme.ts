@@ -33,3 +33,34 @@ export function resolveMegaForme(speciesName: string, itemName: string | undefin
   const key = species?.exists ? species.name : speciesName;
   return stone[key] ?? null;
 }
+
+/** The (untyped-in-@pkmn) `isMega` flag present on genuine Mega formes. */
+type MaybeMega = { isMega?: boolean };
+
+/**
+ * The Mega forme display names a species can assume, in dex order (e.g.
+ * `['Charizard-Mega-X', 'Charizard-Mega-Y']`), or `[]` if it has none. Works
+ * from either the base species or a Mega forme name. Filters `otherFormes` by
+ * the dex's `isMega` flag so look-alike custom formes (e.g. `Lucario-Mega-Z`)
+ * are excluded.
+ */
+export function megaFormesOf(speciesName: string): string[] {
+  const species = gen.species.get(speciesName);
+  if (!species?.exists) return [];
+  const baseName = (species as MaybeMega).isMega ? species.baseSpecies : species.name;
+  const base = gen.species.get(baseName);
+  if (!base?.exists) return [];
+  return (base.otherFormes ?? []).filter((forme) => {
+    const f = gen.species.get(forme);
+    return !!f?.exists && !!(f as MaybeMega).isMega;
+  });
+}
+
+/**
+ * The Mega forme to assume when the specific stone is unknown (e.g. an
+ * opponent whose item we can't see): the species' first Mega forme, or `null`
+ * if it can't Mega at all.
+ */
+export function defaultMegaForme(speciesName: string): string | null {
+  return megaFormesOf(speciesName)[0] ?? null;
+}

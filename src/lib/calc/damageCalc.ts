@@ -45,6 +45,12 @@ export interface SpeciesCombatant {
   boosts?: Partial<Record<'atk' | 'def' | 'spa' | 'spd' | 'spe', number>>;
   /** Mega evolved this turn? Builds the Mega forme of the held stone (`item`). */
   megaActivated?: boolean;
+  /**
+   * Explicit Mega forme to build when `megaActivated` (e.g. an opponent whose
+   * item we can't see). Overrides item-based resolution; falls back to it when
+   * unset.
+   */
+  megaForme?: string;
 }
 
 export type Combatant = SetCombatant | SpeciesCombatant;
@@ -85,7 +91,9 @@ function buildSetPokemon(c: SetCombatant): Pokemon {
 function buildSpeciesPokemon(c: SpeciesCombatant): Pokemon {
   const sp = gen.species.get(c.speciesId);
   const baseName = sp?.name ?? c.speciesId;
-  const megaForme = c.megaActivated ? resolveMegaForme(baseName, c.item || undefined) : null;
+  const megaForme = c.megaActivated
+    ? (c.megaForme ?? resolveMegaForme(baseName, c.item || undefined))
+    : null;
   const options = {
     level: c.level ?? DEFAULT_LEVEL,
     item: c.item || undefined,

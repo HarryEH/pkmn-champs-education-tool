@@ -8,7 +8,7 @@
  * guessed stat. Your own mons use their exact set.
  */
 import { gen } from '../../../lib/calc/gen';
-import { resolveMegaForme } from '../../../lib/calc/megaForme';
+import { defaultMegaForme, resolveMegaForme } from '../../../lib/calc/megaForme';
 import { speedBounds } from '../../../lib/calc/speedTiers';
 import type { SpeedTierInput } from '../../../lib/calc/speedTiers';
 import type { Combatant } from '../../../lib/calc/damageCalc';
@@ -46,9 +46,8 @@ export function damagingMovesOf(mon: MyPokemon): string[] {
   });
 }
 
-/** Defensive type(s) for a species (or its Mega forme when Mega is active). */
-export function activeTypes(speciesId: string, megaActivated?: boolean, item?: string): string[] {
-  const megaForme = megaActivated ? resolveMegaForme(speciesName(speciesId), item) : null;
+/** Defensive type(s) for a species, or `megaForme`'s types when Mega is active. */
+export function activeTypes(speciesId: string, megaForme: string | null): string[] {
   const species = gen.species.get(megaForme ?? speciesId);
   return species?.exists ? [...species.types] : [];
 }
@@ -83,12 +82,18 @@ export function opponentItem(usage: SpeciesUsage | undefined): string | undefine
   return usage?.items[0]?.name;
 }
 
-/** Does this opponent's likely item resolve a Mega forme (so the toggle applies)? */
+/**
+ * The Mega forme to show for an opponent. We don't know their item, so prefer
+ * the forme their most-likely item resolves, then fall back to the species'
+ * default Mega forme — so any Mega-capable species can be toggled even when its
+ * stone isn't the usage-top item. `null` only when the species can't Mega.
+ */
 export function opponentMegaForme(
   speciesId: string,
   usage: SpeciesUsage | undefined,
 ): string | null {
-  return resolveMegaForme(speciesName(speciesId), opponentItem(usage));
+  const name = speciesName(speciesId);
+  return resolveMegaForme(name, opponentItem(usage)) ?? defaultMegaForme(name);
 }
 
 /** Whether your mon holds a stone that resolves a Mega forme. */
@@ -112,6 +117,9 @@ export function opponentCombatant(
     teraType: slot?.teraType ?? base.teraType,
     teraActivated: !!slot?.teraActivated,
     megaActivated: !!slot?.megaActivated,
+    // Item is unknown, so pin the forme explicitly (default Mega when the
+    // usage item isn't this mon's stone) rather than re-resolving from item.
+    megaForme: opponentMegaForme(speciesId, usage) ?? undefined,
   };
 }
 
