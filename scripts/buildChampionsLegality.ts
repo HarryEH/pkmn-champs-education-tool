@@ -17,7 +17,7 @@
  *      per Flat Rules) via the shared `deriveLegality`.
  *   5. Writes the result to src/data/championsLegality.json.
  *
- * REGENERATE TRIGGER: this file is regulation-specific (unlike iconHashes.json,
+ * REGENERATE TRIGGER: this file is regulation-specific (unlike boxEmbeddings.json,
  * which is now decoupled from regulation entirely). Regenerate whenever the
  * active Champions regulation changes (e.g. the Reg M-A -> M-B cutover) by
  * re-running this script and committing the result.
@@ -41,9 +41,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = resolve(__dirname, '../src/data/championsLegality.json');
 
 /**
- * Base species pool — kept in lock-step with buildIconHashes.ts's
- * `legalSpecies()` so every entry in iconHashes.json has a corresponding
- * legality entry here (R5 "decoupled" architecture: icon table is
+ * Base species pool — kept in lock-step with buildBoxEmbeddings.ts's
+ * species pool so every entry in boxEmbeddings.json has a corresponding
+ * legality entry here (R5 "decoupled" architecture: the box-embedding table is
  * regulation-independent, this table is the regulation-specific layer on top).
  */
 function basePool() {

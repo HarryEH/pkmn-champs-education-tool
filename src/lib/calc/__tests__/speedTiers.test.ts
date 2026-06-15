@@ -4,8 +4,11 @@ import { calcSpeed, applySpeedModifiers, buildSpeedTiers, speedBounds } from '..
 import { FIXTURE_MY_TEAM } from '../../../shared/fixtures';
 import type { PokemonSet } from '../../../shared/types';
 
-const byName = (name: string) =>
-  FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === name)!;
+const byName = (name: string) => {
+  const mon = FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === name);
+  if (!mon) throw new Error(`fixture has no ${name}`);
+  return mon;
+};
 
 describe('calcSpeed', () => {
   it('matches the speed precomputed in the fixture', () => {

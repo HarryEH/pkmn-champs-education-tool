@@ -1,14 +1,14 @@
 /**
  * Champions Reg M-A species-legality table types + lookup (R5).
  *
- * The table maps every species id in src/data/iconHashes.json's pool (the full,
- * regulation-INDEPENDENT National Dex — see iconHashes.ts) to its legality under
+ * The table maps every species id in src/data/boxEmbeddings.json's pool (the full,
+ * regulation-INDEPENDENT National Dex — see boxEmbeddings.ts) to its legality under
  * the CURRENT Champions regulation. Generated offline by
  * scripts/buildChampionsLegality.ts from the `champions` mod's formats-data.ts
  * (smogon/pokemon-showdown) merged onto @pkmn/dex's ungated species data.
  *
  * This is the second layer of the two-layer architecture: match a detected
- * icon against iconHashes.json to get a speciesId, then look that id up here
+ * icon against boxEmbeddings.json to get a speciesId, then look that id up here
  * to find out if it's legal/banned this regulation.
  */
 
@@ -96,7 +96,7 @@ export function buildLegalityIndex(
 
 /**
  * Whether a species is legal under the current regulation. Species absent from
- * the table (i.e. outside iconHashes.json's pool entirely) are treated as
+ * the table (i.e. outside boxEmbeddings.json's pool entirely) are treated as
  * illegal — the table is a superset of every detectable/pickable species, so
  * absence means "not part of the champions roster at all".
  */

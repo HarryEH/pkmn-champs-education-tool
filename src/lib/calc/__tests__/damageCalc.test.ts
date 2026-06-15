@@ -5,10 +5,13 @@ import type { Combatant } from '../damageCalc';
 import { FIXTURE_MY_TEAM } from '../../../shared/fixtures';
 import type { FieldState, PokemonSet } from '../../../shared/types';
 
-const setOf = (name: string): Combatant => {
-  const mon = FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === name)!;
-  return { kind: 'set', set: mon.set };
+const monOf = (name: string) => {
+  const mon = FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === name);
+  if (!mon) throw new Error(`fixture has no ${name}`);
+  return mon;
 };
+
+const setOf = (name: string): Combatant => ({ kind: 'set', set: monOf(name).set });
 
 describe('calcDamage', () => {
   it('produces a plausible % range and valid KO chance for a known matchup', () => {
@@ -59,7 +62,7 @@ describe('calcDamage', () => {
   });
 
   it('Tera activation changes the result for the attacker', () => {
-    const mon = FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === 'Gardevoir')!;
+    const mon = monOf('Gardevoir');
     const baseAttacker: Combatant = { kind: 'set', set: mon.set };
     const teraAttacker: Combatant = { kind: 'set', set: mon.set, teraActivated: true };
     const defender: Combatant = { kind: 'species', speciesId: 'calyrexshadow' };

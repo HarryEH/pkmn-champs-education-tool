@@ -13,6 +13,5 @@ export { TypeBadge } from './TypeBadge';
 export type { TypeBadgeProps } from './TypeBadge';
 export { Stat } from './Stat';
 export type { StatProps } from './Stat';
-export { Gallery } from './Gallery';
 export { matchupTint } from '../theme/matchup';
 export type { MatchupTint, MatchupMultiplier } from '../theme/matchup';

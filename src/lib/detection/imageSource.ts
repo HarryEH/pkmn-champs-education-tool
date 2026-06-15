@@ -1,10 +1,10 @@
 /**
  * Image source (E1a) — renderer only.
  *
- * Decodes a dropped/selected screenshot `File` into the same `RgbaImage` shape
- * `frameCapture.captureVideoFrame` produces from a `<video>` element, so
- * `detectionPipeline.detectOpponentTeam` can treat a static screenshot and a
- * live capture frame identically (mirrors frameCapture.ts).
+ * Decodes a dropped/selected screenshot `File` into the canonical `RgbaImage`
+ * shape `detectionPipeline.detectOpponentTeam` consumes. The pipeline is source-
+ * agnostic, so a future live-capture path can produce the same `RgbaImage` from a
+ * `<video>` element and reuse detection unchanged.
  */
 import type { RgbaImage } from './image';
 

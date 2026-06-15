@@ -58,11 +58,6 @@ export function getEmbedderStatus(): EmbedderStatus {
   return status;
 }
 
-/** True once the model is downloaded/loaded and ready to embed. */
-export function isModelReady(): boolean {
-  return status === 'ready';
-}
-
 /**
  * Lazily initialize (download + load) the CLIP pipeline as a singleton. The first
  * caller kicks off the download; concurrent callers await the same promise. On

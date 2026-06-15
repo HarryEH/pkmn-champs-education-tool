@@ -12,14 +12,16 @@ describe('parsePokepaste', () => {
   it('computes speed identical to the precomputed fixture', () => {
     const { pokemon } = parsePokepaste(FIXTURE_POKEPASTE);
     for (const mon of pokemon) {
-      const fixtureMon = FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === mon.set.species)!;
+      const fixtureMon = FIXTURE_MY_TEAM.pokemon.find((p) => p.set.species === mon.set.species);
+      if (!fixtureMon) throw new Error(`fixture has no ${mon.set.species}`);
       expect(mon.speed).toBe(fixtureMon.speed);
     }
   });
 
   it('attaches species types', () => {
     const { pokemon } = parsePokepaste(FIXTURE_POKEPASTE);
-    const gardevoir = pokemon.find((p) => p.set.species === 'Gardevoir')!;
+    const gardevoir = pokemon.find((p) => p.set.species === 'Gardevoir');
+    if (!gardevoir) throw new Error('parsed team has no Gardevoir');
     expect(gardevoir.types).toEqual(['Psychic', 'Fairy']);
   });
 
@@ -113,7 +115,8 @@ Level: 50
 describe('computeStat', () => {
   it('matches gen.stats.calc for a known spread (Timid 252 Spe Gardevoir = 145)', () => {
     const { pokemon } = parsePokepaste(FIXTURE_POKEPASTE);
-    const gardevoir = pokemon.find((p) => p.set.species === 'Gardevoir')!;
+    const gardevoir = pokemon.find((p) => p.set.species === 'Gardevoir');
+    if (!gardevoir) throw new Error('parsed team has no Gardevoir');
     expect(computeStat('spe', gardevoir.set)).toBe(145);
   });
 });

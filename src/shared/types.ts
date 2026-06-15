@@ -32,7 +32,7 @@ export interface MyTeam {
 export interface OpponentSlot {
   /** Confirmed species id, or null until detected/confirmed. */
   speciesId: string | null;
-  /** Top-N perceptual-hash matches, best first. */
+  /** Top-N CLIP box-embedding (cosine) matches, best first. */
   candidates: { speciesId: string; confidence: number }[];
   // User-editable overrides, revealed during battle:
   item?: string;

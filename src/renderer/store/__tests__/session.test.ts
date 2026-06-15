@@ -56,7 +56,9 @@ describe('useSessionStore — Phase B battle model', () => {
     s.setOpponent(makeOpponent(['miraidon', 'fluttermane']));
     s.toggleOpponentMega('fluttermane');
     s.toggleOpponentTera('fluttermane');
-    const slots = useSessionStore.getState().opponent!.slots;
+    const { opponent } = useSessionStore.getState();
+    if (!opponent) throw new Error('opponent should be set');
+    const slots = opponent.slots;
     expect(slots[0].megaActivated).toBeUndefined();
     expect(slots[1].megaActivated).toBe(true);
     expect(slots[1].teraActivated).toBe(true);
@@ -68,7 +70,9 @@ describe('useSessionStore — Phase B battle model', () => {
     expect(useSessionStore.getState().opponent).toBeNull();
     s.setOpponent(makeOpponent(['miraidon']));
     s.toggleOpponentTera('nonexistent');
-    expect(useSessionStore.getState().opponent!.slots[0].teraActivated).toBeUndefined();
+    const { opponent } = useSessionStore.getState();
+    if (!opponent) throw new Error('opponent should be set');
+    expect(opponent.slots[0].teraActivated).toBeUndefined();
   });
 
   it('newBattle resets the Phase B state', () => {

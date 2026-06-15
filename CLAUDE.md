@@ -8,7 +8,7 @@ An Electron + Vite + React + TypeScript desktop app that assists with **Pokémon
 (`gen9championsvgc2026regma`, see `CURRENT_FORMAT` in `src/shared/types.ts`). Three flows:
 
 - **Team Setup** — import a team via PokePaste/Showdown export, persisted to disk.
-- **Detection** — drop a Nintendo Switch team-preview screenshot, perceptual-hash match the 6
+- **Detection** — drop a Nintendo Switch team-preview screenshot, CLIP image-embedding match the 6
   opponent icons, then show type matchups / speed tiers / damage calcs / common sets vs. your team.
 - **In-Battle** — narrow Detection's output to the active 4v4 with field-state toggles (weather,
   Tailwind, Trick Room, Tera/Mega used, etc.) for live damage/speed recalculation.
@@ -41,6 +41,8 @@ Regenerate detection data (only when their inputs change, see "Detection data" b
 ```bash
 npx vite-node scripts/buildBoxEmbeddings.ts       # CLIP box-sprite reference embeddings (legal pool)
 npx vite-node scripts/buildChampionsLegality.ts   # regulation-specific legal/banned table
+npx vite-node scripts/buildChampionsLearnsets.ts  # regulation-specific learnset table (team legality)
+npx vite-node scripts/buildChampionsOverrides.ts  # champions-mod per-species overrides (team legality)
 npx vite-node scripts/buildJasonCropEmbeddings.ts # accuracy-harness crop-embedding fixture (after a table/preproc change)
 ```
 
@@ -98,8 +100,8 @@ All three persisted stores hydrate from IPC on app boot (see `App.tsx`'s `useEff
 Opponent identification is CLIP image-embedding nearest-neighbour (R7; replaced the broken
 blockhash pipeline, which scored 0/6 on real Switch frames — see the `detection-approach` memo):
 
-1. `imageSource.ts` (dropped screenshot) / `frameCapture.ts` (live capture) → `RgbaImage`
-   (`image.ts` owns the shared type).
+1. `imageSource.ts` (dropped screenshot) → `RgbaImage` (`image.ts` owns the shared type). The
+   pipeline is source-agnostic, so a future live-capture path can feed the same `RgbaImage`.
 2. `cropRegions.ts` slices it into 6 crops using normalized `NormalizedRect[]` (calibration).
 3. `segment.ts::segmentToWhite` removes the red opponent-panel background (the **primary**
    preprocessing — it lifts the real-frame score 4/6→5/6; without it the red bg dominates the
@@ -128,7 +130,7 @@ The data files are **deliberately decoupled** because they change on different s
   legal/banned status for the *current* Champions regulation (built by
   `scripts/buildChampionsLegality.ts`, which parses the live `champions` mod's
   `formats-data.ts` from `smogon/pokemon-showdown` via the TS compiler API — see
-  `scripts/championsFormatsParser.ts`). **Regenerate on every regulation cutover** (e.g. the
+  `scripts/championsModParser.ts`). **Regenerate on every regulation cutover** (e.g. the
   2026-06-17 Reg M-A → M-B change) and update `CURRENT_FORMAT` in `src/shared/types.ts`.
   Lookup logic lives in `src/lib/detection/championsLegality.ts`.
 
@@ -136,6 +138,18 @@ The build scripts run via `vite-node` (Node context). `buildBoxEmbeddings.ts` an
 `embedder.ts` use the **same** CLIP model + `compositeOnWhite` preprocessing so build-time and
 run-time embeddings are comparable — a `model`/`preprocVersion` mismatch silently destroys
 accuracy, hence the parity asserts.
+
+### Team legality (`src/lib/legality/`)
+
+Validates an imported team against the *current* Champions regulation (used non-blocking by Team
+Setup — flags issues, never refuses an import). `teamLegality.ts` is the entry point; it checks
+species/item/ability/move + learnset against two regulation-specific tables built offline:
+`championsOverrides.json` (per-species `champions` mod overrides, `buildChampionsOverrides.ts`) and
+`championsLearnsets.json` (legal moves per species, `buildChampionsLearnsets.ts`). Both build
+scripts share `championsModParser.ts` (parses the live `champions` mod via the TS compiler API) and
+`championsSpeciesPool.ts` (the shared base-species pool). **Regenerate on every regulation cutover**
+alongside `championsLegality.json`. Distinct from `detection/championsLegality.ts`, which only
+answers the narrower "is this *species* legal" question for the detection pool.
 
 ### Persistence
 
@@ -172,12 +186,13 @@ src/
     theme/                            # tokens.css, types.ts (type→colour map), matchup.ts
     store/{teams,settings,session,nav}.ts
   lib/
-    calc/{gen,damageCalc,speedTiers,typeMatchup}.ts
-    detection/{frameCapture,imageSource,image,cropRegions,segment,embedPreproc,embedder,boxEmbeddings,iconMatcher,detectionPipeline,championsLegality}.ts
+    calc/{gen,damageCalc,speedTiers,typeMatchup,megaForme}.ts
+    detection/{imageSource,image,cropRegions,segment,embedPreproc,embedder,boxEmbeddings,iconMatcher,detectionPipeline,championsLegality}.ts
+    legality/{teamLegality,championsLearnsets,championsOverrides}.ts   # Team Setup import validation
     smogon/usageData.ts
   shared/{types,ipc,fixtures}.ts
-  data/{boxEmbeddings.json, championsLegality.json}
-scripts/{buildBoxEmbeddings,buildJasonCropEmbeddings,buildChampionsLegality,championsFormatsParser}.ts
+  data/{boxEmbeddings.json, championsLegality.json, championsLearnsets.json, championsOverrides.json}
+scripts/{buildBoxEmbeddings,buildJasonCropEmbeddings,buildChampionsLegality,buildChampionsLearnsets,buildChampionsOverrides,championsModParser,championsSpeciesPool}.ts
 ```
 
 ## Conventions

@@ -6,8 +6,8 @@
  *
  * This is the regression anchor the detection rework is measured against — the
  * thing the old Showdown-icon pipeline never had. The rects were hand-tuned
- * against the actual frame (see scripts/detPreview.ts) to sit tightly on each
- * render the way a user's calibration boxes would.
+ * against the actual frame to sit tightly on each render the way a user's
+ * calibration boxes would.
  *
  * Source: IMG_2747.JPG (Switch album export) -> sips PNG. Opponent = "Jason".
  */
