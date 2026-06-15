@@ -13,16 +13,11 @@
  */
 import { bmvbhash } from 'blockhash-core';
 
-/**
- * Minimal structural type both a browser `ImageData` and a Node-decoded image
- * satisfy. Kept deliberately tiny so neither environment needs DOM lib types.
- */
-export interface RgbaImage {
-  width: number;
-  height: number;
-  /** Row-major RGBA bytes, length === width * height * 4. */
-  data: Uint8Array | Uint8ClampedArray | number[];
-}
+// RgbaImage now lives in ./image (decoupled from any hashing backend). Re-exported
+// here so existing `from './hash'` imports keep working until the blockhash path
+// is removed (R7 teardown).
+export type { RgbaImage } from './image';
+import type { RgbaImage } from './image';
 
 /**
  * Hash side length in blocks. The hash has `HASH_BITS_SIDE ** 2` bits, encoded

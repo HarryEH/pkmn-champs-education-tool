@@ -96,7 +96,8 @@ async function main() {
   const usePool = process.argv.includes('--pool');
   const ext = await pipeline('image-feature-extraction', MODEL, { dtype: 'fp32' });
   const embed = async (raw: RawImage): Promise<number[]> => {
-    const t = await ext(raw, { pooling: 'mean', normalize: true });
+    // transformers@4.2.0's type omits pooling/normalize for this pipeline; runtime accepts them.
+    const t = await ext(raw, { pooling: 'mean', normalize: true } as Parameters<typeof ext>[1]);
     return Array.from(t.data as Float32Array);
   };
 
