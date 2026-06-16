@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Button, Card, Tabs, Toggle, TypeBadge, type TabItem } from '../../ui';
+import { Button, Card, Select, Tabs, Toggle, TypeBadge, type TabItem } from '../../ui';
 import { TypeMatchupGrid, type TypeMatchupMon } from '../../components/TypeMatchupGrid';
 import { SpeedTierList } from '../../components/SpeedTierList';
 import {
@@ -20,7 +20,13 @@ import type {
   UsageData,
   UsageEntry,
 } from '../../../shared/types';
-import { buildOpponentCombatant, opponentSpeedStat, topMoves } from './opponentBuild';
+import {
+  buildOpponentCombatant,
+  defaultVariant,
+  opponentSpeedStat,
+  topMoves,
+  usageVariants,
+} from './opponentBuild';
 
 export interface OpponentDashboardProps {
   opponent: OpponentTeam;
@@ -53,22 +59,6 @@ function damagingMovesOf(mon: MyPokemon): string[] {
     const move = gen.moves.get(m);
     return move?.exists && move.category !== 'Status';
   });
-}
-
-/**
- * Look up a species' Smogon usage entry. `UsageData.species` is keyed by
- * display name (e.g. "Flutter Mane"); fall back to a normalized-id scan for
- * any naming mismatches.
- */
-function findUsage(usage: UsageData | null, speciesId: string): SpeciesUsage | undefined {
-  if (!usage) return undefined;
-  const name = gen.species.get(speciesId)?.name;
-  if (name && usage.species[name]) return usage.species[name];
-  for (const [key, value] of Object.entries(usage.species)) {
-    const keyId = gen.species.get(key)?.id ?? key.toLowerCase().replace(/[^a-z0-9]/g, '');
-    if (keyId === speciesId) return value;
-  }
-  return undefined;
 }
 
 function UsageList({
@@ -250,6 +240,9 @@ export function OpponentDashboard({ opponent, myTeam }: OpponentDashboardProps) 
   const [usage, setUsage] = useState<UsageData | null>(null);
   const [usageLoading, setUsageLoading] = useState(false);
   const [trickRoom, setTrickRoom] = useState(false);
+  // Per-detected-species forme selection (base id → chosen variant forme id).
+  // Empty = use the dominant-by-usage default for that species.
+  const [formeChoice, setFormeChoice] = useState<Record<string, string>>({});
 
   useEffect(() => {
     let cancelled = false;
@@ -281,6 +274,17 @@ export function OpponentDashboard({ opponent, myTeam }: OpponentDashboardProps) 
   }));
 
   const activeSlot = opponent.slots[Number(activeId)];
+  const activeBaseId = activeSlot?.speciesId ?? '';
+
+  // Base + Mega forme views for the active opponent; pick the dominant-by-usage
+  // one unless the user has overridden it via the forme selector.
+  const variants = useMemo(
+    () => (activeBaseId ? usageVariants(activeBaseId, usage) : []),
+    [activeBaseId, usage],
+  );
+  const fallbackVariant = useMemo(() => defaultVariant(variants), [variants]);
+  const chosen =
+    variants.find((v) => v.speciesId === formeChoice[activeBaseId]) ?? fallbackVariant;
 
   const myMons: TypeMatchupMon[] = useMemo(
     () =>
@@ -306,14 +310,42 @@ export function OpponentDashboard({ opponent, myTeam }: OpponentDashboardProps) 
     >
       <Tabs items={tabs} activeId={activeId} onChange={setActiveId} />
       <div style={{ marginTop: 'var(--space-4)' }}>
-        {activeSlot?.speciesId ? (
-          <OpponentSlotAnalysis
-            speciesId={activeSlot.speciesId}
-            usage={findUsage(usage, activeSlot.speciesId)}
-            myTeam={myTeam}
-            myMons={myMons}
-            trickRoom={trickRoom}
-          />
+        {activeSlot?.speciesId && chosen ? (
+          <>
+            {variants.length > 1 && (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--space-3)',
+                  marginBottom: 'var(--space-4)',
+                }}
+              >
+                <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-mut)' }}>
+                  Forme / sets
+                </span>
+                <Select
+                  value={chosen.speciesId}
+                  onChange={(value) =>
+                    setFormeChoice((prev) => ({ ...prev, [activeBaseId]: value }))
+                  }
+                  options={variants.map((v) => ({
+                    value: v.speciesId,
+                    label: v.usage
+                      ? `${v.label} — ${Math.round(v.usagePct * 100)}% usage`
+                      : `${v.label} — no usage data`,
+                  }))}
+                />
+              </div>
+            )}
+            <OpponentSlotAnalysis
+              speciesId={chosen.speciesId}
+              usage={chosen.usage}
+              myTeam={myTeam}
+              myMons={myMons}
+              trickRoom={trickRoom}
+            />
+          </>
         ) : (
           <p style={{ color: 'var(--text-mut)' }}>
             This slot hasn&apos;t been identified yet — pick a species above to see its analysis.

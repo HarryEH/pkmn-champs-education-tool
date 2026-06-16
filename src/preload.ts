@@ -21,6 +21,8 @@ const api: Api = {
     read: (format: string, month: string) => ipcRenderer.invoke(IPC.usageRead, format, month),
     write: (data: UsageData) => ipcRenderer.invoke(IPC.usageWrite, data),
     clear: (format?: string) => ipcRenderer.invoke(IPC.usageClear, format),
+    fetch: (format: string, options?: { refresh?: boolean }) =>
+      ipcRenderer.invoke(IPC.usageFetch, format, options),
   },
   media: {
     requestCamera: () => ipcRenderer.invoke(IPC.mediaRequestCamera),

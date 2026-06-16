@@ -51,8 +51,10 @@ npx vite-node scripts/buildJasonCropEmbeddings.ts # accuracy-harness crop-embedd
 ### Process model
 
 - **Main** (`src/main.ts`, `src/main/*`): window lifecycle, disk persistence
-  (`src/main/ipc/persistence.ts`), and macOS camera-permission prompting (`src/main/media.ts`).
-  Nothing else — no Pokémon data or calc logic runs here.
+  (`src/main/ipc/persistence.ts`), the Smogon usage fetch + chaos normalization
+  (`src/main/ipc/usage.ts` — here because the source has no CORS headers; see "Smogon usage data"),
+  and macOS camera-permission prompting (`src/main/media.ts`). No Pokémon data or calc logic
+  (no `gen`) runs here.
 - **Preload** (`src/preload.ts`): exposes a typed `window.api` bridge via `contextBridge`. This is
   the *only* sanctioned IPC surface — never call `ipcRenderer.invoke('string')` directly elsewhere.
 - **Renderer**: everything else — all `@pkmn`/`@smogon` calc, detection (canvas/image processing),
@@ -160,11 +162,24 @@ results are **never** persisted — renderer memory only, cleared on restart or 
 
 ### Smogon usage data (`src/lib/smogon/usageData.ts`)
 
-`fetchUsage(format, {refresh, now, fetchImpl})` fetches `https://data.pkmn.cc/stats/<format>.json`
-directly from the renderer (native `fetch` works fine — no shim needed) and read-through caches
-via `window.api.usage`. The endpoint serves "latest" only (not month-addressable); the month key
-is used solely to partition the local disk cache. Offline/404 degrades to cached data or an
-empty-but-valid `UsageData`, never throws.
+The network fetch runs in **main**, not the renderer: the Champions format is published on
+`smogon.com/stats/<month>/chaos/<format>-<cutoff>.json(.gz)` but is **not** mirrored to the
+CORS-enabled `data.pkmn.cc`, and `smogon.com` sends no CORS headers — so a renderer (Chromium)
+`fetch` would be blocked. `src/main/ipc/usage.ts` (registered via `registerUsageFetchHandler`,
+behind the `usage.fetch` IPC channel) HEAD-probes the latest month + rating cutoff (1760 high-ladder
+first, walking back ≤12 months), downloads the gzip, gunzips it, and normalizes the *chaos* shape
+(`{info, data}`, weighted **counts** under capitalized `Moves`/`Items`/`Tera Types`/`Spreads` keys)
+into our `UsageData` — dividing each count by the species' weighted set total (NOT `Raw count`, which
+is the much larger unweighted battle count), sorting, capping, and dropping the uniform `nothing`
+Tera entry (**Champions has Mega Evolution but no Terastallization**). It read-through caches via the
+same `cache/usage-<format>-<month>.json` files the persistence handlers use, and never throws
+(degrades to cache, then empty `UsageData`).
+
+The renderer-side `fetchUsage(format, {refresh})` (`src/lib/smogon/usageData.ts`) is now a thin
+`window.api.usage.fetch` caller plus a cosmetic pass that prettifies the Showdown ids main returns
+(`fakeout` → "Fake Out") via `gen` — done renderer-side because main stays free of Pokémon data, and
+the names round-trip cleanly through `@smogon/calc`. **Main is no longer "no network": it owns this
+one external fetch + structural normalization; it still holds no Pokémon/calc data (no `gen`).**
 
 ### Offline dev fixtures (`src/shared/fixtures.ts`)
 

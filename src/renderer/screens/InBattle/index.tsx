@@ -291,7 +291,9 @@ export function InBattleScreen() {
     () =>
       opponentOnField.flatMap((id) => {
         const combatant = opponentCombatant(id, findUsage(usage, id), slotFor(id));
-        return topMoves(findUsage(usage, id), 4).map((move) => ({
+        // Show the 6 most-used moves for each on-field opponent: a mon runs only
+        // 4, so surfacing the top 6 covers the likely options you must play around.
+        return topMoves(findUsage(usage, id), 6).map((move) => ({
           label: `${speciesName(id)} — ${move}`,
           attacker: combatant,
           move,

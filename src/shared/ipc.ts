@@ -17,6 +17,7 @@ export const IPC = {
   usageRead: 'usage:read',
   usageWrite: 'usage:write',
   usageClear: 'usage:clear',
+  usageFetch: 'usage:fetch',
   mediaRequestCamera: 'media:requestCamera',
 } as const;
 
@@ -42,6 +43,13 @@ export interface Api {
     write(data: UsageData): Promise<void>;
     /** Clears cache for one format (all months) or everything. */
     clear(format?: string): Promise<void>;
+    /**
+     * Fetch + normalize Smogon usage for a format, read-through the disk cache.
+     * Runs in MAIN (Node) because the source (smogon.com) sends no CORS headers,
+     * so the renderer cannot fetch it directly. Never throws — degrades to cache
+     * or an empty-but-valid UsageData. `refresh` forces a network re-fetch.
+     */
+    fetch(format: string, options?: { refresh?: boolean }): Promise<UsageData>;
   };
   media: {
     /** macOS camera permission prompt; resolves true if granted. */

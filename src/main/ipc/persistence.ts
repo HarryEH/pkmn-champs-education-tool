@@ -27,11 +27,11 @@ function cacheDir(): string {
   return path.join(userDataDir(), 'cache');
 }
 
-function usagePath(format: string, month: string): string {
+export function usagePath(format: string, month: string): string {
   return path.join(cacheDir(), `usage-${format}-${month}.json`);
 }
 
-async function readJson<T>(file: string, fallback: T): Promise<T> {
+export async function readJson<T>(file: string, fallback: T): Promise<T> {
   try {
     const raw = await fs.readFile(file, 'utf-8');
     return JSON.parse(raw) as T;
@@ -41,7 +41,7 @@ async function readJson<T>(file: string, fallback: T): Promise<T> {
   }
 }
 
-async function writeJson(file: string, data: unknown): Promise<void> {
+export async function writeJson(file: string, data: unknown): Promise<void> {
   await fs.mkdir(path.dirname(file), { recursive: true });
   await fs.writeFile(file, JSON.stringify(data, null, 2), 'utf-8');
 }

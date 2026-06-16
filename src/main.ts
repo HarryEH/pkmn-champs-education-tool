@@ -2,6 +2,7 @@ import { app, BrowserWindow } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 import { registerPersistenceHandlers } from './main/ipc/persistence';
+import { registerUsageFetchHandler } from './main/ipc/usage';
 import { registerMediaHandlers, requestCameraAccess } from './main/media';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -36,6 +37,7 @@ const createWindow = () => {
 
 // IPC handlers can be registered before the window exists.
 registerPersistenceHandlers();
+registerUsageFetchHandler();
 registerMediaHandlers();
 
 app.on('ready', async () => {
