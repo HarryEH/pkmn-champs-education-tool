@@ -181,6 +181,37 @@ The renderer-side `fetchUsage(format, {refresh})` (`src/lib/smogon/usageData.ts`
 the names round-trip cleanly through `@smogon/calc`. **Main is no longer "no network": it owns this
 one external fetch + structural normalization; it still holds no Pokémon/calc data (no `gen`).**
 
+### When does a fetch belong in main? (the IPC-vs-renderer rule)
+
+The load-bearing distinction is **`fetch()` of bytes from a host that does NOT send CORS
+headers** — that, and only that, must move to **main** behind the typed `window.api` bridge,
+because a renderer (Chromium) `fetch` would be blocked. The Smogon usage fetch is the canonical
+example and the migration template. Everything else that *looks* like external I/O is fine in the
+renderer:
+
+- **`<img>` / CSS `background: url(...)` of a remote asset** is a display load governed by
+  `img-src`, **not** CORS/`connect-src` — never a `fetch`. The `@pkmn/img` sprites
+  (`src/renderer/components/pokemonIcon.ts`, CSS background pointing at
+  `play.pokemonshowdown.com`) stay in the renderer.
+- **`fetch()` against a CORS-enabled host** is not blocked, so it can stay in the renderer. The
+  CLIP model download (`embedder.ts`, transformers.js pulling from `huggingface.co`) is a real
+  `fetch` of ~150 MB but HF serves CORS headers; it also runs *inference* per-crop in the
+  renderer and must stay there per the process model.
+- **Node-context `fetch` in `scripts/*`** (vite-node, build-time) has no CORS at all and is not a
+  runtime concern; the rentime consumes the committed JSON artifacts as bundled imports.
+
+When you DO migrate a non-CORS fetch into main, follow the usage pattern in dependency order:
+**(1)** decide the split — network + dex-free *structural* shaping → main, anything touching
+`gen`/calc stays renderer (this is why usage's id→name prettify stays in `usageData.ts`);
+**(2)** widen the FROZEN `src/shared/ipc.ts` contract (append an `IPC` channel constant + an `Api`
+method, additive only); **(3)** write `src/main/ipc/<name>.ts` as a pure, dependency-injectable
+core (HEAD-probe → download → parse → normalize → read-through cache → never-throw) plus a
+`register<Name>Handler()`, importing cache helpers from `persistence.ts`, never `gen`;
+**(4)** wire it in `src/main.ts`'s top-level registration block; **(5)** add the thin
+`ipcRenderer.invoke` wrapper in `src/preload.ts`; **(6)** slim the renderer module to a
+lazy-bridge caller plus the dex-dependent cosmetic pass; **(7)** reuse `readJson`/`writeJson` + a
+`*Path` helper from `persistence.ts` so cache files stay co-owned.
+
 ### Offline dev fixtures (`src/shared/fixtures.ts`)
 
 `FIXTURE_MY_TEAM` (a full parsed 6-mon team) and `FIXTURE_OPPONENT_TEAM` (6 confirmed opponent
