@@ -43,14 +43,24 @@
   --focus-ring: 0 0 0 3px rgba(238, 21, 21, 0.35);
   --transition: 140ms ease;
   --font-ui: 'Inter', system-ui, sans-serif;
-  --font-battle: clamp(18px, 2.2vw, 28px); /* Flow C readability */
+  --font-battle: clamp(18px, 2.2vw, 28px); /* Flow C readability (retired on dense screens) */
 
+  /* Compact type scale for dense tables (density plan §2.1) */
+  --font-2xs: 10px; /* sub-labels, modifiers */
+  --font-xs: 11px; /* table headers, KO chance */
+  --font-sm: 12px; /* table body */
+  --font-md: 13px; /* row labels */
+  --font-num: ui-monospace, 'SF Mono', Menlo, monospace; /* tabular-nums % columns */
+
+  --space-0: 2px; /* tightest table padding */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
   --space-5: 24px;
   --space-6: 32px;
+
+  --density-row-h: 26px; /* compact table row height */
 }
 
 /* Battle / dark mode for Flow C (optional toggle) */

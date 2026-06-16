@@ -1,5 +1,12 @@
 import React, { useMemo } from 'react';
-import { Card, TypeBadge, matchupTint } from '../ui';
+import {
+  Card,
+  TypeBadge,
+  DataTable,
+  matchupTint,
+  type DataTableColumn,
+  type DataTableRow,
+} from '../ui';
 import { getMatchup } from '../../lib/calc/typeMatchup';
 
 /** One of "your" Pokémon, for the matchup grid. */
@@ -20,39 +27,13 @@ export interface TypeMatchupGridProps {
   myMons: TypeMatchupMon[];
 }
 
-const headerCellStyle: React.CSSProperties = {
-  textAlign: 'center',
-  padding: '4px 10px',
-  fontSize: 11,
-  color: 'var(--text-mut)',
-};
-
-const rowLabelStyle: React.CSSProperties = {
-  textAlign: 'left',
-  padding: '6px 10px',
-  fontSize: 13,
-  fontWeight: 600,
-  whiteSpace: 'nowrap',
-};
-
-function MatchupCell({ multiplier }: { multiplier: number }) {
+/** A matchup-tinted cell payload (label + tint via cellStyle). */
+function matchupCell(multiplier: number): { node: React.ReactNode; style: React.CSSProperties } {
   const tint = matchupTint(multiplier);
-  return (
-    <td
-      style={{
-        textAlign: 'center',
-        padding: '6px 10px',
-        fontSize: 12,
-        fontWeight: 700,
-        borderRadius: 'var(--radius-sm)',
-        minWidth: 56,
-        background: tint.bg,
-        color: tint.fg,
-      }}
-    >
-      {tint.label}
-    </td>
-  );
+  return {
+    node: <span style={{ fontWeight: 700 }}>{tint.label}</span>,
+    style: { background: tint.bg, color: tint.fg, textAlign: 'center' },
+  };
 }
 
 /**
@@ -61,6 +42,9 @@ function MatchupCell({ multiplier }: { multiplier: number }) {
  *    typing (how much your mons take from the opponent's STAB), and
  *  - the effectiveness of every move type your team carries against the
  *    opponent's typing (how well your team hits back).
+ *
+ * Re-based onto the compact `DataTable` primitive (density plan §2.3); the
+ * matchup heatmap rides through per-cell `cellStyle`.
  */
 export function TypeMatchupGrid({ opponentLabel, opponentTypes, myMons }: TypeMatchupGridProps) {
   const moveTypes = useMemo(() => {
@@ -71,71 +55,65 @@ export function TypeMatchupGrid({ opponentLabel, opponentTypes, myMons }: TypeMa
     return [...set].sort();
   }, [myMons]);
 
+  const stabColumns: DataTableColumn[] = [
+    { key: 'mon', header: 'Pokémon', sticky: true },
+    ...opponentTypes.map((t) => ({
+      key: t,
+      header: <TypeBadge type={t} size="sm" />,
+      numeric: true,
+    })),
+  ];
+
+  const stabRows: DataTableRow[] = myMons.map((mon) => {
+    const cells: Record<string, React.ReactNode> = { mon: mon.label };
+    const cellStyle: Record<string, React.CSSProperties> = {};
+    for (const t of opponentTypes) {
+      const { node, style } = matchupCell(getMatchup(t, mon.types));
+      cells[t] = node;
+      cellStyle[t] = style;
+    }
+    return { key: mon.label, cells, cellStyle };
+  });
+
+  const moveColumns: DataTableColumn[] = [
+    { key: 'type', header: 'Move type', sticky: true },
+    { key: 'vs', header: `vs ${opponentLabel}`, numeric: true },
+    { key: 'carried', header: 'Carried by' },
+  ];
+
+  const moveRows: DataTableRow[] = moveTypes.map((t) => {
+    const { node, style } = matchupCell(getMatchup(t, opponentTypes));
+    return {
+      key: t,
+      cells: {
+        type: <TypeBadge type={t} size="sm" />,
+        vs: node,
+        carried: (
+          <span style={{ color: 'var(--text-mut)' }}>
+            {myMons
+              .filter((m) => m.moveTypes?.includes(t))
+              .map((m) => m.label)
+              .join(', ')}
+          </span>
+        ),
+      },
+      cellStyle: { vs: style },
+    };
+  });
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
       <Card title={`${opponentLabel}'s STAB vs your team`}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr>
-              <th style={headerCellStyle} />
-              {opponentTypes.map((t) => (
-                <th key={t} style={headerCellStyle}>
-                  <TypeBadge type={t} size="sm" />
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {myMons.map((mon) => (
-              <tr key={mon.label}>
-                <td style={rowLabelStyle}>{mon.label}</td>
-                {opponentTypes.map((t) => (
-                  <MatchupCell key={t} multiplier={getMatchup(t, mon.types)} />
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable columns={stabColumns} rows={stabRows} />
       </Card>
 
       <Card title={`Your move types vs ${opponentLabel}`}>
         {moveTypes.length === 0 ? (
-          <p style={{ color: 'var(--text-mut)', margin: 0, fontSize: 13 }}>
+          <p style={{ color: 'var(--text-mut)', margin: 0, fontSize: 'var(--font-md)' }}>
             No move types known for your team.
           </p>
         ) : (
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr>
-                <th style={{ ...headerCellStyle, textAlign: 'left' }}>Move type</th>
-                <th style={headerCellStyle}>vs {opponentLabel}</th>
-                <th style={{ ...headerCellStyle, textAlign: 'left' }}>Carried by</th>
-              </tr>
-            </thead>
-            <tbody>
-              {moveTypes.map((t) => (
-                <tr key={t}>
-                  <td style={rowLabelStyle}>
-                    <TypeBadge type={t} size="sm" />
-                  </td>
-                  <MatchupCell multiplier={getMatchup(t, opponentTypes)} />
-                  <td
-                    style={{
-                      ...rowLabelStyle,
-                      fontSize: 12,
-                      color: 'var(--text-mut)',
-                      fontWeight: 400,
-                    }}
-                  >
-                    {myMons
-                      .filter((m) => m.moveTypes?.includes(t))
-                      .map((m) => m.label)
-                      .join(', ')}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <DataTable columns={moveColumns} rows={moveRows} />
         )}
       </Card>
     </div>

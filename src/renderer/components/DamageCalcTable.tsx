@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '../ui';
+import { Card, DataTable, type DataTableColumn, type DataTableRow } from '../ui';
 import { calcDamage, type Combatant } from '../../lib/calc/damageCalc';
 import type { FieldState } from '../../shared/types';
 
@@ -24,29 +24,6 @@ export interface DamageCalcTableProps {
   field?: FieldState;
 }
 
-const headerCellStyle: React.CSSProperties = {
-  textAlign: 'center',
-  padding: '4px 10px',
-  fontSize: 11,
-  color: 'var(--text-mut)',
-};
-
-const rowLabelStyle: React.CSSProperties = {
-  textAlign: 'left',
-  padding: '6px 10px',
-  fontSize: 13,
-  fontWeight: 600,
-  whiteSpace: 'nowrap',
-};
-
-const cellStyle: React.CSSProperties = {
-  textAlign: 'center',
-  padding: '6px 10px',
-  fontSize: 12,
-  borderRadius: 'var(--radius-sm)',
-  minWidth: 64,
-};
-
 /** Visual heatmap band for a max-roll percentage, reusing the matchup palette. */
 function damageTint(maxPct: number): { bg: string; fg: string } {
   if (maxPct >= 100) return { bg: 'var(--matchup-weak-2)', fg: 'var(--matchup-weak-fg)' };
@@ -65,64 +42,54 @@ function formatKo(koChance: number | undefined): string | null {
  * Damage matrix (spec §4.3): one row per attacker+move, one column per
  * defender, each cell the min-max % of the defender's HP plus KO chance.
  * Moves that fail to resolve (unknown move id) render as "—" rather than
- * breaking the table.
+ * breaking the table. Re-based onto the compact `DataTable` primitive (density
+ * plan §2.3) — the damage heatmap rides through per-cell `cellStyle`.
  */
 export function DamageCalcTable({ title, rows, columns, field }: DamageCalcTableProps) {
+  const tableColumns: DataTableColumn[] = [
+    { key: 'move', header: 'Move', sticky: true },
+    ...columns.map((col) => ({ key: col.label, header: col.label, numeric: true })),
+  ];
+
+  const tableRows: DataTableRow[] = rows.map((row) => {
+    const cells: Record<string, React.ReactNode> = { move: row.label };
+    const cellStyle: Record<string, React.CSSProperties> = {};
+    for (const col of columns) {
+      let result;
+      try {
+        result = calcDamage(row.attacker, col.defender, row.move, field);
+      } catch {
+        result = null;
+      }
+      if (!result) {
+        cells[col.label] = '—';
+        cellStyle[col.label] = { color: 'var(--text-mut)', textAlign: 'center' };
+        continue;
+      }
+      const tint = damageTint(result.maxPct);
+      const ko = formatKo(result.koChance);
+      cells[col.label] = (
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ fontWeight: 700 }}>
+            {result.minPct}–{result.maxPct}%
+          </div>
+          {ko && <div style={{ fontSize: 'var(--font-xs)' }}>{ko}</div>}
+        </div>
+      );
+      cellStyle[col.label] = { background: tint.bg, color: tint.fg, textAlign: 'center' };
+    }
+    return { key: row.label, cells, cellStyle };
+  });
+
   return (
     <Card title={title}>
       {rows.length === 0 || columns.length === 0 ? (
-        <p style={{ color: 'var(--text-mut)', margin: 0, fontSize: 13 }}>
+        <p style={{ color: 'var(--text-mut)', margin: 0, fontSize: 'var(--font-md)' }}>
           No moves available to compare.
         </p>
       ) : (
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr>
-                <th style={{ ...headerCellStyle, textAlign: 'left' }}>Move</th>
-                {columns.map((col) => (
-                  <th key={col.label} style={headerCellStyle}>
-                    {col.label}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.label}>
-                  <td style={rowLabelStyle}>{row.label}</td>
-                  {columns.map((col) => {
-                    let result;
-                    try {
-                      result = calcDamage(row.attacker, col.defender, row.move, field);
-                    } catch {
-                      result = null;
-                    }
-                    if (!result) {
-                      return (
-                        <td key={col.label} style={{ ...cellStyle, color: 'var(--text-mut)' }}>
-                          —
-                        </td>
-                      );
-                    }
-                    const tint = damageTint(result.maxPct);
-                    const ko = formatKo(result.koChance);
-                    return (
-                      <td
-                        key={col.label}
-                        style={{ ...cellStyle, background: tint.bg, color: tint.fg }}
-                      >
-                        <div style={{ fontWeight: 700 }}>
-                          {result.minPct}–{result.maxPct}%
-                        </div>
-                        {ko && <div style={{ fontSize: 11 }}>{ko}</div>}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <DataTable columns={tableColumns} rows={tableRows} />
         </div>
       )}
     </Card>

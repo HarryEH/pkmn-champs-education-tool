@@ -4,7 +4,7 @@ import { useSessionStore } from '../../store/session';
 import { useSettingsStore } from '../../store/settings';
 import { useTeamsStore } from '../../store/teams';
 import { FIXTURE_MY_TEAM, FIXTURE_OPPONENT_TEAM } from '../../../shared/fixtures';
-import type { NormalizedRect } from '../../../shared/types';
+import { CURRENT_FORMAT, type NormalizedRect, type UsageData } from '../../../shared/types';
 import { loadImageFromFile } from '../../../lib/detection/imageSource';
 import { cropRegions } from '../../../lib/detection/cropRegions';
 import { detectOpponentTeam } from '../../../lib/detection/detectionPipeline';
@@ -14,6 +14,9 @@ import {
   type EmbedderStatus,
 } from '../../../lib/detection/embedder';
 import type { RgbaImage } from '../../../lib/detection/image';
+import { fetchUsage } from '../../../lib/smogon/usageData';
+import { MatchupMatrix, type MatrixViewMode } from '../../components/MatchupMatrix';
+import { ThreatSummary } from '../../components/ThreatSummary';
 import { CalibrationOverlay } from './CalibrationOverlay';
 import { SlotList } from './SlotList';
 import { OpponentDashboard } from './OpponentDashboard';
@@ -51,6 +54,20 @@ export function DetectionScreen() {
   const [error, setError] = useState<string | null>(null);
   const [modelStatus, setModelStatus] = useState<EmbedderStatus>(getEmbedderStatus());
 
+  // Format usage, fetched once and shared across matrix + rail + drill-down.
+  const [usage, setUsage] = useState<UsageData | null>(null);
+  const [usageLoading, setUsageLoading] = useState(false);
+
+  // Matrix view mode (in-memory; default = Verdict, the bring-decision view).
+  const [viewMode, setViewMode] = useState<MatrixViewMode>('verdict');
+
+  // Drill-down drawer: collapsed by default; opened by clicking a matrix cell.
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerSlot, setDrawerSlot] = useState(0);
+
+  // Capture/calibration card collapses once the matrix takes over.
+  const [captureOpen, setCaptureOpen] = useState(true);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Kick off the (first-run) CLIP model download as soon as the screen mounts, and
@@ -79,6 +96,41 @@ export function DetectionScreen() {
     if (!imageUrl) return;
     return () => URL.revokeObjectURL(imageUrl);
   }, [imageUrl]);
+
+  // Fetch the format usage once (shared by the matrix, rail, and drill-down).
+  useEffect(() => {
+    let cancelled = false;
+    setUsageLoading(true);
+    fetchUsage(CURRENT_FORMAT)
+      .then((data) => {
+        if (!cancelled) setUsage(data);
+      })
+      .finally(() => {
+        if (!cancelled) setUsageLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Collapse the capture card once we have an opponent (matrix is now primary).
+  useEffect(() => {
+    if (opponent) setCaptureOpen(false);
+  }, [opponent]);
+
+  const refreshUsage = async () => {
+    setUsageLoading(true);
+    try {
+      setUsage(await fetchUsage(CURRENT_FORMAT, { refresh: true }));
+    } finally {
+      setUsageLoading(false);
+    }
+  };
+
+  const openDrawer = (_myIndex: number, theirIndex: number) => {
+    setDrawerSlot(theirIndex);
+    setDrawerOpen(true);
+  };
 
   const loadFile = async (file: File) => {
     setError(null);
@@ -129,30 +181,51 @@ export function DetectionScreen() {
   return (
     <div
       style={{
-        padding: 'var(--space-6)',
+        height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        gap: 'var(--space-5)',
-        maxWidth: 1100,
+        gap: 'var(--space-4)',
+        padding: 'var(--space-5)',
+        overflow: 'auto',
       }}
     >
-      <header>
-        <h1 style={{ margin: 0 }}>Detection &amp; Analysis</h1>
-        <p style={{ color: 'var(--text-mut)', margin: '4px 0 0' }}>
-          Drop a Nintendo Switch team-preview screenshot to detect the opponent&apos;s 6
-          Pokémon, then review the matchup, speed, and damage analysis below.
-        </p>
+      {/* Fixed header strip: title + capture/usage controls. */}
+      <header
+        style={{
+          display: 'flex',
+          alignItems: 'baseline',
+          gap: 'var(--space-3)',
+          flexWrap: 'wrap',
+        }}
+      >
+        <h1 style={{ margin: 0, fontSize: 'var(--font-md)', fontWeight: 800 }}>
+          Detection &amp; Analysis
+        </h1>
+        {opponent && (
+          <span style={{ fontSize: 'var(--font-xs)', color: 'var(--text-mut)' }}>
+            {opponent.slots.filter((s) => s.speciesId).length} of 6 identified
+          </span>
+        )}
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: 'var(--space-2)' }}>
+          <Button variant="ghost" size="sm" onClick={refreshUsage} disabled={usageLoading}>
+            {usageLoading ? 'Refreshing usage…' : 'Refresh usage'}
+          </Button>
+          <Button variant="ghost" size="sm" onClick={() => setCaptureOpen((o) => !o)}>
+            {captureOpen ? 'Hide screenshot' : 'Screenshot ▾'}
+          </Button>
+        </div>
       </header>
 
-      <Card
-        title="Team preview screenshot"
-        actions={
-          <Button variant="ghost" size="sm" onClick={handleLoadSample}>
-            Load sample opponent
-          </Button>
-        }
-      >
-        <div
+      {captureOpen && (
+        <Card
+          title="Team preview screenshot"
+          actions={
+            <Button variant="ghost" size="sm" onClick={handleLoadSample}>
+              Load sample opponent
+            </Button>
+          }
+        >
+          <div
           onDrop={handleDrop}
           onDragOver={(e) => e.preventDefault()}
           onClick={() => fileInputRef.current?.click()}
@@ -225,15 +298,62 @@ export function DetectionScreen() {
               </span>
             </div>
           </div>
-        )}
-      </Card>
-
-      {opponent && (
-        <>
-          <SlotList opponent={opponent} crops={crops} onOverride={overrideSlot} />
-          <OpponentDashboard opponent={opponent} myTeam={myTeam} />
-        </>
+          )}
+        </Card>
       )}
+
+      {opponent ? (
+        <>
+          {/* Primary analysis surface: matrix (left) + threat rail (right). */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0, 1fr) 480px',
+              gap: 'var(--space-4)',
+              alignItems: 'start',
+            }}
+          >
+            <Card title="Matchup matrix">
+              <MatchupMatrix
+                myTeam={myTeam}
+                opponent={opponent}
+                usage={usage}
+                viewMode={viewMode}
+                onViewModeChange={setViewMode}
+                onSelectCell={openDrawer}
+              />
+            </Card>
+            <ThreatSummary myTeam={myTeam} opponent={opponent} usage={usage} />
+          </div>
+
+          <SlotList opponent={opponent} crops={crops} onOverride={overrideSlot} />
+
+          {/* Drill-down drawer: collapsed by default, opened from a matrix cell.
+              OpponentDashboard renders its own Card, so the toggle sits above it. */}
+          {drawerOpen ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button variant="ghost" size="sm" onClick={() => setDrawerOpen(false)}>
+                  Collapse deep dive ▴
+                </Button>
+              </div>
+              <OpponentDashboard
+                opponent={opponent}
+                myTeam={myTeam}
+                usage={usage}
+                initialSlotIndex={drawerSlot}
+              />
+            </div>
+          ) : (
+            <Card title="Opponent deep dive">
+              <p style={{ margin: 0, fontSize: 'var(--font-xs)', color: 'var(--text-mut)' }}>
+                Click a matrix cell or column header for the full per-opponent breakdown — common
+                sets, type matchups, speed tiers, and both damage tables.
+              </p>
+            </Card>
+          )}
+        </>
+      ) : null}
     </div>
   );
 }

@@ -1,34 +1,39 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Button, Card, Toggle } from '../../ui';
-import { SpeedTierList } from '../../components/SpeedTierList';
 import {
-  DamageCalcTable,
-  type DamageColSpec,
-  type DamageRowSpec,
-} from '../../components/DamageCalcTable';
-import { TypeMatchupGrid, type TypeMatchupMon } from '../../components/TypeMatchupGrid';
-import { FieldStateToggles } from '../../components/FieldStateToggles';
+  Button,
+  Card,
+  Toggle,
+  Select,
+  DataTable,
+  KoBadge,
+  SpeedArrow,
+  type DataTableColumn,
+  type DataTableRow,
+  type SelectOption,
+} from '../../ui';
 import { pokemonIconStyle } from '../../components/pokemonIcon';
 import { useSessionStore } from '../../store/session';
 import { useTeamsStore } from '../../store/teams';
 import { fetchUsage } from '../../../lib/smogon/usageData';
 import { CURRENT_FORMAT } from '../../../shared/types';
-import type { MyPokemon, MyTeam, OpponentTeam, UsageData } from '../../../shared/types';
+import type { FieldState, MyPokemon, MyTeam, OpponentTeam, UsageData } from '../../../shared/types';
 import { FIXTURE_MY_TEAM, FIXTURE_OPPONENT_TEAM } from '../../../shared/fixtures';
 import { gen } from '../../../lib/calc/gen';
-import type { SpeedTierInput } from '../../../lib/calc/speedTiers';
-import { topMoves } from '../Detection/opponentBuild';
+import { calcDamage, type Combatant } from '../../../lib/calc/damageCalc';
+import { buildSpeedTiers, type SpeedTierInput } from '../../../lib/calc/speedTiers';
+import { relevantThreats } from '../../../lib/calc/threats';
 import {
-  activeTypes,
+  candidateOpponentMoves,
   damagingMovesOf,
   findUsage,
+  koCell,
   myCombatant,
   myDisplayName,
   myMegaForme,
   mySpeedInput,
   opponentCombatant,
   opponentMegaForme,
-  opponentSpeedInputs,
+  opponentSpeedWithLikely,
   speciesName,
   swapFieldSides,
 } from './battleBuild';
@@ -81,9 +86,9 @@ function SelectChips({
               alignItems: 'center',
               gap: 'var(--space-2)',
               font: 'inherit',
-              fontSize: 14,
+              fontSize: 'var(--font-sm)',
               fontWeight: active ? 700 : 500,
-              padding: '6px 12px 6px 8px',
+              padding: '4px 10px 4px 6px',
               borderRadius: 999,
               border: `2px solid ${active ? 'var(--poke-red)' : 'var(--border)'}`,
               background: active ? 'var(--surface-2)' : 'transparent',
@@ -102,7 +107,7 @@ function SelectChips({
 }
 
 const stepLabelStyle: React.CSSProperties = {
-  fontSize: 12,
+  fontSize: 'var(--font-2xs)',
   fontWeight: 700,
   color: 'var(--text-mut)',
   textTransform: 'uppercase',
@@ -110,66 +115,347 @@ const stepLabelStyle: React.CSSProperties = {
   marginBottom: 'var(--space-2)',
 };
 
-/** One on-field mon's Mega/Tera battle toggles. */
-function OnFieldToggles({
+const sectionLabelStyle: React.CSSProperties = {
+  fontSize: 'var(--font-xs)',
+  fontWeight: 700,
+  color: 'var(--text-mut)',
+  textTransform: 'uppercase',
+  letterSpacing: 0.4,
+};
+
+/**
+ * Mega-only on-field control (plan §4.4): a prominent Mega toggle that shows the
+ * forme name when active. Tera is intentionally NOT surfaced — Champions has no
+ * Terastallization, so the toggle would be misleading.
+ */
+function MegaControl({
   name,
   speciesId,
-  canMega,
+  megaForme,
   megaActivated,
-  canTera,
-  teraType,
-  teraActivated,
   onMega,
-  onTera,
 }: {
   name: string;
   speciesId: string;
-  canMega: boolean;
+  megaForme: string | null;
   megaActivated: boolean;
-  canTera: boolean;
-  teraType?: string;
-  teraActivated: boolean;
   onMega: () => void;
-  onTera: () => void;
+}) {
+  const formeName = megaForme ? speciesName(megaForme) : null;
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--space-3)',
+        padding: '4px 8px',
+        border: `1px solid ${megaActivated ? 'var(--poke-red)' : 'var(--border)'}`,
+        borderRadius: 'var(--radius-sm)',
+        background: megaActivated ? 'var(--surface-2)' : 'transparent',
+      }}
+    >
+      <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+        <span style={pokemonIconStyle(megaActivated && megaForme ? megaForme : speciesId)} aria-hidden />
+        <span style={{ fontWeight: 700, fontSize: 'var(--font-md)' }}>
+          {megaActivated && formeName ? formeName : name}
+        </span>
+      </span>
+      <span style={{ marginLeft: 'auto' }}>
+        {megaForme ? (
+          <Toggle checked={megaActivated} onChange={onMega} label="Mega" />
+        ) : (
+          <span style={{ fontSize: 'var(--font-2xs)', color: 'var(--text-mut)' }}>No Mega</span>
+        )}
+      </span>
+    </div>
+  );
+}
+
+const WEATHER_OPTS: SelectOption[] = [
+  { value: '', label: 'No weather' },
+  { value: 'sun', label: 'Sun' },
+  { value: 'rain', label: 'Rain' },
+  { value: 'sand', label: 'Sand' },
+  { value: 'snow', label: 'Snow' },
+];
+
+/**
+ * Compact control bar (plan §4.1): weather dropdown + per-side Tailwind + Trick
+ * Room laid out horizontally, non-scrolling. Tera is removed from this screen.
+ */
+function ControlBar({
+  field,
+  onChange,
+  onNewBattle,
+}: {
+  field: FieldState;
+  onChange: (patch: Partial<FieldState>) => void;
+  onNewBattle: () => void;
 }) {
   return (
     <div
       style={{
         display: 'flex',
         alignItems: 'center',
+        flexWrap: 'wrap',
         gap: 'var(--space-4)',
-        padding: '6px 10px',
-        border: '1px solid var(--border)',
-        borderRadius: 'var(--radius-sm)',
+        padding: 'var(--space-3) var(--space-4)',
+        borderBottom: '1px solid var(--border)',
+        background: 'var(--surface)',
       }}
     >
+      <h1 style={{ margin: 0, fontSize: 18 }}>In-Battle</h1>
       <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-        <span style={pokemonIconStyle(speciesId)} aria-hidden />
-        <span style={{ fontWeight: 700, fontSize: 'var(--font-battle)' }}>{name}</span>
-      </span>
-      <span style={{ display: 'flex', gap: 'var(--space-4)', marginLeft: 'auto' }}>
-        {canMega ? (
-          <Toggle checked={megaActivated} onChange={onMega} label="Mega" />
-        ) : (
-          <span style={{ fontSize: 12, color: 'var(--text-mut)' }}>No Mega</span>
-        )}
-        <Toggle
-          checked={teraActivated}
-          onChange={onTera}
-          disabled={!canTera}
-          label={teraType ? `Tera ${teraType}` : 'Tera'}
+        <span style={sectionLabelStyle}>Weather</span>
+        <Select
+          value={field.weather ?? ''}
+          options={WEATHER_OPTS}
+          onChange={(v) => onChange({ weather: (v || undefined) as FieldState['weather'] })}
         />
+      </span>
+      <Toggle
+        checked={!!field.attackerSide?.tailwind}
+        onChange={(v) => onChange({ attackerSide: { ...field.attackerSide, tailwind: v } })}
+        label="Your Tailwind"
+      />
+      <Toggle
+        checked={!!field.defenderSide?.tailwind}
+        onChange={(v) => onChange({ defenderSide: { ...field.defenderSide, tailwind: v } })}
+        label="Opp Tailwind"
+      />
+      <Toggle
+        checked={!!field.trickRoom}
+        onChange={(v) => onChange({ trickRoom: v })}
+        label="Trick Room"
+      />
+      <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+        <Button variant="secondary" size="sm" onClick={onNewBattle}>
+          New Battle
+        </Button>
       </span>
     </div>
   );
 }
 
+/** One resolved on-field speed entry, ready for the horizontal strip. */
+interface SpeedStripEntry {
+  label: string;
+  side: 'mine' | 'opp';
+  effectiveSpeed: number;
+  primary: boolean;
+}
+
 /**
- * Flow C — In-Battle live view (plan §5 WS-F).
- *
- * Two-step on-field selection per side (bring 4 → mark who's currently in),
- * manual per-mon Mega/Tera + field-state toggles, and live speed order +
- * damage matrices restricted to exactly the mons currently on the field.
+ * Full-width horizontal speed strip (plan §4.1): on-field mons only, ordered by
+ * effective speed (Trick Room reverses). The opponent's likely line is the
+ * primary (bold) entry; min/max are faint context. The ▲/▼ shows who moves
+ * first against the fastest entry on the other side.
+ */
+function SpeedStrip({
+  mine,
+  opponent,
+  trickRoom,
+}: {
+  mine: SpeedTierInput[];
+  opponent: SpeedTierInput[];
+  trickRoom: boolean;
+}) {
+  const entries = useMemo<SpeedStripEntry[]>(() => {
+    const mineEntries: SpeedStripEntry[] = buildSpeedTiers(mine, { trickRoom }).map((e) => ({
+      label: e.label,
+      side: 'mine',
+      effectiveSpeed: e.effectiveSpeed,
+      // Your own entries are all real, so all primary. The opponent strip is
+      // [likely, min, max, +Scarf]; only the "likely" line is primary.
+      primary: true,
+    }));
+    const oppEntries: SpeedStripEntry[] = buildSpeedTiers(opponent, { trickRoom }).map((e) => ({
+      label: e.label,
+      side: 'opp',
+      effectiveSpeed: e.effectiveSpeed,
+      primary: e.label.includes('(likely)'),
+    }));
+    const all = [...mineEntries, ...oppEntries];
+    return all
+      .map((entry, index) => ({ entry, index }))
+      .sort((a, b) => {
+        const diff = trickRoom
+          ? a.entry.effectiveSpeed - b.entry.effectiveSpeed
+          : b.entry.effectiveSpeed - a.entry.effectiveSpeed;
+        return diff !== 0 ? diff : a.index - b.index;
+      })
+      .map(({ entry }) => entry);
+  }, [mine, opponent, trickRoom]);
+
+  // Whole-strip turn-order read: do my fastest on-field mon outspeed their
+  // fastest likely line? (Trick Room reverses "faster".)
+  const mineSpeeds = entries.filter((e) => e.side === 'mine').map((e) => e.effectiveSpeed);
+  const oppPrimary = entries.filter((e) => e.side === 'opp' && e.primary).map((e) => e.effectiveSpeed);
+  const myTop = mineSpeeds.length ? Math.max(...mineSpeeds) : null;
+  const oppTop = oppPrimary.length ? Math.max(...oppPrimary) : null;
+  let direction: 'up' | 'down' | 'tie' | null = null;
+  let delta: number | undefined;
+  if (myTop != null && oppTop != null) {
+    delta = myTop - oppTop;
+    const myFaster = trickRoom ? myTop < oppTop : myTop > oppTop;
+    const oppFaster = trickRoom ? myTop > oppTop : myTop < oppTop;
+    direction = myFaster ? 'up' : oppFaster ? 'down' : 'tie';
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: 'var(--space-3)',
+        padding: 'var(--space-2) var(--space-4)',
+        borderBottom: '1px solid var(--border)',
+        background: 'var(--surface)',
+      }}
+    >
+      <span style={sectionLabelStyle}>Speed order{trickRoom ? ' (TR)' : ''}</span>
+      {direction && (
+        <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)' }}>
+          <SpeedArrow direction={direction} delta={delta} showDelta />
+          <span style={{ fontSize: 'var(--font-2xs)', color: 'var(--text-mut)' }}>
+            {direction === 'up'
+              ? 'you move first'
+              : direction === 'down'
+                ? 'they move first'
+                : 'speed tie'}
+          </span>
+        </span>
+      )}
+      {entries.length === 0 && (
+        <span style={{ fontSize: 'var(--font-sm)', color: 'var(--text-mut)' }}>
+          No on-field mons.
+        </span>
+      )}
+      {entries.map((e, i) => (
+        <span
+          key={`${e.side}-${e.label}-${i}`}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'baseline',
+            gap: 'var(--space-1)',
+            fontSize: 'var(--font-sm)',
+            fontWeight: e.primary ? 700 : 400,
+            opacity: e.primary ? 1 : 0.6,
+            color: e.side === 'mine' ? 'var(--text)' : 'var(--text)',
+          }}
+        >
+          <span style={{ color: 'var(--text-mut)', fontSize: 'var(--font-2xs)' }}>{i + 1}</span>
+          {e.label}
+          <span
+            style={{
+              fontFamily: 'var(--font-num)',
+              fontVariantNumeric: 'tabular-nums',
+              fontWeight: 700,
+            }}
+          >
+            {e.effectiveSpeed}
+          </span>
+          <span style={{ fontSize: 'var(--font-2xs)', color: 'var(--text-mut)' }}>
+            {e.side === 'mine' ? '(you)' : '(opp)'}
+          </span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+/** A single attacker+move row for a KO matrix. */
+interface MatrixRow {
+  key: string;
+  label: string;
+  attacker: Combatant;
+  move: string;
+}
+
+/** A defender column for a KO matrix. */
+interface MatrixCol {
+  key: string;
+  label: string;
+  defender: Combatant;
+}
+
+/**
+ * KO-centric damage matrix (plan §4.3): each cell leads with the KO count
+ * (`KoBadge`), the %-range is the faint secondary line. `tone` is fixed per
+ * table — 'good' (green) when YOUR moves get the KO, 'bad' (red) when THEIR
+ * moves get the KO on you. Built directly on `DataTable` + `KoBadge` (rather
+ * than reusing `DamageCalcTable`, which is %-primary and out of this scope).
+ */
+function KoMatrix({
+  title,
+  rows,
+  columns,
+  field,
+  tone,
+}: {
+  title: string;
+  rows: MatrixRow[];
+  columns: MatrixCol[];
+  field?: FieldState;
+  tone: 'good' | 'bad';
+}) {
+  const tableColumns: DataTableColumn[] = [
+    { key: 'move', header: 'Move', sticky: true },
+    ...columns.map((col) => ({ key: col.key, header: col.label, numeric: true })),
+  ];
+
+  const tableRows: DataTableRow[] = rows.map((row) => {
+    const cells: Record<string, React.ReactNode> = { move: row.label };
+    const cellStyle: Record<string, React.CSSProperties> = {};
+    for (const col of columns) {
+      let result;
+      try {
+        result = calcDamage(row.attacker, col.defender, row.move, field);
+      } catch {
+        result = null;
+      }
+      if (!result) {
+        cells[col.key] = <KoBadge label="—" tone="neutral" />;
+        cellStyle[col.key] = { textAlign: 'center' };
+        continue;
+      }
+      const { ko, pct } = koCell(result);
+      cells[col.key] = (
+        <KoBadge
+          label={ko.label}
+          pct={pct}
+          tone={ko.label === '—' ? 'neutral' : tone}
+          guaranteed={ko.guaranteed}
+        />
+      );
+      cellStyle[col.key] = { textAlign: 'center' };
+    }
+    return { key: row.key, cells, cellStyle };
+  });
+
+  return (
+    <Card title={title} style={{ minWidth: 0 }}>
+      {rows.length === 0 || columns.length === 0 ? (
+        <p style={{ color: 'var(--text-mut)', margin: 0, fontSize: 'var(--font-sm)' }}>
+          No moves available to compare.
+        </p>
+      ) : (
+        <div style={{ overflowX: 'auto' }}>
+          <DataTable columns={tableColumns} rows={tableRows} />
+        </div>
+      )}
+    </Card>
+  );
+}
+
+/**
+ * Flow C — In-Battle Battle Console (plan §4). Single-viewport console: a
+ * compact control bar (field toggles + collapsible Setup), a full-width
+ * horizontal speed strip (likely opponent line bold), two KO-centric damage
+ * matrices side-by-side, and a per-opponent on-field context strip. Selection
+ * (bring 4 → who's in) lives in the collapsible Setup popover. Mega is a
+ * first-class control; Tera is not surfaced (Champions has no Tera).
  */
 export function InBattleScreen() {
   const getActiveTeam = useTeamsStore((s) => s.getActiveTeam);
@@ -189,9 +475,7 @@ export function InBattleScreen() {
   const setMyOnField = useSessionStore((s) => s.setMyOnField);
   const setOpponentOnField = useSessionStore((s) => s.setOpponentOnField);
   const toggleMyMega = useSessionStore((s) => s.toggleMyMega);
-  const toggleMyTera = useSessionStore((s) => s.toggleMyTera);
   const toggleOpponentMega = useSessionStore((s) => s.toggleOpponentMega);
-  const toggleOpponentTera = useSessionStore((s) => s.toggleOpponentTera);
   const setField = useSessionStore((s) => s.setField);
   const newBattle = useSessionStore((s) => s.newBattle);
 
@@ -242,7 +526,10 @@ export function InBattleScreen() {
 
   // ---- Resolve the on-field sets to concrete mons -----------------------------
   const myOnFieldMons = useMemo(
-    () => myOnField.map((id) => myTeam.pokemon.find((mon) => myId(mon) === id)).filter(Boolean) as MyPokemon[],
+    () =>
+      myOnField
+        .map((id) => myTeam.pokemon.find((mon) => myId(mon) === id))
+        .filter(Boolean) as MyPokemon[],
     [myOnField, myTeam],
   );
   const slotFor = useMemo(
@@ -253,6 +540,8 @@ export function InBattleScreen() {
   const myTailwind = !!field.attackerSide?.tailwind;
   const oppTailwind = !!field.defenderSide?.tailwind;
 
+  const bothReady = myOnFieldMons.length > 0 && opponentOnField.length > 0;
+
   // ---- Speed tier inputs ------------------------------------------------------
   const mineSpeed: SpeedTierInput[] = useMemo(
     () => myOnFieldMons.map((mon) => mySpeedInput(mon, myBattleState[myId(mon)], myTailwind)),
@@ -261,16 +550,23 @@ export function InBattleScreen() {
   const opponentSpeed: SpeedTierInput[] = useMemo(
     () =>
       opponentOnField.flatMap((id) =>
-        opponentSpeedInputs(id, findUsage(usage, id), slotFor(id), oppTailwind),
+        opponentSpeedWithLikely(id, findUsage(usage, id), slotFor(id), oppTailwind),
       ),
     [opponentOnField, usage, slotFor, oppTailwind],
   );
 
-  // ---- Damage matrices --------------------------------------------------------
-  const yourMovesRows: DamageRowSpec[] = useMemo(
+  // ---- Resolved combatants ----------------------------------------------------
+  const myDefenderCombatants = useMemo(
+    () => myOnFieldMons.map((mon) => myCombatant(mon, myBattleState[myId(mon)])),
+    [myOnFieldMons, myBattleState],
+  );
+
+  // ---- "Your moves → their active" matrix -------------------------------------
+  const yourMovesRows: MatrixRow[] = useMemo(
     () =>
       myOnFieldMons.flatMap((mon) =>
         damagingMovesOf(mon).map((move) => ({
+          key: `${myId(mon)}-${move}`,
           label: `${myDisplayName(mon)} — ${move}`,
           attacker: myCombatant(mon, myBattleState[myId(mon)]),
           move,
@@ -278,94 +574,63 @@ export function InBattleScreen() {
       ),
     [myOnFieldMons, myBattleState],
   );
-  const opponentCols: DamageColSpec[] = useMemo(
+  const opponentCols: MatrixCol[] = useMemo(
     () =>
       opponentOnField.map((id) => ({
+        key: id,
         label: speciesName(id),
         defender: opponentCombatant(id, findUsage(usage, id), slotFor(id)),
       })),
     [opponentOnField, usage, slotFor],
   );
 
-  const theirMovesRows: DamageRowSpec[] = useMemo(
+  const swappedField = useMemo(() => swapFieldSides(field), [field]);
+
+  // ---- "Their likely moves → your active" matrix (matchup-aware) --------------
+  // Show all likely moves expander state (per the spec's completeness fallback).
+  const [showAllOppMoves, setShowAllOppMoves] = useState(false);
+  const theirMovesRows: MatrixRow[] = useMemo(
     () =>
       opponentOnField.flatMap((id) => {
-        const combatant = opponentCombatant(id, findUsage(usage, id), slotFor(id));
-        // Show the 6 most-used moves for each on-field opponent: a mon runs only
-        // 4, so surfacing the top 6 covers the likely options you must play around.
-        return topMoves(findUsage(usage, id), 6).map((move) => ({
+        const oppUsage = findUsage(usage, id);
+        const combatant = opponentCombatant(id, oppUsage, slotFor(id));
+        const candidates = candidateOpponentMoves(oppUsage, 8);
+        const moves = showAllOppMoves
+          ? candidates
+          : relevantThreats(combatant, myDefenderCombatants, candidates, swappedField, 4).map(
+              (t) => t.move,
+            );
+        return moves.map((move) => ({
+          key: `${id}-${move}`,
           label: `${speciesName(id)} — ${move}`,
           attacker: combatant,
           move,
         }));
       }),
-    [opponentOnField, usage, slotFor],
+    [opponentOnField, usage, slotFor, myDefenderCombatants, swappedField, showAllOppMoves],
   );
-  const myCols: DamageColSpec[] = useMemo(
+  const myCols: MatrixCol[] = useMemo(
     () =>
       myOnFieldMons.map((mon) => ({
+        key: myId(mon),
         label: myDisplayName(mon),
         defender: myCombatant(mon, myBattleState[myId(mon)]),
       })),
     [myOnFieldMons, myBattleState],
   );
 
-  const swappedField = useMemo(() => swapFieldSides(field), [field]);
-
-  // ---- Type matchup (per on-field opponent) -----------------------------------
-  const myMatchupMons: TypeMatchupMon[] = useMemo(
-    () =>
-      myOnFieldMons.map((mon) => {
-        const toggles = myBattleState[myId(mon)];
-        const types = toggles?.megaActivated
-          ? activeTypes(myId(mon), myMegaForme(mon))
-          : mon.types;
-        return {
-          label: myDisplayName(mon),
-          types,
-          moveTypes: [...new Set(damagingMovesOf(mon).map((m) => gen.moves.get(m)?.type ?? ''))].filter(Boolean),
-        };
-      }),
-    [myOnFieldMons, myBattleState],
-  );
-
-  const bothReady = myOnFieldMons.length > 0 && opponentOnField.length > 0;
-
-  return (
+  // ---- Setup panel content ----------------------------------------------------
+  const setupPanel = (
     <div
       style={{
-        padding: 'var(--space-6)',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--space-5)',
-        maxWidth: 1100,
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: 'var(--space-4)',
+        padding: 'var(--space-4)',
       }}
     >
-      <header style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-        <div>
-          <h1 style={{ margin: 0 }}>In-Battle</h1>
-          <p style={{ color: 'var(--text-mut)', margin: '4px 0 0' }}>
-            Bring 4, mark who&apos;s currently in on each side, flip Mega/Tera and field toggles —
-            speed order and damage update live for the mons on the field.
-          </p>
-        </div>
-        <Button variant="secondary" size="sm" onClick={newBattle}>
-          New Battle
-        </Button>
-      </header>
-
-      {(usingTeamFixture || usingOpponentFixture) && (
-        <Card>
-          <p style={{ margin: 0, fontSize: 13, color: 'var(--text-mut)' }}>
-            {usingTeamFixture && 'No active team — using the sample team. Import one in Team Setup. '}
-            {usingOpponentFixture &&
-              'No detected opponent — using the sample opponent. Run Detection for the real one.'}
-          </p>
-        </Card>
-      )}
-
-      <Card title="Your side">
-        <div style={stepLabelStyle}>Step 1 — bring 4</div>
+      <div>
+        <div style={stepLabelStyle}>Your side — bring 4</div>
         <SelectChips
           items={myTeamItems}
           selected={myActiveFour}
@@ -374,9 +639,7 @@ export function InBattleScreen() {
         />
         {myActiveFour.length > 0 && (
           <>
-            <div style={{ ...stepLabelStyle, marginTop: 'var(--space-4)' }}>
-              Step 2 — who&apos;s currently in
-            </div>
+            <div style={{ ...stepLabelStyle, marginTop: 'var(--space-3)' }}>Who&apos;s in</div>
             <SelectChips
               items={myBroughtItems}
               selected={myOnField}
@@ -385,50 +648,20 @@ export function InBattleScreen() {
             />
           </>
         )}
-        {myOnFieldMons.length > 0 && (
-          <div
-            style={{
-              marginTop: 'var(--space-4)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--space-2)',
-            }}
-          >
-            {myOnFieldMons.map((mon) => {
-              const id = myId(mon);
-              const toggles = myBattleState[id];
-              return (
-                <OnFieldToggles
-                  key={id}
-                  name={myDisplayName(mon)}
-                  speciesId={id}
-                  canMega={!!myMegaForme(mon)}
-                  megaActivated={!!toggles?.megaActivated}
-                  canTera={!!mon.set.teraType}
-                  teraType={mon.set.teraType}
-                  teraActivated={!!toggles?.teraActivated}
-                  onMega={() => toggleMyMega(id)}
-                  onTera={() => toggleMyTera(id)}
-                />
-              );
-            })}
-          </div>
-        )}
-      </Card>
-
-      <Card title="Opponent">
-        <div style={stepLabelStyle}>Step 1 — what they brought</div>
+      </div>
+      <div>
+        <div style={stepLabelStyle}>Opponent — what they brought</div>
         <SelectChips
           items={opponentItems}
           selected={opponentActiveFour}
           max={MAX_BROUGHT}
-          onToggle={(id) => setOpponentActiveFour(toggleCapped(opponentActiveFour, id, MAX_BROUGHT))}
+          onToggle={(id) =>
+            setOpponentActiveFour(toggleCapped(opponentActiveFour, id, MAX_BROUGHT))
+          }
         />
         {opponentActiveFour.length > 0 && (
           <>
-            <div style={{ ...stepLabelStyle, marginTop: 'var(--space-4)' }}>
-              Step 2 — who&apos;s currently in
-            </div>
+            <div style={{ ...stepLabelStyle, marginTop: 'var(--space-3)' }}>Who&apos;s in</div>
             <SelectChips
               items={opponentBroughtItems}
               selected={opponentOnField}
@@ -437,73 +670,202 @@ export function InBattleScreen() {
             />
           </>
         )}
-        {opponentOnField.length > 0 && (
-          <div
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+      <ControlBar field={field} onChange={setField} onNewBattle={newBattle} />
+
+      <div style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)' }}>
+        {(usingTeamFixture || usingOpponentFixture) && (
+          <p
             style={{
-              marginTop: 'var(--space-4)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--space-2)',
+              margin: 0,
+              padding: 'var(--space-2) var(--space-4) 0',
+              fontSize: 'var(--font-2xs)',
+              color: 'var(--text-mut)',
             }}
           >
-            {opponentOnField.map((id) => {
-              const slot = slotFor(id);
-              const megaForme = opponentMegaForme(id, findUsage(usage, id));
-              return (
-                <OnFieldToggles
-                  key={id}
-                  name={speciesName(id)}
-                  speciesId={id}
-                  canMega={!!megaForme}
-                  megaActivated={!!slot?.megaActivated}
-                  canTera
-                  teraType={slot?.teraType ?? findUsage(usage, id)?.teraTypes[0]?.name}
-                  teraActivated={!!slot?.teraActivated}
-                  onMega={() => toggleOpponentMega(id)}
-                  onTera={() => toggleOpponentTera(id)}
-                />
-              );
-            })}
-          </div>
-        )}
-      </Card>
-
-      <FieldStateToggles field={field} onChange={setField} />
-
-      {bothReady ? (
-        <>
-          <SpeedTierList mine={mineSpeed} opponent={opponentSpeed} trickRoom={!!field.trickRoom} />
-          <DamageCalcTable
-            title="Your moves vs their active"
-            rows={yourMovesRows}
-            columns={opponentCols}
-            field={field}
-          />
-          <DamageCalcTable
-            title="Their likely moves vs your active"
-            rows={theirMovesRows}
-            columns={myCols}
-            field={swappedField}
-          />
-          {opponentOnField.map((id) => (
-            <TypeMatchupGrid
-              key={id}
-              opponentLabel={speciesName(id)}
-              opponentTypes={activeTypes(
-                id,
-                slotFor(id)?.megaActivated ? opponentMegaForme(id, findUsage(usage, id)) : null,
-              )}
-              myMons={myMatchupMons}
-            />
-          ))}
-        </>
-      ) : (
-        <Card>
-          <p style={{ margin: 0, color: 'var(--text-mut)' }}>
-            Select at least one mon currently in on each side to see live speed order and damage.
+            {usingTeamFixture && 'No active team — using the sample team. '}
+            {usingOpponentFixture && 'No detected opponent — using the sample opponent.'}
           </p>
-        </Card>
+        )}
+        {setupPanel}
+      </div>
+
+      <SpeedStrip mine={mineSpeed} opponent={opponentSpeed} trickRoom={!!field.trickRoom} />
+
+      <div style={{ flex: 1, overflow: 'auto', padding: 'var(--space-4)' }}>
+        {bothReady ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 'var(--space-4)',
+                alignItems: 'start',
+              }}
+            >
+              <KoMatrix
+                title="Your moves → their active"
+                rows={yourMovesRows}
+                columns={opponentCols}
+                field={field}
+                tone="good"
+              />
+              <KoMatrix
+                title="Their likely moves → your active"
+                rows={theirMovesRows}
+                columns={myCols}
+                field={swappedField}
+                tone="bad"
+              />
+            </div>
+            <div>
+              <Button variant="ghost" size="sm" onClick={() => setShowAllOppMoves((v) => !v)}>
+                {showAllOppMoves
+                  ? 'Show matchup-ranked threats ▲'
+                  : 'Show all likely opponent moves ▾'}
+              </Button>
+            </div>
+
+            <Card title="On-field opponents">
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                  gap: 'var(--space-4)',
+                }}
+              >
+                {opponentOnField.map((id) => {
+                  const slot = slotFor(id);
+                  const oppUsage = findUsage(usage, id);
+                  const megaForme = opponentMegaForme(id, oppUsage);
+                  return (
+                    <div
+                      key={id}
+                      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}
+                    >
+                      <MegaControl
+                        name={speciesName(id)}
+                        speciesId={id}
+                        megaForme={megaForme}
+                        megaActivated={!!slot?.megaActivated}
+                        onMega={() => toggleOpponentMega(id)}
+                      />
+                      <OpponentTells usage={oppUsage} />
+                    </div>
+                  );
+                })}
+              </div>
+            </Card>
+
+            <Card title="Your on-field mons">
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                  gap: 'var(--space-3)',
+                }}
+              >
+                {myOnFieldMons.map((mon) => {
+                  const id = myId(mon);
+                  const toggles = myBattleState[id];
+                  return (
+                    <MegaControl
+                      key={id}
+                      name={myDisplayName(mon)}
+                      speciesId={id}
+                      megaForme={myMegaForme(mon)}
+                      megaActivated={!!toggles?.megaActivated}
+                      onMega={() => toggleMyMega(id)}
+                    />
+                  );
+                })}
+              </div>
+            </Card>
+          </div>
+        ) : (
+          <Card>
+            <p style={{ margin: 0, color: 'var(--text-mut)', fontSize: 'var(--font-md)' }}>
+              In the <strong>Setup</strong> panel above, mark at least one mon on each side
+              that&apos;s currently in to see live speed order and KO math.
+            </p>
+          </Card>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** Compact item/ability/spread "tells" + top-6 usage moves for an on-field opponent. */
+function OpponentTells({ usage }: { usage?: ReturnType<typeof findUsage> }) {
+  const item = usage?.items[0]?.name;
+  const ability = usage?.abilities[0]?.name;
+  const spread = usage?.spreads[0]?.name;
+  // Top 6 by usage, INCLUDING status moves — surfaces Disable/Encore/Taunt/etc.
+  // that the damaging-move matrices never show.
+  const moves = (usage?.moves ?? []).slice(0, 6);
+  if (!item && !ability && !spread && moves.length === 0) {
+    return (
+      <span style={{ fontSize: 'var(--font-2xs)', color: 'var(--text-mut)' }}>
+        No usage data yet.
+      </span>
+    );
+  }
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+      <dl
+        style={{
+          margin: 0,
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr',
+          columnGap: 'var(--space-2)',
+          rowGap: 'var(--space-1)',
+          fontSize: 'var(--font-xs)',
+        }}
+      >
+        {ability && <Tell label="Ability" value={ability} />}
+        {item && <Tell label="Item" value={item} />}
+        {spread && <Tell label="Spread" value={spread} />}
+      </dl>
+      {moves.length > 0 && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-1)' }}>
+          {moves.map((m) => (
+            <span
+              key={m.name}
+              title={`${m.name} — ${Math.round(m.usage * 100)}% usage`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'baseline',
+                gap: 4,
+                fontSize: 'var(--font-2xs)',
+                padding: '1px 6px',
+                borderRadius: 999,
+                border: '1px solid var(--border)',
+                background: 'var(--surface-2)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <span>{m.name}</span>
+              <span style={{ color: 'var(--text-mut)', fontVariantNumeric: 'tabular-nums' }}>
+                {Math.round(m.usage * 100)}%
+              </span>
+            </span>
+          ))}
+        </div>
       )}
     </div>
+  );
+}
+
+function Tell({ label, value }: { label: string; value: string }) {
+  return (
+    <>
+      <dt style={{ color: 'var(--text-mut)', fontWeight: 600 }}>{label}</dt>
+      <dd style={{ margin: 0, fontVariantNumeric: 'tabular-nums' }}>{value}</dd>
+    </>
   );
 }

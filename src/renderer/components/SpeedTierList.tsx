@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Card, Stat, type StatProps } from '../ui';
+import { Card, Stat, DataTable, type DataTableColumn, type DataTableRow, type StatProps } from '../ui';
 import {
   buildSpeedTiers,
   type SpeedModifiers,
@@ -25,26 +25,6 @@ interface Row {
   modifiers: SpeedModifiers;
   tone?: Tone;
 }
-
-const headerCellStyle: React.CSSProperties = {
-  textAlign: 'center',
-  padding: '4px 10px',
-  fontSize: 11,
-  color: 'var(--text-mut)',
-};
-
-const cellStyle: React.CSSProperties = {
-  textAlign: 'center',
-  padding: '6px 10px',
-  fontSize: 13,
-};
-
-const rowLabelStyle: React.CSSProperties = {
-  textAlign: 'left',
-  padding: '6px 10px',
-  fontSize: 13,
-  fontWeight: 600,
-};
 
 /** Does `a` act before `b` at these effective speeds, given the turn order? */
 function actsBefore(a: number, b: number, trickRoom: boolean): boolean {
@@ -92,7 +72,9 @@ function modifierLabels(mods: SpeedModifiers): string[] {
 /**
  * Merged, sorted speed-tier list (spec §4.3): "your" team and the opponent's
  * common spread(s) interleaved by effective speed, with a colour-blind-safe
- * tone showing who's favoured at each matchup.
+ * tone showing who's favoured at each matchup. Re-based onto the compact
+ * `DataTable` primitive (density plan §2.3); the per-row speed tone keeps riding
+ * on the `Stat` chip.
  */
 export function SpeedTierList({ mine, opponent, trickRoom = false }: SpeedTierListProps) {
   const rows = useMemo<Row[]>(() => {
@@ -131,44 +113,40 @@ export function SpeedTierList({ mine, opponent, trickRoom = false }: SpeedTierLi
       .map(({ entry }) => entry);
   }, [mine, opponent, trickRoom]);
 
+  const columns: DataTableColumn[] = [
+    { key: 'rank', header: '#', numeric: true, sticky: true, width: 36 },
+    { key: 'mon', header: 'Pokémon' },
+    { key: 'speed', header: 'Speed', numeric: true },
+    { key: 'modifiers', header: 'Modifiers' },
+  ];
+
+  const tableRows: DataTableRow[] = rows.map((row, i) => ({
+    key: `${row.side}-${row.label}-${i}`,
+    cells: {
+      rank: i + 1,
+      mon: (
+        <>
+          {row.label}{' '}
+          <span style={{ fontSize: 'var(--font-xs)', fontWeight: 400, color: 'var(--text-mut)' }}>
+            {row.side === 'mine' ? '(you)' : '(opp)'}
+          </span>
+        </>
+      ),
+      speed: <Stat label="Spe" value={row.effectiveSpeed} tone={row.tone} />,
+      modifiers: (
+        <span style={{ fontSize: 'var(--font-sm)', color: 'var(--text-mut)' }}>
+          {modifierLabels(row.modifiers).join(', ') || '—'}
+        </span>
+      ),
+    },
+    cellStyle: {
+      speed: { textAlign: 'center' },
+    },
+  }));
+
   return (
     <Card title={trickRoom ? 'Speed order (Trick Room)' : 'Speed order'}>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            <th style={headerCellStyle}>#</th>
-            <th style={{ ...headerCellStyle, textAlign: 'left' }}>Pokémon</th>
-            <th style={headerCellStyle}>Speed</th>
-            <th style={{ ...headerCellStyle, textAlign: 'left' }}>Modifiers</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={`${row.side}-${row.label}-${i}`}>
-              <td style={cellStyle}>{i + 1}</td>
-              <td style={rowLabelStyle}>
-                {row.label}{' '}
-                <span style={{ fontSize: 11, fontWeight: 400, color: 'var(--text-mut)' }}>
-                  {row.side === 'mine' ? '(you)' : '(opp)'}
-                </span>
-              </td>
-              <td style={cellStyle}>
-                <Stat label="Spe" value={row.effectiveSpeed} tone={row.tone} />
-              </td>
-              <td
-                style={{
-                  ...rowLabelStyle,
-                  fontWeight: 400,
-                  fontSize: 12,
-                  color: 'var(--text-mut)',
-                }}
-              >
-                {modifierLabels(row.modifiers).join(', ') || '—'}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <DataTable columns={columns} rows={tableRows} />
     </Card>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Button, Card, Select, Tabs, Toggle, TypeBadge, type TabItem } from '../../ui';
+import { Card, Select, Tabs, Toggle, TypeBadge, type TabItem } from '../../ui';
 import { TypeMatchupGrid, type TypeMatchupMon } from '../../components/TypeMatchupGrid';
 import { SpeedTierList } from '../../components/SpeedTierList';
 import {
@@ -10,8 +10,6 @@ import {
 import { pokemonIconStyle } from '../../components/pokemonIcon';
 import { gen } from '../../../lib/calc/gen';
 import type { SpeedTierInput } from '../../../lib/calc/speedTiers';
-import { fetchUsage } from '../../../lib/smogon/usageData';
-import { CURRENT_FORMAT } from '../../../shared/types';
 import type {
   MyPokemon,
   MyTeam,
@@ -31,6 +29,10 @@ import {
 export interface OpponentDashboardProps {
   opponent: OpponentTeam;
   myTeam: MyTeam;
+  /** Format usage, fetched once by the parent screen (shared with matrix/rail). */
+  usage: UsageData | null;
+  /** Slot index to open initially (e.g. the clicked matrix column). */
+  initialSlotIndex?: number;
 }
 
 function speciesName(speciesId: string): string {
@@ -64,12 +66,10 @@ function damagingMovesOf(mon: MyPokemon): string[] {
 function UsageList({
   title,
   entries,
-  isType,
   limit = 5,
 }: {
   title: string;
   entries: UsageEntry[];
-  isType?: boolean;
   limit?: number;
 }) {
   const top = entries.slice(0, limit);
@@ -96,11 +96,7 @@ function UsageList({
               key={entry.name}
               style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--space-2)' }}
             >
-              {isType ? (
-                <TypeBadge type={entry.name} size="sm" />
-              ) : (
-                <span style={{ fontSize: 12 }}>{entry.name}</span>
-              )}
+              <span style={{ fontSize: 12 }}>{entry.name}</span>
               <span style={{ fontSize: 12, color: 'var(--text-mut)' }}>
                 {Math.round(entry.usage * 100)}%
               </span>
@@ -130,7 +126,6 @@ function CommonSets({ usage }: { usage: SpeciesUsage | undefined }) {
         >
           <UsageList title="Items" entries={usage.items} />
           <UsageList title="Abilities" entries={usage.abilities} />
-          <UsageList title="Tera types" entries={usage.teraTypes} isType />
           <UsageList title="Moves" entries={usage.moves} limit={6} />
           <UsageList title="Spreads" entries={usage.spreads} limit={3} />
         </div>
@@ -235,38 +230,22 @@ function OpponentSlotAnalysis({ speciesId, usage, myTeam, myMons, trickRoom }: S
  * common sets, type matchups, a merged speed tier list, and damage calc
  * tables against your active team.
  */
-export function OpponentDashboard({ opponent, myTeam }: OpponentDashboardProps) {
-  const [activeId, setActiveId] = useState('0');
-  const [usage, setUsage] = useState<UsageData | null>(null);
-  const [usageLoading, setUsageLoading] = useState(false);
+export function OpponentDashboard({
+  opponent,
+  myTeam,
+  usage,
+  initialSlotIndex = 0,
+}: OpponentDashboardProps) {
+  const [activeId, setActiveId] = useState(String(initialSlotIndex));
   const [trickRoom, setTrickRoom] = useState(false);
   // Per-detected-species forme selection (base id → chosen variant forme id).
   // Empty = use the dominant-by-usage default for that species.
   const [formeChoice, setFormeChoice] = useState<Record<string, string>>({});
 
+  // Follow the parent's selection (e.g. a clicked matrix column).
   useEffect(() => {
-    let cancelled = false;
-    setUsageLoading(true);
-    fetchUsage(CURRENT_FORMAT)
-      .then((data) => {
-        if (!cancelled) setUsage(data);
-      })
-      .finally(() => {
-        if (!cancelled) setUsageLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const refreshUsage = async () => {
-    setUsageLoading(true);
-    try {
-      setUsage(await fetchUsage(CURRENT_FORMAT, { refresh: true }));
-    } finally {
-      setUsageLoading(false);
-    }
-  };
+    setActiveId(String(initialSlotIndex));
+  }, [initialSlotIndex]);
 
   const tabs: TabItem[] = opponent.slots.map((slot, i) => ({
     id: String(i),
@@ -298,15 +277,8 @@ export function OpponentDashboard({ opponent, myTeam }: OpponentDashboardProps) 
 
   return (
     <Card
-      title="Analysis dashboard"
-      actions={
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
-          <Toggle checked={trickRoom} onChange={setTrickRoom} label="Trick Room" />
-          <Button variant="ghost" size="sm" onClick={refreshUsage} disabled={usageLoading}>
-            {usageLoading ? 'Refreshing…' : 'Refresh usage data'}
-          </Button>
-        </div>
-      }
+      title="Opponent deep dive"
+      actions={<Toggle checked={trickRoom} onChange={setTrickRoom} label="Trick Room" />}
     >
       <Tabs items={tabs} activeId={activeId} onChange={setActiveId} />
       <div style={{ marginTop: 'var(--space-4)' }}>

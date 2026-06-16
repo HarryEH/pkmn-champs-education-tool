@@ -5,6 +5,7 @@
  */
 import type { SpeciesUsage, UsageData, UsageEntry } from '../../../shared/types';
 import type { SpeciesCombatant } from '../../../lib/calc/damageCalc';
+import type { SpeedTierInput } from '../../../lib/calc/speedTiers';
 import { gen } from '../../../lib/calc/gen';
 import { megaFormesOf } from '../../../lib/calc/megaForme';
 
@@ -158,4 +159,27 @@ export function opponentSpeedStat(c: SpeciesCombatant): number {
   const iv = c.ivs?.spe ?? 31;
   const ev = c.evs?.spe ?? 0;
   return gen.stats.calc('spe', species.baseStats.spe, iv, ev, c.level ?? LEVEL, nature);
+}
+
+/**
+ * The opponent's *most-likely* Speed line as a single `SpeedTierInput`: the top
+ * usage spread's parsed Speed EVs + nature, computed into a real stat (same path
+ * as {@link opponentSpeedStat}). `speciesId` is passed by the caller — pass the
+ * Mega forme id when the opponent is Mega'd so the forme's base Speed applies.
+ * Falls back to the base stat (0 EVs, neutral nature) when no spread is known;
+ * never throws.
+ */
+export function likelySpeedInput(
+  speciesId: string,
+  usage: SpeciesUsage | undefined,
+  label: string,
+): SpeedTierInput {
+  const species = gen.species.get(speciesId);
+  if (!species?.exists) return { label, stat: 0 }; // ungated miss → {exists:false}.
+
+  const spread = parseSpread(top(usage?.spreads) ?? '');
+  const nature = gen.natures.get(spread?.nature ?? 'Serious') ?? undefined;
+  const ev = spread?.evs.spe ?? 0;
+  const stat = gen.stats.calc('spe', species.baseStats.spe, 31, ev, LEVEL, nature);
+  return { label, stat };
 }
