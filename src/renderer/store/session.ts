@@ -11,7 +11,7 @@
  * per-mon battle toggles live in the in-memory-only `myBattleState` map.
  */
 import { create } from 'zustand';
-import type { BattleSession, FieldState, OpponentTeam } from '../../shared/types';
+import type { BattleSession, FieldState, OpponentTeam, PokemonSet } from '../../shared/types';
 
 const emptyField: FieldState = {
   attackerSide: {},
@@ -25,6 +25,13 @@ interface SessionState {
   /** Null until a battle is started from an active team. */
   session: BattleSession | null;
   opponent: OpponentTeam | null;
+  /**
+   * Exact opponent sets keyed by species id, present ONLY when the opponent was
+   * entered via PokePaste (in-memory only, like `opponent`). When set, the
+   * analysis calcs against the real item/ability/Tera/EVs/moves instead of usage
+   * averages (see `opponentCombatant`). Empty for screenshot/video detection.
+   */
+  opponentSets: Record<string, PokemonSet>;
   field: FieldState;
   myActiveFour: string[];
   opponentActiveFour: string[];
@@ -34,8 +41,12 @@ interface SessionState {
   opponentOnField: string[];
   /** Per-mon Mega/Tera battle toggles for YOUR side, keyed by species id. */
   myBattleState: MyBattleState;
-  /** Set the detected opponent team (WS-E). */
-  setOpponent: (opponent: OpponentTeam) => void;
+  /**
+   * Set the opponent team. Pass `sets` (speciesId → exact PokemonSet) when the
+   * source is a PokePaste so calc can use the real sets; omit for detection,
+   * which clears any prior exact sets.
+   */
+  setOpponent: (opponent: OpponentTeam, sets?: Record<string, PokemonSet>) => void;
   /** Manually correct one detected slot's species (WS-E override dropdown). */
   overrideSlot: (index: number, speciesId: string) => void;
   /** Patch field state (WS-F). */
@@ -59,6 +70,7 @@ interface SessionState {
 export const useSessionStore = create<SessionState>((set) => ({
   session: null,
   opponent: null,
+  opponentSets: {},
   field: emptyField,
   myActiveFour: [],
   opponentActiveFour: [],
@@ -66,7 +78,7 @@ export const useSessionStore = create<SessionState>((set) => ({
   opponentOnField: [],
   myBattleState: {},
 
-  setOpponent: (opponent) => set({ opponent }),
+  setOpponent: (opponent, sets) => set({ opponent, opponentSets: sets ?? {} }),
   overrideSlot: (index, speciesId) =>
     set((s) => {
       if (!s.opponent) return s;
@@ -129,6 +141,7 @@ export const useSessionStore = create<SessionState>((set) => ({
     set({
       session: null,
       opponent: null,
+      opponentSets: {},
       field: emptyField,
       myActiveFour: [],
       opponentActiveFour: [],

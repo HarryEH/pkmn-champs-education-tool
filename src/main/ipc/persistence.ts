@@ -9,7 +9,7 @@ import { app, ipcMain } from 'electron';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { IPC } from '../../shared/ipc';
-import type { MyTeam, Settings, UsageData } from '../../shared/types';
+import type { DetectionLabel, MyTeam, Settings, UsageData } from '../../shared/types';
 
 function userDataDir(): string {
   return app.getPath('userData');
@@ -21,6 +21,10 @@ function teamsPath(): string {
 
 function settingsPath(): string {
   return path.join(userDataDir(), 'settings.json');
+}
+
+function labelsPath(): string {
+  return path.join(userDataDir(), 'detection-labels.json');
 }
 
 function cacheDir(): string {
@@ -80,6 +84,20 @@ export function registerPersistenceHandlers(): void {
 
   ipcMain.handle(IPC.usageWrite, async (_e, data: UsageData): Promise<void> => {
     await writeJson(usagePath(data.format, data.month), data);
+  });
+
+  ipcMain.handle(IPC.labelsLoad, async (): Promise<DetectionLabel[]> => {
+    return readJson<DetectionLabel[]>(labelsPath(), []);
+  });
+
+  ipcMain.handle(IPC.labelsAppend, async (_e, label: DetectionLabel): Promise<void> => {
+    const labels = await readJson<DetectionLabel[]>(labelsPath(), []);
+    labels.push(label);
+    await writeJson(labelsPath(), labels);
+  });
+
+  ipcMain.handle(IPC.labelsClear, async (): Promise<void> => {
+    await writeJson(labelsPath(), []);
   });
 
   ipcMain.handle(IPC.usageClear, async (_e, format?: string): Promise<void> => {

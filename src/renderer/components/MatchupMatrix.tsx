@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Button, KoBadge, SpeedArrow } from '../ui';
 import { pokemonIconStyle } from './pokemonIcon';
 import { gen } from '../../lib/calc/gen';
-import type { MyPokemon, MyTeam, OpponentTeam, UsageData } from '../../shared/types';
+import type { MyPokemon, MyTeam, OpponentTeam, PokemonSet, UsageData } from '../../shared/types';
 import {
   buildMatrixCell,
   representativeOpponent,
@@ -11,10 +11,20 @@ import {
 
 export type MatrixViewMode = 'offense' | 'defense' | 'speed' | 'verdict';
 
+/** The exact set for an opponent slot, if one was provided (PokePaste source). */
+function setFor(
+  speciesId: string | null,
+  sets: Record<string, PokemonSet> | undefined,
+): PokemonSet | undefined {
+  return speciesId ? sets?.[speciesId] : undefined;
+}
+
 export interface MatchupMatrixProps {
   myTeam: MyTeam;
   opponent: OpponentTeam;
   usage: UsageData | null;
+  /** Exact opponent sets by species id (PokePaste source); drives exact calc. */
+  opponentSets?: Record<string, PokemonSet>;
   viewMode: MatrixViewMode;
   onViewModeChange: (mode: MatrixViewMode) => void;
   /** Click a cell or column header to open the drill-down drawer for that opponent. */
@@ -225,6 +235,7 @@ export function MatchupMatrix({
   myTeam,
   opponent,
   usage,
+  opponentSets,
   viewMode,
   onViewModeChange,
   onSelectCell,
@@ -234,17 +245,33 @@ export function MatchupMatrix({
   const myMons = myTeam.pokemon;
   const slots = opponent.slots;
 
-  // Column headers: the representative forme/label per opponent slot.
+  // Column headers: the representative forme/label per opponent slot. With an
+  // exact set (paste), the header is that set's own species/forme — not a
+  // usage-picked variant — so it matches the cells' calc.
   const columns = useMemo(
-    () => slots.map((slot) => representativeOpponent(slot.speciesId, usage)),
-    [slots, usage],
+    () =>
+      slots.map((slot) => {
+        const set = setFor(slot.speciesId, opponentSets);
+        if (!set) return representativeOpponent(slot.speciesId, usage);
+        const sp = gen.species.get(set.species ?? slot.speciesId ?? '');
+        return {
+          speciesId: sp?.exists ? sp.id : (slot.speciesId ?? ''),
+          label: sp?.exists ? sp.name : (slot.speciesId ?? '—'),
+          usage: undefined,
+        };
+      }),
+    [slots, usage, opponentSets],
   );
 
   // The full cell grid, memoized (calc-heavy).
   const grid = useMemo(
     () =>
-      myMons.map((mon) => slots.map((slot) => buildMatrixCell(mon, slot.speciesId, usage))),
-    [myMons, slots, usage],
+      myMons.map((mon) =>
+        slots.map((slot) =>
+          buildMatrixCell(mon, slot.speciesId, usage, undefined, setFor(slot.speciesId, opponentSets)),
+        ),
+      ),
+    [myMons, slots, usage, opponentSets],
   );
 
   return (

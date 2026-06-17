@@ -25,6 +25,17 @@ export interface MatchEmbeddingOptions {
   legalOnly?: Set<string>;
   /** How many candidates to surface; defaults to {@link TOP_N}. */
   topN?: number;
+  /**
+   * Collapse forme-families to one candidate per base species before slicing
+   * topN, emitting the base speciesId (e.g. every rotom appliance -> "rotom").
+   * Appliance/cosmetic formes are visually near-indistinguishable at team-preview
+   * render scale, so ranking them as separate candidates both dilutes the base
+   * species' recall and surfaces a misleadingly specific (often wrong) forme. Use
+   * for the user-facing candidate list; leave OFF for the auto-accept decision,
+   * which must reason over the specific forme. Requires `baseSpeciesId` in the
+   * table (falls back to speciesId per-entry when absent).
+   */
+  collapseFormes?: boolean;
 }
 
 /**
@@ -51,6 +62,22 @@ export const AUTO_ACCEPT_MARGIN = 0.03;
 export const TOP_N = 3;
 
 /**
+ * Keep the first item per key, preserving order. Applied to a confidence-sorted
+ * list, "first" = highest, so this is a max-by-key dedupe.
+ */
+function dedupeBy<T>(items: T[], key: (item: T) => string): T[] {
+  const seen = new Set<string>();
+  const out: T[] = [];
+  for (const item of items) {
+    const k = key(item);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    out.push(item);
+  }
+  return out;
+}
+
+/**
  * Map a centered cosine similarity (in [-1, 1]) to a confidence in [0, 1].
  * Monotonic, so ranking is unaffected; only the auto-accept gate reads the
  * absolute value.
@@ -75,16 +102,38 @@ export function matchEmbedding(
   const topN = opts.topN ?? TOP_N;
   const centeredCrop = centerAndNormalize(cropEmbedding, table.mean);
 
-  const scored: MatchCandidate[] = [];
+  // Score every (legal) entry, carrying its base species so we can optionally
+  // collapse forme-families after ranking.
+  const scored: { speciesId: string; baseSpeciesId: string; confidence: number }[] = [];
   for (const entry of table.entries) {
     if (opts.legalOnly && !opts.legalOnly.has(entry.speciesId)) continue;
     const cos = cosine(centeredCrop, centerAndNormalize(entry.vector, table.mean));
-    scored.push({ speciesId: entry.speciesId, confidence: cosineToConfidence(cos) });
+    scored.push({
+      speciesId: entry.speciesId,
+      baseSpeciesId: entry.baseSpeciesId ?? entry.speciesId,
+      confidence: cosineToConfidence(cos),
+    });
   }
 
   // Highest confidence first; deterministic tie-break on speciesId.
   scored.sort((a, b) => b.confidence - a.confidence || a.speciesId.localeCompare(b.speciesId));
-  return scored.slice(0, topN);
+
+  // Dedupe to the best evidence per species. The base sprite table lists each
+  // species once, but a label-augmented table can carry several real-crop
+  // exemplars per species — a species must still surface as ONE candidate
+  // (max-cosine 1-NN, the standard few-shot read), not fill the top-N with itself.
+  const perSpecies = dedupeBy(scored, (s) => s.speciesId);
+
+  if (!opts.collapseFormes) {
+    return perSpecies.slice(0, topN).map(({ speciesId, confidence }) => ({ speciesId, confidence }));
+  }
+
+  // Then collapse forme-families to one base candidate, surfacing the BASE id (the
+  // specific appliance/cosmetic forme can't be told apart from the image, so the
+  // user refines it via the override dropdown).
+  return dedupeBy(perSpecies, (s) => s.baseSpeciesId)
+    .slice(0, topN)
+    .map((s) => ({ speciesId: s.baseSpeciesId, confidence: s.confidence }));
 }
 
 /**

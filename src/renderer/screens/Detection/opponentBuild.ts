@@ -3,8 +3,8 @@
  * top moves for a detected opponent from Smogon usage data (WS-B), so the
  * dashboard can run damage calc and speed comparisons without a confirmed set.
  */
-import type { SpeciesUsage, UsageData, UsageEntry } from '../../../shared/types';
-import type { SpeciesCombatant } from '../../../lib/calc/damageCalc';
+import type { PokemonSet, SpeciesUsage, UsageData, UsageEntry } from '../../../shared/types';
+import type { Combatant, SpeciesCombatant } from '../../../lib/calc/damageCalc';
 import type { SpeedTierInput } from '../../../lib/calc/speedTiers';
 import { gen } from '../../../lib/calc/gen';
 import { megaFormesOf } from '../../../lib/calc/megaForme';
@@ -149,6 +149,55 @@ export function defaultVariant(variants: UsageVariant[]): UsageVariant | undefin
 /** The top-`n` most-used moves for a species (highest usage first). */
 export function topMoves(usage: SpeciesUsage | undefined, n = 4): string[] {
   return (usage?.moves ?? []).slice(0, n).map((entry) => entry.name);
+}
+
+/**
+ * The opponent combatant to calc with. When an exact `set` is known (PokePaste
+ * source) it drives the calc directly — real item/ability/Tera/EVs — otherwise we
+ * fall back to the usage-derived {@link buildOpponentCombatant}.
+ */
+export function opponentCombatant(
+  speciesId: string,
+  usage: SpeciesUsage | undefined,
+  set?: PokemonSet,
+): Combatant {
+  if (set) return { kind: 'set', set };
+  return buildOpponentCombatant(speciesId, usage);
+}
+
+/**
+ * The opponent's moves for offense calc: the exact set's moves when known,
+ * otherwise the top-`n` usage moves ({@link topMoves}).
+ */
+export function opponentMoves(
+  usage: SpeciesUsage | undefined,
+  set?: PokemonSet,
+  n = 4,
+): string[] {
+  const setMoves = set?.moves?.filter((m): m is string => !!m) ?? [];
+  if (setMoves.length) return setMoves.slice(0, n);
+  return topMoves(usage, n);
+}
+
+/**
+ * The opponent's Speed line as a {@link SpeedTierInput}: computed from the exact
+ * set's spread/nature/level when known, otherwise the usage-likely line
+ * ({@link likelySpeedInput}). `speciesId` is the forme to read base Speed from.
+ */
+export function opponentSpeedInput(
+  speciesId: string,
+  usage: SpeciesUsage | undefined,
+  label: string,
+  set?: PokemonSet,
+): SpeedTierInput {
+  if (!set) return likelySpeedInput(speciesId, usage, label);
+  const species = gen.species.get(set.species ?? speciesId);
+  if (!species?.exists) return { label, stat: 0 };
+  const nature = gen.natures.get(set.nature ?? 'Serious') ?? undefined;
+  const ev = set.evs?.spe ?? 0;
+  const iv = set.ivs?.spe ?? 31;
+  const stat = gen.stats.calc('spe', species.baseStats.spe, iv, ev, set.level ?? LEVEL, nature);
+  return { label, stat };
 }
 
 /** Raw Speed stat for a `SpeciesCombatant` built by {@link buildOpponentCombatant}. */

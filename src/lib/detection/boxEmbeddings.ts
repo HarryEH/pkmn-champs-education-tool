@@ -28,6 +28,15 @@ export interface BoxEmbeddingEntry {
   speciesId: string;
   /** Human-readable name (debugging/UX), e.g. "Ogerpon-Wellspring". */
   name: string;
+  /**
+   * Base-species id (e.g. "rotom" for every rotom appliance forme). Used by the
+   * matcher's forme-family collapse: appliance/cosmetic formes are visually
+   * near-identical at team-preview render scale, so their probability mass is
+   * pooled under one base candidate rather than diluted across siblings. Optional
+   * for back-compat with tables built before this field; the matcher falls back to
+   * `speciesId` when absent.
+   */
+  baseSpeciesId?: string;
   /** Raw 512-d CLIP embedding (un-centered). Center via {@link centerAndNormalize}. */
   vector: number[];
 }

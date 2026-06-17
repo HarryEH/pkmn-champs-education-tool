@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavStore, type Screen } from './store/nav';
 import { useTeamsStore } from './store/teams';
 import { useSettingsStore } from './store/settings';
+import { useLabelsStore } from './store/labels';
 import { TeamSetupScreen } from './screens/TeamSetup';
 import { DetectionScreen } from './screens/Detection';
 import { InBattleScreen } from './screens/InBattle';
@@ -36,12 +37,14 @@ export function App() {
   const go = useNavStore((s) => s.go);
   const hydrateTeams = useTeamsStore((s) => s.hydrate);
   const hydrateSettings = useSettingsStore((s) => s.hydrate);
+  const hydrateLabels = useLabelsStore((s) => s.hydrate);
 
   // Persisted stores hydrate from IPC on boot (plan §2).
   useEffect(() => {
     void hydrateTeams();
     void hydrateSettings();
-  }, [hydrateTeams, hydrateSettings]);
+    void hydrateLabels();
+  }, [hydrateTeams, hydrateSettings, hydrateLabels]);
 
   return (
     <div style={{ display: 'flex', height: '100%' }}>

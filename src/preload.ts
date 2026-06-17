@@ -5,7 +5,7 @@
  */
 import { contextBridge, ipcRenderer } from 'electron';
 import { IPC, type Api } from './shared/ipc';
-import type { MyTeam, Settings, UsageData } from './shared/types';
+import type { DetectionLabel, MyTeam, Settings, UsageData } from './shared/types';
 
 const api: Api = {
   teams: {
@@ -26,6 +26,11 @@ const api: Api = {
   },
   media: {
     requestCamera: () => ipcRenderer.invoke(IPC.mediaRequestCamera),
+  },
+  labels: {
+    load: () => ipcRenderer.invoke(IPC.labelsLoad),
+    append: (label: DetectionLabel) => ipcRenderer.invoke(IPC.labelsAppend, label),
+    clear: () => ipcRenderer.invoke(IPC.labelsClear),
   },
 };
 

@@ -105,3 +105,65 @@ describe('matchEmbedding', () => {
     }
   });
 });
+
+describe('matchEmbedding forme-family collapse', () => {
+  /** Two near-identical "rotom" formes plus a distinct species sharing the space. */
+  function formeTable(): BoxEmbeddingTable {
+    const entries = [
+      { speciesId: 'rotomwash', name: 'Rotom-Wash', baseSpeciesId: 'rotom', vector: [1, 0, 0.02] },
+      { speciesId: 'rotomfan', name: 'Rotom-Fan', baseSpeciesId: 'rotom', vector: [1, 0, -0.02] },
+      { speciesId: 'garchomp', name: 'Garchomp', baseSpeciesId: 'garchomp', vector: [0, 1, 0] },
+    ];
+    const dim = 3;
+    const mean = [0, 1, 2].map(
+      (i) => entries.reduce((a, e) => a + e.vector[i], 0) / entries.length,
+    );
+    return {
+      model: EMBED_MODEL,
+      preprocVersion: PREPROC_VERSION,
+      dim,
+      mean,
+      generatedAt: '',
+      entries,
+    };
+  }
+
+  it('pools formes under their base id, emitting one base candidate', () => {
+    const out = matchEmbedding([1, 0, 0], formeTable(), { topN: 3, collapseFormes: true });
+    // Both rotom formes collapse to a single "rotom" candidate; garchomp stays.
+    expect(out.map((c) => c.speciesId)).toEqual(['rotom', 'garchomp']);
+    expect(out).toHaveLength(2);
+  });
+
+  it('keeps formes separate without the flag', () => {
+    const out = matchEmbedding([1, 0, 0], formeTable(), { topN: 3 });
+    expect(out.map((c) => c.speciesId).sort()).toEqual(['garchomp', 'rotomfan', 'rotomwash']);
+  });
+
+  it('falls back to speciesId when baseSpeciesId is absent', () => {
+    // tinyTable() entries have no baseSpeciesId — collapse must not drop them.
+    const out = matchEmbedding([1, 0, 0], tinyTable(), { topN: 3, collapseFormes: true });
+    expect(out.map((c) => c.speciesId).sort()).toEqual(['garchomp', 'incineroar', 'tyranitar']);
+  });
+
+  it('dedupes multiple exemplars of one species to a single best candidate', () => {
+    // Two "incineroar" reference vectors (e.g. a sprite + a real-crop exemplar).
+    const table: BoxEmbeddingTable = {
+      model: EMBED_MODEL,
+      preprocVersion: PREPROC_VERSION,
+      dim: 3,
+      mean: [0, 0, 0],
+      generatedAt: '',
+      entries: [
+        { speciesId: 'incineroar', name: 'Incineroar', vector: [1, 0, 0] },
+        { speciesId: 'incineroar', name: 'Incineroar', vector: [0.9, 0.1, 0] },
+        { speciesId: 'garchomp', name: 'Garchomp', vector: [0, 1, 0] },
+      ],
+    };
+    const out = matchEmbedding([1, 0, 0], table, { topN: 3 });
+    // Incineroar appears once (best vector), not twice.
+    expect(out.filter((c) => c.speciesId === 'incineroar')).toHaveLength(1);
+    expect(out[0].speciesId).toBe('incineroar');
+    expect(out.map((c) => c.speciesId)).toEqual(['incineroar', 'garchomp']);
+  });
+});

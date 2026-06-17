@@ -12,7 +12,13 @@
  * their speed degrade to "—", while YOUR offense + speed-from-your-own-set still
  * compute. The cell never throws on a missing opponent species or empty usage.
  */
-import type { MyPokemon, FieldState, SpeciesUsage, UsageData } from '../../../shared/types';
+import type {
+  MyPokemon,
+  FieldState,
+  PokemonSet,
+  SpeciesUsage,
+  UsageData,
+} from '../../../shared/types';
 import type { Combatant, DamageResult } from '../../../lib/calc/damageCalc';
 import { gen } from '../../../lib/calc/gen';
 import { calcSpeed } from '../../../lib/calc/speedTiers';
@@ -23,9 +29,9 @@ import {
   type KoSummary,
 } from '../../../lib/calc/threats';
 import {
-  buildOpponentCombatant,
   defaultVariant,
-  likelySpeedInput,
+  opponentCombatant,
+  opponentSpeedInput,
   usageVariants,
 } from './opponentBuild';
 
@@ -167,8 +173,14 @@ export function buildMatrixCell(
   theirBaseId: string | null | undefined,
   usage: UsageData | null,
   field?: FieldState,
+  /**
+   * Exact opponent set (PokePaste source). When present it overrides the
+   * usage-derived forme/spread/moves — real item/ability/Tera/EVs/moves drive the
+   * calc, and the opponent's offense/speed never degrade to "—".
+   */
+  set?: PokemonSet,
 ): MatrixCell {
-  const rep = representativeOpponent(theirBaseId, usage);
+  const rep = set ? repFromSet(set, theirBaseId) : representativeOpponent(theirBaseId, usage);
 
   // Unidentified opponent slot: your offense/speed are undefined too (no target).
   if (!rep) {
@@ -184,11 +196,11 @@ export function buildMatrixCell(
   }
 
   const myCombatant: Combatant = { kind: 'set', set: myMon.set };
-  const theirCombatant = buildOpponentCombatant(rep.speciesId, rep.usage);
+  const theirCombatant = opponentCombatant(rep.speciesId, rep.usage, set);
 
-  // Speed: your exact set vs their most-likely line.
+  // Speed: your exact set vs their exact set (paste) or most-likely line (usage).
   const mine = mySpeed(myMon);
-  const theirsInput = likelySpeedInput(rep.speciesId, rep.usage, rep.label);
+  const theirsInput = opponentSpeedInput(rep.speciesId, rep.usage, rep.label, set);
   const theirs = theirsInput.stat ?? 0;
   const speedDelta = mine - theirs;
   const speed: SpeedDirection = speedDelta > 0 ? 'up' : speedDelta < 0 ? 'down' : 'tie';
@@ -196,8 +208,8 @@ export function buildMatrixCell(
   // Your offense (always computes from your own set).
   const myOffense = offenseOf(myCombatant, theirCombatant, damagingMovesOf(myMon), field);
 
-  // Their offense — only when we have a plausible (usage-derived) movepool.
-  const theirMoves = likelyMovesOf(rep.usage);
+  // Their offense — exact set's damaging moves, else their plausible usage movepool.
+  const theirMoves = set ? damagingSetMoves(set) : likelyMovesOf(rep.usage);
   const theirOffense =
     theirMoves.length > 0
       ? offenseOf(theirCombatant, myCombatant, theirMoves, field)
@@ -212,8 +224,27 @@ export function buildMatrixCell(
     theirOffense,
     verdict,
     theirLabel: rep.label,
-    theirUsageMissing: !rep.usage,
+    // A paste gives us the exact set, so the opponent is never "usage missing".
+    theirUsageMissing: set ? false : !rep.usage,
   };
+}
+
+/** Representative built from an exact set: its own species/forme, no usage needed. */
+function repFromSet(set: PokemonSet, fallbackId: string | null | undefined): OpponentRepresentative {
+  const sp = gen.species.get(set.species ?? fallbackId ?? '');
+  return {
+    speciesId: sp?.exists ? sp.id : (fallbackId ?? ''),
+    label: sp?.exists ? sp.name : (fallbackId ?? '—'),
+    usage: undefined,
+  };
+}
+
+/** A set's damaging (non-Status) moves, in set order. */
+function damagingSetMoves(set: PokemonSet): string[] {
+  return (set.moves ?? []).filter((m) => {
+    const move = gen.moves.get(m ?? '');
+    return move?.exists && move.category !== 'Status';
+  });
 }
 
 export { LEVEL };

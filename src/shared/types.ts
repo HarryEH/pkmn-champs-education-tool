@@ -91,6 +91,33 @@ export interface Settings {
   themeMode?: 'light' | 'battle';
 }
 
+/**
+ * One label-as-you-go training exemplar: a confirmed (crop → species) pair
+ * captured when the user picks/corrects a detected slot. Accumulated to (a) close
+ * the synthetic-sprite domain gap via real-crop exemplar references, and (b) tune
+ * the auto-accept thresholds + grow the regression set. Persisted on disk
+ * (`detection-labels.json`); the crop image is kept so exemplars survive a model/
+ * preprocessing change (re-embeddable), unlike the embedding alone.
+ */
+export interface DetectionLabel {
+  id: string;
+  /** Confirmed species id (the label). */
+  speciesId: string;
+  /** Raw CLIP crop embedding (same space as boxEmbeddings; parity via model/preproc). */
+  embedding: number[];
+  /** Embedding model id at capture time (parity guard for augmentation). */
+  model: string;
+  /** Preprocessing version at capture time (parity guard). */
+  preprocVersion: number;
+  /** PNG data URL of the segmented crop — future-proofs re-embedding. */
+  cropPng: string;
+  /** Regulation/format the capture came from. */
+  regulation: string;
+  createdAt: number;
+  /** Whether detection's unaided top-1 already matched (analytics on accuracy). */
+  wasAutoTop1: boolean;
+}
+
 /** A rectangle in normalized 0–1 coordinates (scales to any resolution). */
 export interface NormalizedRect {
   x: number;

@@ -6,7 +6,7 @@
  * wrappers exposed as window.api. No raw ipcRenderer.invoke('string') anywhere
  * else in the codebase.
  */
-import type { MyTeam, Settings, UsageData } from './types';
+import type { DetectionLabel, MyTeam, Settings, UsageData } from './types';
 
 export const IPC = {
   teamsLoad: 'teams:load',
@@ -19,6 +19,9 @@ export const IPC = {
   usageClear: 'usage:clear',
   usageFetch: 'usage:fetch',
   mediaRequestCamera: 'media:requestCamera',
+  labelsLoad: 'labels:load',
+  labelsAppend: 'labels:append',
+  labelsClear: 'labels:clear',
 } as const;
 
 export type IpcChannel = (typeof IPC)[keyof typeof IPC];
@@ -54,6 +57,14 @@ export interface Api {
   media: {
     /** macOS camera permission prompt; resolves true if granted. */
     requestCamera(): Promise<boolean>;
+  };
+  labels: {
+    /** All persisted label-as-you-go detection exemplars. */
+    load(): Promise<DetectionLabel[]>;
+    /** Append one captured exemplar (read-modify-write). */
+    append(label: DetectionLabel): Promise<void>;
+    /** Delete every captured exemplar. */
+    clear(): Promise<void>;
   };
 }
 

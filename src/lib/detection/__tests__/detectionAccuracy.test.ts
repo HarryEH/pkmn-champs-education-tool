@@ -8,10 +8,19 @@
  * (segment off the red panel -> composite-on-white -> CLIP) — fed through the real
  * matchEmbedding + legal-only filter against the shipped box-embedding table.
  *
- * Bar: >= 5/6 top-1 (R7 target). The 6th slot (Rotom-Wash) is an inherent
- * near-tie with its sibling appliance formes on a tiny render, and is left to the
- * manual-override dropdown — so we assert 5/6, not 6/6. Regenerate the fixture and
- * re-check this bar whenever the table or preprocessing changes.
+ * Bar: >= 5/6 top-1 (R7 target). The Rotom-Wash slot is an inherent near-tie with
+ * its sibling appliance formes on a tiny render (CLIP can't separate the appliances
+ * at that scale), so it misses the species-exact top-1 and is left to the
+ * manual-override dropdown — we assert 5/6, not 6/6, on the raw ranking.
+ *
+ * The forme-family collapse (collapseFormes) recovers it for the user-facing
+ * candidate list: pooling the six rotom formes under one "rotom" base candidate
+ * lifts that base into the surfaced top-3 (it was rank ~7 when diluted across
+ * siblings), so the chip row offers "Rotom" and the user picks the appliance. The
+ * second assertion locks in that base-species top-3 recall at 6/6.
+ *
+ * Regenerate the fixture and re-check these bars whenever the table or
+ * preprocessing changes.
  */
 import { describe, it, expect } from 'vitest';
 import boxEmbeddings from '../../../data/boxEmbeddings.json';
@@ -27,6 +36,8 @@ const legalOnly = new Set(
     .filter((e) => e.legal)
     .map((e) => e.speciesId),
 );
+/** speciesId -> base species id, for scoring the forme-collapsed candidate list. */
+const baseOf = new Map(table.entries.map((e) => [e.speciesId, e.baseSpeciesId ?? e.speciesId]));
 
 describe('detection accuracy on a real Switch frame', () => {
   it('matches >= 5/6 opponents top-1 (CLIP box embeddings, legal-only)', () => {
@@ -54,5 +65,27 @@ describe('detection accuracy on a real Switch frame', () => {
     console.log(`\n[CLIP box embeddings] top1 ${top1}/6, top3 ${top3}/6\n${lines.join('\n')}\n`);
 
     expect(top1).toBeGreaterThanOrEqual(5);
+  });
+
+  it('surfaces every base species in the forme-collapsed top-3 (6/6)', () => {
+    const embeddings = jasonCropEmbeddings.embeddings as number[][];
+
+    let baseTop3 = 0;
+    const lines: string[] = [];
+    embeddings.forEach((emb, i) => {
+      const ranked = matchEmbedding(emb, table, { legalOnly, topN: 3, collapseFormes: true });
+      const truthBase = baseOf.get(JASON_GROUND_TRUTH[i]) ?? JASON_GROUND_TRUTH[i];
+      const rank = ranked.findIndex((c) => c.speciesId === truthBase);
+      if (rank >= 0 && rank < 3) baseTop3++;
+      lines.push(
+        `  ${rank >= 0 ? '✓' : '✗'} slot ${i + 1}: base=${truthBase} -> ` +
+          `[${ranked.map((r) => `${r.speciesId}:${r.confidence.toFixed(3)}`).join(', ')}]`,
+      );
+    });
+    // eslint-disable-next-line no-console
+    console.log(`\n[forme-collapsed] base top3 ${baseTop3}/6\n${lines.join('\n')}\n`);
+
+    // The Rotom slot's recovery is the point of the collapse — assert full 6/6.
+    expect(baseTop3).toBe(6);
   });
 });

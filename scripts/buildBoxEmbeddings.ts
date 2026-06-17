@@ -183,7 +183,10 @@ async function main(): Promise<void> {
       console.warn(skips[skips.length - 1]);
       continue;
     }
-    entries.push({ speciesId: e.speciesId, name: e.name, vector });
+    // Pool appliance/cosmetic formes under their base species for the matcher's
+    // forme-family collapse (e.g. every rotom* -> "rotom").
+    const baseSpeciesId = Dex.species.get(Dex.species.get(e.speciesId).baseSpecies).id;
+    entries.push({ speciesId: e.speciesId, name: e.name, baseSpeciesId, vector });
   }
   flushCache();
 

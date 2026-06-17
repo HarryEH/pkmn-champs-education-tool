@@ -14,15 +14,16 @@ import type {
   MyPokemon,
   MyTeam,
   OpponentTeam,
+  PokemonSet,
   SpeciesUsage,
   UsageData,
   UsageEntry,
 } from '../../../shared/types';
 import {
-  buildOpponentCombatant,
   defaultVariant,
-  opponentSpeedStat,
-  topMoves,
+  opponentCombatant,
+  opponentMoves,
+  opponentSpeedInput,
   usageVariants,
 } from './opponentBuild';
 
@@ -31,6 +32,8 @@ export interface OpponentDashboardProps {
   myTeam: MyTeam;
   /** Format usage, fetched once by the parent screen (shared with matrix/rail). */
   usage: UsageData | null;
+  /** Exact opponent sets by species id (PokePaste source); drives exact calc. */
+  opponentSets?: Record<string, PokemonSet>;
   /** Slot index to open initially (e.g. the clicked matrix column). */
   initialSlotIndex?: number;
 }
@@ -137,29 +140,34 @@ function CommonSets({ usage }: { usage: SpeciesUsage | undefined }) {
 interface SlotAnalysisProps {
   speciesId: string;
   usage: SpeciesUsage | undefined;
+  /** Exact set (PokePaste source); when present, calc uses it over usage. */
+  set?: PokemonSet;
   myTeam: MyTeam;
   myMons: TypeMatchupMon[];
   trickRoom: boolean;
 }
 
 /** Full per-opponent analysis: common sets, type matchups, speed, damage. */
-function OpponentSlotAnalysis({ speciesId, usage, myTeam, myMons, trickRoom }: SlotAnalysisProps) {
+function OpponentSlotAnalysis({ speciesId, usage, set, myTeam, myMons, trickRoom }: SlotAnalysisProps) {
   const opponentLabel = speciesName(speciesId);
   const opponentTypes = useMemo(() => {
     const species = gen.species.get(speciesId);
     return species?.exists ? [...species.types] : [];
   }, [speciesId]);
 
-  const combatant = useMemo(() => buildOpponentCombatant(speciesId, usage), [speciesId, usage]);
-  const opponentMoves = useMemo(() => topMoves(usage, 4), [usage]);
+  const combatant = useMemo(
+    () => opponentCombatant(speciesId, usage, set),
+    [speciesId, usage, set],
+  );
+  const oppMoves = useMemo(() => opponentMoves(usage, set, 4), [usage, set]);
 
   const mySpeedEntries: SpeedTierInput[] = useMemo(
     () => myTeam.pokemon.map((mon) => ({ label: myDisplayName(mon), set: mon.set })),
     [myTeam],
   );
   const opponentSpeedEntries: SpeedTierInput[] = useMemo(
-    () => [{ label: opponentLabel, stat: opponentSpeedStat(combatant) }],
-    [combatant, opponentLabel],
+    () => [opponentSpeedInput(speciesId, usage, opponentLabel, set)],
+    [speciesId, usage, opponentLabel, set],
   );
 
   const yourMovesRows: DamageRowSpec[] = useMemo(
@@ -179,8 +187,8 @@ function OpponentSlotAnalysis({ speciesId, usage, myTeam, myMons, trickRoom }: S
   );
 
   const opponentMovesRows: DamageRowSpec[] = useMemo(
-    () => opponentMoves.map((move) => ({ label: move, attacker: combatant, move })),
-    [opponentMoves, combatant],
+    () => oppMoves.map((move) => ({ label: move, attacker: combatant, move })),
+    [oppMoves, combatant],
   );
   const opponentMovesCols: DamageColSpec[] = useMemo(
     () =>
@@ -234,6 +242,7 @@ export function OpponentDashboard({
   opponent,
   myTeam,
   usage,
+  opponentSets,
   initialSlotIndex = 0,
 }: OpponentDashboardProps) {
   const [activeId, setActiveId] = useState(String(initialSlotIndex));
@@ -255,6 +264,10 @@ export function OpponentDashboard({
   const activeSlot = opponent.slots[Number(activeId)];
   const activeBaseId = activeSlot?.speciesId ?? '';
 
+  // Exact set for the active slot (PokePaste source): when present it pins the
+  // forme/spread, so we skip the usage-variant picker and calc against the set.
+  const activeSet = activeBaseId ? opponentSets?.[activeBaseId] : undefined;
+
   // Base + Mega forme views for the active opponent; pick the dominant-by-usage
   // one unless the user has overridden it via the forme selector.
   const variants = useMemo(
@@ -264,6 +277,12 @@ export function OpponentDashboard({
   const fallbackVariant = useMemo(() => defaultVariant(variants), [variants]);
   const chosen =
     variants.find((v) => v.speciesId === formeChoice[activeBaseId]) ?? fallbackVariant;
+
+  // The forme actually analysed: the exact set's species when pasted, else the
+  // chosen usage variant.
+  const analysisSpeciesId = activeSet
+    ? (gen.species.get(activeSet.species ?? activeBaseId)?.id ?? activeBaseId)
+    : chosen?.speciesId;
 
   const myMons: TypeMatchupMon[] = useMemo(
     () =>
@@ -282,9 +301,9 @@ export function OpponentDashboard({
     >
       <Tabs items={tabs} activeId={activeId} onChange={setActiveId} />
       <div style={{ marginTop: 'var(--space-4)' }}>
-        {activeSlot?.speciesId && chosen ? (
+        {activeSlot?.speciesId && analysisSpeciesId ? (
           <>
-            {variants.length > 1 && (
+            {!activeSet && variants.length > 1 && (
               <div
                 style={{
                   display: 'flex',
@@ -297,7 +316,7 @@ export function OpponentDashboard({
                   Forme / sets
                 </span>
                 <Select
-                  value={chosen.speciesId}
+                  value={chosen?.speciesId ?? ''}
                   onChange={(value) =>
                     setFormeChoice((prev) => ({ ...prev, [activeBaseId]: value }))
                   }
@@ -311,8 +330,9 @@ export function OpponentDashboard({
               </div>
             )}
             <OpponentSlotAnalysis
-              speciesId={chosen.speciesId}
-              usage={chosen.usage}
+              speciesId={analysisSpeciesId}
+              usage={activeSet ? undefined : chosen?.usage}
+              set={activeSet}
               myTeam={myTeam}
               myMons={myMons}
               trickRoom={trickRoom}

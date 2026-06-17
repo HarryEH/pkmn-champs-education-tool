@@ -65,14 +65,26 @@ export async function detectOpponentTeam(
   for (const crop of crops) {
     const prepared = options.skipSegmentation ? crop : segmentToWhite(crop);
     const embedding = await embed(prepared);
+    // Auto-accept reasons over the RAW (specific-forme) ranking — a confident
+    // single forme is a real commit, and pooling formes first would inflate the
+    // top-1/top-2 margin into wrong-forme auto-accepts.
+    const raw: MatchCandidate[] = matchEmbedding(embedding, table, {
+      legalOnly: options.legalOnly,
+      topN,
+    });
+    // The user-facing candidate list collapses forme-families to one base-species
+    // chip (e.g. the six rotom appliances -> a single "Rotom"), so near-identical
+    // formes don't crowd out distinct species or suggest a misleadingly specific
+    // appliance the model can't actually distinguish.
     const candidates: MatchCandidate[] = matchEmbedding(embedding, table, {
       legalOnly: options.legalOnly,
       topN,
+      collapseFormes: true,
     });
     slots.push({
       // Auto-confirm only when the best match is confident and clearly ahead;
       // otherwise leave null so the UI prompts the user to pick from `candidates`.
-      speciesId: isAutoAcceptable(candidates, threshold) ? candidates[0].speciesId : null,
+      speciesId: isAutoAcceptable(raw, threshold) ? raw[0].speciesId : null,
       candidates,
     });
   }

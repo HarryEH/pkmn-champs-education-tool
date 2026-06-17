@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { SpeciesUsage, UsageData } from '../../../../shared/types';
+import type { PokemonSet, SpeciesUsage, UsageData } from '../../../../shared/types';
 import { FIXTURE_MY_TEAM } from '../../../../shared/fixtures';
 import { buildMatrixCell, likelyMovesOf } from '../matrixBuild';
 
@@ -91,5 +91,26 @@ describe('buildMatrixCell', () => {
     expect(cell.theirOffense.move).toBeNull();
     expect(cell.verdict).toBe('even');
     expect(cell.theirLabel).toBe('—');
+  });
+
+  it('uses an exact set (paste) for opponent offense/speed even with no usage', () => {
+    const set = {
+      species: 'Incineroar',
+      item: 'Choice Band',
+      ability: 'Intimidate',
+      level: 50,
+      nature: 'Jolly',
+      evs: { hp: 0, atk: 252, def: 0, spa: 0, spd: 4, spe: 252 },
+      moves: ['Flare Blitz', 'Knock Off', 'Protect'],
+    } as PokemonSet;
+    // No usage at all, but the exact set is known (PokePaste source).
+    const cell = buildMatrixCell(myMon, 'incineroar', null, undefined, set);
+
+    // A paste means the opponent is never "usage missing"; their offense computes
+    // from the set's damaging moves (Protect is Status → ignored).
+    expect(cell.theirUsageMissing).toBe(false);
+    expect(['Flare Blitz', 'Knock Off']).toContain(cell.theirOffense.move);
+    expect(typeof cell.speedDelta).toBe('number');
+    expect(cell.theirLabel).toBe('Incineroar');
   });
 });

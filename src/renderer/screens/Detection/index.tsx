@@ -1,10 +1,17 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Button, Card } from '../../ui';
+import { Button, Card, Tabs } from '../../ui';
 import { useSessionStore } from '../../store/session';
 import { useSettingsStore } from '../../store/settings';
 import { useTeamsStore } from '../../store/teams';
+import { useLabelsStore } from '../../store/labels';
 import { FIXTURE_MY_TEAM, FIXTURE_OPPONENT_TEAM } from '../../../shared/fixtures';
-import { CURRENT_FORMAT, type NormalizedRect, type UsageData } from '../../../shared/types';
+import {
+  CURRENT_FORMAT,
+  type NormalizedRect,
+  type OpponentTeam,
+  type PokemonSet,
+  type UsageData,
+} from '../../../shared/types';
 import { loadImageFromFile } from '../../../lib/detection/imageSource';
 import { cropRegions } from '../../../lib/detection/cropRegions';
 import { detectOpponentTeam } from '../../../lib/detection/detectionPipeline';
@@ -18,8 +25,12 @@ import { fetchUsage } from '../../../lib/smogon/usageData';
 import { MatchupMatrix, type MatrixViewMode } from '../../components/MatchupMatrix';
 import { ThreatSummary } from '../../components/ThreatSummary';
 import { CalibrationOverlay } from './CalibrationOverlay';
+import { PasteInput } from './PasteInput';
+import { VideoCapture } from './VideoCapture';
 import { SlotList } from './SlotList';
 import { OpponentDashboard } from './OpponentDashboard';
+import { augmentTableWithLabels } from './exemplars';
+import { captureLabel } from './labelCapture';
 import { BOX_EMBEDDING_TABLE, DEFAULT_CALIBRATION_RECTS, LEGAL_SPECIES_IDS } from './constants';
 
 /**
@@ -32,8 +43,16 @@ import { BOX_EMBEDDING_TABLE, DEFAULT_CALIBRATION_RECTS, LEGAL_SPECIES_IDS } fro
  */
 export function DetectionScreen() {
   const opponent = useSessionStore((s) => s.opponent);
+  const opponentSets = useSessionStore((s) => s.opponentSets);
   const setOpponent = useSessionStore((s) => s.setOpponent);
   const overrideSlot = useSessionStore((s) => s.overrideSlot);
+
+  // Label-as-you-go: confirmed crops become few-shot exemplars folded back into
+  // the reference table, so detection improves on the species you actually face.
+  const labels = useLabelsStore((s) => s.labels);
+  const addLabel = useLabelsStore((s) => s.addLabel);
+  const clearLabels = useLabelsStore((s) => s.clear);
+  const table = useMemo(() => augmentTableWithLabels(BOX_EMBEDDING_TABLE, labels), [labels]);
 
   const calibrationRegions = useSettingsStore((s) => s.settings.calibrationRegions);
   const settingsHydrated = useSettingsStore((s) => s.hydrated);
@@ -67,6 +86,11 @@ export function DetectionScreen() {
 
   // Capture/calibration card collapses once the matrix takes over.
   const [captureOpen, setCaptureOpen] = useState(true);
+
+  // Which input source the card shows: dropped screenshot, pasted team, or live
+  // capture. Screenshot + video converge on the CLIP detect path; paste builds
+  // the opponent directly.
+  const [inputSource, setInputSource] = useState<'screenshot' | 'paste' | 'video'>('screenshot');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -161,7 +185,7 @@ export function DetectionScreen() {
     setDetecting(true);
     setError(null);
     try {
-      const result = await detectOpponentTeam(frame, rects, BOX_EMBEDDING_TABLE, {
+      const result = await detectOpponentTeam(frame, rects, table, {
         legalOnly: LEGAL_SPECIES_IDS,
       });
       setCrops(cropRegions(frame, rects));
@@ -176,6 +200,35 @@ export function DetectionScreen() {
   const handleLoadSample = () => {
     setCrops(undefined);
     setOpponent(FIXTURE_OPPONENT_TEAM);
+  };
+
+  // A grabbed video still feeds the exact same calibrate→Detect flow as a dropped
+  // screenshot: stash the frame + a snapshot URL for the calibration overlay.
+  const handleGrab = (grabbed: RgbaImage, snapshotUrl: string) => {
+    setError(null);
+    setCrops(undefined);
+    setFrame(grabbed);
+    setImageUrl(snapshotUrl);
+  };
+
+  // A pasted team is already fully confirmed (with exact sets) — no CLIP needed.
+  const handlePasteBuild = (team: OpponentTeam, sets: Record<string, PokemonSet>) => {
+    setError(null);
+    setCrops(undefined);
+    setOpponent(team, sets);
+  };
+
+  // Confirming/correcting a slot is the label: when a real crop exists for it,
+  // capture (crop → species) as a training exemplar (fire-and-forget; embedding is
+  // async). Paste/sample slots have no crop, so nothing is captured there.
+  const handleOverride = (index: number, speciesId: string) => {
+    overrideSlot(index, speciesId);
+    const crop = crops?.[index];
+    if (!crop || !speciesId) return;
+    const wasAutoTop1 = opponent?.slots[index]?.candidates[0]?.speciesId === speciesId;
+    captureLabel(crop, speciesId, wasAutoTop1)
+      .then(addLabel)
+      .catch(() => undefined);
   };
 
   return (
@@ -206,99 +259,138 @@ export function DetectionScreen() {
             {opponent.slots.filter((s) => s.speciesId).length} of 6 identified
           </span>
         )}
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 'var(--space-2)' }}>
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: 'var(--space-2)', alignItems: 'center' }}>
+          {labels.length > 0 && (
+            <span style={{ fontSize: 'var(--font-xs)', color: 'var(--text-mut)' }}>
+              {labels.length} training {labels.length === 1 ? 'example' : 'examples'} ·{' '}
+              <button
+                type="button"
+                onClick={() => void clearLabels()}
+                style={{
+                  font: 'inherit',
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  color: 'var(--poke-red)',
+                  cursor: 'pointer',
+                  textDecoration: 'underline',
+                }}
+              >
+                Clear
+              </button>
+            </span>
+          )}
           <Button variant="ghost" size="sm" onClick={refreshUsage} disabled={usageLoading}>
             {usageLoading ? 'Refreshing usage…' : 'Refresh usage'}
           </Button>
           <Button variant="ghost" size="sm" onClick={() => setCaptureOpen((o) => !o)}>
-            {captureOpen ? 'Hide screenshot' : 'Screenshot ▾'}
+            {captureOpen ? 'Hide input' : 'Add opponent ▾'}
           </Button>
         </div>
       </header>
 
       {captureOpen && (
         <Card
-          title="Team preview screenshot"
+          title="Add opponent"
           actions={
             <Button variant="ghost" size="sm" onClick={handleLoadSample}>
               Load sample opponent
             </Button>
           }
         >
-          <div
-          onDrop={handleDrop}
-          onDragOver={(e) => e.preventDefault()}
-          onClick={() => fileInputRef.current?.click()}
-          style={{
-            border: '2px dashed var(--border)',
-            borderRadius: 'var(--radius)',
-            padding: 'var(--space-5)',
-            textAlign: 'center',
-            cursor: 'pointer',
-            color: 'var(--text-mut)',
-            fontSize: 13,
-            marginBottom: imageUrl ? 'var(--space-4)' : 0,
-          }}
-        >
-          {imageUrl
-            ? 'Drop a new screenshot to replace it, or click to browse'
-            : 'Drop a team-preview screenshot here, or click to browse'}
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            style={{ display: 'none' }}
+          <Tabs
+            items={[
+              { id: 'screenshot', label: 'Screenshot' },
+              { id: 'paste', label: 'PokePaste' },
+              { id: 'video', label: 'Video' },
+            ]}
+            activeId={inputSource}
+            onChange={(id) => setInputSource(id as typeof inputSource)}
           />
-        </div>
 
-        {error && (
-          <p style={{ color: 'var(--poke-red)', fontSize: 13, marginTop: 'var(--space-2)' }}>
-            {error}
-          </p>
-        )}
+          <div style={{ marginTop: 'var(--space-4)' }}>
+            {inputSource === 'screenshot' && (
+              <div
+                onDrop={handleDrop}
+                onDragOver={(e) => e.preventDefault()}
+                onClick={() => fileInputRef.current?.click()}
+                style={{
+                  border: '2px dashed var(--border)',
+                  borderRadius: 'var(--radius)',
+                  padding: 'var(--space-5)',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  color: 'var(--text-mut)',
+                  fontSize: 13,
+                  marginBottom: imageUrl ? 'var(--space-4)' : 0,
+                }}
+              >
+                {imageUrl
+                  ? 'Drop a new screenshot to replace it, or click to browse'
+                  : 'Drop a team-preview screenshot here, or click to browse'}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  style={{ display: 'none' }}
+                />
+              </div>
+            )}
 
-        {imageUrl && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-            <CalibrationOverlay imageUrl={imageUrl} rects={rects} onChange={setRects} />
-            <div
-              style={{
-                display: 'flex',
-                gap: 'var(--space-3)',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-              }}
-            >
-              <Button
-                onClick={() => void handleDetect()}
-                disabled={detecting || !frame || modelStatus === 'loading'}
-              >
-                {detecting
-                  ? 'Detecting…'
-                  : modelStatus === 'loading'
-                    ? 'Loading model…'
-                    : 'Detect'}
-              </Button>
-              <Button variant="secondary" size="sm" onClick={() => setCalibrationRegions(rects)}>
-                Save calibration
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setRects(DEFAULT_CALIBRATION_RECTS)}
-              >
-                Reset to defaults
-              </Button>
-              <span style={{ fontSize: 12, color: 'var(--text-mut)' }}>
-                {modelStatus === 'error'
-                  ? 'Image model failed to load — check your connection and retry.'
-                  : modelStatus === 'loading'
-                    ? 'Downloading the image-recognition model (first run only)…'
-                    : 'Drag/resize the 6 boxes over each opponent icon, then Detect.'}
-              </span>
-            </div>
+            {inputSource === 'paste' && <PasteInput onBuild={handlePasteBuild} />}
+
+            {inputSource === 'video' && <VideoCapture onGrab={handleGrab} />}
+
+            {error && (
+              <p style={{ color: 'var(--poke-red)', fontSize: 13, marginTop: 'var(--space-2)' }}>
+                {error}
+              </p>
+            )}
+
+            {/* Screenshot + video share the calibrate→Detect step once a frame exists. */}
+            {inputSource !== 'paste' && imageUrl && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', marginTop: 'var(--space-3)' }}>
+                <CalibrationOverlay imageUrl={imageUrl} rects={rects} onChange={setRects} />
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: 'var(--space-3)',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  <Button
+                    onClick={() => void handleDetect()}
+                    disabled={detecting || !frame || modelStatus === 'loading'}
+                  >
+                    {detecting
+                      ? 'Detecting…'
+                      : modelStatus === 'loading'
+                        ? 'Loading model…'
+                        : 'Detect'}
+                  </Button>
+                  <Button variant="secondary" size="sm" onClick={() => setCalibrationRegions(rects)}>
+                    Save calibration
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setRects(DEFAULT_CALIBRATION_RECTS)}
+                  >
+                    Reset to defaults
+                  </Button>
+                  <span style={{ fontSize: 12, color: 'var(--text-mut)' }}>
+                    {modelStatus === 'error'
+                      ? 'Image model failed to load — check your connection and retry.'
+                      : modelStatus === 'loading'
+                        ? 'Downloading the image-recognition model (first run only)…'
+                        : 'Drag/resize the 6 boxes over each opponent icon, then Detect.'}
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
-          )}
         </Card>
       )}
 
@@ -318,6 +410,7 @@ export function DetectionScreen() {
                 myTeam={myTeam}
                 opponent={opponent}
                 usage={usage}
+                opponentSets={opponentSets}
                 viewMode={viewMode}
                 onViewModeChange={setViewMode}
                 onSelectCell={openDrawer}
@@ -326,7 +419,7 @@ export function DetectionScreen() {
             <ThreatSummary myTeam={myTeam} opponent={opponent} usage={usage} />
           </div>
 
-          <SlotList opponent={opponent} crops={crops} onOverride={overrideSlot} />
+          <SlotList opponent={opponent} crops={crops} onOverride={handleOverride} />
 
           {/* Drill-down drawer: collapsed by default, opened from a matrix cell.
               OpponentDashboard renders its own Card, so the toggle sits above it. */}
@@ -341,6 +434,7 @@ export function DetectionScreen() {
                 opponent={opponent}
                 myTeam={myTeam}
                 usage={usage}
+                opponentSets={opponentSets}
                 initialSlotIndex={drawerSlot}
               />
             </div>
