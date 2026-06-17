@@ -28,6 +28,7 @@ export function VideoCapture({ onGrab }: VideoCaptureProps) {
   const [deviceId, setDeviceId] = useState<string>(savedDeviceId ?? '');
   const [error, setError] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
+  const [resolution, setResolution] = useState<string | null>(null);
 
   // Ask for permission (macOS prompt) then enumerate video inputs once.
   useEffect(() => {
@@ -57,8 +58,16 @@ export function VideoCapture({ onGrab }: VideoCaptureProps) {
     setError(null);
     (async () => {
       try {
+        // Request full 1080p — without an explicit resolution the browser
+        // negotiates a low default (often 640×480), which makes the grabbed
+        // still blurry and the detection crops tiny. `ideal` gets as close as
+        // the device allows (native 1080p for an Elgato HD60 X) without failing.
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: { deviceId: { exact: deviceId } },
+          video: {
+            deviceId: { exact: deviceId },
+            width: { ideal: 1920 },
+            height: { ideal: 1080 },
+          },
         });
         if (cancelled) {
           stream.getTracks().forEach((t) => t.stop());
@@ -116,18 +125,28 @@ export function VideoCapture({ onGrab }: VideoCaptureProps) {
         </Button>
       </div>
 
+      {/* Size to the feed's real 16:9 ratio and grow as big as the card width
+          allows (capped by viewport height) — no stretch, no pill/letterboxing.
+          The element box IS 16:9, so its own dimensions match the content and
+          there are no black bars; margin auto centers it. */}
       <video
         ref={videoRef}
         autoPlay
         muted
         playsInline
+        onLoadedMetadata={(e) =>
+          setResolution(`${e.currentTarget.videoWidth}×${e.currentTarget.videoHeight}`)
+        }
         style={{
-          width: '100%',
-          maxHeight: 360,
+          display: 'block',
+          margin: '0 auto',
+          maxWidth: '100%',
+          maxHeight: '70vh',
+          aspectRatio: '16 / 9',
+          objectFit: 'contain',
           borderRadius: 'var(--radius)',
           border: '1px solid var(--border)',
           background: '#000',
-          objectFit: 'contain',
         }}
       />
 
@@ -135,7 +154,9 @@ export function VideoCapture({ onGrab }: VideoCaptureProps) {
         {error
           ? error
           : ready
-            ? 'Line up the Switch team-preview screen, then grab a still to calibrate + detect.'
+            ? `Line up the Switch team-preview screen, then grab a still to calibrate + detect.${
+                resolution ? ` (capturing ${resolution})` : ''
+              }`
             : 'Starting capture preview…'}
       </span>
     </div>
