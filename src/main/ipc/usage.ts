@@ -34,6 +34,19 @@ const CUTOFFS = [1760, 1630, 1500, 0] as const;
 /** How many months back to look for a published report. */
 const MONTH_LOOKBACK = 12;
 
+/**
+ * Interim usage fallback chain: a regulation that just went live has no
+ * published Smogon report yet, so fall back to the previous regulation's stats
+ * so matchups/common sets still load. The requested format is always probed
+ * FIRST, so this auto-upgrades the moment the new regulation's first report
+ * lands — no code change needed. Reg M-B launched 2026-06-17; its first chaos
+ * report publishes ~early July, after which the regma fallback goes unused.
+ * The returned UsageData is stamped with the format it actually came from.
+ */
+const FALLBACK_FORMATS: Record<string, readonly string[]> = {
+  gen9championsvgc2026regmb: ['gen9championsvgc2026regma'],
+};
+
 /** Keep the per-category lists small — the dashboard shows ≤6, in-battle ≤6. */
 const ENTRY_CAP = 12;
 
@@ -186,15 +199,21 @@ export async function fetchUsageMain(
   }
 
   if (fetchImpl) {
-    const report = await downloadLatestChaos(format, now, fetchImpl);
-    if (report) {
-      const data = normalizeChaos(report, format, month, now.getTime());
-      try {
-        await writeJson(cacheFile, data);
-      } catch {
-        // Persisting is best-effort.
+    // Probe the requested format first, then any interim fallbacks; the data is
+    // stamped with whichever format actually produced it, but cached under the
+    // requested format so it auto-refreshes when the real report appears.
+    const candidates = [format, ...(FALLBACK_FORMATS[format] ?? [])];
+    for (const candidate of candidates) {
+      const report = await downloadLatestChaos(candidate, now, fetchImpl);
+      if (report) {
+        const data = normalizeChaos(report, candidate, month, now.getTime());
+        try {
+          await writeJson(cacheFile, data);
+        } catch {
+          // Persisting is best-effort.
+        }
+        return data;
       }
-      return data;
     }
   }
 

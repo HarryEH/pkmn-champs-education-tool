@@ -4,7 +4,16 @@ import { describe, expect, it, vi } from 'vitest';
 // the pure normalizer is importable in a bare Node/vitest context.
 vi.mock('electron', () => ({ ipcMain: { handle: vi.fn() }, app: { getPath: () => '/tmp' } }));
 
-import { monthKey, normalizeChaos } from '../usage';
+// Keep fetchUsageMain off the disk: stub the persistence layer so the cache
+// read-through is a miss and the write is a no-op.
+vi.mock('../persistence', () => ({
+  readJson: vi.fn(async (_path: string, fallback: unknown) => fallback),
+  writeJson: vi.fn(async () => undefined),
+  usagePath: (format: string, month: string) => `/tmp/usage-${format}-${month}.json`,
+}));
+
+import { gzipSync } from 'node:zlib';
+import { fetchUsageMain, monthKey, normalizeChaos } from '../usage';
 
 /**
  * Synthetic chaos slice. Every single-pick category (Items/Abilities/Spreads/
@@ -62,5 +71,43 @@ describe('normalizeChaos', () => {
 
   it('keeps spread strings verbatim for downstream parsing', () => {
     expect(inc.spreads[0].name).toBe('Careful:252/0/0/4/252/0');
+  });
+});
+
+describe('fetchUsageMain interim fallback', () => {
+  function gzReport(metagame: string): Buffer {
+    const report = {
+      info: { metagame, cutoff: 1760 },
+      data: { Incineroar: { usage: 0.2, Items: { sitrusberry: 100 }, Moves: { fakeout: 99 } } },
+    };
+    return gzipSync(Buffer.from(JSON.stringify(report)));
+  }
+
+  it('falls back to Reg M-A when Reg M-B has no published report yet', async () => {
+    const calls: string[] = [];
+    const fetchImpl = (async (url: string, init?: { method?: string }) => {
+      calls.push(`${init?.method ?? 'GET'} ${url}`);
+      // Reg M-B: nothing published — every probe 404s.
+      if (url.includes('gen9championsvgc2026regmb')) return { ok: false } as Response;
+      // Reg M-A: HEAD ok, GET returns a gzipped chaos report.
+      if (init?.method === 'HEAD') return { ok: true } as Response;
+      return {
+        ok: true,
+        arrayBuffer: async () => gzReport('gen9championsvgc2026regma'),
+      } as unknown as Response;
+    }) as unknown as typeof fetch;
+
+    const data = await fetchUsageMain('gen9championsvgc2026regmb', {
+      refresh: true,
+      now: new Date('2026-06-18T00:00:00Z'),
+      fetchImpl,
+    });
+
+    // Stamped with the format it actually came from (M-A), cached under M-B.
+    expect(data.format).toBe('gen9championsvgc2026regma');
+    expect(data.month).toBe('2026-06');
+    expect(data.species.Incineroar).toBeDefined();
+    // M-B was probed FIRST (so it auto-upgrades once a real report lands).
+    expect(calls.some((c) => c.includes('gen9championsvgc2026regmb'))).toBe(true);
   });
 });
