@@ -1,6 +1,6 @@
 {
-  "format": "gen9championsvgc2026regma",
-  "generatedAt": "2026-06-15T18:51:28.997Z",
+  "format": "gen9championsvgc2026regmb",
+  "generatedAt": "2026-06-18T20:32:21.991Z",
   "source": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/formats-data.ts",
   "entries": [
     {
@@ -503,9 +503,9 @@
     {
       "speciesId": "vileplume",
       "name": "Vileplume",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "paras",
@@ -1952,9 +1952,9 @@
     {
       "speciesId": "qwilfish",
       "name": "Qwilfish",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "qwilfishhisui",
@@ -2274,9 +2274,9 @@
     {
       "speciesId": "sceptile",
       "name": "Sceptile",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "torchic",
@@ -2295,9 +2295,9 @@
     {
       "speciesId": "blaziken",
       "name": "Blaziken",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "mudkip",
@@ -2316,9 +2316,9 @@
     {
       "speciesId": "swampert",
       "name": "Swampert",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "poochyena",
@@ -2631,8 +2631,8 @@
     {
       "speciesId": "mawile",
       "name": "Mawile",
-      "legal": false,
-      "tier": "Illegal",
+      "legal": true,
+      "tier": "OU",
       "isNonstandard": "Past"
     },
     {
@@ -3142,9 +3142,9 @@
     {
       "speciesId": "metagross",
       "name": "Metagross",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "regirock",
@@ -3317,9 +3317,9 @@
     {
       "speciesId": "staraptor",
       "name": "Staraptor",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "bidoof",
@@ -4388,8 +4388,8 @@
     {
       "speciesId": "musharna",
       "name": "Musharna",
-      "legal": false,
-      "tier": "Illegal",
+      "legal": true,
+      "tier": "OU",
       "isNonstandard": "Past"
     },
     {
@@ -4577,8 +4577,8 @@
     {
       "speciesId": "scolipede",
       "name": "Scolipede",
-      "legal": false,
-      "tier": "Illegal",
+      "legal": true,
+      "tier": "OU",
       "isNonstandard": "Past"
     },
     {
@@ -4717,9 +4717,9 @@
     {
       "speciesId": "scrafty",
       "name": "Scrafty",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "sigilyph",
@@ -5074,9 +5074,9 @@
     {
       "speciesId": "eelektross",
       "name": "Eelektross",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "elgyem",
@@ -5746,9 +5746,9 @@
     {
       "speciesId": "pyroar",
       "name": "Pyroar",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "flabebe",
@@ -5893,9 +5893,9 @@
     {
       "speciesId": "malamar",
       "name": "Malamar",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "binacle",
@@ -5907,8 +5907,8 @@
     {
       "speciesId": "barbaracle",
       "name": "Barbaracle",
-      "legal": false,
-      "tier": "Illegal",
+      "legal": true,
+      "tier": "OU",
       "isNonstandard": "Past"
     },
     {
@@ -5921,9 +5921,9 @@
     {
       "speciesId": "dragalge",
       "name": "Dragalge",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "clauncher",
@@ -7601,9 +7601,9 @@
     {
       "speciesId": "grimmsnarl",
       "name": "Grimmsnarl",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "grimmsnarlgmax",
@@ -7727,9 +7727,9 @@
     {
       "speciesId": "falinks",
       "name": "Falinks",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "pincurchin",
@@ -8042,9 +8042,9 @@
     {
       "speciesId": "overqwil",
       "name": "Overqwil",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "enamorus",
@@ -8560,9 +8560,9 @@
     {
       "speciesId": "houndstone",
       "name": "Houndstone",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "flamigo",
@@ -8623,9 +8623,9 @@
     {
       "speciesId": "annihilape",
       "name": "Annihilape",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "clodsire",
@@ -8784,9 +8784,9 @@
     {
       "speciesId": "gholdengo",
       "name": "Gholdengo",
-      "legal": false,
-      "tier": "Illegal",
-      "isNonstandard": "Past"
+      "legal": true,
+      "tier": "OU",
+      "isNonstandard": null
     },
     {
       "speciesId": "wochien",

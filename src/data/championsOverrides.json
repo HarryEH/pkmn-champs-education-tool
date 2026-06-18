@@ -1,6 +1,6 @@
 {
-  "format": "gen9championsvgc2026regma",
-  "generatedAt": "2026-06-15T20:40:26.231Z",
+  "format": "gen9championsvgc2026regmb",
+  "generatedAt": "2026-06-18T20:32:23.512Z",
   "sources": {
     "items": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/items.ts",
     "moves": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/moves.ts",
@@ -64,6 +64,9 @@
     "banettite": {
       "isNonstandard": null
     },
+    "barbaracite": {
+      "isNonstandard": null
+    },
     "beastball": {
       "isNonstandard": "Past"
     },
@@ -76,9 +79,6 @@
     "bignugget": {
       "isNonstandard": "Past"
     },
-    "bigroot": {
-      "isNonstandard": "Past"
-    },
     "bindingband": {
       "isNonstandard": "Past"
     },
@@ -86,6 +86,9 @@
       "isNonstandard": "Past"
     },
     "blastoisinite": {
+      "isNonstandard": null
+    },
+    "blazikenite": {
       "isNonstandard": null
     },
     "blunderpolicy": {
@@ -151,9 +154,6 @@
     "custapberry": {
       "isNonstandard": "Past"
     },
-    "damprock": {
-      "isNonstandard": "Past"
-    },
     "darkranite": {
       "isNonstandard": "Past"
     },
@@ -173,7 +173,7 @@
       "isNonstandard": "Past"
     },
     "dragalgite": {
-      "isNonstandard": "Past"
+      "isNonstandard": null
     },
     "dragoninite": {
       "isNonstandard": null
@@ -203,7 +203,7 @@
       "isNonstandard": "Past"
     },
     "eelektrossite": {
-      "isNonstandard": "Past"
+      "isNonstandard": null
     },
     "ejectbutton": {
       "isNonstandard": "Past"
@@ -229,11 +229,8 @@
     "excadrite": {
       "isNonstandard": null
     },
-    "expertbelt": {
-      "isNonstandard": "Past"
-    },
     "falinksite": {
-      "isNonstandard": "Past"
+      "isNonstandard": null
     },
     "fastball": {
       "isNonstandard": "Past"
@@ -343,9 +340,6 @@
     "heatranite": {
       "isNonstandard": "Past"
     },
-    "heatrock": {
-      "isNonstandard": "Past"
-    },
     "heavyball": {
       "isNonstandard": "Past"
     },
@@ -370,13 +364,7 @@
     "icicleplate": {
       "isNonstandard": "Past"
     },
-    "icyrock": {
-      "isNonstandard": "Past"
-    },
     "insectplate": {
-      "isNonstandard": "Past"
-    },
-    "ironball": {
       "isNonstandard": "Past"
     },
     "ironplate": {
@@ -407,12 +395,6 @@
       "isNonstandard": "Past"
     },
     "liechiberry": {
-      "isNonstandard": "Past"
-    },
-    "lifeorb": {
-      "isNonstandard": "Past"
-    },
-    "lightclay": {
       "isNonstandard": "Past"
     },
     "loadeddice": {
@@ -451,6 +433,9 @@
     "magoberry": {
       "isNonstandard": "Past"
     },
+    "malamarite": {
+      "isNonstandard": null
+    },
     "maliciousarmor": {
       "isNonstandard": "Past"
     },
@@ -465,6 +450,9 @@
     },
     "masterpieceteacup": {
       "isNonstandard": "Past"
+    },
+    "mawilite": {
+      "isNonstandard": null
     },
     "meadowplate": {
       "isNonstandard": "Past"
@@ -481,8 +469,8 @@
     "metalalloy": {
       "isNonstandard": "Past"
     },
-    "metronome": {
-      "isNonstandard": "Past"
+    "metagrossite": {
+      "isNonstandard": null
     },
     "micleberry": {
       "isNonstandard": "Past"
@@ -500,9 +488,6 @@
       "isNonstandard": "Past"
     },
     "moonstone": {
-      "isNonstandard": "Past"
-    },
-    "muscleband": {
       "isNonstandard": "Past"
     },
     "nestball": {
@@ -580,11 +565,20 @@
     "punchingglove": {
       "isNonstandard": "Past"
     },
+    "pyroarite": {
+      "isNonstandard": null
+    },
     "qualotberry": {
       "isNonstandard": "Past"
     },
     "quickball": {
       "isNonstandard": "Past"
+    },
+    "raichunitex": {
+      "isNonstandard": null
+    },
+    "raichunitey": {
+      "isNonstandard": null
     },
     "rarebone": {
       "isNonstandard": "Past"
@@ -637,17 +631,23 @@
     "salacberry": {
       "isNonstandard": "Past"
     },
+    "sceptilite": {
+      "isNonstandard": null
+    },
     "scizorite": {
+      "isNonstandard": null
+    },
+    "scolipite": {
       "isNonstandard": null
     },
     "scovillainite": {
       "isNonstandard": null
     },
-    "sharpedonite": {
+    "scraftinite": {
       "isNonstandard": null
     },
-    "shedshell": {
-      "isNonstandard": "Past"
+    "sharpedonite": {
+      "isNonstandard": null
     },
     "shinystone": {
       "isNonstandard": "Past"
@@ -660,9 +660,6 @@
     },
     "slowbronite": {
       "isNonstandard": null
-    },
-    "smoothrock": {
-      "isNonstandard": "Past"
     },
     "snowball": {
       "isNonstandard": "Past"
@@ -681,6 +678,9 @@
     },
     "sportball": {
       "isNonstandard": "Past"
+    },
+    "staraptite": {
+      "isNonstandard": null
     },
     "starfberry": {
       "isNonstandard": "Past"
@@ -714,6 +714,9 @@
     },
     "syrupyapple": {
       "isNonstandard": "Past"
+    },
+    "swampertite": {
+      "isNonstandard": null
     },
     "tamatoberry": {
       "isNonstandard": "Past"
@@ -769,9 +772,6 @@
     "wellspringmask": {
       "isNonstandard": "Past"
     },
-    "widelens": {
-      "isNonstandard": "Past"
-    },
     "wikiberry": {
       "isNonstandard": "Past"
     },
@@ -779,9 +779,6 @@
       "isNonstandard": "Past"
     },
     "zapplate": {
-      "isNonstandard": "Past"
-    },
-    "zoomlens": {
       "isNonstandard": "Past"
     }
   },
@@ -808,9 +805,6 @@
       "isNonstandard": "Past"
     },
     "aurorabeam": {
-      "isNonstandard": "Past"
-    },
-    "barbbarrage": {
       "isNonstandard": "Past"
     },
     "behemothbash": {
@@ -1104,9 +1098,6 @@
     "magmastorm": {
       "isNonstandard": "Past"
     },
-    "makeitrain": {
-      "isNonstandard": "Past"
-    },
     "malignantchain": {
       "isNonstandard": "Past"
     },
@@ -1125,6 +1116,9 @@
     "mightycleave": {
       "isNonstandard": "Past"
     },
+    "milkdrink": {
+      "isNonstandard": "Past"
+    },
     "mimic": {
       "isNonstandard": "Past"
     },
@@ -1138,9 +1132,6 @@
       "isNonstandard": "Past"
     },
     "mysticalpower": {
-      "isNonstandard": "Past"
-    },
-    "noretreat": {
       "isNonstandard": "Past"
     },
     "noxioustorque": {
@@ -1204,9 +1195,6 @@
       "isNonstandard": "Past"
     },
     "pyroball": {
-      "isNonstandard": "Past"
-    },
-    "ragefist": {
       "isNonstandard": "Past"
     },
     "razorleaf": {
@@ -1305,9 +1293,6 @@
     "spinout": {
       "isNonstandard": "Past"
     },
-    "spiritbreak": {
-      "isNonstandard": "Past"
-    },
     "splash": {
       "isNonstandard": "Past"
     },
@@ -1383,9 +1368,6 @@
     "thundershock": {
       "isNonstandard": "Past"
     },
-    "topsyturvy": {
-      "isNonstandard": "Past"
-    },
     "trickortreat": {
       "isNonstandard": null
     },
@@ -1440,6 +1422,12 @@
   },
   "abilities": {
     "dragonize": {
+      "isNonstandard": null
+    },
+    "eelevate": {
+      "isNonstandard": null
+    },
+    "firemane": {
       "isNonstandard": null
     },
     "megasol": {

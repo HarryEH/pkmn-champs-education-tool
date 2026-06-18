@@ -154,5 +154,5 @@ export interface UsageEntry {
   usage: number;
 }
 
-/** The format this app targets. Reg M-A → M-B cutover 2026-06-17. */
-export const CURRENT_FORMAT = 'gen9championsvgc2026regma';
+/** The format this app targets. Reg M-A → M-B cutover 2026-06-18. */
+export const CURRENT_FORMAT = 'gen9championsvgc2026regmb';
