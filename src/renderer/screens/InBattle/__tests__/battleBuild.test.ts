@@ -1,13 +1,16 @@
 import { describe, expect, it } from 'vitest';
+import { Sets } from '@pkmn/sets';
 import {
   candidateOpponentMoves,
   formatPctRange,
   koCell,
   likelyOpponentSpeedInput,
+  mySpeedInput,
   opponentSpeedWithLikely,
 } from '../battleBuild';
+import { buildSpeedTiers } from '../../../../lib/calc/speedTiers';
 import type { DamageResult } from '../../../../lib/calc/damageCalc';
-import type { SpeciesUsage } from '../../../../shared/types';
+import type { MyPokemon, PokemonSet, SpeciesUsage } from '../../../../shared/types';
 
 /** Minimal usage fixture for Flutter Mane: a damaging move, a Status move, a spread. */
 const fluttermaneUsage: SpeciesUsage = {
@@ -66,6 +69,31 @@ describe('opponentSpeedWithLikely', () => {
     expect(rows).toHaveLength(4); // likely + min + max + max+Scarf
     expect(rows.some((r) => r.label.includes('(min)'))).toBe(true);
     expect(rows.some((r) => r.label.includes('+Scarf'))).toBe(true);
+  });
+});
+
+describe('mySpeedInput weather-speed ability', () => {
+  // Team sheet lists Damp (Swampert's ability); Mega Swampert's ability is Swift
+  // Swim, which must override the sheet ability once Mega is toggled.
+  const swampert = {
+    set: Sets.importSet(
+      'Swampert @ Swampertite\nAbility: Damp\nLevel: 50\nAdamant Nature\nEVs: 252 Atk\n- Tackle',
+    ) as PokemonSet,
+  } as MyPokemon;
+
+  it('Mega Swampert gets the rain (Swift Swim) boost despite a Damp sheet ability', () => {
+    expect(mySpeedInput(swampert, { megaActivated: true }, false, 'rain').modifiers?.weatherSpeedBoost).toBe(true);
+  });
+
+  it('does not boost un-Mega (Damp), nor in the wrong weather', () => {
+    expect(mySpeedInput(swampert, { megaActivated: false }, false, 'rain').modifiers?.weatherSpeedBoost).toBe(false);
+    expect(mySpeedInput(swampert, { megaActivated: true }, false, 'sun').modifiers?.weatherSpeedBoost).toBe(false);
+  });
+
+  it('doubles the effective Speed end-to-end in rain', () => {
+    const dry = buildSpeedTiers([mySpeedInput(swampert, { megaActivated: true }, false, undefined)])[0];
+    const rain = buildSpeedTiers([mySpeedInput(swampert, { megaActivated: true }, false, 'rain')])[0];
+    expect(rain.effectiveSpeed).toBe(dry.effectiveSpeed * 2);
   });
 });
 

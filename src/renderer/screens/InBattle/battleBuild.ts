@@ -8,8 +8,8 @@
  * guessed stat. Your own mons use their exact set.
  */
 import { gen } from '../../../lib/calc/gen';
-import { defaultMegaForme, resolveMegaForme } from '../../../lib/calc/megaForme';
-import { speedBounds } from '../../../lib/calc/speedTiers';
+import { defaultMegaForme, megaAbility, resolveMegaForme } from '../../../lib/calc/megaForme';
+import { speedBounds, weatherSpeedBoostActive } from '../../../lib/calc/speedTiers';
 import type { SpeedTierInput } from '../../../lib/calc/speedTiers';
 import type { Combatant, DamageResult } from '../../../lib/calc/damageCalc';
 import { summarizeKo, type KoSummary } from '../../../lib/calc/threats';
@@ -124,21 +124,52 @@ export function opponentCombatant(
   };
 }
 
-/** Your mon's single speed-tier entry (exact stat; Scarf + Tailwind modifiers). */
+/**
+ * Your mon's *active* ability: a Mega forme's granted ability when Mega is
+ * toggled (e.g. Swampert-Mega → Swift Swim), else the team-sheet ability. This
+ * is what weather-speed abilities key off — a sheet listing Damp still gets
+ * Swift Swim's rain boost once Mega'd.
+ */
+function myActiveAbility(mon: MyPokemon, megaActivated: boolean): string | undefined {
+  if (megaActivated) return megaAbility(myMegaForme(mon)) ?? mon.set.ability;
+  return mon.set.ability;
+}
+
+/** Your mon's single speed-tier entry (exact stat; weather/Scarf/Tailwind modifiers). */
 export function mySpeedInput(
   mon: MyPokemon,
   toggles: BattleToggles | undefined,
   tailwind: boolean,
+  weather?: FieldState['weather'],
 ): SpeedTierInput {
+  const megaActivated = !!toggles?.megaActivated;
   return {
     label: myDisplayName(mon),
     set: mon.set,
-    megaActivated: !!toggles?.megaActivated,
+    megaActivated,
     modifiers: {
       tailwind,
       choiceScarf: mon.set.item === 'Choice Scarf',
+      weatherSpeedBoost: weatherSpeedBoostActive(myActiveAbility(mon, megaActivated), weather),
     },
   };
+}
+
+/**
+ * The opponent's *active* ability for weather-speed purposes: a Mega forme's
+ * granted ability when Mega'd (deterministic), else their most-common usage
+ * ability (our best guess of an unseen set). `undefined` when neither is known.
+ */
+function opponentActiveAbility(
+  speciesId: string,
+  usage: SpeciesUsage | undefined,
+  slot: OpponentSlot | undefined,
+): string | undefined {
+  if (slot?.megaActivated) {
+    const fromMega = megaAbility(opponentMegaForme(speciesId, usage));
+    if (fromMega) return fromMega;
+  }
+  return usage?.abilities[0]?.name;
 }
 
 /**
@@ -151,16 +182,25 @@ export function opponentSpeedInputs(
   usage: SpeciesUsage | undefined,
   slot: OpponentSlot | undefined,
   tailwind: boolean,
+  weather?: FieldState['weather'],
 ): SpeedTierInput[] {
   const name = speciesName(speciesId);
   const megaForme = slot?.megaActivated ? opponentMegaForme(speciesId, usage) : null;
   const species = gen.species.get(megaForme ?? speciesId);
   if (!species?.exists) return [];
   const { min, max } = speedBounds(species.baseStats.spe);
+  const weatherSpeedBoost = weatherSpeedBoostActive(
+    opponentActiveAbility(speciesId, usage, slot),
+    weather,
+  );
   return [
-    { label: `${name} (min)`, stat: min, modifiers: { tailwind } },
-    { label: `${name} (max)`, stat: max, modifiers: { tailwind } },
-    { label: `${name} (max +Scarf)`, stat: max, modifiers: { tailwind, choiceScarf: true } },
+    { label: `${name} (min)`, stat: min, modifiers: { tailwind, weatherSpeedBoost } },
+    { label: `${name} (max)`, stat: max, modifiers: { tailwind, weatherSpeedBoost } },
+    {
+      label: `${name} (max +Scarf)`,
+      stat: max,
+      modifiers: { tailwind, weatherSpeedBoost, choiceScarf: true },
+    },
   ];
 }
 
@@ -198,11 +238,16 @@ export function likelyOpponentSpeedInput(
   usage: SpeciesUsage | undefined,
   slot: OpponentSlot | undefined,
   tailwind: boolean,
+  weather?: FieldState['weather'],
 ): SpeedTierInput {
   const name = speciesName(speciesId);
   const megaForme = slot?.megaActivated ? opponentMegaForme(speciesId, usage) : null;
   const base = likelySpeedInput(megaForme ?? speciesId, usage, `${name} (likely)`);
-  return { ...base, modifiers: { tailwind } };
+  const weatherSpeedBoost = weatherSpeedBoostActive(
+    opponentActiveAbility(speciesId, usage, slot),
+    weather,
+  );
+  return { ...base, modifiers: { tailwind, weatherSpeedBoost } };
 }
 
 /**
@@ -216,10 +261,11 @@ export function opponentSpeedWithLikely(
   usage: SpeciesUsage | undefined,
   slot: OpponentSlot | undefined,
   tailwind: boolean,
+  weather?: FieldState['weather'],
 ): SpeedTierInput[] {
   return [
-    likelyOpponentSpeedInput(speciesId, usage, slot, tailwind),
-    ...opponentSpeedInputs(speciesId, usage, slot, tailwind),
+    likelyOpponentSpeedInput(speciesId, usage, slot, tailwind, weather),
+    ...opponentSpeedInputs(speciesId, usage, slot, tailwind, weather),
   ];
 }
 

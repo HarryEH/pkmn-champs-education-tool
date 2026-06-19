@@ -62,6 +62,7 @@ function speedTone(
 
 function modifierLabels(mods: SpeedModifiers): string[] {
   const labels: string[] = [];
+  if (mods.weatherSpeedBoost) labels.push('Weather ×2');
   if (mods.tailwind) labels.push('Tailwind');
   if (mods.choiceScarf) labels.push('Scarf');
   if (mods.paralysis) labels.push('Para');

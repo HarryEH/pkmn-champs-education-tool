@@ -64,3 +64,16 @@ export function megaFormesOf(speciesName: string): string[] {
 export function defaultMegaForme(speciesName: string): string | null {
   return megaFormesOf(speciesName)[0] ?? null;
 }
+
+/**
+ * The ability a Mega forme grants on evolution. A Mega forme's ability REPLACES
+ * the base species' ability (e.g. Swampert's listed Damp/Torrent becomes Swift
+ * Swim as Swampert-Mega), so callers modelling an active Mega must use this, not
+ * the team-sheet ability. Mega formes carry a single ability (slot 0). Returns
+ * `undefined` for a null/unknown forme.
+ */
+export function megaAbility(megaForme: string | null): string | undefined {
+  if (!megaForme) return undefined;
+  const species = gen.species.get(megaForme);
+  return species?.exists ? species.abilities[0] : undefined;
+}

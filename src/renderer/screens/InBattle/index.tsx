@@ -543,16 +543,18 @@ export function InBattleScreen() {
   const bothReady = myOnFieldMons.length > 0 && opponentOnField.length > 0;
 
   // ---- Speed tier inputs ------------------------------------------------------
+  const weather = field.weather;
   const mineSpeed: SpeedTierInput[] = useMemo(
-    () => myOnFieldMons.map((mon) => mySpeedInput(mon, myBattleState[myId(mon)], myTailwind)),
-    [myOnFieldMons, myBattleState, myTailwind],
+    () =>
+      myOnFieldMons.map((mon) => mySpeedInput(mon, myBattleState[myId(mon)], myTailwind, weather)),
+    [myOnFieldMons, myBattleState, myTailwind, weather],
   );
   const opponentSpeed: SpeedTierInput[] = useMemo(
     () =>
       opponentOnField.flatMap((id) =>
-        opponentSpeedWithLikely(id, findUsage(usage, id), slotFor(id), oppTailwind),
+        opponentSpeedWithLikely(id, findUsage(usage, id), slotFor(id), oppTailwind, weather),
       ),
-    [opponentOnField, usage, slotFor, oppTailwind],
+    [opponentOnField, usage, slotFor, oppTailwind, weather],
   );
 
   // ---- Resolved combatants ----------------------------------------------------

@@ -1,6 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { Sets } from '@pkmn/sets';
-import { calcSpeed, applySpeedModifiers, buildSpeedTiers, speedBounds } from '../speedTiers';
+import {
+  calcSpeed,
+  applySpeedModifiers,
+  buildSpeedTiers,
+  speedBounds,
+  weatherSpeedBoostActive,
+} from '../speedTiers';
 import { FIXTURE_MY_TEAM } from '../../../shared/fixtures';
 import type { PokemonSet } from '../../../shared/types';
 
@@ -35,6 +41,27 @@ describe('applySpeedModifiers', () => {
   it('applies stage boosts', () => {
     expect(applySpeedModifiers(100, { stages: 1 })).toBe(150);
     expect(applySpeedModifiers(100, { stages: -1 })).toBe(66);
+  });
+
+  it('doubles for a weather-speed ability, stacking with Tailwind', () => {
+    expect(applySpeedModifiers(100, { weatherSpeedBoost: true })).toBe(200);
+    expect(applySpeedModifiers(100, { weatherSpeedBoost: true, tailwind: true })).toBe(400);
+  });
+});
+
+describe('weatherSpeedBoostActive', () => {
+  it('matches each weather-speed ability to its weather', () => {
+    expect(weatherSpeedBoostActive('Swift Swim', 'rain')).toBe(true);
+    expect(weatherSpeedBoostActive('Chlorophyll', 'sun')).toBe(true);
+    expect(weatherSpeedBoostActive('Sand Rush', 'sand')).toBe(true);
+    expect(weatherSpeedBoostActive('Slush Rush', 'snow')).toBe(true);
+  });
+
+  it('is false on a weather mismatch, no weather, or a non-speed ability', () => {
+    expect(weatherSpeedBoostActive('Swift Swim', 'sun')).toBe(false);
+    expect(weatherSpeedBoostActive('Swift Swim', undefined)).toBe(false);
+    expect(weatherSpeedBoostActive('Damp', 'rain')).toBe(false);
+    expect(weatherSpeedBoostActive(undefined, 'rain')).toBe(false);
   });
 });
 

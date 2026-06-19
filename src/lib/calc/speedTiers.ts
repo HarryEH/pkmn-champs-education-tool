@@ -13,10 +13,35 @@
  */
 import { gen } from './gen';
 import { resolveMegaForme } from './megaForme';
-import type { PokemonSet } from '../../shared/types';
+import type { FieldState, PokemonSet } from '../../shared/types';
+
+/** Weather a given weather-speed ability (id) doubles Speed in. */
+const WEATHER_SPEED_ABILITY: Record<string, NonNullable<FieldState['weather']>> = {
+  swiftswim: 'rain',
+  chlorophyll: 'sun',
+  sandrush: 'sand',
+  slushrush: 'snow',
+};
+
+/**
+ * Whether a Pokémon's *active* ability doubles its Speed under the current
+ * weather (Swift Swim/rain, Chlorophyll/sun, Sand Rush/sand, Slush Rush/snow).
+ * The caller must pass the EFFECTIVE ability — e.g. a Mega forme's granted
+ * ability (Swampert-Mega → Swift Swim), not the team-sheet ability (Damp).
+ */
+export function weatherSpeedBoostActive(
+  ability: string | undefined,
+  weather: FieldState['weather'] | undefined,
+): boolean {
+  if (!ability || !weather) return false;
+  const id = gen.abilities.get(ability)?.id ?? ability.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return WEATHER_SPEED_ABILITY[id] === weather;
+}
 
 /** Multiplicative speed modifiers, applied in-game in this order. */
 export interface SpeedModifiers {
+  /** A weather-speed ability is active in matching weather (Swift Swim etc., ×2). */
+  weatherSpeedBoost?: boolean;
   /** Tailwind on this Pokémon's side (×2). */
   tailwind?: boolean;
   /** Choice Scarf held (×1.5). */
@@ -104,14 +129,15 @@ function clampStage(stage: number): number {
 
 /**
  * Apply multiplicative speed modifiers in canonical order:
- * stage boosts → Tailwind → Choice Scarf → paralysis. Game truncates
- * (floors) after each multiplicative step.
+ * stage boosts → weather-speed ability → Tailwind → Choice Scarf → paralysis.
+ * Game truncates (floors) after each multiplicative step.
  */
 export function applySpeedModifiers(baseSpeed: number, mods: SpeedModifiers = {}): number {
   let spe = baseSpeed;
   if (mods.stages) {
     spe = Math.floor(spe * STAGE_MULTIPLIERS[clampStage(mods.stages)]);
   }
+  if (mods.weatherSpeedBoost) spe = Math.floor(spe * 2);
   if (mods.tailwind) spe = Math.floor(spe * 2);
   if (mods.choiceScarf) spe = Math.floor(spe * 1.5);
   if (mods.paralysis) spe = Math.floor(spe * 0.5);
