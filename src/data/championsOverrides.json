@@ -1,6 +1,6 @@
 {
   "format": "gen9championsvgc2026regmb",
-  "generatedAt": "2026-06-18T20:32:23.512Z",
+  "generatedAt": "2026-06-26T19:42:09.572Z",
   "sources": {
     "items": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/items.ts",
     "moves": "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/champions/moves.ts",
@@ -775,9 +775,6 @@
     "wikiberry": {
       "isNonstandard": "Past"
     },
-    "wiseglasses": {
-      "isNonstandard": "Past"
-    },
     "zapplate": {
       "isNonstandard": "Past"
     }
@@ -904,7 +901,7 @@
       "isNonstandard": "Past"
     },
     "doubleshock": {
-      "isNonstandard": "Custom"
+      "isNonstandard": "Past"
     },
     "dragonascent": {
       "isNonstandard": "Past"
@@ -1210,7 +1207,7 @@
       "isNonstandard": "Past"
     },
     "revivalblessing": {
-      "isNonstandard": "Custom"
+      "isNonstandard": "Past"
     },
     "roaroftime": {
       "isNonstandard": "Past"
